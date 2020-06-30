@@ -5,10 +5,9 @@ use AGC;
 CREATE TABLE `Admin` (
   `ID_admin` int(10) NOT NULL AUTO_INCREMENT,
   `AdminName` varchar(50) DEFAULT NULL,
-  `AccountType` varchar(30) DEFAULT NULL,
   `Email` varchar(50) DEFAULT NULL,
   `Password` varchar(30) DEFAULT NULL,
-  
+
   primary key (ID_admin)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -16,7 +15,6 @@ CREATE TABLE `Admin` (
 CREATE TABLE `Commerciaux` (
   `ID_cm` int(10) NOT NULL AUTO_INCREMENT,
   `CName` varchar(50) DEFAULT NULL,
-  `AccountType` varchar(30) DEFAULT NULL,
   `Email` varchar(50) DEFAULT NULL,
   `Password` varchar(30) DEFAULT NULL,
 
@@ -67,3 +65,6 @@ CREATE TABLE `Calendrier` (
   FOREIGN KEY (Code_pj) REFERENCES Projets(Code_pj)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+insert into Admin (ID_admin,AdminName,Email,Password) values(3,"Annouar","meryem.annouar@ieee.org","Mery123");
+insert into Commerciaux (ID_cm,CName,Email,Password) values(5,"Yassine","Yassine.Oukassou@ieee.org","oks123");
