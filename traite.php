@@ -17,6 +17,7 @@ session_start();
                     $_SESSION['login']=false;
                     header('Location: login.php');
                 }else
+                    $_SESSION['login']=true;
                     header('Location: index.php');
             }
 ?>

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -54,8 +57,15 @@
             <div class="page-separator">
                 <div class="page-separator__text">Bonjour</div>
             </div>
-
-
+            <?php
+            if(isset($_SESSION['login']))
+            {
+                if($_SESSION['login']==false)
+                {
+                  echo "<script>alert(\"Email Ou Password incorrecte, veuillez réessayer une autre fois\")</script>";
+                }
+            }
+            ?>
             <form action="traite.php" method="POST">
                 <div class="form-group">
                     <label class="text-label" for="email_2">Adresse email:</label>
