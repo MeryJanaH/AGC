@@ -58,7 +58,7 @@ session_start();
                 <div class="page-separator__text">Bonjour</div>
             </div>
                 <?php
-                if($_SESSION['login']==false)
+                if($_SESSION['login']=="false")
                 {
                 ?>
                   <div class="alert alert-soft-success d-flex" role="alert">
