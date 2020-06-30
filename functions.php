@@ -1,5 +1,4 @@
 <?php
-
 function login($email,$mdp){
     require 'LBD.php';
     $req = $bdd->prepare("SELECT * FROM Admin WHERE Email=:email AND Password=:mdp ");
