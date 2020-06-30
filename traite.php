@@ -3,7 +3,6 @@ require 'functions.php';
 session_start();
 ?>
 
-
 <?php
           if (!isset($_POST['email_2']) && !isset($_SESSION['password_2'])) {
               session_destroy();
