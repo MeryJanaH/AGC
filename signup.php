@@ -70,6 +70,7 @@ session_start();
                   </div>
             <?php
             }
+            //try to unset the key send to null in order to avoid showing the alert even if the user visit the page for the first time
         }
             if(isset($_SESSION['enrg']))
             {
@@ -77,7 +78,7 @@ session_start();
               {
                 ?>
                 <div class="alert alert-danger" role="alert">
-                    <strong>Error - </strong> Email déjà enregistré
+                    <strong>Erreur - </strong> Email déjà enregistré
                 </div>
                 <?php
               }

@@ -71,9 +71,10 @@ if(isset($_SESSION['login'])){
                     {
                       ?>
                       <div class="alert alert-danger" role="alert">
-                          <strong>Error - </strong> Username Or Password Incorrect
+                          <strong>Erreur - </strong> Adresse email ou le mot de passe est incorrect
                       </div>
                       <?php
+                      // add a line to clean the session variable to avoid showing this message above when reloading the login page
                     }
                 }
                 ?>
@@ -88,9 +89,11 @@ if(isset($_SESSION['login'])){
                 <div class="form-group">
                     <label class="text-label"  for="password_2">mot de passe:</label>
                     <div class="input-group input-group-merge">
-                        <input type="password" name = "password_2" id="password_2" required="" class="form-control form-control-prepended" placeholder="Enter votre mot de passe">
+                        <input type="password" name = "password_2" id="password_2" required="" class="form-control form-control-prepended" placeholder="Entrer votre mot de passe">
                     </div>
                 </div>
+                <!-- try to use a checkbox here to add a choice if the user want that the browser remember him than
+                you will create a cookie for him to remember him  -->
                 <div class="form-group">
                     <button class="btn btn-block btn-primary" type="submit">S'identifier</button>
                 </div>

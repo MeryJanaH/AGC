@@ -1,5 +1,13 @@
 <?php
 session_start();
+/*
+add condition if isset session login
+then test it if if it's equal to false
+because it returned this error while accessing the website
+Notice: Undefined index: login in /opt/lampp/htdocs/AGC/index.php on line 4
+
+
+*/
 
 if($_SESSION['login']=="false")
 {
