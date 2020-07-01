@@ -1027,8 +1027,8 @@ if($_SESSION['login']=="false")
                                         </li>
 
                                         <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="signup.html">
-                                                <span class="sidebar-menu-text">Sign up</span>
+                                            <a class="sidebar-menu-button" href="signup.php">
+                                                <span class="sidebar-menu-text">S'inscrire</span>
                                             </a>
                                         </li>
                                     </ul>
