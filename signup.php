@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -48,6 +51,35 @@
                 <span>Créer un compte</span>
             </a>
         </div>
+        <?php
+        if(isset($_SESSION['send']))
+        {
+            if($_SESSION['send']=="false")
+            {
+              ?>
+              <div class="alert alert-danger" role="alert">
+                  <strong>Error - </strong> Veuillez réessayer une autre fois
+              </div>
+              <?php
+            }
+            else
+            {
+              ?>
+                  <div class="alert alert-success" role="alert">
+                      <strong>Succès - </strong> vous avez créer un compte commercial avec succès!
+                  </div>
+            <?php
+            }
+        }
+        if($_SESSION['enrg'] == "true")
+        {
+          ?>
+          <div class="alert alert-danger" role="alert">
+              <strong>Error - </strong> Email déjà enregistré
+          </div>
+          <?php
+        }
+        ?>
         <div class="card card-body">
             <form action="messager.php" method="POST">
                 <div class="form-group">
@@ -61,16 +93,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group mb-3 text-center">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" checked="" class="custom-control-input" id="terms" />
-                        <label class="custom-control-label" for="terms">J'accepte <a href="terme.php"> les termes et conditions</a></label>
-                    </div>
-                </div>
                 <div class="form-group text-center">
                   <button class="btn btn-primary mb-2" name="submit" type="submit">Créer un compte</button><br>
                 </div>
             </form>
+
+            <a href="index.php"><button type="button" class="btn btn-block btn-primary">Retourner à l'accueil</button></a>
+
         </div>
     </div>
 

@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 function login($email,$mdp){
     require 'LBD.php';
@@ -46,6 +47,7 @@ function email_exist($email){
   $req = $bdd->prepare("SELECT * FROM Commerciaux WHERE Email=:email");
   $req->bindParam(':email', $email);
 
+    $req->execute();
     $res = $req->fetch();
 
     if($res != NULL)
@@ -95,11 +97,9 @@ function first_mail($from, $to, $subj, $body)
     $mail->AddReplyTo($to);
 
     $mail->isHTML(true);
-
-    if(!$mail->Send()) {
-      echo "Mailer Error: ";
-    } else {
-      echo "Message sent!";
-    }
+    if($mail->Send())
+      $_SESSION['send']="true";
+    else
+      $_SESSION['send']="false";
 }
 ?>

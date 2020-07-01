@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 if($_SESSION['login']=="false")
 {
     header('Location: login.php');
@@ -1049,6 +1050,16 @@ if($_SESSION['login']=="false")
                                         <li class="sidebar-menu-item">
                                             <a class="sidebar-menu-button" href="ui-tables.html">
                                                 <span class="sidebar-menu-text">Tables</span>
+                                            </a>
+                                        </li>
+                                        <li class="sidebar-menu-item">
+                                            <a class="sidebar-menu-button" href="ui-buttons.html">
+                                                <span class="sidebar-menu-text">button</span>
+                                            </a>
+                                        </li>
+                                        <li class="sidebar-menu-item">
+                                            <a class="sidebar-menu-button" href="ui-alerts.html">
+                                                <span class="sidebar-menu-text">alert</span>
                                             </a>
                                         </li>
                                     </ul>
