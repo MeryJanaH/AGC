@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+if($_SESSION['login']=="true")
+{
+    header('Location: index.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -46,7 +52,7 @@ session_start();
 
     <div class="layout-login-centered-boxed__form">
         <div class="d-flex flex-column justify-content-center align-items-center mt-2 mb-2 navbar-light">
-            <a href="index.html" class="navbar-brand text-center mb-2 mr-0" style="min-width: 0">
+            <a href="index.php" class="navbar-brand text-center mb-2 mr-0" style="min-width: 0">
                 <img class="navbar-brand-icon" src="assets/images/logo.svg" width="43" alt="Flat">
             </a>
         </div>
@@ -60,11 +66,11 @@ session_start();
                 <?php
                 if($_SESSION['login']=="false")
                 {
-?>
-<div class="alert alert-danger" role="alert">
-    <strong>Error - </strong> Username Or Password Incorrect
-</div>
-<?php
+                  ?>
+                  <div class="alert alert-danger" role="alert">
+                      <strong>Error - </strong> Username Or Password Incorrect
+                  </div>
+                  <?php
                 }
                 ?>
 
