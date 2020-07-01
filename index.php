@@ -1,3 +1,11 @@
+<?php
+session_start();
+if($_SESSION['login']=="true")
+{
+    header('Location: index.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -989,25 +997,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="sidebar-stats row no-gutters align-items-center text-center border-bottom flex-shrink-0">
-                        <div class="sidebar-stats__col col">
-                            <div class="sidebar-stats__title">Traffic</div>
-                            <div class="sidebar-stats__value">49,401</div>
-                        </div>
-                        <div class="sidebar-stats__col col border-left">
-                            <div class="sidebar-stats__title">Earnings</div>
-                            <div class="sidebar-stats__value">$1,402</div>
-                        </div>
-                    </div>
-
-                    <div class="py-4 text-center flex-shrink-0">
-                        <a style="min-width: 157px;" href="/signup.html" class="btn btn-primary">Create <i class="material-icons ml-1">add</i></a>
-                    </div>
 
                     <ul class="nav nav-tabs sidebar-tabs flex-shrink-0" role="tablist">
                         <li class="nav-item"><a class="nav-link active show" id="sm-menu-tab" href="#sm-menu" data-toggle="tab" role="tab" aria-controls="sm-menu" aria-selected="true">Menu</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#sm-account" data-toggle="tab">Account</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#sm-settings" data-toggle="tab">Settings</a></li>
                     </ul>
                     <div class="tab-content">
                         <div id="sm-menu" class="tab-pane show active" role="tabpanel" aria-labelledby="sm-menu-tab">
@@ -1032,46 +1024,7 @@
                                                 <span class="sidebar-menu-text">Edit Account</span>
                                             </a>
                                         </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="appointments.html">
-                                                <span class="sidebar-menu-text">Appointments</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="properties.html">
-                                                <span class="sidebar-menu-text">Properties</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="blog.html">
-                                                <span class="sidebar-menu-text">Blog</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="trello.html">
-                                                <span class="sidebar-menu-text">Trello</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="chat.html">
-                                                <span class="sidebar-menu-text">Chat</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="course.html">
-                                                <span class="sidebar-menu-text">Course</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="tickets.html">
-                                                <span class="sidebar-menu-text">Tickets</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="login.html">
-                                                <span class="sidebar-menu-text">Login</span>
-                                            </a>
-                                        </li>
+
                                         <li class="sidebar-menu-item">
                                             <a class="sidebar-menu-button" href="signup.html">
                                                 <span class="sidebar-menu-text">Sign up</span>
@@ -1088,64 +1041,8 @@
                                     </a>
                                     <ul class="sidebar-submenu collapse" id="components_menu">
                                         <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="ui-buttons.html">
-                                                <span class="sidebar-menu-text">Buttons</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="ui-alerts.html">
-                                                <span class="sidebar-menu-text">Alerts</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="ui-avatars.html">
-                                                <span class="sidebar-menu-text">Avatars</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="ui-modals.html">
-                                                <span class="sidebar-menu-text">Modals</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="ui-icons.html">
-                                                <span class="sidebar-menu-text">Icons</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="ui-range-sliders.html">
-                                                <!-- tune or low_priority or linear_scale or space_bar or swap_calls -->
-                                                <span class="sidebar-menu-text">Range Sliders</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="ui-datetime.html">
-                                                <span class="sidebar-menu-text">Time &amp; Date</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
                                             <a class="sidebar-menu-button" href="ui-tables.html">
                                                 <span class="sidebar-menu-text">Tables</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="ui-tabs.html">
-                                                <span class="sidebar-menu-text">Tabs</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="ui-loaders.html">
-                                                <span class="sidebar-menu-text">Loaders</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="ui-drag.html">
-                                                <span class="sidebar-menu-text">Drag &amp; Drop</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="ui-pagination.html">
-                                                <span class="sidebar-menu-text">Pagination</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -1158,105 +1055,13 @@
                                     </a>
                                 </li>
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="ui-forms.html">
-                                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">text_format</i>
-                                        <span class="sidebar-menu-text">Forms</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
                                     <a class="sidebar-menu-button" href="fullcalendar.html">
                                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">date_range</i>
                                         <span class="sidebar-menu-text">Calendar</span>
                                     </a>
                                 </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="ui-vector-maps.html">
-                                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">location_on</i>
-                                        <span class="sidebar-menu-text">Vector Maps</span>
-                                    </a>
-                                </li>
                             </ul>
                         </div>
-                        <div id="sm-account" class="tab-pane">
-                            <ul class="sidebar-menu">
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="edit-account.html">
-                                        <span class="sidebar-menu-text">Edit Information</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="edit-account.html">
-                                        <span class="sidebar-menu-text">Payments</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="edit-account.html">
-                                        <span class="sidebar-menu-text">Billing</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="edit-account.html">
-                                        <span class="sidebar-menu-text">Change Password</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="login.html">
-                                        <span class="sidebar-menu-text">Logout</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div id="sm-settings" class="tab-pane sidebar-p-a">
-                            <div class="form-inline form-group">
-                                <label for="currency" class="text-label flex justify-content-start">Currency</label>
-                                <select name="currency" id="currency" class="custom-select">
-                                    <option selected="true" value="usd">USD</option>
-                                    <option value="eur">EUR</option>
-                                    <option value="gbp">GBP</option>
-                                </select>
-                            </div>
-                            <div class="form-inline form-group">
-                                <label for="show_tags" class="text-label flex justify-content-start">Show Tags</label>
-                                <label for="show_tags">Yes</label>
-                                <div class="custom-control custom-checkbox-toggle custom-control-inline ml-2 mr-0">
-                                    <input checked="" type="checkbox" id="show_tags" class="custom-control-input">
-                                    <label class="custom-control-label" for="show_tags">Yes</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="api_token" class="text-label flex justify-content-start">API Token</label>
-                                <div class="input-group input-group-merge">
-                                    <input id="api_token" type="password" required="" class="form-control form-control-appended" placeholder="Enter your token">
-                                    <div class="input-group-append">
-                                        <div class="input-group-text">
-                                            <span class="fa fa-eye"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="api_secret" class="text-label flex justify-content-start">API Secret</label>
-                                <div class="input-group input-group-merge">
-                                    <input id="api_secret" type="password" required="" class="form-control form-control-appended" placeholder="Enter your secret">
-                                    <div class="input-group-append">
-                                        <div class="input-group-text">
-                                            <span class="fa fa-eye"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="price_range" class="text-label flex justify-content-start">Price Range</label>
-                                <input id="price_range" type="text" data-toggle="ion-rangeslider" data-min="0" data-max="100" data-from="50" data-step="5" data-max-postfix="+" data-prefix="$">
-                            </div>
-                            <div>
-                                <label for="category" class="text-label flex justify-content-start">Default Category</label>
-                                <select name="category" id="category" class="custom-select">
-                                    <option selected="true" value="admin">Admin Dashboard</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="mt-auto sidebar-p-a sidebar-b-t d-flex flex-column flex-shrink-0">
                         <a class="sidebar-link mb-2" href="edit-account.html">Change Password</a>

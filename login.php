@@ -60,11 +60,8 @@ session_start();
                 <?php
                 if($_SESSION['login']=="false")
                 {
-                ?>
-                  <div class="alert alert-soft-success d-flex" role="alert">
-                      <div class="text-body">Email Ou Password incorrecte, veuillez réessayer une autre fois</div>
-                  </div>
-                <?php
+                  $message = "Username and/or Password incorrect.\\nTry again.";
+                  echo "<script type='text/javascript'>alert('$message');</script>";
                 }
                 ?>
 
