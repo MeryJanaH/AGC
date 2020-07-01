@@ -71,15 +71,18 @@ session_start();
             <?php
             }
         }
-        if($_SESSION['enrg'] == "true")
-        {
-          ?>
-          <div class="alert alert-danger" role="alert">
-              <strong>Error - </strong> Email déjà enregistré
-          </div>
-          <?php
-        }
-        ?>
+            if(isset($_SESSION['enrg']))
+            {
+              if($_SESSION['enrg'] == "true")
+              {
+                ?>
+                <div class="alert alert-danger" role="alert">
+                    <strong>Error - </strong> Email déjà enregistré
+                </div>
+                <?php
+              }
+            }
+                ?>
         <div class="card card-body">
             <form action="messager.php" method="POST">
                 <div class="form-group">

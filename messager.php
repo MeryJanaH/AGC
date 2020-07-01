@@ -1,9 +1,10 @@
 <?php
 require 'LBD.php';
 require 'functions.php';
+session_start();
 
        $_SESSION['enrg'] = "false";
-       
+
        $inter=email_exist($_POST['email_2']);
        if($inter == "true")
        {
@@ -12,7 +13,7 @@ require 'functions.php';
        }
        else
        {
-         $default_password = default_password(8);
+         $default_password = default_password();
          $lien = "http://localhost/AGC/login.php";
          $txt = "Voici votre mot de passe pour se connecter à AGC : ".'<br/>'."MDP : ".$default_password.'<br/>'."Adresse email : ".$_POST['email_2'].'<br/>'." Vous pouvez utiliser le lien suivent : ".$lien;
 
