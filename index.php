@@ -993,10 +993,11 @@ if($_SESSION['login']=="false")
                                 <a class="dropdown-item" href="profile.html">My profile</a>
                                 <a class="dropdown-item" href="edit-account.html">Edit account</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="login.html">Logout</a>
+                                <a class="dropdown-item" href="Déconnexion.php">Déconnexion</a>
                             </div>
                         </div>
                     </div>
+
 
                     <ul class="nav nav-tabs sidebar-tabs flex-shrink-0" role="tablist">
                         <li class="nav-item"><a class="nav-link active show" id="sm-menu-tab" href="#sm-menu" data-toggle="tab" role="tab" aria-controls="sm-menu" aria-selected="true">Menu</a></li>
@@ -1067,8 +1068,10 @@ if($_SESSION['login']=="false")
                         <a class="sidebar-link mb-2" href="edit-account.html">Change Password</a>
                         <a class="sidebar-link mb-2" href="edit-account.html">Settings</a>
                         <a class="sidebar-link" href="login.html">
-                            Logout
+                          <p>
+                            <a class="sidebar-link" href="Déconnexion.php">Déconnexion</a>
                             <i class="sidebar-menu-icon ml-2 material-icons icon-16pt">exit_to_app</i>
+                          </p>
                         </a>
                     </div>
 

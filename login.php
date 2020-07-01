@@ -1,12 +1,13 @@
 <?php
 session_start();
-
+if(isset($_SESSION['login'])){
 if($_SESSION['login']=="true")
 {
     header('Location: index.php');
 }
-
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -64,6 +65,8 @@ if($_SESSION['login']=="true")
                 <div class="page-separator__text">Bonjour</div>
             </div>
                 <?php
+                if(isset($_SESSION['login']))
+                {
                 if($_SESSION['login']=="false")
                 {
                   ?>
@@ -71,6 +74,7 @@ if($_SESSION['login']=="true")
                       <strong>Error - </strong> Username Or Password Incorrect
                   </div>
                   <?php
+                }
                 }
                 ?>
 
