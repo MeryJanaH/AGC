@@ -49,22 +49,11 @@
             </a>
         </div>
         <div class="card card-body">
-            <form action="index.php" novalidate>
-                <div class="form-group">
-                    <label class="text-label" for="name_2">Nom:</label>
-                    <div class="input-group input-group-merge">
-                        <input id="name_2" type="text" required="" class="form-control form-control-prepended" placeholder="Tapez le nom">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <span class="far fa-user"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <form action="messager.php" method="POST">
                 <div class="form-group">
                     <label class="text-label" for="email_2">Adresse email:</label>
                     <div class="input-group input-group-merge">
-                        <input id="email_2" type="email" required="" class="form-control form-control-prepended" placeholder="user@exemple.com">
+                        <input id="email_2" name="email_2" type="email" required="" class="form-control form-control-prepended" placeholder="user@exemple.com">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
                                 <span class="far fa-envelope"></span>
@@ -72,34 +61,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="text-label" for="password_2">Mot de passe:</label>
-                    <div class="input-group input-group-merge">
-                        <input id="password_2" type="password" required="" class="form-control form-control-prepended" placeholder="Entez le mot de passe">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <span class="far fa-key"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <label class="text-label" for="password_3">Confirmez le mot de passe:</label>
-                    <div class="input-group input-group-merge">
-                        <input id="password_3" type="password" required="" class="form-control form-control-prepended" placeholder="Confirmez le mot de passe">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <span class="far fa-key"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="form-group mb-3 text-center">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" checked="" class="custom-control-input" id="terms" />
-                        <label class="custom-control-label" for="terms">J'accepte <a href="#"> les termes et conditions</a></label>
+                        <label class="custom-control-label" for="terms">J'accepte <a href="terme.php"> les termes et conditions</a></label>
                     </div>
                 </div>
                 <div class="form-group text-center">
-                    <button class="btn btn-primary mb-2" type="submit">Créer un compte</button><br>
+                  <button class="btn btn-primary mb-2" name="submit" type="submit">Créer un compte</button><br>
                 </div>
             </form>
         </div>

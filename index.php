@@ -1016,7 +1016,6 @@ if($_SESSION['login']=="false")
                                     <a class="sidebar-menu-button" data-toggle="collapse" href="#pages_menu">
                                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">description</i>
                                         <span class="sidebar-menu-text">Pages</span>
-                                        <span class="badge badge-warning rounded-circle badge-notifications ml-auto" style="padding: .1875rem .375rem;">8</span>
                                         <span class="sidebar-menu-toggle-icon"></span>
                                     </a>
                                     <ul class="sidebar-submenu collapse" id="pages_menu">
@@ -1025,12 +1024,18 @@ if($_SESSION['login']=="false")
                                                 <span class="sidebar-menu-text">Edit Account</span>
                                             </a>
                                         </li>
-
+                                        <?php
+                                        if($_SESSION['user']=="admin")
+                                        {
+                                        ?>
                                         <li class="sidebar-menu-item">
                                             <a class="sidebar-menu-button" href="signup.php">
-                                                <span class="sidebar-menu-text">S'inscrire</span>
+                                                <span class="sidebar-menu-text">Créer un compte</span>
                                             </a>
                                         </li>
+                                        <?php
+                                         }
+                                         ?>
                                     </ul>
                                 </li>
 

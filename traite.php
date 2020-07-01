@@ -4,6 +4,7 @@ session_start();
 ?>
 
 <?php
+   
     $res=login($_POST['email_2'],$_POST['password_2']);
 
       if ($res=="Utilisateur Non Enregistré" or $res =="ERROR_Syntaxe") {
