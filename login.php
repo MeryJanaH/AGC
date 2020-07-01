@@ -60,8 +60,11 @@ session_start();
                 <?php
                 if($_SESSION['login']=="false")
                 {
-                  $message = "Username and/or Password incorrect.\\nTry again.";
-                  echo "<script type='text/javascript'>alert('$message');</script>";
+?>
+<div class="alert alert-danger" role="alert">
+    <strong>Error - </strong> Username Or Password Incorrect
+</div>
+<?php
                 }
                 ?>
 
