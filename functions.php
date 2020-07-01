@@ -5,7 +5,7 @@ function login($email,$mdp){
     $req = $bdd->prepare("SELECT * FROM Admin WHERE Email=:email AND Password=:mdp ");
     $req->bindParam(':email', $email);
     $req->bindParam(':mdp', $mdp);
-    if( $req->execute()){
+    if($req->execute()){
       $res = $req->fetch();
       if($res != NULL)
       {
@@ -14,6 +14,9 @@ function login($email,$mdp){
         "commercial" => false,
         "res" => $res
         );
+        $_SESSION['ID']=$res['ID_admin'];
+        $_SESSION['name']=$res['AdminName'];
+        $_SESSION['email']=$res['Email'];
         return $array;
       }
       else
@@ -31,6 +34,9 @@ function login($email,$mdp){
               "commercial" => true,
               "res" => $res
               );
+              $_SESSION['ID']=$res['ID_admin'];
+              $_SESSION['name']=$res['AdminName'];
+              $_SESSION['email']=$res['Email'];
               return $array;
             }
             else {

@@ -1,10 +1,10 @@
 <?php
 session_start();
 if(isset($_SESSION['login'])){
-if($_SESSION['login']=="true")
-{
-    header('Location: index.php');
-}
+    if($_SESSION['login']=="true")
+    {
+      header('Location: index.php');
+    }
 }
 ?>
 
@@ -67,14 +67,14 @@ if($_SESSION['login']=="true")
                 <?php
                 if(isset($_SESSION['login']))
                 {
-                if($_SESSION['login']=="false")
-                {
-                  ?>
-                  <div class="alert alert-danger" role="alert">
-                      <strong>Error - </strong> Username Or Password Incorrect
-                  </div>
-                  <?php
-                }
+                    if($_SESSION['login']=="false")
+                    {
+                      ?>
+                      <div class="alert alert-danger" role="alert">
+                          <strong>Error - </strong> Username Or Password Incorrect
+                      </div>
+                      <?php
+                    }
                 }
                 ?>
 

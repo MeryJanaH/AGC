@@ -1,7 +1,6 @@
-<<?php
+ <?php
 session_start();
 session_destroy();
-$_SESSION['login']=="false";
+unset($_SESSION);
 header('Location: login.php');
-exit();
  ?>
