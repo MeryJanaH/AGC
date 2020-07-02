@@ -14,7 +14,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Dashboard</title>
+    <title>tableau de bord</title>
 
     <!-- Prevent the demo from appearing in search engines -->
     <meta name="robots" content="noindex">
@@ -86,8 +86,8 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                 </button>
 
                                 <!-- Navbar Brand -->
-                                <a href="index.html" class="navbar-brand flex ">
-                                    <span>Dashboard</span>
+                                <a href="index.php" class="navbar-brand flex ">
+                                    <span>tableau de bord</span>
                                 </a>
 
 
@@ -978,21 +978,18 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                 <img src="assets/images/logo.svg" width="43" height="43" alt="avatar">
                             </span>
                             <span class="flex d-flex flex-column">
-                                <strong style="font-size: 1.125rem;">FlatAdmin</strong>
-                                <small class="text-muted text-uppercase" style="color: rgba(255,255,255,.54)">Bootstrap 4</small>
+                                <strong style="font-size: 1.125rem;">bienvenu</strong>
                             </span>
                         </a>
                         <div class="dropdown ml-auto">
                             <a href="#" data-toggle="dropdown" data-caret="false" class="text-muted"><i class="material-icons">keyboard_arrow_down</i></a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <div class="dropdown-item-text dropdown-item-text--lh">
-                                    <div><strong>Adrian Demian</strong></div>
-                                    <div>@adriandemian</div>
+                                    <div><strong><?php echo $_SESSION['name'] ?></strong></div>
                                 </div>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item active" href="index.html">Dashboard</a>
-                                <a class="dropdown-item" href="profile.html">My profile</a>
-                                <a class="dropdown-item" href="edit-account.html">Edit account</a>
+                                <a class="dropdown-item active" href="index.php">tableau de bord</a>
+                                <a class="dropdown-item" href="edit-account.php">Edit account</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="Déconnexion.php">Déconnexion</a>
                             </div>
@@ -1007,9 +1004,9 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                         <div id="sm-menu" class="tab-pane show active" role="tabpanel" aria-labelledby="sm-menu-tab">
                             <ul class="sidebar-menu flex">
                                 <li class="sidebar-menu-item active">
-                                    <a class="sidebar-menu-button" href="index.html">
+                                    <a class="sidebar-menu-button" href="index.php">
                                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dvr</i>
-                                        <span class="sidebar-menu-text">Dashboard</span>
+                                        <span class="sidebar-menu-text">tableau de bord</span>
                                     </a>
                                 </li>
 
@@ -1021,7 +1018,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                     </a>
                                     <ul class="sidebar-submenu collapse" id="pages_menu">
                                         <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="edit-account.html">
+                                            <a class="sidebar-menu-button" href="edit-account.php">
                                                 <span class="sidebar-menu-text">Edit Account</span>
                                             </a>
                                         </li>
@@ -1081,8 +1078,8 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                         </div>
 
                     <div class="mt-auto sidebar-p-a sidebar-b-t d-flex flex-column flex-shrink-0">
-                        <a class="sidebar-link mb-2" href="edit-account.html">Change Password</a>
-                        <a class="sidebar-link mb-2" href="edit-account.html">Settings</a>
+                        <a class="sidebar-link mb-2" href="edit-account.php">Change Password</a>
+                        <a class="sidebar-link mb-2" href="edit-account.php">Settings</a>
                         <a class="sidebar-link" href="login.html">
                           <p>
                             <a class="sidebar-link" href="Déconnexion.php">Déconnexion</a>

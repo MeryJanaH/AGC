@@ -434,41 +434,23 @@
                                     <div>@adriandemian</div>
                                 </div>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="index.html">Dashboard</a>
-                                <a class="dropdown-item" href="profile.html">My profile</a>
+                                <a class="dropdown-item" href="index.php">tableau de bord</a>
                                 <a class="dropdown-item active" href="edit-account.html">Edit account</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="login.html">Logout</a>
                             </div>
                         </div>
                     </div>
-                    <div class="sidebar-stats row no-gutters align-items-center text-center border-bottom flex-shrink-0">
-                        <div class="sidebar-stats__col col">
-                            <div class="sidebar-stats__title">Traffic</div>
-                            <div class="sidebar-stats__value">49,401</div>
-                        </div>
-                        <div class="sidebar-stats__col col border-left">
-                            <div class="sidebar-stats__title">Earnings</div>
-                            <div class="sidebar-stats__value">$1,402</div>
-                        </div>
-                    </div>
-
-                    <div class="py-4 text-center flex-shrink-0">
-                        <a style="min-width: 157px;" href="/signup.html" class="btn btn-primary">Create <i class="material-icons ml-1">add</i></a>
-                    </div>
-
                     <ul class="nav nav-tabs sidebar-tabs flex-shrink-0" role="tablist">
                         <li class="nav-item"><a class="nav-link active show" id="sm-menu-tab" href="#sm-menu" data-toggle="tab" role="tab" aria-controls="sm-menu" aria-selected="true">Menu</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#sm-account" data-toggle="tab">Account</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#sm-settings" data-toggle="tab">Settings</a></li>
                     </ul>
                     <div class="tab-content">
                         <div id="sm-menu" class="tab-pane show active" role="tabpanel" aria-labelledby="sm-menu-tab">
                             <ul class="sidebar-menu flex">
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="index.html">
+                                    <a class="sidebar-menu-button" href="index.php">
                                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dvr</i>
-                                        <span class="sidebar-menu-text">Dashboard</span>
+                                        <span class="sidebar-menu-text">tableau de bord</span>
                                     </a>
                                 </li>
 
@@ -476,58 +458,12 @@
                                     <a class="sidebar-menu-button" data-toggle="collapse" href="#pages_menu">
                                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">description</i>
                                         <span class="sidebar-menu-text">Pages</span>
-                                        <span class="badge badge-warning rounded-circle badge-notifications ml-auto" style="padding: .1875rem .375rem;">8</span>
                                         <span class="sidebar-menu-toggle-icon"></span>
                                     </a>
                                     <ul class="sidebar-submenu collapse show " id="pages_menu">
                                         <li class="sidebar-menu-item active">
                                             <a class="sidebar-menu-button" href="edit-account.html">
                                                 <span class="sidebar-menu-text">Edit Account</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="appointments.html">
-                                                <span class="sidebar-menu-text">Appointments</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="properties.html">
-                                                <span class="sidebar-menu-text">Properties</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="blog.html">
-                                                <span class="sidebar-menu-text">Blog</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="trello.html">
-                                                <span class="sidebar-menu-text">Trello</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="chat.html">
-                                                <span class="sidebar-menu-text">Chat</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="course.html">
-                                                <span class="sidebar-menu-text">Course</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="tickets.html">
-                                                <span class="sidebar-menu-text">Tickets</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="login.html">
-                                                <span class="sidebar-menu-text">Login</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="signup.html">
-                                                <span class="sidebar-menu-text">Sign up</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -630,35 +566,6 @@
                                 </li>
                             </ul>
                         </div>
-                        <div id="sm-account" class="tab-pane">
-                            <ul class="sidebar-menu">
-                                <li class="sidebar-menu-item active">
-                                    <a class="sidebar-menu-button" href="edit-account.html">
-                                        <span class="sidebar-menu-text">Edit Information</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="edit-account.html">
-                                        <span class="sidebar-menu-text">Payments</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="edit-account.html">
-                                        <span class="sidebar-menu-text">Billing</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="edit-account.html">
-                                        <span class="sidebar-menu-text">Change Password</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="login.html">
-                                        <span class="sidebar-menu-text">Logout</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
                         <div id="sm-settings" class="tab-pane sidebar-p-a">
                             <div class="form-inline form-group">
                                 <label for="currency" class="text-label flex justify-content-start">Currency</label>
@@ -710,16 +617,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="mt-auto sidebar-p-a sidebar-b-t d-flex flex-column flex-shrink-0">
-                        <a class="sidebar-link mb-2" href="edit-account.html">Change Password</a>
-                        <a class="sidebar-link mb-2" href="edit-account.html">Settings</a>
-                        <a class="sidebar-link" href="login.html">
-                            Logout
-                            <i class="sidebar-menu-icon ml-2 material-icons icon-16pt">exit_to_app</i>
-                        </a>
-                    </div>
-
                 </div>
             </div>
         </div>
