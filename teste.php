@@ -17,3 +17,52 @@ else {
           <strong>Error - </strong> Username Or Password Incorrect
       </div>
 -->
+
+value="<?php if(isset($email_p)){echo $email_p;} else echo ""; ?>"
+
+value="<?php if(isset($mot_p)){echo $mot_p;} else echo ""; ?>"
+
+
+<body class="layout-default">
+      <div class="container-fluid page__container">
+          <div class="col-lg-8 card-form__body card-body">
+              <div class="row">
+                  <div class="col">
+                      <div class="form-group">
+                          <label for="fname">Nom utilisateur</label>
+                          <input id="fname" type="text" class="form-control" placeholder="entrez votre nom utilisateur">
+                      </div>
+                  </div>
+
+                  <div class="col">
+                    <div class="form-group">
+                        <label for="opass">ancien mot de passe</label>
+                        <input id="opass" type="password" class="form-control" placeholder="Entrez votre ancien mot de passe">
+                    </div>
+                  </div>
+              </div>
+            </div>
+      </div>
+
+      <div class="container-fluid page__container">
+          <div class="col-lg-8 card-form__body card-body">
+              <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                        <label for="npass">nouveau mot de passe</label>
+                        <input style="width: 270px;" id="npass" type="password" class="form-control is-invalid">
+                        <small class="invalid-feedback">Le nouveau mot de passe ne doit pas être vide.</small>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                        <label for="cpass">Confirmez le mot de passe</label>
+                        <input style="width: 270px;" id="cpass" type="password" class="form-control" placeholder="Confirmez le mot de passe">
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="text-left mb-5">
+                <a href="" class="btn btn-success">Enregistrer</a>
+            </div>
+      </div>

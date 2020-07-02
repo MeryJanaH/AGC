@@ -48,7 +48,7 @@ session_start();
         <div class="d-flex flex-column justify-content-center align-items-center mt-2 mb-4 navbar-light">
             <a href="index.html" class="navbar-brand text-center mb-2 mr-0 flex-column" style="min-width: 0">
                 <img class="navbar-brand-icon mb-3" src="assets/images/logo.svg" width="43" alt="Flat">
-                <span>Créer un compte</span>
+                <span>Complétez vos informations</span>
             </a>
         </div>
         <?php
@@ -87,23 +87,31 @@ session_start();
         <div class="card card-body">
             <form action="messager.php" method="POST">
                 <div class="form-group">
-                    <label class="text-label" for="email_2">Adresse email:</label>
-                    <div class="input-group input-group-merge">
-                        <input id="email_2" name="email_2" type="email" required="" class="form-control form-control-prepended" placeholder="user@exemple.com">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <span class="far fa-envelope"></span>
-                            </div>
+                  <div class="form-group">
+                      <label class="text-label" for="fname">Nom utilisateur</label>
+                      <input id="fname" type="text" class="form-control" placeholder="entrez votre nom utilisateur">
+                  </div>
+                    <div class="form-group">
+                        <label class="text-label" for="opass">ancien mot de passe</label>
+                        <input id="opass" type="password" class="form-control" placeholder="Entrez votre ancien mot de passe">
+                    </div>
+                    <div class="form-group">
+                        <label class="text-label"  for="password_2">nouveau mot de passe:</label>
+                        <div class="input-group input-group-merge">
+                            <input type="password" name = "password_2" id="password_2" required="" class="form-control form-control-prepended" placeholder="Entrer votre mot de passe">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-label"  for="password_2">Confirmez le mot de passe:</label>
+                        <div class="input-group input-group-merge">
+                            <input type="password" name = "password_2" id="password_2" required="" class="form-control form-control-prepended" placeholder="Confirmez votre nouveau mot de passe">
                         </div>
                     </div>
                 </div>
                 <div class="form-group text-center">
-                  <button class="btn btn-primary mb-2" name="submit" type="submit">Créer un compte</button><br>
+                  <button class="btn btn-primary mb-2" name="submit" type="submit">Enregistrer</button><br>
                 </div>
             </form>
-
-            <a href="index.php"><button type="button" class="btn btn-block btn-primary">Retourner à l'accueil</button></a>
-
         </div>
     </div>
 

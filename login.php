@@ -6,6 +6,13 @@ if(isset($_SESSION['login'])){
       header('Location: index.php');
     }
 }
+
+if(isset($_COOKIE['Adresse_email']) and isset($_COOKIE['mot_de_passe']))
+{
+  $email_p = $_COOKIE['Adresse_email'];
+  $mot_p = $_COOKIE['mot_de_passe'];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -74,7 +81,7 @@ if(isset($_SESSION['login'])){
                           <strong>Erreur - </strong> Adresse email ou le mot de passe est incorrect
                       </div>
                       <?php
-                      // add a line to clean the session variable to avoid showing this message above when reloading the login page
+                      unset($_SESSION);
                     }
                 }
                 ?>
@@ -83,17 +90,28 @@ if(isset($_SESSION['login'])){
                 <div class="form-group">
                     <label class="text-label" for="email_2">Adresse email:</label>
                     <div class="input-group input-group-merge">
-                        <input  type="email" name="email_2" id="email_2" required="" class="form-control form-control-prepended" placeholder="user@exemple.com">
+                        <input  type="email" name="email_2" value="<?php if(isset($email_p)){echo $email_p;} else echo ""; ?>" id="email_2" required="" class="form-control form-control-prepended" placeholder="user@exemple.com">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="text-label"  for="password_2">mot de passe:</label>
                     <div class="input-group input-group-merge">
-                        <input type="password" name = "password_2" id="password_2" required="" class="form-control form-control-prepended" placeholder="Entrer votre mot de passe">
+                        <input type="password" name = "password_2" value="<?php if(isset($mot_p)){echo $mot_p;} else echo ""; ?>" id="password_2" required="" class="form-control form-control-prepended" placeholder="Entrer votre mot de passe">
                     </div>
                 </div>
-                <!-- try to use a checkbox here to add a choice if the user want that the browser remember him than
-                you will create a cookie for him to remember him  -->
+                <?php
+                    if(!isset($email_p) and !isset($mot_p))
+                    {
+                 ?>
+                    <div class="form-group text-center">
+                       <div class="custom-control custom-checkbox">
+                           <input type="checkbox" class="custom-control-input" name="remember" id="remember">
+                           <label class="custom-control-label"  for="remember">souvenez de moi pendant 7 jours</label>
+                       </div>
+                   </div>
+                 <?php
+                    }
+                  ?>
                 <div class="form-group">
                     <button class="btn btn-block btn-primary" type="submit">S'identifier</button>
                 </div>
