@@ -132,5 +132,6 @@ function register_bdd($name, $new_mdp)
   $req->bindParam(':email',$_SESSION['email']);
 
   $req->execute();
+
 }
 ?>

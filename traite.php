@@ -18,7 +18,7 @@ session_start();
             setcookie('Adresse_email', $_POST['email_2'],time()+60*60*7);
             setcookie('mot_de_passe', $_POST['password_2'],time()+60*60*7);
           }
-          if(premier_login($_POST['email_2'], $_POST['password_2'])=="true")
+          if(premier_login($_POST['email_2'], $_POST['password_2'])=="true" and $_SESSION['user']!="admin")
           {
             header('Location: registration.php');
           }
