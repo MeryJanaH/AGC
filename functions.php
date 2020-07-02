@@ -101,4 +101,36 @@ function first_mail($from, $to, $subj, $body)
     else
       $_SESSION['send']="false";
 }
+
+function premier_login($email, $mdp)
+{
+      require 'LBD.php';
+
+      $req = $bdd->prepare("SELECT * FROM Commerciaux WHERE Email=:email AND Password=:mdp ");
+      $req->bindParam(':email', $email);
+      $req->bindParam(':mdp', $mdp);
+      $req->execute();
+      $res = $req->fetch();
+
+      $name_exist = $res['CName'];
+      if($name_exist == NULL)
+      {
+        return "true";
+      }
+      else {
+        return "false";
+      }
+}
+
+function register_bdd($name, $new_mdp)
+{
+  require 'LBD.php';
+
+  $req = $bdd->prepare("UPDATE Commerciaux SET CName=:name, Password=:new_mdp  WHERE Email=:email");
+  $req->bindParam(':name', $name);
+  $req->bindParam(':new_mdp',$new_mdp);
+  $req->bindParam(':email',$_SESSION['email']);
+
+  $req->execute();
+}
 ?>

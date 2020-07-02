@@ -7,6 +7,7 @@ session_start();
 
     $res=login($_POST['email_2'],$_POST['password_2']);
 
+
       if ($res=="Utilisateur Non Enregistré" or $res =="ERROR_Syntaxe") {
           $_SESSION['login']="false";
           header('Location: login.php');
@@ -17,7 +18,14 @@ session_start();
             setcookie('Adresse_email', $_POST['email_2'],time()+60*60*7);
             setcookie('mot_de_passe', $_POST['password_2'],time()+60*60*7);
           }
-          $_SESSION['login']="true";
-          header('Location: index.php');
+          if(premier_login($_POST['email_2'], $_POST['password_2'])=="true")
+          {
+            header('Location: registration.php');
+          }
+          else
+          {
+            $_SESSION['login']="true";
+            header('Location: index.php');
+          }
       }
 ?>

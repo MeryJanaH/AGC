@@ -51,45 +51,13 @@ session_start();
                 <span>Complétez vos informations</span>
             </a>
         </div>
-        <?php
-        if(isset($_SESSION['send']))
-        {
-            if($_SESSION['send']=="false")
-            {
-              ?>
-              <div class="alert alert-danger" role="alert">
-                  <strong>Error - </strong> Veuillez réessayer une autre fois
-              </div>
-              <?php
-            }
-            else
-            {
-              ?>
-                  <div class="alert alert-success" role="alert">
-                      <strong>Succès - </strong> vous avez créer un compte commercial avec succès!
-                  </div>
-            <?php
-            }
-            $_SESSION['send']="NULL";
-        }
-            if(isset($_SESSION['enrg']))
-            {
-              if($_SESSION['enrg'] == "true")
-              {
-                ?>
-                <div class="alert alert-danger" role="alert">
-                    <strong>Erreur - </strong> Email déjà enregistré
-                </div>
-                <?php
-              }
-            }
-                ?>
+
         <div class="card card-body">
-            <form action="messager.php" method="POST">
+            <form action="complet_info_registre_BDD.php" method="POST">
                 <div class="form-group">
                   <div class="form-group">
-                      <label class="text-label" for="fname">Nom utilisateur</label>
-                      <input id="fname" type="text" class="form-control" placeholder="entrez votre nom utilisateur">
+                      <label class="text-label"  for="fname">Nom utilisateur</label>
+                      <input id="fname" type="text" name="nom" class="form-control" placeholder="entrez votre nom utilisateur">
                   </div>
                     <div class="form-group">
                         <label class="text-label" for="opass">ancien mot de passe</label>

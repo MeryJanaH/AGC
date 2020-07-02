@@ -3,6 +3,9 @@ require 'LBD.php';
 require 'functions.php';
  $inter=email_exist($_POST['email_2']);
  echo $inter;
+
+ $req = $bdd->prepare('INSERT INTO Commerciaux (CName, Password) VALUES(?, ?)');
+ $req->execute(array($_POST['pseudo'], $_POST['message']));
 ?>
 <!--
   $req = $bdd->prepare("SELECT * FROM Admin WHERE Email='meryem.annouar@ieee.org' AND Password='Mery123' ");
@@ -16,11 +19,8 @@ else {
       <div class="alert alert-danger" role="alert">
           <strong>Error - </strong> Username Or Password Incorrect
       </div>
--->
 
-value="<?php if(isset($email_p)){echo $email_p;} else echo ""; ?>"
 
-value="<?php if(isset($mot_p)){echo $mot_p;} else echo ""; ?>"
 
 
 <body class="layout-default">
@@ -65,4 +65,4 @@ value="<?php if(isset($mot_p)){echo $mot_p;} else echo ""; ?>"
             <div class="text-left mb-5">
                 <a href="" class="btn btn-success">Enregistrer</a>
             </div>
-      </div>
+      </div>-->
