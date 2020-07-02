@@ -337,67 +337,7 @@
                             </div>
                         </div>
 
-                        <div class="card card-form">
-                            <div class="row no-gutters">
-                                <div class="col-lg-4 card-body">
-                                    <p><strong class="headings-color">Profile Settings</strong></p>
-                                    <p class="text-muted">Update your public profile with relevant and meaningful information.</p>
-                                </div>
-                                <div class="col-lg-8 card-form__body card-body">
-                                    <div class="form-group">
-                                        <label>Avatar</label>
-                                        <div class="dz-clickable media align-items-center" data-toggle="dropzone" data-dropzone-url="http://" data-dropzone-clickable=".dz-clickable" data-dropzone-files='["assets/images/account-add-photo.svg"]'>
-                                            <div class="dz-preview dz-file-preview dz-clickable mr-3">
-                                                <div class="avatar" style="width: 80px; height: 80px;">
-                                                    <img src="assets/images/account-add-photo.svg" class="avatar-img rounded" alt="..." data-dz-thumbnail>
-                                                </div>
-                                            </div>
-                                            <div class="media-body">
-                                                <button class="btn btn-sm btn-primary dz-clickable">Choose photo</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="desc2">Description</label>
-                                        <textarea id="desc2" rows="4" class="form-control" placeholder="Description ..."></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="social1">Social links</label>
-                                        <div class="input-group input-group-merge mb-2" style="width: 270px;">
-                                            <input id="social1" type="text" class="form-control form-control-prepended" placeholder="Facebook">
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text">
-                                                    <span class="fab fa-facebook"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="input-group input-group-merge mb-2" style="width: 270px;">
-                                            <input id="social2" type="text" class="form-control form-control-prepended" placeholder="Twitter">
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text">
-                                                    <span class="fab fa-twitter"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="input-group input-group-merge mb-2" style="width: 270px;">
-                                            <input id="social3" type="text" class="form-control form-control-prepended" placeholder="Instagram">
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text">
-                                                    <span class="fab fa-instagram"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="customCheck1">Available for freelance?</label>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck1" checked="">
-                                            <label class="custom-control-label" for="customCheck1">Yes, show me as available for freelance!</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="text-right mb-5">
                             <a href="" class="btn btn-success">Save</a>
                         </div>
