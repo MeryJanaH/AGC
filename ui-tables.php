@@ -1,5 +1,4 @@
 <?php
-session_start();
 require 'functions.php';
 ?>
 <!DOCTYPE html>
@@ -245,13 +244,15 @@ require 'functions.php';
                                             </tr>
                                         </thead>
                                         <tbody class="list" id="staff02">
-                                        <!--table des Employés-->
-                                        <?php update_table_emp(); ?>
+                                          <!--table des Employés-->
+                                          <?php update_table_emp(); ?>
                                         </tbody>
                                     </table>
                                     </div>
                                 </div>
-                          </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- // END header-layout__content -->
 
