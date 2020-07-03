@@ -973,7 +973,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
             <div class="mdk-drawer__content">
                 <div class="sidebar sidebar-dark sidebar-left simplebar" data-simplebar>
                     <div class="d-flex align-items-center sidebar-p-a border-bottom sidebar-account flex-shrink-0">
-                        <a href="index.html" class="flex d-flex align-items-center text-underline-0 text-body">
+                        <a href="index.php" class="flex d-flex align-items-center text-underline-0 text-body">
                             <span class="mr-3">
                                 <img src="assets/images/logo.svg" width="43" height="43" alt="avatar">
                             </span>
@@ -1045,7 +1045,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                     </a>
                                     <ul class="sidebar-submenu collapse" id="components_menu">
                                         <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="ui-tables.html">
+                                            <a class="sidebar-menu-button" href="ui-tables.php">
                                                 <span class="sidebar-menu-text">Tables</span>
                                             </a>
                                         </li>

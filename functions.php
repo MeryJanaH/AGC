@@ -26,8 +26,8 @@ function login($email,$mdp){
             $res = $req->fetch();
             if($res != NULL)
             {
-              $_SESSION['ID']=$res['ID_admin'];
-              $_SESSION['name']=$res['AdminName'];
+              $_SESSION['ID']=$res['ID_cm'];
+              $_SESSION['name']=$res['CName'];
               $_SESSION['email']=$res['Email'];
               $_SESSION['user']="commercial";
               return $res;

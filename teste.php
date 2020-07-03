@@ -20,7 +20,30 @@ else {
           <strong>Error - </strong> Username Or Password Incorrect
       </div>
 
+      <tr>
+          <td>
+              <span class="js-lists-values-employee-name">Michael Smith</span>
+          </td>
+          <td><span class="badge badge-warning">ADMIN</span></td>
+          <td><small class="text-muted">3 days ago</small></td>
+      </tr>
 
+      <tr>
+          <td>
+              <span class="js-lists-values-employee-name">Connie Smith</span>
+          </td>
+          <td><span class="badge badge-success">USER</span></td>
+          <td><small class="text-muted">1 week ago</small></td>
+      </tr>
+
+      <tr>
+          <td>
+              <span class="js-lists-values-employee-name">Michael Smith</span>
+          </td>
+          <td><span class="badge badge-warning">ADMIN</span></td>
+          <td><small class="text-muted">3 days ago</small></td>
+          <td><a class="text-muted"><i></i></a></td>
+      </tr>
 
 
 <body class="layout-default">
