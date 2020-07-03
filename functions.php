@@ -143,6 +143,14 @@ function register_bdd($name, $new_mdp)
   <?php
 }
 
+function delet_com($v_id)
+{
+  require 'LBD.php';
+  $req = $bdd->prepare("DELETE FROM Commerciaux WHERE Commerciaux.ID_cm =:id_table");
+  $req->bindParam(':id_table',$v_id);
+  $req->execute();
+}
+
 function update_table_emp()
 {
   require 'LBD.php';
@@ -157,7 +165,7 @@ function update_table_emp()
         <td><small class="text-muted"><?php print_r($dn['lastLog']) ?></small></td>
         <td><a class="text-muted"><i></i></a><?php print_r($dn['ID_cm']) ?></td>
               <script type="text/javascript">
-                function showMessage(){
+                function showMessage<?php echo $dn['ID_cm'];?>(){
                     var txt;
                     if (confirm("êtes-vous sûr de supprimer <?php print_r($dn['CName']) ?> ? après il ne va pas le droit d'accéder à cette application \"AGC\" ! ")) {
                         txt = "You pressed OK!";
@@ -166,16 +174,16 @@ function update_table_emp()
                     }
                     if(txt == "You pressed OK!")
                     {
-
+                      "<?php delet_com( $dn['ID_cm'] )?>";
                     }
                     else
                     {
-
+                      header('Location: ui-tables.php');
                     }
                 }
               </script>
         <td>
-        <input type="button" id="btnShowMsg" value="Supprimer !" onClick='showMessage()'/>
+        <input type="button" id="btnShowMsg" value="Supprimer !" onClick='showMessage<?php echo $dn['ID_cm'];?>()'/>
         </td>
     </tr>
  <?php
