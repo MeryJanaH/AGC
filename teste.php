@@ -1,11 +1,24 @@
 <?php
 require 'LBD.php';
 require 'functions.php';
- $inter=email_exist($_POST['email_2']);
- echo $inter;
+ //$inter=email_exist($_POST['email_2']);
+ //echo $inter;
 
- $req = $bdd->prepare('INSERT INTO Commerciaux (CName, Password) VALUES(?, ?)');
- $req->execute(array($_POST['pseudo'], $_POST['message']));
+ $req=$bdd->query("SELECT CName FROM Commerciaux");
+ while($dn = $req->fetch())
+ { ?>
+   <tr>
+       <td>
+           <span class="js-lists-values-employee-name"><?php print_r($dn['CName']); ?></span>
+       </td>
+       <td><span class="badge badge-warning">Commercial</span></td>
+       <td><small class="text-muted">3 days ago</small></td>
+       <td><a class="text-muted"><i></i></a></td>
+   </tr>
+<?php
+ }
+ //$req = $bdd->prepare('INSERT INTO Commerciaux (CName, Password) VALUES(?, ?)');
+ //$req->execute(array($_POST['pseudo'], $_POST['message']));
 ?>
 <!--
   $req = $bdd->prepare("SELECT * FROM Admin WHERE Email='meryem.annouar@ieee.org' AND Password='Mery123' ");

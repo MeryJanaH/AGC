@@ -134,4 +134,22 @@ function register_bdd($name, $new_mdp)
   $req->execute();
 
 }
+
+function update_table_emp()
+{
+  require 'LBD.php';
+  $req=$bdd->query("SELECT CName FROM Commerciaux");
+  while($dn = $req->fetch())
+  { ?>
+    <tr>
+        <td>
+            <span class="js-lists-values-employee-name"><?php print_r($dn['CName']); ?></span>
+        </td>
+        <td><span class="badge badge-warning">Commercial</span></td>
+        <td><small class="text-muted">3 days ago</small></td>
+        <td><a class="text-muted"><i></i></a></td>
+    </tr>
+ <?php
+  }
+}
 ?>

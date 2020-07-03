@@ -1,5 +1,6 @@
 <?php
 session_start();
+require 'functions.php';
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -245,7 +246,7 @@ session_start();
                                         </thead>
                                         <tbody class="list" id="staff02">
                                         <!--table des Employés-->
-                                        
+                                        <?php update_table_emp(); ?>
                                         </tbody>
                                     </table>
                                     </div>
