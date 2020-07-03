@@ -174,11 +174,14 @@ function update_table_emp()
                     }
                     if(txt == "You pressed OK!")
                     {
-                      "<?php delet_com( $dn['ID_cm'] )?>";
-                    }
-                    else
-                    {
-                      header('Location: ui-tables.php');
+                      $.post('fct.php', {id: <?php echo $dn['ID_cm'];?>});
+                      $.ajax({
+                          type: "POST",
+                          url: "ui-tables.php",
+                          success: function() {
+                              location.reload();
+                          }
+                      });
                     }
                 }
               </script>
