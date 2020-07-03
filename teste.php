@@ -4,28 +4,15 @@ require 'functions.php';
  //$inter=email_exist($_POST['email_2']);
  //echo $inter;
 
- $req=$bdd->query("SELECT CName FROM Commerciaux");
- while($dn = $req->fetch())
- { ?>
-   <tr>
-       <td>
-           <span class="js-lists-values-employee-name"><?php print_r($dn['CName']); ?></span>
-       </td>
-       <td><span class="badge badge-warning">Commercial</span></td>
-       <td><small class="text-muted">3 days ago</small></td>
+  $sql="UPDATE Commerciaux SET lastLog = NOW() WHERE Email = 'Yassine.Oukassou@ieee.org' AND Password= 'oks123';
+
+ /*<!--$req=$bdd->querCName FROM Commerciaux");
+ while(>!--$dn = $req->fetch())
+ <td><small class="text-muted">3 days ago</small></td>
        <td><a class="text-muted"><i></i></a></td>
    </tr>
 <?php
- }
- //$req = $bdd->prepare('INSERT INTO Commerciaux (CName, Password) VALUES(?, ?)');
- //$req->execute(array($_POST['pseudo'], $_POST['message']));
-?>
-<!--
-  $req = $bdd->prepare("SELECT * FROM Admin WHERE Email='meryem.annouar@ieee.org' AND Password='Mery123' ");
-  $req->execute();
-  $res = $req->fetch();
-  print_r($res['ID_admin']);
-?>-->
+
 <!--
 else {
   ?>

@@ -239,8 +239,9 @@ require 'functions.php';
                                         <thead>
                                             <tr>
                                                 <th>Employés</th>
-                                                <th style="width: 37px;">Status</th>
-                                                <th style="width: 120px;">Last Activity</th>
+                                                <th style="width: 120px;">Premier Connexion</th>
+                                                <th style="width: 120px;">Dernier connexion</th>
+                                                <th style="width: 120px;">"id"</th>
                                             </tr>
                                         </thead>
                                         <tbody class="list" id="staff02">

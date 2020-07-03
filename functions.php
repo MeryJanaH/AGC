@@ -10,6 +10,7 @@ function login($email,$mdp){
       $res = $req->fetch();
       if($res != NULL)
       {
+        //enreg données
         $_SESSION['ID']=$res['ID_admin'];
         $_SESSION['name']=$res['AdminName'];
         $_SESSION['email']=$res['Email'];
@@ -26,6 +27,12 @@ function login($email,$mdp){
             $res = $req->fetch();
             if($res != NULL)
             {
+              //update time of login
+              $sql= $bdd->prepare("UPDATE Commerciaux SET lastLog = NOW() WHERE Email = :email AND Password= :mdp");
+              $sql->bindParam(':email', $email);
+              $sql->bindParam(':mdp', $mdp);
+              $sql->execute();
+              //enreg les données
               $_SESSION['ID']=$res['ID_cm'];
               $_SESSION['name']=$res['CName'];
               $_SESSION['email']=$res['Email'];
@@ -126,28 +133,50 @@ function register_bdd($name, $new_mdp)
 {
   require 'LBD.php';
 
-  $req = $bdd->prepare("UPDATE Commerciaux SET CName=:name, Password=:new_mdp  WHERE Email=:email");
+  $req = $bdd->prepare("UPDATE Commerciaux SET CName=:name,firstlog = now(), Password=:new_mdp  WHERE Email=:email");
   $req->bindParam(':name', $name);
   $req->bindParam(':new_mdp',$new_mdp);
   $req->bindParam(':email',$_SESSION['email']);
 
   $req->execute();
-
+  ?>
+  <?php
 }
 
 function update_table_emp()
 {
   require 'LBD.php';
-  $req=$bdd->query("SELECT CName FROM Commerciaux");
+  $req=$bdd->query("SELECT ID_cm, CName, firstlog, lastLog FROM Commerciaux");
   while($dn = $req->fetch())
   { ?>
     <tr>
         <td>
             <span class="js-lists-values-employee-name"><?php print_r($dn['CName']); ?></span>
         </td>
-        <td><span class="badge badge-warning">Commercial</span></td>
-        <td><small class="text-muted">3 days ago</small></td>
-        <td><a class="text-muted"><i></i></a></td>
+        <td><small class="text-muted"><?php print_r($dn['firstlog']) ?></small></td>
+        <td><small class="text-muted"><?php print_r($dn['lastLog']) ?></small></td>
+        <td><a class="text-muted"><i></i></a><?php print_r($dn['ID_cm']) ?></td>
+              <script type="text/javascript">
+                function showMessage(){
+                    var txt;
+                    if (confirm("êtes-vous sûr de supprimer <?php print_r($dn['CName']) ?> ? après il ne va pas le droit d'accéder à cette application \"AGC\" ! ")) {
+                        txt = "You pressed OK!";
+                    } else {
+                        txt = "You pressed Cancel!";
+                    }
+                    if(txt == "You pressed OK!")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+                }
+              </script>
+        <td>
+        <input type="button" id="btnShowMsg" value="Supprimer !" onClick='showMessage()'/>
+        </td>
     </tr>
  <?php
   }

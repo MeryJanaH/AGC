@@ -17,6 +17,8 @@ CREATE TABLE `Commerciaux` (
   `CName` varchar(50) DEFAULT NULL,
   `Email` varchar(50) DEFAULT NULL,
   `Password` varchar(30) DEFAULT NULL,
+  `firstlog` timestamp NULL DEFAULT current_timestamp(),
+  `lastLog` timestamp NULL DEFAULT current_timestamp(),
 
   primary key (ID_cm)
 
