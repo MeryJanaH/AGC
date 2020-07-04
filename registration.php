@@ -1,4 +1,5 @@
 <?php
+require 'LBD.php';
 session_start();
 ?>
 <!DOCTYPE html>
@@ -43,9 +44,40 @@ session_start();
                 <span>Complétez vos informations</span>
             </a>
         </div>
-
+        <?php
+        if(isset($_POST['password_1']))
+        {
+          $req=$bdd->prepare("SELECT Password FROM Commerciaux WHERE Email =:email");
+          $req->bindParam(':email', $_SESSION['email']);
+          $req->execute();
+          $dn = $req->fetch();
+          if($_POST['password_2']==$_POST['password_3'])
+          {
+              if($dn==$_POST['password_1'])
+              {
+                register_bdd($_POST['nom'], $_POST['password_2']);
+                header('Location: index.php');
+              }
+              else
+              {
+                ?>
+                <div class="alert alert-danger" role="alert">
+                    <strong>Erreur - </strong> Votre ancien mot de pass est incorrect, veuillez réessayer une autre fois
+                </div>
+                <?php
+              }
+          }
+          else {
+            ?>
+            <div class="alert alert-danger" role="alert">
+                <strong>Erreur - </strong> Votre nouveau mot de passe et la confirmation ne sont pas similaires , réessayer une autre fois
+            </div>
+            <?php
+          }
+        }
+      ?>
         <div class="card card-body">
-            <form action="complet_info_registre_BDD.php" method="POST">
+            <form action="#" method="POST">
                 <div class="form-group">
                   <div class="form-group">
                       <label class="text-label"  for="fname">Nom utilisateur</label>
@@ -62,27 +94,11 @@ session_start();
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="text-label"  for="password_2">Confirmez le mot de passe:</label>
+                        <label class="text-label"  for="password_3">Confirmez le mot de passe:</label>
                         <div class="input-group input-group-merge">
                             <input type="password" name = "password_3" id="password_3" onfocus="password_match()" required="" class="form-control form-control-prepended" placeholder="Confirmez votre nouveau mot de passe">
                         </div>
                     </div>
-                    <div id="show-result"></div>
-                      <script>
-                          function password_match()
-                          {
-                            var pass2 = document.getElementById('password_2').value;
-                            var pass3 = document.getElementById('password_3').value;
-                            $.post("check.php",{
-                              passw2: pass2, passw3: pass3
-                            },
-                            function(data,status)
-                            {
-                              document.getElementById('show-result').innerHTML = data;
-                            }
-                          )
-                          }
-                      </script>
                 </div>
                 <div class="form-group text-center">
                   <button class="btn btn-primary mb-2" name="submit" type="submit">Enregistrer</button><br>
@@ -91,9 +107,10 @@ session_start();
         </div>
     </div>
 
-
     <!-- jQuery -->
     <script src="assets/vendor/jquery.min.js"></script>
+
+    <script src"assets/vendor/jquery.password-validation.js"></script>
 
     <!-- Bootstrap -->
     <script src="assets/vendor/popper.min.js"></script>
