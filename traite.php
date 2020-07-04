@@ -19,6 +19,7 @@ require 'functions.php';
           }
           if(premier_login($_POST['email_2'], $_POST['password_2'])=="true" and $_SESSION['user']!="admin")
           {
+            $_SESSION['log_befor']="true";
             header('Location: registration.php');
           }
           else

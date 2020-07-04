@@ -38,6 +38,9 @@ session_start();
 <body class="layout-login-centered-boxed">
 
     <div class="layout-login-centered-boxed__form">
+      <?php
+      if($_SESSION['log_befor']=="true")
+      { ?>
         <div class="d-flex flex-column justify-content-center align-items-center mt-2 mb-4 navbar-light">
             <a href="index.html" class="navbar-brand text-center mb-2 mr-0 flex-column" style="min-width: 0">
                 <img class="navbar-brand-icon mb-3" src="assets/images/logo.svg" width="43" alt="Flat">
@@ -105,6 +108,11 @@ session_start();
                 </div>
             </form>
         </div>
+      <?php
+         unset($_SESSION); }
+      else {
+        header('Location: login.php');
+      }?>
     </div>
 
     <!-- jQuery -->
