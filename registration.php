@@ -32,17 +32,9 @@ session_start();
     <link type="text/css" href="assets/css/vendor-ion-rangeslider.css" rel="stylesheet">
     <link type="text/css" href="assets/css/vendor-ion-rangeslider.rtl.css" rel="stylesheet">
 
-
-
-
-
 </head>
 
 <body class="layout-login-centered-boxed">
-
-
-
-
 
     <div class="layout-login-centered-boxed__form">
         <div class="d-flex flex-column justify-content-center align-items-center mt-2 mb-4 navbar-light">
@@ -61,7 +53,7 @@ session_start();
                   </div>
                     <div class="form-group">
                         <label class="text-label" for="opass">ancien mot de passe</label>
-                        <input id="opass" type="password" class="form-control" placeholder="Entrez votre ancien mot de passe">
+                        <input id="opass" name = "password_1" type="password" class="form-control" placeholder="Entrez votre ancien mot de passe">
                     </div>
                     <div class="form-group">
                         <label class="text-label"  for="password_2">nouveau mot de passe:</label>
@@ -72,9 +64,25 @@ session_start();
                     <div class="form-group">
                         <label class="text-label"  for="password_2">Confirmez le mot de passe:</label>
                         <div class="input-group input-group-merge">
-                            <input type="password" name = "password_2" id="password_2" required="" class="form-control form-control-prepended" placeholder="Confirmez votre nouveau mot de passe">
+                            <input type="password" name = "password_3" id="password_3" onfocus="password_match()" required="" class="form-control form-control-prepended" placeholder="Confirmez votre nouveau mot de passe">
                         </div>
                     </div>
+                    <div id="show-result"></div>
+                      <script>
+                          function password_match()
+                          {
+                            var pass2 = document.getElementById('password_2').value;
+                            var pass3 = document.getElementById('password_3').value;
+                            $.post("check.php",{
+                              passw2: pass2, passw3: pass3
+                            },
+                            function(data,status)
+                            {
+                              document.getElementById('show-result').innerHTML = data;
+                            }
+                          )
+                          }
+                      </script>
                 </div>
                 <div class="form-group text-center">
                   <button class="btn btn-primary mb-2" name="submit" type="submit">Enregistrer</button><br>
@@ -113,10 +121,6 @@ session_start();
 
     <!-- App Settings (safe to remove) -->
     <script src="assets/js/app-settings.js"></script>
-
-
-
-
 
 </body>
 
