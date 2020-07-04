@@ -139,8 +139,6 @@ function register_bdd($name, $new_mdp)
   $req->bindParam(':email',$_SESSION['email']);
 
   $req->execute();
-  ?>
-  <?php
 }
 
 function delet_com($v_id)
@@ -191,5 +189,17 @@ function update_table_emp()
     </tr>
  <?php
   }
+}
+
+function changer_parametres($name, $email, $mdp)
+{
+  require 'LBD.php';
+
+  $req = $bdd->prepare("UPDATE Commerciaux SET CName=:name, Email=:email, Password=:new_mdp  WHERE Email=:email");
+  $req->bindParam(':name', $name);
+  $req->bindParam(':new_mdp',$mdp);
+  $req->bindParam(':email',$_SESSION['email']);
+
+  $req->execute();
 }
 ?>
