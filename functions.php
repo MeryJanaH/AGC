@@ -194,12 +194,17 @@ function update_table_emp()
 function changer_parametres($name, $email, $mdp)
 {
   require 'LBD.php';
+  if($_SESSION['user']=="admin")
+      $req = $bdd->prepare("UPDATE Admin SET AdminName=:name, Email=:email1, Password=:new_mdp  WHERE Email=:email2");
+  else
+      $req = $bdd->prepare("UPDATE Commerciaux SET CName=:name, Email=:email1, Password=:new_mdp  WHERE Email=:email2");
 
-  $req = $bdd->prepare("UPDATE Commerciaux SET CName=:name, Email=:email, Password=:new_mdp  WHERE Email=:email");
-  $req->bindParam(':name', $name);
-  $req->bindParam(':new_mdp',$mdp);
-  $req->bindParam(':email',$_SESSION['email']);
 
-  $req->execute();
+        $req->bindParam(':name', $name);
+        $req->bindParam(':new_mdp',$mdp);
+        $req->bindParam(':email1',$email);
+        $req->bindParam(':email2',$_SESSION['email']);
+
+    $req->execute();
 }
 ?>

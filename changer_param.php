@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <?php
-require('functions.php');
-session_start();
+require 'functions.php';
+require 'LBD.php';
 if(isset($_SESSION['name']))
 {
 include 'head.php';?>
@@ -34,14 +34,14 @@ include 'head.php';?>
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="fname">Nom utilisateur</label>
-                                                <input id="fname" name="user_name" required="" type="text" class="form-control" placeholder="First name" value="Adrian">
+                                                <input id="fname" name="user_name" required="" type="text" class="form-control" placeholder="First name" value="">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="text-label" for="email">Adresse email:</label>
                                         <div class="input-group input-group-merge">
-                                            <input  type="email" name="email_r" value="" required="" id="email_r" required="" class="form-control form-control-prepended" placeholder="user@exemple.com">
+                                            <input  type="email" name="email_r" value="" required="" id="email_r" required="" class="form-control form-control-prepended" placeholder="User@exemple.com">
                                         </div>
                                     </div>
                                 </div>
@@ -80,22 +80,23 @@ include 'head.php';?>
                 <?php
                   if(isset($_POST['mdp_1']))
                   {
-                    $req=$bdd->prepare("SELECT Password FROM Commerciaux WHERE Email =:email");
-                    $req->bindParam(':email', $_SESSION['email']);
-                    $req->execute();
-                    $dn = $req->fetch();
-                    if($dn == $_POST['mdp_1'])
+                    if($_SESSION['user']=="admin")
+                        $req = $bdd->prepare("SELECT Password FROM Admin WHERE Email=:email");
+                    else
+                        $req = $bdd->prepare("SELECT Password FROM Commerciaux WHERE Email=:email");
+
+                        $req->bindParam(':email', $_SESSION['email']);
+                        $req->execute();
+                        $dn = $req->fetch();
+
+                    if($dn['Password'] == $_POST['mdp_1'])
                     {
-                      if($_POST['mdp_2'] and $_POST['mdp_3'])
-                      {
-                        if($_POST['mdp_2'] == $_POST['mdp_3'])
+                      if($_POST['mdp_2'] == $_POST['mdp_3'])
                         {
                            $nv_mdp = $_POST['mdp_2'];
-                          if($_POST['user_name'])
-                          {
+
                             $name = $_POST['user_name'];
-                            if($_POST['email_r'])
-                            {
+
                               $email = $_POST['email_r'];
                               //enreg bdd
                               changer_parametres($name, $email, $nv_mdp);
@@ -104,21 +105,18 @@ include 'head.php';?>
                               <script>
                                 alert("Vous avez modifier vos informations avec succès");
                               </script>
-                              <?php>
-                            }
-                          }
+                              <?php
+                        }
+                        else
+                        {
+                          // mdp pas les meme
+                          ?>
+                          <script>
+                            alert("Les modification ne sont pas faites : vous avez pas confirmer votre mot de passe correctement");
+                          </script>
+                          <?php
                         }
                       }
-                      else
-                      {
-                        // mdp pas les meme
-                        ?>
-                        <script>
-                          alert("Les modification ne sont pas faites : vous avez pas modifier votre mot de passe correctement");
-                        </script>
-                        <?php>
-                      }
-                    }
                     else
                     {
                       // ps de chang : mdp incorrect
@@ -126,7 +124,7 @@ include 'head.php';?>
                       <script>
                         alert("Les modification ne sont pas faites : Votre ancien mot de passe est incorrecte");
                       </script>
-                      <?php>
+                      <?php
                     }
                   }
                  ?>
