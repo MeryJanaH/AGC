@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <?php
 require 'functions.php';
-require 'LBD.php';
+
 if(isset($_SESSION['name']))
 {
 include 'head.php';?>
@@ -80,14 +80,8 @@ include 'head.php';?>
                 <?php
                   if(isset($_POST['mdp_1']))
                   {
-                    if($_SESSION['user']=="admin")
-                        $req = $bdd->prepare("SELECT Password FROM Admin WHERE Email=:email");
-                    else
-                        $req = $bdd->prepare("SELECT Password FROM Commerciaux WHERE Email=:email");
-
-                        $req->bindParam(':email', $_SESSION['email']);
-                        $req->execute();
-                        $dn = $req->fetch();
+                    //password d'utilisateur
+                    $dn = user();
 
                     if($dn['Password'] == $_POST['mdp_1'])
                     {

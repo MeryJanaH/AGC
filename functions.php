@@ -191,6 +191,22 @@ function update_table_emp()
   }
 }
 
+function user()
+{
+  require 'LBD.php';
+
+  if($_SESSION['user']=="admin")
+      $req = $bdd->prepare("SELECT Password FROM Admin WHERE Email=:email");
+  else
+      $req = $bdd->prepare("SELECT Password FROM Commerciaux WHERE Email=:email");
+
+      $req->bindParam(':email', $_SESSION['email']);
+      $req->execute();
+      $dn = $req->fetch();
+
+      return $dn;
+}
+
 function changer_parametres($name, $email, $mdp)
 {
   require 'LBD.php';
