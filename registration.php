@@ -1,5 +1,5 @@
 <?php
-require 'functions.php';
+require 'LBD.php';
 session_start();
 ?>
 <!DOCTYPE html>
@@ -50,16 +50,13 @@ session_start();
         <?php
         if(isset($_POST['password_1']))
         {
-          //password d'utilisateur
-          $dn = user();
-
+          $req=$bdd->prepare("SELECT Password FROM Commerciaux WHERE Email =:email");
+          $req->bindParam(':email', $_SESSION['email']);
+          $req->execute();
+          $dn = $req->fetch();
           if($_POST['password_2']==$_POST['password_3'])
           {
-<<<<<<< HEAD
               if($dn==md5($_POST['password_1']))
-=======
-              if($dn['Password']==$_POST['password_1'])
->>>>>>> 1c4d050a9f76e50d224446fd3fc4ad0388d52a45
               {
                 register_bdd($_POST['nom'], md5($_POST['password_2']));
                 header('Location: index.php');

@@ -20,7 +20,7 @@
                         </div>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item active" href="index.php">tableau de bord</a>
-                        <a class="dropdown-item" href="changer_param.php">Edit account</a>
+                        <a class="dropdown-item" href="edit-account.php">Edit account</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="Déconnexion.php">Déconnexion</a>
                     </div>
@@ -49,7 +49,7 @@
                             </a>
                             <ul class="sidebar-submenu collapse" id="pages_menu">
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="changer_param.php">
+                                    <a class="sidebar-menu-button" href="edit-account.php">
                                         <span class="sidebar-menu-text">Edit Account</span>
                                     </a>
                                 </li>
@@ -109,8 +109,8 @@
                 </div>
 
             <div class="mt-auto sidebar-p-a sidebar-b-t d-flex flex-column flex-shrink-0">
-                <a class="sidebar-link mb-2" href="changer_param.php">Change Password</a>
-                <a class="sidebar-link mb-2" href="changer_param.php">Settings</a>
+                <a class="sidebar-link mb-2" href="edit-account.php">Change Password</a>
+                <a class="sidebar-link mb-2" href="edit-account.php">Settings</a>
                 <a class="sidebar-link" href="login.html">
                   <p>
                     <a class="sidebar-link" href="Déconnexion.php">Déconnexion</a>
