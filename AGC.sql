@@ -68,5 +68,5 @@ CREATE TABLE `Calendrier` (
 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-insert into Admin (ID_admin,AdminName,Email,Password) values(3,"Annouar","meryem.annouar@ieee.org","2c5db576d7ce42dee54cb0a0bfaea9c3");
-insert into Commerciaux (ID_cm,CName,Email,Password) values(5,"Yassine","Yassine.Oukassou@ieee.org","e8ab4fa7c4f08232f8643ad4b4d3817b");
+insert into Admin (ID_admin,AdminName,Email,Password) values(3,"Annouar","meryem.annouar@ieee.org","Mery123");
+insert into Commerciaux (ID_cm,CName,Email,Password) values(5,"Yassine","Yassine.Oukassou@ieee.org","oks123");
