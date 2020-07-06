@@ -56,9 +56,9 @@ session_start();
           $dn = $req->fetch();
           if($_POST['password_2']==$_POST['password_3'])
           {
-              if($dn==$_POST['password_1'])
+              if($dn==md5($_POST['password_1']))
               {
-                register_bdd($_POST['nom'], $_POST['password_2']);
+                register_bdd($_POST['nom'], md5($_POST['password_2']));
                 header('Location: index.php');
               }
               else

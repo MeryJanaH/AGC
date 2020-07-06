@@ -96,7 +96,7 @@ if(isset($_COOKIE['Adresse_email']) and isset($_COOKIE['mot_de_passe']))
                 <div class="form-group">
                     <label class="text-label"  for="password_2">mot de passe:</label>
                     <div class="input-group input-group-merge">
-                        <input type="password" name = "password_2" value="<?php if(isset($mot_p)){echo $mot_p;} else echo ""; ?>" id="password_2" required="" class="form-control form-control-prepended" placeholder="Entrer votre mot de passe">
+                        <input type="password" name = "password_2" value="<?php if(isset($mot_p)){echo md5($mot_p);} else echo ""; ?>" id="password_2" required="" class="form-control form-control-prepended" placeholder="Entrer votre mot de passe">
                     </div>
                 </div>
                 <?php
