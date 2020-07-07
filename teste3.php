@@ -1,1 +1,1 @@
-<?php include 'left_bar.php';?>
+<?php  echo md5("mery123"); ?>

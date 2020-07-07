@@ -76,9 +76,17 @@
                             </a>
                             <ul class="sidebar-submenu collapse" id="components_menu">
                                 <li class="sidebar-menu-item">
+                                  <?php if($_SESSION['user']=="admin")
+                                  { ?>
                                     <a class="sidebar-menu-button" href="ui-tables.php">
-                                        <span class="sidebar-menu-text">Tables</span>
+                                        <span class="sidebar-menu-text">Table des commerciaux</span>
                                     </a>
+                                  <?php } if($_SESSION['user']=="admin")
+                                  { ?>
+                                    <a class="sidebar-menu-button" href="ui-projets.php">
+                                        <span class="sidebar-menu-text">Table des projets</span>
+                                    </a>
+                                  <?php } ?>
                                 </li>
                                 <li class="sidebar-menu-item">
                                     <a class="sidebar-menu-button" href="ui-buttons.html">

@@ -30,7 +30,7 @@ require 'functions.php';
 
                                 <!-- Navbar Brand -->
                                 <a class="navbar-brand flex ">
-                                    <span>Gestion des commerciaux</span>
+                                    <span>Gestion des projets</span>
                                 </a>
                                 <ul class="nav navbar-nav d-none d-md-flex">
                                     <li class="nav-item dropdown">
@@ -182,7 +182,11 @@ require 'functions.php';
                             <div class="row no-gutters">
                                 <div class="col-lg-4 card-body">
                                     <p><strong class="headings-color">Search</strong></p>
-                                    <p class="text-muted">Table de gestion des Commerciaux de <strong> GUESSPROMO </strong>:</p>
+                                    <p class="text-muted">Table de gestion des Projets de <strong> GUESSPROMO </strong>:</p>
+                                    <p><strong class="headings-color">Cliquer ici pour ajouter un projet :</strong></p>
+                                    <td>
+                                    <input type="button" id="btnShowMsg1" value="Ajouter !" onClick='showMessage<?php echo $dn['Code_pj'];?>()'/>
+                                    </td>
                                 </div>
                                 <div class="col-lg-8 card-form__body">
 
@@ -195,15 +199,18 @@ require 'functions.php';
                                     <table class="table mb-0 thead-border-top-0">
                                         <thead>
                                             <tr>
-                                                <th>Employés</th>
-                                                <th style="width: 120px;">Premier Connexion</th>
-                                                <th style="width: 120px;">Dernier connexion</th>
-                                                <th style="width: 120px;">"id"</th>
+                                                <th>Projets</th>
+                                                <th style="width: 120px;">ID</th>
+                                                <th style="width: 120px;">Type</th>
+                                                <th style="width: 120px;">Etage</th>
+                                                <th style="width: 120px;">Surface</th>
+                                                <th style="width: 120px;">Prix</th>
+
                                             </tr>
                                         </thead>
                                         <tbody class="list" id="staff02">
                                           <!--table des Employés-->
-                                          <?php update_table_emp(); ?>
+                                          <?php update_table_projets(); ?>
                                         </tbody>
                                     </table>
                                     </div>
