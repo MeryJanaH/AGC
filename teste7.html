@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Tables</title>
+
+    <!-- Prevent the demo from appearing in search engines -->
+    <meta name="robots" content="noindex">
+
+    <!-- Simplebar -->
+    <link type="text/css" href="assets/vendor/simplebar.min.css" rel="stylesheet">
+
+    <!-- App CSS -->
+    <link type="text/css" href="assets/css/app.css" rel="stylesheet">
+    <link type="text/css" href="assets/css/app.rtl.css" rel="stylesheet">
+
+    <!-- Material Design Icons -->
+    <link type="text/css" href="assets/css/vendor-material-icons.css" rel="stylesheet">
+    <link type="text/css" href="assets/css/vendor-material-icons.rtl.css" rel="stylesheet">
+
+    <!-- Font Awesome FREE Icons -->
+    <link type="text/css" href="assets/css/vendor-fontawesome-free.css" rel="stylesheet">
+    <link type="text/css" href="assets/css/vendor-fontawesome-free.rtl.css" rel="stylesheet">
+
+    <!-- ion Range Slider -->
+    <link type="text/css" href="assets/css/vendor-ion-rangeslider.css" rel="stylesheet">
+    <link type="text/css" href="assets/css/vendor-ion-rangeslider.rtl.css" rel="stylesheet">
+
+
+
+
+    <div class="card card-form">
+        <div class="row no-gutters">
+            <div class="col-lg-4 card-body">
+                <p><strong class="headings-color">Search</strong></p>
+                <p class="text-muted">Add search functionality to your tables with List.js. Please read the <a href="http://listjs.com/" target="_blank">official plugin documentation</a> for a full list of options.</p>
+            </div>
+            <div class="col-lg-8 card-form__body">
+
+                <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
+
+                    <div class="search-form search-form--light m-3">
+                        <input type="text" class="form-control search" placeholder="Search">
+                        <button class="btn" type="button" role="button"><i class="material-icons">search</i></button>
+                    </div>
+
+                    <table class="table mb-0 thead-border-top-0">
+                        <thead>
+                            <tr>
+
+                                <th>Employee</th>
+
+
+                                <th style="width: 37px;">Status</th>
+                                <th style="width: 120px;">Last Activity</th>
+                                <th style="width: 51px;">Earnings</th>
+                                <th style="width: 24px;"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="list" id="staff02">
+
+                            <tr>
+
+                                <td>
+
+                                    <span class="js-lists-values-employee-name">Michael Smith</span>
+
+                                </td>
+
+
+                                <td><span class="badge badge-warning">ADMIN</span></td>
+                                <td><small class="text-muted">3 days ago</small></td>
+                                <td>&dollar;12,402</td>
+                                <td><a href="" class="text-muted"><i class="material-icons">more_vert</i></a></td>
+                            </tr>
+                            <tr>
+
+                                <td>
+
+                                    <span class="js-lists-values-employee-name">Connie Smith</span>
+
+                                </td>
+
+
+                                <td><span class="badge badge-success">USER</span></td>
+                                <td><small class="text-muted">1 week ago</small></td>
+                                <td>&dollar;1,943</td>
+                                <td><a href="" class="text-muted"><i class="material-icons">more_vert</i></a></td>
+                            </tr>
+                            <tr>
+
+                                <td>
+
+                                    <span class="js-lists-values-employee-name">John Connor</span>
+
+                                </td>
+
+
+                                <td><span class="badge badge-primary">MANAGER</span></td>
+                                <td><small class="text-muted">1 week ago</small></td>
+                                <td>&dollar;1,943</td>
+                                <td><a href="" class="text-muted"><i class="material-icons">more_vert</i></a></td>
+                            </tr>
+
+                            <tr>
+
+                                <td>
+
+                                    <span class="js-lists-values-employee-name">Michael Smith</span>
+
+                                </td>
+
+
+                                <td><span class="badge badge-warning">ADMIN</span></td>
+                                <td><small class="text-muted">3 days ago</small></td>
+                                <td>&dollar;12,402</td>
+                                <td><a href="" class="text-muted"><i class="material-icons">more_vert</i></a></td>
+                            </tr>
+                            <tr>
+
+                                <td>
+
+                                    <span class="js-lists-values-employee-name">Connie Smith</span>
+
+                                </td>
+
+
+                                <td><span class="badge badge-success">USER</span></td>
+                                <td><small class="text-muted">1 week ago</small></td>
+                                <td>&dollar;1,943</td>
+                                <td><a href="" class="text-muted"><i class="material-icons">more_vert</i></a></td>
+                            </tr>
+                            <tr>
+
+                                <td>
+
+                                    <span class="js-lists-values-employee-name">John Connor</span>
+
+                                </td>
+
+
+                                <td><span class="badge badge-primary">MANAGER</span></td>
+                                <td><small class="text-muted">1 week ago</small></td>
+                                <td>&dollar;1,943</td>
+                                <td><a href="" class="text-muted"><i class="material-icons">more_vert</i></a></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- App Settings FAB -->
+    <div id="app-settings">
+        <app-settings></app-settings>
+    </div>
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="assets/vendor/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+    <!-- Simplebar -->
+    <script src="assets/vendor/simplebar.min.js"></script>
+
+    <!-- DOM Factory -->
+    <script src="assets/vendor/dom-factory.js"></script>
+
+    <!-- MDK -->
+    <script src="assets/vendor/material-design-kit.js"></script>
+
+    <!-- Range Slider -->
+    <script src="assets/vendor/ion.rangeSlider.min.js"></script>
+    <script src="assets/js/ion-rangeslider.js"></script>
+
+    <!-- App -->
+    <script src="assets/js/toggle-check-all.js"></script>
+    <script src="assets/js/check-selected-row.js"></script>
+    <script src="assets/js/dropdown.js"></script>
+    <script src="assets/js/sidebar-mini.js"></script>
+    <script src="assets/js/app.js"></script>
+
+    <!-- App Settings (safe to remove) -->
+    <script src="assets/js/app-settings.js"></script>
+
+
+
+    <!-- List.js -->
+    <script src="assets/vendor/list.min.js"></script>
+    <script src="assets/js/list.js"></script>
+
+
+</html>

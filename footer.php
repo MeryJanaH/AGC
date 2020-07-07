@@ -136,8 +136,6 @@
 
 
 
-
-
 <!-- App Settings FAB -->
 <div id="app-settings">
 <app-settings></app-settings>
@@ -196,5 +194,10 @@
 
 <!-- Chart Samples -->
 <script src="assets/js/page.dashboard.js"></script>
+
+
+<!-- List.js // for search bar purpose-->
+<script src="assets/vendor/list.min.js"></script>
+<script src="assets/js/list.js"></script>
 
 </body>
