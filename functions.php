@@ -209,7 +209,6 @@ function update_table_projets()
       { ?>
         <tr>
             <td><span class="js-lists-values-employee-name"><?php print_r($dn['ProjetName']); ?></span></td>
-            <td><span class="text-muted"><?php print_r($dn['Code_pj']) ?></span></td>
             <td><span class="text-muted"><?php print_r($dn['type_p']) ?></span></td>
             <td><span class="text-muted"><?php print_r($dn['Etages']) ?></span></td>
             <td><span class="text-muted"><?php print_r($dn['Surface']) ?></span></td>
@@ -243,4 +242,21 @@ function update_table_projets()
      <?php
       }
     }
+    ?>
+<script>
+function add_pj()
+  {
+    var html = "<tr>";
+        html += "<td><input name='proj_name[]'></td>";
+        html += "<td><input name='proj_type[]'></td>";
+        html += "<td><input name='proj_etage[]'></td>";
+        html += "<td><input name='proj_surface[]'></td>";
+        html += "<td><input name='proj_prix[]'></td>";
+        html += "</tr>";
+
+   var row = document.getElementById("staff02").insertRow();
+        row.innerHTML = html;
+  }
+</script>
+<?php
 ?>

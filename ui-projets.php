@@ -176,6 +176,7 @@ require 'functions.php';
                 <!-- // END Header -->
 
                 <!-- Header Layout Content -->
+                <form action="add_projet.php" method="POST">
                 <div class="mdk-header-layout__content mdk-header-layout__content--fullbleed mdk-header-layout__content--scrollable page">
                     <div class="container-fluid page__container">
                         <div class="card card-form">
@@ -185,7 +186,7 @@ require 'functions.php';
                                     <p class="text-muted">Table de gestion des Projets de <strong> GUESSPROMO </strong>:</p>
                                     <p><strong class="headings-color">Cliquer ici pour ajouter un projet :</strong></p>
                                     <td>
-                                    <input type="button" id="btnShowMsg1" value="Ajouter !" onClick='showMessage<?php echo $dn['Code_pj'];?>()'/>
+                                       <input type="button" id="btnShowMsg1" value="Ajouter un nouveau projet !" onClick="add_pj()"/>
                                     </td>
                                 </div>
                                 <div class="col-lg-8 card-form__body">
@@ -199,19 +200,22 @@ require 'functions.php';
                                     <table class="table mb-0 thead-border-top-0">
                                         <thead>
                                             <tr>
-                                                <th>Projets</th>
-                                                <th style="width: 120px;">ID</th>
-                                                <th style="width: 120px;">Type</th>
-                                                <th style="width: 120px;">Etage</th>
-                                                <th style="width: 120px;">Surface</th>
-                                                <th style="width: 120px;">Prix</th>
-
+                                                <th name="name_pj">Projets</th>
+                                                <th style="width: 120px;" name="type">Type</th>
+                                                <th style="width: 120px;" name="Etage">Etage</th>
+                                                <th style="width: 120px;" name="Surface">Surface</th>
+                                                <th style="width: 120px;" name="prix">Prix</th>
                                             </tr>
                                         </thead>
                                         <tbody class="list" id="staff02">
                                           <!--table des Employés-->
                                           <?php update_table_projets(); ?>
                                         </tbody>
+                                        <td>
+                                        <div class="form-group">
+                                            <button class="btn btn-block btn-primary" name="add" type="submit">Enregistrer</button>
+                                        </div>
+                                      </td>
                                     </table>
                                     </div>
                                 </div>
@@ -219,6 +223,7 @@ require 'functions.php';
                         </div>
                     </div>
                 </div>
+            </form>
                 <!-- // END header-layout__content -->
 
             </div>

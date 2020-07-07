@@ -25,7 +25,7 @@ CREATE TABLE `Commerciaux` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `Projets` (
-  `Code_pj` varchar(15) NOT NULL,
+  `Code_pj` int(15) NOT NULL AUTO_INCREMENT,
   `ProjetName` varchar(30) DEFAULT NULL,
   `type_p` varchar(30) DEFAULT NULL,
   `Etages` varchar(30) DEFAULT NULL,
@@ -42,8 +42,7 @@ CREATE TABLE `Clients` (
   `phnumber` bigint(10) DEFAULT NULL,
   `Notes` mediumtext DEFAULT NULL,
   `Source` varchar(50) DEFAULT NULL,
-
-  `Code_pj` varchar(15) NOT NULL,
+  `Code_pj` int(15) NOT NULL,
 
   primary key (ID_client),
   FOREIGN KEY (Code_pj) REFERENCES Projets(Code_pj)
@@ -60,7 +59,7 @@ CREATE TABLE `Calendrier` (
   `Description` varchar(80) DEFAULT NULL,
 
   `ID_client` int(10) DEFAULT NULL,
-  `Code_pj` varchar(15) DEFAULT NULL,
+  `Code_pj` int(15) DEFAULT NULL,
 
   primary key (id),
   FOREIGN KEY (ID_client)REFERENCES Clients(ID_client),
