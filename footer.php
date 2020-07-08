@@ -34,14 +34,22 @@
             <div class="tab-content">
                 <div id="sm-menu" class="tab-pane show active" role="tabpanel" aria-labelledby="sm-menu-tab">
                     <ul class="sidebar-menu flex">
+                      <?php if($_SESSION['current_page']=="index"){?>
                         <li class="sidebar-menu-item active">
+                      <?php }else{ ?>
+                        <li class="sidebar-menu-item ">
+                      <?php } ?>
                             <a class="sidebar-menu-button" href="index.php">
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dvr</i>
                                 <span class="sidebar-menu-text">tableau de bord</span>
                             </a>
                         </li>
+                        <?php if($_SESSION['current_page']=="edit"){?>
+                          <li class="sidebar-menu-item active">
+                        <?php }else{ ?>
+                          <li class="sidebar-menu-item ">
+                        <?php } ?>
 
-                        <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button" data-toggle="collapse" href="#pages_menu">
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">description</i>
                                 <span class="sidebar-menu-text">Pages</span>
@@ -67,8 +75,12 @@
                                  ?>
                             </ul>
                         </li>
+                        <?php if($_SESSION['current_page']=="projets" or $_SESSION['current_page']=="commerciaux"){?>
+                          <li class="sidebar-menu-item active">
+                        <?php }else{ ?>
+                          <li class="sidebar-menu-item ">
+                        <?php } ?>
 
-                        <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button" data-toggle="collapse" href="#components_menu">
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">developer_board</i>
                                 <span class="sidebar-menu-text">UI Elements</span>

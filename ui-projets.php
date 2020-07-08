@@ -1,6 +1,6 @@
 <?php
 require 'functions.php';
-
+$_SESSION['current_page']="projets";
 if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION['login']))
 {
       header('Location: login.php');
@@ -210,15 +210,8 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                     <div class="container-fluid page__container">
                         <div class="card card-form">
                             <div class="row no-gutters">
-                                <div class="col-lg-4 card-body">
-                                    <p><strong class="headings-color">Search</strong></p>
-                                    <p class="text-muted">Table de gestion des Projets de <strong> GUESSPROMO </strong>:</p>
-                                    <p><strong class="headings-color">Cliquer ici pour ajouter un projet :</strong></p>
-                                    <td>
-                                       <input type="button" id="btnShowMsg1" value="Ajouter un nouveau projet !" onClick="add_pj()"/>
-                                    </td>
-                                </div>
-                                <div class="col-lg-8 card-form__body">
+
+                                <div class="col-lg-12 card-form__body">
 
                                     <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
 
@@ -244,6 +237,9 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                         <div class="form-group">
                                             <button class="btn btn-block btn-primary" name="add" type="submit">Enregistrer</button>
                                         </div>
+                                        <td>
+                                           <input type="button" id="btnShowMsg1" value="Ajouter un nouveau projet !" onClick="add_pj()"/>
+                                        </td>
                                       </td>
                                     </table>
                                     </div>

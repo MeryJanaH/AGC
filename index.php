@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+$_SESSION['current_page']="index";
+
 if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION['login']))
 {
       header('Location: login.php');

@@ -7,7 +7,10 @@ require 'LBD.php';
 
 if(isset($_SESSION['name']))
 {
-include 'head.php';?>
+include 'head.php';
+
+$_SESSION['current_page']="edit";
+?>
 
 <body class="layout-default">
 
