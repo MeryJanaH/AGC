@@ -253,6 +253,7 @@ function update_table_projets()
     {
       require 'LBD.php';
       $req=$bdd->query("SELECT * FROM Projets");
+
       while($dn = $req->fetch())
       { ?>
         <tr>
@@ -261,6 +262,31 @@ function update_table_projets()
             <td><span class="text-muted"><?php print_r($dn['Etages']) ?></span></td>
             <td><span class="text-muted"><?php print_r($dn['Surface']) ?></span></td>
             <td><span class="text-muted"><?php print_r($dn['Prix']) ?></span></td>
+            <td><input type="button" id="btnShowMsg1" value="Modifier !" onClick='showMessages()'/></td>
+
+
+            <script type="text/javascript">
+              function showMessage<?php echo $dn['Code_pj'];?>(){
+                  var txt;
+                  if (confirm("êtes-vous sûr de supprimer le projet <?php print_r($dn['ProjetName']) ?> de la liste des projets de GUESSPROMO ? ")) {
+                      txt = "You pressed OK!";
+                  } else {
+                      txt = "You pressed Cancel!";
+                  }
+                  if(txt == "You pressed OK!")
+                  {
+                    $.post('fct.php', {id1: <?php echo $dn['Code_pj'];?>});
+                    $.ajax({
+                        type: "POST",
+                        url: "ui-projets.php",
+                        success: function() {
+                            location.reload();
+                        }
+                    });
+                  }
+              }
+              </script>
+
 
                   <script type="text/javascript">
                     function showMessage<?php echo $dn['Code_pj'];?>(){
@@ -282,15 +308,10 @@ function update_table_projets()
                           });
                         }
                     }
+                    </script>
 
-                    function showMessage1<?php echo $dn['Code_pj'];?>()
-                    {
-
-                    }
-                  </script>
             <td>
             <input type="button" id="btnShowMsg" value="Supprimer !" onClick='showMessage<?php echo $dn['Code_pj'];?>()'/>
-            <input type="button" id="btnShowMsg1" value="Modifier !" onClick='showMessage1<?php echo $dn['Code_pj'];?>()'/>
             </td>
         </tr>
      <?php
