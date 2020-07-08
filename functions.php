@@ -67,6 +67,25 @@ function email_exist($email){
     }
 }
 
+function changer_parametres($name, $email, $mdp)
+{
+  require 'LBD.php';
+  if($_SESSION['user']=="admin")
+      $req = $bdd->prepare("UPDATE Admin SET AdminName=:name, Email=:email1, Password=:new_mdp  WHERE Email=:email2");
+  else
+      $req = $bdd->prepare("UPDATE Commerciaux SET CName=:name, Email=:email1, Password=:new_mdp  WHERE Email=:email2");
+
+
+  $req = $bdd->prepare("UPDATE Commerciaux SET CName=:name, Email=:email, Password=:new_mdp  WHERE Email=:email");
+        $req->bindParam(':name', $name);
+        $req->bindParam(':new_mdp',$mdp);
+  $req->bindParam(':email',$_SESSION['email']);
+        $req->bindParam(':email1',$email);
+        $req->bindParam(':email2',$_SESSION['email']);
+
+    $req->execute();
+}
+
 function default_password()
 {
     $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
@@ -199,6 +218,22 @@ function update_table_emp()
     </tr>
  <?php
   }
+}
+
+function user()
+{
+  require 'LBD.php';
+
+  if($_SESSION['user']=="admin")
+      $req = $bdd->prepare("SELECT Password FROM Admin WHERE Email=:email");
+  else
+      $req = $bdd->prepare("SELECT Password FROM Commerciaux WHERE Email=:email");
+
+      $req->bindParam(':email', $_SESSION['email']);
+      $req->execute();
+      $dn = $req->fetch();
+
+      return $dn;
 }
 
 function update_table_projets()
