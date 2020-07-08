@@ -4,7 +4,7 @@ require 'functions.php';
 
 <?php
 
-    $res=login($_POST['email_2'],$_POST['password_2']);
+    $res=login($_POST['email_2'],md5($_POST['password_2']));
 
 
       if ($res=="Utilisateur Non Enregistré" or $res =="ERROR_Syntaxe") {
@@ -17,7 +17,7 @@ require 'functions.php';
             setcookie('Adresse_email', $_POST['email_2'],time()+60*60*7);
             setcookie('mot_de_passe', $_POST['password_2'],time()+60*60*7);
           }
-          if(premier_login($_POST['email_2'], $_POST['password_2'])=="true" and $_SESSION['user']!="admin")
+          if(premier_login($_POST['email_2'])=="true" and $_SESSION['user']!="admin")
           {
             $_SESSION['log_befor']="true";
             header('Location: registration.php');

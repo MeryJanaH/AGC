@@ -133,13 +133,12 @@ function first_mail($from, $to, $subj, $body)
       $_SESSION['send']="false";
 }
 
-function premier_login($email, $mdp)
+function premier_login($email)
 {
       require 'LBD.php';
 
-      $req = $bdd->prepare("SELECT * FROM Commerciaux WHERE Email=:email AND Password=:mdp ");
+      $req = $bdd->prepare("SELECT * FROM Commerciaux WHERE Email=:email");
       $req->bindParam(':email', $email);
-      $req->bindParam(':mdp', $mdp);
       $req->execute();
       $res = $req->fetch();
 

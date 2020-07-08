@@ -6,7 +6,7 @@ CREATE TABLE `Admin` (
   `ID_admin` int(10) NOT NULL AUTO_INCREMENT,
   `AdminName` varchar(50) DEFAULT NULL,
   `Email` varchar(50) DEFAULT NULL,
-  `Password` varchar(30) DEFAULT NULL,
+  `Password` varchar(80) DEFAULT NULL,
 
   primary key (ID_admin)
 
@@ -16,7 +16,7 @@ CREATE TABLE `Commerciaux` (
   `ID_cm` int(10) NOT NULL AUTO_INCREMENT,
   `CName` varchar(50) DEFAULT NULL,
   `Email` varchar(50) DEFAULT NULL,
-  `Password` varchar(30) DEFAULT NULL,
+  `Password` varchar(80) DEFAULT NULL,
   `firstlog` timestamp NULL DEFAULT current_timestamp(),
   `lastLog` timestamp NULL DEFAULT current_timestamp(),
 
@@ -67,5 +67,5 @@ CREATE TABLE `Calendrier` (
 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-insert into Admin (ID_admin,AdminName,Email,Password) values(3,"Annouar","meryem.annouar@ieee.org","Mery123");
-insert into Commerciaux (ID_cm,CName,Email,Password) values(5,"Yassine","Yassine.Oukassou@ieee.org","oks123");
+insert into Admin (ID_admin,AdminName,Email,Password) values(3,"Annouar","meryem.annouar@ieee.org","202cb962ac59075b964b07152d234b70");
+insert into Commerciaux (ID_cm,CName,Email,Password) values(5,"Yassine","Yassine.Oukassou@ieee.org","202cb962ac59075b964b07152d234b70");
