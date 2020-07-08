@@ -13,7 +13,7 @@ $id= $input["Code_pj"];
 
 if($input["action"] === 'edit')
 {
- $sql= $bdd->prepare("UPDATE Projets SET ProjetName= $Projet ,type_p= $Type,Etages= $Etage,Surface= $Surface,Prix= $Prix WHERE Code_pj= $id");
+ $sql= $bdd->prepare("UPDATE Projets SET ProjetName= '" . $Projet . "' ,type_p= '" . $Type . "',Etages= '" . $Etage . "',Surface= '" . $Surface . "',Prix= '" . $Prix . "' WHERE Code_pj= '" . $id . "'");
  $sql->execute();
 
 }
