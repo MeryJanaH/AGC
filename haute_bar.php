@@ -13,7 +13,7 @@
                 </button>
 
                 <!-- Navbar Brand -->
-                <a href="changer_param.php" class="navbar-brand flex ">
+                <a href="edit-account.php" class="navbar-brand flex ">
                     <span>Modifier le compte</span>
                 </a>
 
