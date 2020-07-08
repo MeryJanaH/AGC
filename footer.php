@@ -116,7 +116,7 @@
 
             <div class="mt-auto sidebar-p-a sidebar-b-t d-flex flex-column flex-shrink-0">
                 <a class="sidebar-link mb-2" href="edit-account.php">Change Password</a>
-                <a class="sidebar-link mb-2" href="edit-account.php">Settings</a>
+                <a class="sidebar-link mb-2" href="edit-account.php">Modifier les paramétres</a>
                 <a class="sidebar-link" href="login.html">
                   <p>
                     <a class="sidebar-link" href="Déconnexion.php">Déconnexion</a>

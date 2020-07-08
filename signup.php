@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION['login']) or $_SESSION['user']!="admin")
+{
+      header('Location: login.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

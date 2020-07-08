@@ -197,7 +197,8 @@ function update_table_emp()
         <td><small class="text-muted"><?php print_r($dn['lastLog']) ?></small></td>
         <td><a class="text-muted"><i></i></a><?php print_r($dn['ID_cm']) ?></td>
               <script type="text/javascript">
-                function showMessage<?php echo $dn['ID_cm'];?>(){
+                function showMessage<?php echo $dn['ID_cm'];?>()
+                {
                     var txt;
                     if (confirm("êtes-vous sûr de supprimer <?php print_r($dn['CName']) ?> ? après il ne va pas le droit d'accéder à cette application \"AGC\" ! ")) {
                         txt = "You pressed OK!";
@@ -216,9 +217,16 @@ function update_table_emp()
                       });
                     }
                 }
+
+              function showMessage1<?php echo $dn['ID_cm'];?>()
+                {
+
+                }
               </script>
+
         <td>
         <input type="button" id="btnShowMsg" value="Supprimer !" onClick='showMessage<?php echo $dn['ID_cm'];?>()'/>
+        <input type="button" id="btnShowMsg1" value="Modifier !" onClick='showMessage1<?php echo $dn['ID_cm'];?>()'/>
         </td>
     </tr>
  <?php
