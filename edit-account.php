@@ -84,7 +84,7 @@ include 'head.php';?>
                   {
                     //password d'utilisateur
                       $dn = user();
-                      
+
                   if($dn['Password'] == $_POST['mdp_1'])
                       {
                         if($_POST['mdp_2'] == $_POST['mdp_3'])
@@ -147,5 +147,47 @@ include 'head.php';?>
     }
     ?>
 <?php include 'footer.php';?>
+
+<!-- App Settings FAB -->
+    <div id="app-settings">
+        <app-settings></app-settings>
+    </div>
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="assets/vendor/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+    <!-- Simplebar -->
+    <script src="assets/vendor/simplebar.min.js"></script>
+
+    <!-- DOM Factory -->
+    <script src="assets/vendor/dom-factory.js"></script>
+
+    <!-- MDK -->
+    <script src="assets/vendor/material-design-kit.js"></script>
+
+    <!-- Range Slider -->
+    <script src="assets/vendor/ion.rangeSlider.min.js"></script>
+    <script src="assets/js/ion-rangeslider.js"></script>
+
+    <!-- App -->
+    <script src="assets/js/toggle-check-all.js"></script>
+    <script src="assets/js/check-selected-row.js"></script>
+    <script src="assets/js/dropdown.js"></script>
+    <script src="assets/js/sidebar-mini.js"></script>
+    <script src="assets/js/app.js"></script>
+
+    <!-- App Settings (safe to remove) -->
+    <script src="assets/js/app-settings.js"></script>
+
+
+
+    <!-- Dropzone -->
+    <script src="assets/vendor/dropzone.min.js"></script>
+    <script src="assets/js/dropzone.js"></script>
+
 </body>
 </html>
