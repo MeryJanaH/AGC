@@ -21,9 +21,5 @@ if($input["action"] === 'delete')
 {
   $req = $bdd->prepare("DELETE FROM Projets WHERE Code_pj = $id");
   $req->execute();
-
 }
-
-echo json_encode($input);
-
 ?>
