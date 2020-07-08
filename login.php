@@ -48,8 +48,6 @@ if(isset($_COOKIE['Adresse_email']) and isset($_COOKIE['mot_de_passe']))
 
 
 
-
-
 </head>
 
 <body class="layout-login-centered-boxed">

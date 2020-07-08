@@ -20,7 +20,7 @@
                         </div>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item active" href="index.php">tableau de bord</a>
-                        <a class="dropdown-item" href="edit-account.php">Edit account</a>
+                        <a class="dropdown-item" href="edit-account.php">Modifier le compte</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="Déconnexion.php">Déconnexion</a>
                     </div>
@@ -50,7 +50,7 @@
                             <ul class="sidebar-submenu collapse" id="pages_menu">
                                 <li class="sidebar-menu-item">
                                     <a class="sidebar-menu-button" href="edit-account.php">
-                                        <span class="sidebar-menu-text">Edit Account</span>
+                                        <span class="sidebar-menu-text">Modifier le compte</span>
                                     </a>
                                 </li>
                                 <?php
@@ -81,12 +81,10 @@
                                     <a class="sidebar-menu-button" href="ui-tables.php">
                                         <span class="sidebar-menu-text">Table des commerciaux</span>
                                     </a>
-                                  <?php } if($_SESSION['user']=="admin")
-                                  { ?>
+                                  <?php } ?>
                                     <a class="sidebar-menu-button" href="ui-projets.php">
                                         <span class="sidebar-menu-text">Table des projets</span>
                                     </a>
-                                  <?php } ?>
                                 </li>
                                 <li class="sidebar-menu-item">
                                     <a class="sidebar-menu-button" href="ui-buttons.html">

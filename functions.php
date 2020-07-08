@@ -56,6 +56,15 @@ function email_exist($email){
     $req->execute();
     $res = $req->fetch();
 
+    if($res == NULL)
+    {
+      $req = $bdd->prepare("SELECT * FROM Admin WHERE Email=:email");
+      $req->bindParam(':email', $email);
+
+        $req->execute();
+        $res = $req->fetch();
+    }
+
     if($res != NULL)
     {
       return true;
