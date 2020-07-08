@@ -10,15 +10,15 @@ $req=$bdd->query("SELECT * FROM Projets");
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="jquery.tabledit.min.js"></script>
-    </head>
-    <body>
-  <div class="container">
-   <br />
-   <br />
-   <br />
-            <div class="table-responsive">
-    <h3 align="center">Live Table Data Edit Delete using Tabledit Plugin in PHP</h3><br />
-    <table Code_pj="editable_table" class="table table-bordered table-striped">
+    </head>  
+    <body>  
+  <div class="container">  
+   <br />  
+   <br />  
+   <br />  
+            <div class="table-responsive">  
+    <h3 align="center">Live Table Data Edit Delete using Tabledit Plugin in PHP</h3><br />  
+    <table id="editable_table" class="table table-bordered table-striped">
      <thead>
       <tr>
        <th>ID</th>
@@ -31,7 +31,7 @@ $req=$bdd->query("SELECT * FROM Projets");
      </thead>
      <tbody>
      <?php
-     while($dn = $req->fetch())
+     while($row = $req->fetch())
      {
       echo '
       <tr>
@@ -64,7 +64,7 @@ $(document).ready(function(){
       {
        if(data.action == 'delete')
        {
-        $('#'+data.Code_pj).remove();
+        $('#'+data.id).remove();
        }
       }
      });
