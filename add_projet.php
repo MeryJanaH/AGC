@@ -3,6 +3,8 @@
 require 'LBD.php';
 if(isset($_POST["proj_name"]))
 {
+  if($_POST["proj_name"][0]!="")
+  {
     if (isset($_POST["add"]))
     {
         for ($a = 0; $a < count($_POST["proj_name"]); $a++)
@@ -12,6 +14,15 @@ if(isset($_POST["proj_name"]))
         }
         header('Location: ui-projets.php');
     }
+  }
+  else
+  {
+    ?>
+  <script>
+    alert("Vous avez pas renseigner tous les champs concernant le projet");
+  </script>
+  <?php
+ }
 }
 else {
   header('Location: ui-projets.php');

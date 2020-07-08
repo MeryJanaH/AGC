@@ -178,11 +178,34 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
 
                     </div>
                 </div>
-
                 <!-- // END Header -->
 
+      <?php
+                      if(isset($_POST["proj_name"]))
+                      {
+                        if($_POST["proj_name"][0]!="")
+                        {
+                          if (isset($_POST["add"]))
+                          {
+                              add_projet($_POST["proj_name"],$_POST["proj_type"],$_POST["proj_etage"],$_POST["proj_surface"],$_POST["proj_prix"]);
+                          }
+                        }
+                        else
+                        {
+                          ?>
+                        <script>
+                          alert("Vous avez pas renseigner tous les champs concernant le projet");
+                        </script>
+                        <?php
+                       }
+                      }
+                      else {
+                        header('Location: ui-projets.php');
+                      }
+             ?>
+
                 <!-- Header Layout Content -->
-                <form action="add_projet.php" method="POST">
+                <form action="#add_projet" method="POST">
                 <div class="mdk-header-layout__content mdk-header-layout__content--fullbleed mdk-header-layout__content--scrollable page">
                     <div class="container-fluid page__container">
                         <div class="card card-form">

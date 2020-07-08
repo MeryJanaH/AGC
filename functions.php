@@ -282,9 +282,15 @@ function update_table_projets()
                           });
                         }
                     }
+
+                    function showMessage1<?php echo $dn['Code_pj'];?>()
+                    {
+
+                    }
                   </script>
             <td>
             <input type="button" id="btnShowMsg" value="Supprimer !" onClick='showMessage<?php echo $dn['Code_pj'];?>()'/>
+            <input type="button" id="btnShowMsg1" value="Modifier !" onClick='showMessage1<?php echo $dn['Code_pj'];?>()'/>
             </td>
         </tr>
      <?php
@@ -295,16 +301,27 @@ function update_table_projets()
 function add_pj()
   {
     var html = "<tr>";
-        html += "<td><input name='proj_name[]'></td>";
-        html += "<td><input name='proj_type[]'></td>";
-        html += "<td><input name='proj_etage[]'></td>";
-        html += "<td><input name='proj_surface[]'></td>";
-        html += "<td><input name='proj_prix[]'></td>";
+        html += "<td><input id ='n' name='proj_name[]'></td>";
+        html += "<td><input id ='t' name='proj_type[]'></td>";
+        html += "<td><input id ='e' name='proj_etage[]'></td>";
+        html += "<td><input id ='s' name='proj_surface[]'></td>";
+        html += "<td><input id ='p' name='proj_prix[]'></td>";
         html += "</tr>";
 
    var row = document.getElementById("staff02").insertRow();
         row.innerHTML = html;
   }
 </script>
+
 <?php
+
+function  add_projet($p_n,$p_t,$p_e,$p_s,$p_p)
+{
+  require 'LBD.php';
+  for ($a = 0; $a < count($p_n); $a++)
+  {
+      $req = $bdd->prepare("INSERT INTO Projets (ProjetName, type_p,Etages,Surface,Prix) VALUES ('" . $p_n[$a] . "','" . $p_t[$a]."','" . $p_e[$a]."','" . $p_s[$a]."','" . $p_p[$a]."')");
+      $req->execute();
+  }
+}
 ?>
