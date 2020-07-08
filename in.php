@@ -64,7 +64,7 @@ $(document).ready(function(){
       {
        if(data.action == 'delete')
        {
-        $('#'+data.id).remove();
+        $('#'+data.Code_pj).remove();
        }
       }
      });
