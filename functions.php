@@ -48,7 +48,6 @@ function login($email,$mdp){
      return "ERROR_Syntaxe";
 }
 
-
 function email_exist($email){
   require 'LBD.php';
   $req = $bdd->prepare("SELECT * FROM Commerciaux WHERE Email=:email");

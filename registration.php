@@ -1,7 +1,7 @@
 <?php
 require 'LBD.php';
 require 'functions.php';
-session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -57,7 +57,7 @@ session_start();
           $dn = $req->fetch();
           if($_POST['password_2']==$_POST['password_3'])
           {
-              if($dn==$_POST['password_1'])
+              if($dn['Password']==$_POST['password_1'])
               {
                 register_bdd($_POST['nom'], $_POST['password_2']);
                 header('Location: index.php');
