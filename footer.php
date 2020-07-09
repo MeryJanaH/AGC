@@ -22,7 +22,9 @@
                         <a class="dropdown-item active" href="index.php">tableau de bord</a>
                         <a class="dropdown-item" href="edit-account.php">Modifier le compte</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="Déconnexion.php">Déconnexion</a>
+                      <form action="login.php" method="POST">
+                        <button name="decnx" class="dropdown-item">Déconnexion</button>
+                      </form>
                     </div>
                 </div>
             </div>
@@ -127,12 +129,12 @@
                 </div>
 
             <div class="mt-auto sidebar-p-a sidebar-b-t d-flex flex-column flex-shrink-0">
-                <a class="sidebar-link mb-2" href="edit-account.php">Change Password</a>
-                <a class="sidebar-link mb-2" href="edit-account.php">Modifier les paramétres</a>
-                <a class="sidebar-link" href="login.html">
+                <a class="sidebar-link" href="login.php">
                   <p>
-                    <a class="sidebar-link" href="Déconnexion.php">Déconnexion</a>
-                    <i class="sidebar-menu-icon ml-2 material-icons icon-16pt">exit_to_app</i>
+                    <form action="login.php" method="POST">
+                      <button name="decnx" style="width: 100px; color:blue";>Déconnexion</button>
+                      <i class="sidebar-menu-icon ml-2 material-icons icon-16pt">exit_to_app</i>
+                    </form>
                   </p>
                 </a>
             </div>
@@ -142,9 +144,5 @@
 </div>
 </div>
 <!-- // END drawer-layout -->
-
-
-
-
 
 </body>

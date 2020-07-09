@@ -13,6 +13,14 @@ if(isset($_COOKIE['Adresse_email']) and isset($_COOKIE['mot_de_passe']))
   $mot_p = $_COOKIE['mot_de_passe'];
 }
 
+if(isset($_POST['decnx']))
+{
+ session_destroy();
+ unset($_SESSION);
+ unset($_COOKIE);
+ header('Location: login.php');
+}
+
 ?>
 
 <!DOCTYPE html>
