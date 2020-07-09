@@ -1,5 +1,6 @@
 <?php
-session_start();
+require 'functions.php';
+
 if(isset($_SESSION['login'])){
     if($_SESSION['login']=="true")
     {
@@ -7,18 +8,29 @@ if(isset($_SESSION['login'])){
     }
 }
 
-if(isset($_COOKIE['Adresse_email']) and isset($_COOKIE['mot_de_passe']))
-{
-  $email_p = $_COOKIE['Adresse_email'];
-  $mot_p = $_COOKIE['mot_de_passe'];
-}
-
 if(isset($_POST['decnx']))
 {
  session_destroy();
- unset($_SESSION);
+ setcookie("Adresse_email", "", time() - 3600);
+ setcookie("mot_de_passe", "", time() - 3600);
  unset($_COOKIE);
  header('Location: login.php');
+}
+else {
+  if(isset($_COOKIE['Adresse_email']) and isset($_COOKIE['mot_de_passe']))
+  {
+    $email_p = $_COOKIE['Adresse_email'];
+    $mot_p = $_COOKIE['mot_de_passe'];
+    $res=login($email_p,md5($mot_p));
+    if ($res=="Utilisateur Non Enregistré" or $res =="ERROR_Syntaxe") {
+        $_SESSION['login']="false";
+        header('Location: login.php');
+    }
+    else{
+      $_SESSION['login']="true";
+      header('Location: index.php');
+    }
+  }
 }
 
 ?>
