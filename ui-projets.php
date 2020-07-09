@@ -12,7 +12,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
 
 <?php include 'head.php';?>
 
-<script src="assets/vendor/jquery-tabledit/jquery.tabledit.min.js"></script>
+
 
 <body class="layout-default">
     <div class="preloader"></div>
@@ -95,26 +95,6 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                      </tbody>
                                     </table>
 
-                                    <script>
-                                    $(document).ready(function(){
-                                         $('#editable_table').Tabledit({
-                                          url:'action.php',
-                                          columns:{
-                                          identifier:[0, "Code_pj"],
-                                          editable:[[1, 'ProjetName'], [2, 'type_p'], [3, 'Etages'], [4, 'Surface'], [5, 'Prix']]
-                                          },
-                                          restoreButton:false,
-                                          onSuccess:function(data, textStatus, jqXHR)
-                                          {
-                                           if(data.action == 'delete')
-                                           {
-                                            $('#'+data.Code_pj).remove();
-                                           }
-                                          }
-                                         });
-
-                                    });
-                                     </script>
                                     </div>
                                 </div>
                             </div>
@@ -167,12 +147,34 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
     <!-- App Settings (safe to remove) -->
     <script src="assets/js/app-settings.js"></script>
 
-
-
-    <!-- List.js -->
+    <!-- List.js
     <script src="assets/vendor/list.min.js"></script>
-    <script src="assets/js/list.js"></script>
+    <script src="assets/js/list.js"></script> -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+
+    <script src="assets/vendor/jquery-tabledit/jquery.tabledit.min.js"></script>
 
 </body>
 
 </html>
+<script>
+$(document).ready(function(){
+     $('#editable_table').Tabledit({
+      url:'action.php',
+      columns:{
+      identifier:[0, "Code_pj"],
+      editable:[[1, 'ProjetName'], [2, 'type_p'], [3, 'Etages'], [4, 'Surface'], [5, 'Prix']]
+      },
+      restoreButton:false,
+      onSuccess:function(data, textStatus, jqXHR)
+      {
+       if(data.action == 'delete')
+       {
+        $('#'+data.Code_pj).remove();
+       }
+      }
+     });
+
+});
+ </script>
