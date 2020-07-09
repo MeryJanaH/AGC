@@ -287,4 +287,11 @@ function  add_projet($p_n,$p_t,$p_e,$p_s,$p_p)
       $req->execute();
   }
 }
+
+function add_calendar()
+{
+
+}
+
+
 ?>

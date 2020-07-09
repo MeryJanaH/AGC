@@ -119,10 +119,14 @@
                                 <span class="sidebar-menu-text">Charts</span>
                             </a>
                         </li>
-                        <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button" href="fullcalendar.html">
+                        <?php if($_SESSION['current_page']=="calendar"){?>
+                          <li class="sidebar-menu-item active">
+                        <?php }else{ ?>
+                          <li class="sidebar-menu-item ">
+                        <?php } ?>
+                            <a class="sidebar-menu-button" href="fullcalendar.php">
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">date_range</i>
-                                <span class="sidebar-menu-text">Calendar</span>
+                                <span class="sidebar-menu-text">Calendrier</span>
                             </a>
                         </li>
                     </ul>
@@ -144,5 +148,3 @@
 </div>
 </div>
 <!-- // END drawer-layout -->
-
-</body>
