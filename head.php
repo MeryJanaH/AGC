@@ -35,4 +35,5 @@
 
     <!-- Vector Maps -->
     <link type="text/css" href="assets/vendor/jqvmap/jqvmap.min.css" rel="stylesheet">
+
 </head>

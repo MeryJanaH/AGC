@@ -1,8 +1,6 @@
 # AGC
 
 ##Now
-- session table Projets
-
 - cookies
 
 - edit_tp

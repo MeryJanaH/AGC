@@ -14,7 +14,7 @@
 
                 <!-- Navbar Brand -->
                 <a href="edit-account.php" class="navbar-brand flex ">
-                    <span>Modifier le compte</span>
+                    <span>Modifications</span>
                 </a>
 
 

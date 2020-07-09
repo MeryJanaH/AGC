@@ -216,16 +216,10 @@ function update_table_emp()
                       });
                     }
                 }
-
-              function showMessage1<?php echo $dn['ID_cm'];?>()
-                {
-
-                }
               </script>
 
         <td>
         <input type="button" id="btnShowMsg" value="Supprimer !" onClick='showMessage<?php echo $dn['ID_cm'];?>()'/>
-        <input type="button" id="btnShowMsg1" value="Modifier !" onClick='showMessage1<?php echo $dn['ID_cm'];?>()'/>
         </td>
     </tr>
  <?php
@@ -261,10 +255,12 @@ function update_table_projets()
             <td><span class="text-muted"><?php print_r($dn['Etages']) ?></span></td>
             <td><span class="text-muted"><?php print_r($dn['Surface']) ?></span></td>
             <td><span class="text-muted"><?php print_r($dn['Prix']) ?></span></td>
-            <td><input type="button" id="btnShowMsg1" value="Modifier !" onClick='showMessages()'/></td>
-
+            <td><input type="button" id="btnShowMsg1" value="Modifier !" onClick='showMessages1<?php echo $dn['Code_pj'];?>()'/></td>
 
             <script type="text/javascript">
+              function showMessage1<?php echo $dn['Code_pj'];?>(){
+
+              }
               function showMessage<?php echo $dn['Code_pj'];?>(){
                   var txt;
                   if (confirm("êtes-vous sûr de supprimer le projet <?php print_r($dn['ProjetName']) ?> de la liste des projets de GUESSPROMO ? ")) {

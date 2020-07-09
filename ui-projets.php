@@ -12,6 +12,8 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
 
 <?php include 'head.php';?>
 
+<script src="assets/vendor/jquery-tabledit/jquery.tabledit.min.js"></script>
+
 <body class="layout-default">
     <div class="preloader"></div>
 
@@ -21,166 +23,9 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
             <!-- Header Layout -->
             <div class="mdk-header-layout js-mdk-header-layout" data-has-scrolling-region>
 
-                <!-- Header -->
+          <?php include 'haute_bar.php';
 
-                <div id="header" class="mdk-header js-mdk-header m-0" data-fixed data-effects="waterfall" data-retarget-mouse-scroll="false">
-                    <div class="mdk-header__content">
 
-                        <div class="navbar navbar-expand-sm navbar-main navbar-light bg-white  pr-0" id="navbar" data-primary>
-                            <div class="container-fluid p-0">
-
-                                <!-- Navbar toggler -->
-                                <button class="navbar-toggler navbar-toggler-custom d-lg-none d-flex mr-navbar" type="button" data-toggle="sidebar">
-                                    <span class="material-icons">short_text</span>
-                                </button>
-
-                                <!-- Navbar Brand -->
-                                <a class="navbar-brand flex ">
-                                    <span>Gestion des projets</span>
-                                </a>
-                                <ul class="nav navbar-nav d-none d-md-flex">
-                                    <li class="nav-item dropdown">
-                                        <a href="#notifications_menu" class="nav-link dropdown-toggle" data-toggle="dropdown" data-caret="false">
-                                            <i class="material-icons nav-icon navbar-notifications-indicator">notifications</i>
-                                        </a>
-                                        <div id="notifications_menu" class="dropdown-menu dropdown-menu-right navbar-notifications-menu">
-                                            <div class="dropdown-item d-flex align-items-center py-2">
-                                                <span class="flex navbar-notifications-menu__title m-0">Notifications</span>
-                                                <a href="javascript:void(0)" class="text-muted"><small>Clear all</small></a>
-                                            </div>
-                                            <div class="navbar-notifications-menu__content" data-simplebar>
-                                                <div class="py-2">
-
-                                                    <div class="dropdown-item d-flex">
-                                                        <div class="mr-3">
-                                                            <div class="avatar avatar-sm" style="width: 32px; height: 32px;">
-                                                                <img src="assets/images/256_daniel-gaffey-1060698-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex">
-                                                            <a href="">A.Demian</a> left a comment on <a href="">Stack</a><br>
-                                                            <small class="text-muted">1 minute ago</small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="dropdown-item d-flex">
-                                                        <div class="mr-3">
-                                                            <a href="#">
-                                                                <div class="avatar avatar-xs" style="width: 32px; height: 32px;">
-                                                                    <span class="avatar-title bg-purple rounded-circle"><i class="material-icons icon-16pt">person_add</i></span>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="flex">
-                                                            New user <a href="#">Peter Parker</a> signed up.<br>
-                                                            <small class="text-muted">1 hour ago</small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="dropdown-item d-flex">
-                                                        <div class="mr-3">
-                                                            <a href="#">
-                                                                <div class="avatar avatar-xs" style="width: 32px; height: 32px;">
-                                                                    <span class="avatar-title rounded-circle">JD</span>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="flex">
-                                                            <a href="#">Big Joe</a> <small class="text-muted">wrote:</small><br>
-                                                            <div>Hey, how are you? What about our next meeting</div>
-                                                            <small class="text-muted">2 minutes ago</small>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="dropdown-item d-flex">
-                                                        <div class="mr-3">
-                                                            <div class="avatar avatar-sm" style="width: 32px; height: 32px;">
-                                                                <img src="assets/images/256_daniel-gaffey-1060698-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex">
-                                                            <a href="">A.Demian</a> left a comment on <a href="">Stack</a><br>
-                                                            <small class="text-muted">1 minute ago</small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="dropdown-item d-flex">
-                                                        <div class="mr-3">
-                                                            <a href="#">
-                                                                <div class="avatar avatar-xs" style="width: 32px; height: 32px;">
-                                                                    <span class="avatar-title bg-purple rounded-circle"><i class="material-icons icon-16pt">person_add</i></span>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="flex">
-                                                            New user <a href="#">Peter Parker</a> signed up.<br>
-                                                            <small class="text-muted">1 hour ago</small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="dropdown-item d-flex">
-                                                        <div class="mr-3">
-                                                            <a href="#">
-                                                                <div class="avatar avatar-xs" style="width: 32px; height: 32px;">
-                                                                    <span class="avatar-title rounded-circle">JD</span>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="flex">
-                                                            <a href="#">Big Joe</a> <small class="text-muted">wrote:</small><br>
-                                                            <div>Hey, how are you? What about our next meeting</div>
-                                                            <small class="text-muted">2 minutes ago</small>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="dropdown-item d-flex">
-                                                        <div class="mr-3">
-                                                            <div class="avatar avatar-sm" style="width: 32px; height: 32px;">
-                                                                <img src="assets/images/256_daniel-gaffey-1060698-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex">
-                                                            <a href="">A.Demian</a> left a comment on <a href="">Stack</a><br>
-                                                            <small class="text-muted">1 minute ago</small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="dropdown-item d-flex">
-                                                        <div class="mr-3">
-                                                            <a href="#">
-                                                                <div class="avatar avatar-xs" style="width: 32px; height: 32px;">
-                                                                    <span class="avatar-title bg-purple rounded-circle"><i class="material-icons icon-16pt">person_add</i></span>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="flex">
-                                                            New user <a href="#">Peter Parker</a> signed up.<br>
-                                                            <small class="text-muted">1 hour ago</small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="dropdown-item d-flex">
-                                                        <div class="mr-3">
-                                                            <a href="#">
-                                                                <div class="avatar avatar-xs" style="width: 32px; height: 32px;">
-                                                                    <span class="avatar-title rounded-circle">JD</span>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="flex">
-                                                            <a href="#">Big Joe</a> <small class="text-muted">wrote:</small><br>
-                                                            <div>Hey, how are you? What about our next meeting</div>
-                                                            <small class="text-muted">2 minutes ago</small>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <a href="javascript:void(0);" class="dropdown-item text-center navbar-notifications-menu__footer">View All</a>
-                                        </div>
-                                </ul>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <!-- // END Header -->
-
-      <?php
                       if(isset($_POST["proj_name"]))
                       {
                         if($_POST["proj_name"][0]!="")
@@ -202,10 +47,9 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                       else {
                         header('Location: ui-projets.php');
                       }
-             ?>
+   ?>
 
                 <!-- Header Layout Content -->
-                <form action="#add_projet" method="POST">
                 <div class="mdk-header-layout__content mdk-header-layout__content--fullbleed mdk-header-layout__content--scrollable page">
                     <div class="container-fluid page__container">
                         <div class="card card-form">
@@ -215,40 +59,68 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
 
                                     <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
 
-                                        <div class="search-form search-form--light m-3">
-                                            <input type="text" class="form-control search" placeholder="Search">
-                                            <button class="btn" type="button" role="button"><i class="material-icons">search</i></button>
-                                        </div>
-                                    <table class="table mb-0 thead-border-top-0">
-                                        <thead>
-                                            <tr>
-                                                <th name="name_pj">Projets</th>
-                                                <th style="width: 120px;" name="type">Type</th>
-                                                <th style="width: 120px;" name="Etage">Etage</th>
-                                                <th style="width: 120px;" name="Surface">Surface</th>
-                                                <th style="width: 120px;" name="prix">Prix</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="list" id="staff02">
-                                          <!--table des Employés-->
-                                          <?php update_table_projets(); ?>
-                                        </tbody>
-                                        <td>
-                                        <div class="form-group">
-                                            <button class="btn btn-block btn-primary" name="add" type="submit">Enregistrer</button>
-                                        </div>
-                                        <td>
-                                           <input type="button" id="btnShowMsg1" value="Ajouter un nouveau projet !" onClick="add_pj()"/>
-                                        </td>
-                                      </td>
+                                    <table id="editable_table" class="table mb-0 thead-border-top-0">
+                                     <thead>
+                                      <tr>
+                                       <th style="width: 100px;" >ID</th>
+                                       <th style="width: 100px;" >Projet</th>
+                                       <th style="width: 100px;" >Type</th>
+                                       <th style="width: 100px;" >Etage</th>
+                                       <th style="width: 100px;" >Surface</th>
+                                       <th style="width: 100px;" >Prix</th>
+                                      </tr>
+                                     </thead>
+
+                                     <tbody>
+                                     <?php
+
+                                     require 'LBD.php';
+                                     $req=$bdd->query("SELECT * FROM Projets");
+
+
+                                     while($row = $req->fetch())
+                                     {
+                                      echo '
+                                      <tr>
+                                       <td>'.$row["Code_pj"].'</td>
+                                       <td>'.$row["ProjetName"].'</td>
+                                       <td>'.$row["type_p"].'</td>
+                                       <td>'.$row["Etages"].'</td>
+                                       <td>'.$row["Surface"].'</td>
+                                       <td>'.$row["Prix"].'</td>
+                                      </tr>
+                                      ';
+                                     }
+                                     ?>
+                                     </tbody>
                                     </table>
+
+                                    <script>
+                                    $(document).ready(function(){
+                                         $('#editable_table').Tabledit({
+                                          url:'action.php',
+                                          columns:{
+                                          identifier:[0, "Code_pj"],
+                                          editable:[[1, 'ProjetName'], [2, 'type_p'], [3, 'Etages'], [4, 'Surface'], [5, 'Prix']]
+                                          },
+                                          restoreButton:false,
+                                          onSuccess:function(data, textStatus, jqXHR)
+                                          {
+                                           if(data.action == 'delete')
+                                           {
+                                            $('#'+data.Code_pj).remove();
+                                           }
+                                          }
+                                         });
+
+                                    });
+                                     </script>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>
                 <!-- // END header-layout__content -->
 
             </div>
