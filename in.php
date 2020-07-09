@@ -18,7 +18,7 @@ $req=$bdd->query("SELECT * FROM Projets");
    <br />
    <br />
             <div class="table-responsive">
-    <h3 align="center">Live Table Data Edit Delete using Tabledit Plugin in PHP</h3><br />
+    <h3 align="center">Apporter des modifications sur les projets (supprimer/éditer) :</h3><br />
     <table id="editable_table" class="table table-bordered table-striped">
      <thead>
       <tr>
@@ -48,6 +48,7 @@ $req=$bdd->query("SELECT * FROM Projets");
      ?>
      </tbody>
     </table>
+    <input type="button" id="btnShowMsg1"  style="width: 400px; color: red;" value="Enregistrer les modifiations et retourner à la page précedente !" onClick="window.location.href='ui-projets.php';"/>
    </div>
   </div>
  </body>
@@ -69,6 +70,5 @@ $(document).ready(function(){
        }
       }
      });
-
 });
  </script>
