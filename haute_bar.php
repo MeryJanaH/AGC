@@ -13,8 +13,19 @@
                 </button>
 
                 <!-- Navbar Brand -->
-                <a href="edit-account.php" class="navbar-brand flex ">
-                    <span>Modifications</span>
+                  <?php if($_SESSION['current_page']=="projets"){?>
+                    <a href="ui-projets.php" class="navbar-brand flex ">
+                    <span>Table des projets</span>
+                  <?php }if($_SESSION['current_page']=="commerciaux"){ ?>
+                    <a href="ui-tables.php" class="navbar-brand flex ">
+                    <span>Table des commerciaux</span>
+                  <?php }if($_SESSION['current_page']=="index"){ ?>
+                    <a href="index.php" class="navbar-brand flex ">
+                    <span>Tableau de bord</span>
+                  <?php }if($_SESSION['current_page']=="edit"){ ?>
+                    <a href="edit-account.php" class="navbar-brand flex ">
+                    <span>Modifier vos informations</span>
+                  <?php } ?>
                 </a>
 
 
@@ -119,7 +130,7 @@
                                         <div class="mr-3">
                                             <div class="avatar avatar-sm" style="width: 32px; height: 32px;">
                                                 <img src="assets/images/256_daniel-gaffey-1060698-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                            </div>
+                                           </div>
                                         </div>
                                         <div class="flex">
                                             <a href="">A.Demian</a> left a comment on <a href="">Stack</a><br>
