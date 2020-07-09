@@ -132,7 +132,7 @@
                 <a class="sidebar-link" href="login.php">
                   <p>
                     <form action="login.php" method="POST">
-                      <button name="decnx" style="width: 100px; color:blue";>Déconnexion</button>
+                      <button name="decnx" style="width: 100px;">Déconnexion</button>
                       <i class="sidebar-menu-icon ml-2 material-icons icon-16pt">exit_to_app</i>
                     </form>
                   </p>
