@@ -1,5 +1,6 @@
 <?php
-session_start();
+require 'LBD.php';
+require 'functions.php';
 
 if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION['login']) or $_SESSION['user']!="admin")
 {
@@ -89,9 +90,35 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                 <?php
               }
             }
+
+        if(isset($_POST['submit']))
+        {
+            $_SESSION['enrg'] = "false";
+
+            $inter=email_exist($_POST['email_2']);
+            if($inter == "true")
+            {
+              $_SESSION['enrg'] = "true";
+              header('Location: signup.php');
+            }
+            else
+            {
+              $default_password = default_password();
+              $lien = "http://localhost/AGC/login.php";
+              $txt = "Voici votre mot de passe pour se connecter à AGC : ".'<br/>'."MDP : ".$default_password.'<br/>'."Adresse email : ".$_POST['email_2'].'<br/>'." Vous pouvez utiliser le lien suivent : ".$lien;
+
+                $req = $bdd->prepare('INSERT INTO Commerciaux (Email, Password) VALUES(?, ?)');
+                $req->execute(array($_POST['email_2'], md5($default_password)));
+
+              first_mail($_SESSION['email'], $_POST['email_2'], 'AGC',$txt);
+              header('Location: signup.php');
+            }
+        }
+
+
                 ?>
         <div class="card card-body">
-            <form action="messager.php" method="POST">
+            <form action="#messager" method="POST">
                 <div class="form-group">
                     <label class="text-label" for="email_2">Adresse email:</label>
                     <div class="input-group input-group-merge">
@@ -107,9 +134,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                   <button class="btn btn-primary mb-2" name="submit" type="submit">Créer un compte</button><br>
                 </div>
             </form>
-
             <a href="index.php"><button type="button" class="btn btn-block btn-primary">Retourner à l'accueil</button></a>
-
         </div>
     </div>
 
