@@ -215,16 +215,30 @@
                                         e.preventDefault();
                                         var r = a.find('input[name="title"]').val(),
                                             c = (a.find('input[name="beginning"]').val(), a.find('input[name="ending"]').val(), a.find('select[name="category"] option:checked').val());
-                                        if (null !== r && 0 != r.length) return o.fullCalendar("renderEvent", {
-                                            title: r,
-                                            start: n,
-                                            end: t,
-                                            allDay: !1,
-                                            className: c
-                                        }, !0), i.modal("hide");
+
+                                        if (null !== r && 0 != r.length)
+                                        {
+                                          $.post("/AGC/test.php",
+                                            {
+                                              title: r,
+                                              start: n.toString(),
+                                              end: t.toString()
+                                            },
+                                            function(data,status){
+                                              alert("Data: " + data + "\nStatus: " + status);
+                                            });
+                                          return o.fullCalendar("renderEvent", {
+                                             title: r,
+                                             start: n,
+                                             end: t,
+                                             allDay: !1,
+                                             className: c
+                                         }, !0), i.modal("hide");
+                                        }
                                         alert("You have to give a title to your event")
                                     }), o.fullCalendar("unselect")
                                 }(t, e, 0, n)
+
                             },
                             eventClick: function(t, e, o) {
                                 ! function(n, t, e, o) {
