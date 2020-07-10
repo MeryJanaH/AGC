@@ -38,6 +38,11 @@ $_SESSION['current_page']="calendar";
     <!-- FullCalendar -->
     <link type="text/css" href="assets/vendor/fullcalendar/fullcalendar.min.css" rel="stylesheet">
 
+    <!-- Select2 -->
+    <link type="text/css" href="assets/css/vendor-select2.css" rel="stylesheet">
+    <link type="text/css" href="assets/css/vendor-select2.rtl.css" rel="stylesheet">
+    <link type="text/css" href="assets/vendor/select2/select2.min.css" rel="stylesheet">
+
 
 </head>
 
@@ -92,6 +97,9 @@ $_SESSION['current_page']="calendar";
                                     <input type="checkbox" class="custom-control-input" id="drop-remove">
                                     <label class="custom-control-label" for="drop-remove">Remove after drop</label>
                                 </div>
+
+
+
                             </div> <!-- end col-->
                         </div> <!-- end row -->
                     </div>
@@ -306,6 +314,7 @@ include 'footer.php'; ?>
 
 
 
+
     <!-- Add New Event MODAL -->
     <div class="modal fade" id="event-modal" tabindex="-1">
         <div class="modal-dialog">
@@ -373,6 +382,10 @@ include 'footer.php'; ?>
     <!-- FullCalendar -->
     <script src="assets/vendor/fullcalendar/fullcalendar.min.js"></script>
     <script src="assets/js/fullcalendar.js"></script>
+
+    <!-- Select2 -->
+    <script src="assets/vendor/select2/select2.min.js"></script>
+    <script src="assets/js/select2.js"></script>
 
 </body>
 
