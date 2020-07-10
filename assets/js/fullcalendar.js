@@ -153,6 +153,14 @@
     206: function(n, t, e) {
         e(43), e(43),
             function() {
+              $.post("/AGC/test.php",
+                {
+                  op: "test",
+                  comm: "mmmmmm"
+                },
+                function(data,status){
+                  res=data
+                });
                 "use strict";
                 var n = new Date,
                     t = (n.getDate(), n.getMonth(), n.getFullYear(), new Date($.now())),
@@ -210,7 +218,6 @@
                                     i.modal({
                                         backdrop: "static"
                                     });
-                                    var tes="rrr"
                                     var a = $('<form>\n      <div class="row">\n        <div class="col-12">\n          <div class="form-group">\n          <script src="assets/vendor/select2/select2.min.js"></script>\n   <script src="assets/js/select2.js"></script>  \n <label class="control-label" for="select01">'+ res +'</label>\n   <label class="control-label" for="select01">Commercial</label>\n          <select id="select01" data-toggle="select" class="form-control" name="commercial">\n          <option value="id1" selected="">My first option</option>\n          <option value="id2">Another option</option>\n          <option value="id3">Third option is here</option>\n          </select> \n           <label class="control-label">Client</label>\n   <input class="form-control" placeholder="Client" type="text" name="title" />\n  <label class="control-label">Projet</label>\n  <input class="form-control" placeholder="Projet" type="text" name="projet" />\n  <label class="control-label">Temps</label>\n  <input class="form-control" placeholder="time" type="text" name="time" />\n  <label class="control-label">Projet</label>\n  <input class="form-control" placeholder="Remarque" type="text" name="remarque" />\n      </div>\n        </div>\n        <div class="col-12">\n          <div class="form-group">\n            <label class="control-label">Category</label>\n            <select class="form-control custom-select" name="category">\n              <option value="bg-danger">Danger</option>\n              <option value="bg-success">Success</option>\n              <option value="bg-primary">Primary</option>\n              <option value="bg-info">Info</option>\n              <option value="bg-dark">Dark</option>\n              <option value="bg-warning">Warning</option>\n            </select>\n          </div>\n        </div>\n      </div>\n    </form>');
                                     i.find(".delete-event").hide().end().find(".save-event").show().end().find(".modal-body").empty().prepend(a).end().find(".save-event").unbind("click").click(function() {
                                         a.submit()

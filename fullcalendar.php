@@ -379,6 +379,21 @@ include 'footer.php'; ?>
     <!-- Moment.js -->
     <script src="assets/vendor/moment.min.js"></script>
 
+    <script>
+    var show="a";
+    var res="a";
+    $.post("/AGC/test.php",
+      {
+        op: "show"
+      },
+      function(data,status){
+        show=data;
+      });
+
+    //  console.log(res);
+
+    </script>
+
     <!-- FullCalendar -->
     <script src="assets/vendor/fullcalendar/fullcalendar.min.js"></script>
     <script src="assets/js/fullcalendar.js"></script>
@@ -386,6 +401,8 @@ include 'footer.php'; ?>
     <!-- Select2 -->
     <script src="assets/vendor/select2/select2.min.js"></script>
     <script src="assets/js/select2.js"></script>
+
+
 
 </body>
 
