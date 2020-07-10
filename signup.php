@@ -65,20 +65,19 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
             {
               ?>
               <div class="alert alert-danger" role="alert">
-                  <strong>Error - </strong> Veuillez réessayer une autre fois
+                  <strong>Erreur - </strong> Veuillez réessayer une autre fois
               </div>
               <?php
             }
-            else
+            elseif ($_SESSION['send']!="NULL")
             {
               ?>
                   <div class="alert alert-success" role="alert">
                       <strong>Succès - </strong> vous avez créer un compte commercial avec succès!
                   </div>
             <?php
-            }
             $_SESSION['send']="NULL";
-        }
+            }
             if(isset($_SESSION['enrg']))
             {
               if($_SESSION['enrg'] == "true")
@@ -90,6 +89,8 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                 <?php
               }
             }
+        }
+
 
         if(isset($_POST['submit']))
         {
