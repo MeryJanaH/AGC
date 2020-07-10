@@ -57,7 +57,6 @@ CREATE TABLE `Calendrier` (
   `J_time` time(0) NOT NULL,
   `Event` varchar(30) DEFAULT NULL,
   `Description` varchar(80) DEFAULT NULL,
-
   `ID_client` int(10) DEFAULT NULL,
   `Code_pj` int(15) DEFAULT NULL,
 

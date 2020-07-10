@@ -351,7 +351,6 @@ include 'footer.php'; ?>
                                 <option value="dark">Dark</option>
                             </select>
                         </div>
-
                     </form>
 
                     <div class="text-right">
