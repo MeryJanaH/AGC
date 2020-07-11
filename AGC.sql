@@ -67,5 +67,6 @@ CREATE TABLE `Calendrier` (
   FOREIGN KEY (ID_cm) REFERENCES Commerciaux(ID_cm)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-insert into Admin (ID_admin,AdminName,Email,Password) values(3,"Annouar","meryem.annouar@ieee.org","202cb962ac59075b964b07152d234b70");
-insert into Commerciaux (ID_cm,CName,Email,Password) values(5,"Yassine","Yassine.Oukassou@ieee.org","202cb962ac59075b964b07152d234b70");
+INSERT INTO Admin (ID_admin,AdminName,Email,Password) VALUES(3,"Annouar","meryem.annouar@ieee.org","202cb962ac59075b964b07152d234b70");
+INSERT INTO Commerciaux (ID_cm,CName,Email,Password) VALUES(5,"Yassine","Yassine.Oukassou@ieee.org","202cb962ac59075b964b07152d234b70");
+INSERT INTO `clients`(`Name`, `phnumber`, `Notes`, `Source`, `Code_pj`) VALUES ("mery","06587","hiiiiii","site",1);

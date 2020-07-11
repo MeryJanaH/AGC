@@ -329,47 +329,43 @@ include 'footer.php'; ?>
                   <form id="form1">    <div class="row">       <div class="col-12">
                         <div class="form-group">
                        <label class="control-label" for="select01">Commercial</label>
-                              <select id="select01" data-toggle="select" class="form-control" name="commercial">
-                                <?php
-                                      require 'LBD.php';
-                                      $req=$bdd->query("SELECT ID_cm, CName, Email FROM Commerciaux WHERE CName !=''");
-                                      while($dn = $req->fetch())
-                                      { ?> <option value="<?php print_r($dn['ID_cm']); ?>" ><?php echo $dn['CName']." , ".$dn['Email']; ?></option><?php } ?>
-                              </select>
-                            <label class="control-label" for="select02">Client</label>
-                    <select id="select02" data-toggle="select" class="form-control" name="client">
-                      <?php
-                        require 'LBD.php';
-                        $req=$bdd->query("SELECT * FROM Clients");
-                        while($dn = $req->fetch())
-                        { ?> <option value="<?php print_r($dn['ID_client']); ?>" ><?php echo $dn['Name']." , ".$dn['phnumber']." , ".$dn['Notes']." , ".$dn['Source']; ?></option><?php } ?>
-                       </select>
-                      <label class="control-label" for="select03">Projet</label>
-                              <select id="select03" data-toggle="select" class="form-control" name="projet">
-                                <?php
-                                  require 'LBD.php';
-                                  $req=$bdd->query("SELECT *  FROM Projets");
-                                  while($dn = $req->fetch())
-                                  { ?> <option value="<?php print_r($dn['Code_pj']); ?>" ><?php echo $dn['ProjetName']." , ".$dn['type_p']." , ".$dn['Etages']; ?></option><?php } ?>
-                       </select>
+                            <select id="select01" data-toggle="select" class="form-control" name="commercial">
+                              <?php
+                                    require 'LBD.php';
+                                    $req=$bdd->query("SELECT ID_cm, CName, Email FROM Commerciaux WHERE CName !=''");
+                                    while($dn = $req->fetch())
+                                    { ?> <option value="<?php print_r($dn['ID_cm']); ?>" ><?php echo $dn['CName']." , ".$dn['Email']; ?></option><?php } ?>
+                            </select>
+                       <label class="control-label" for="select02">Client</label>
+                         <select id="select02" data-toggle="select" class="form-control" name="client">
+                           <?php
+                            require 'LBD.php';
+                            $req=$bdd->query("SELECT * FROM Clients");
+                            while($dn = $req->fetch())
+                            { ?> <option value="<?php print_r($dn['ID_client']); ?>" ><?php echo $dn['Name']." , ".$dn['phnumber']." , ".$dn['Notes']." , ".$dn['Source']; ?></option><?php } ?>
+                          </select>
+                        <label class="control-label" for="select03">Projet</label>
+                          <select id="select03" data-toggle="select" class="form-control" name="projet">
+                            <?php
+                              require 'LBD.php';
+                              $req=$bdd->query("SELECT *  FROM Projets");
+                              while($dn = $req->fetch())
+                              { ?> <option value="<?php print_r($dn['Code_pj']); ?>" ><?php echo $dn['ProjetName']." , ".$dn['type_p']." , ".$dn['Etages']; ?></option><?php } ?>
+                         </select>
                      </div>
                   </div>
-                            <div class="col-12">
-                           <div class="form-group">
-                           <label class="control-label">Category</label>
-                          <select class="form-control custom-select" name="category">
-                <option value="bg-danger">Danger</option>
-                 <option value="bg-success">Success</option>
-                 <option value="bg-primary">Primary</option>
-                 <option value="bg-info">Info</option>
-                 <option value="bg-dark">Dark</option>
-                 <option value="bg-warning">Warning</option>
-                  </select>
-                   </div>
-                   </div>
-                  </div>
-                  </form>
-                </div>
+              <div class="col-12">
+                  <div class="form-group">
+                    <label class="control-label">Category</label>
+                    <select class="form-control custom-select" name="category">
+                       <option value="bg-danger">Danger</option>
+                       <option value="bg-success">Success</option>
+                    </select>
+                 </div>
+              </div>
+            </div>
+        </form>
+      </div>
 
                 <div class="text-right pb-4 pr-4">
                     <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
@@ -451,25 +447,6 @@ include 'footer.php'; ?>
         start: new Date($.now() + 338e6),
         className: "bg-primary"
     }];
-
-  var commerciaux='<?php
-        require 'LBD.php';
-        $req=$bdd->query("SELECT ID_cm, CName, Email FROM Commerciaux WHERE CName !=''");
-        while($dn = $req->fetch())
-        { ?> <option value="<?php print_r($dn['ID_cm']); ?>" ><?php echo $dn['CName']." , ".$dn['Email']; ?></option>\n<?php } ?> '
-
-
-  var clients='<?php
-    require 'LBD.php';
-    $req=$bdd->query("SELECT * FROM Clients");
-    while($dn = $req->fetch())
-    { ?> <option value="<?php print_r($dn['ID_client']); ?>" ><?php echo $dn['Name']." , ".$dn['phnumber']." , ".$dn['Notes']." , ".$dn['Source']; ?></option>\n<?php } ?> '
-
-    var projets='<?php
-      require 'LBD.php';
-      $req=$bdd->query("SELECT *  FROM Projets");
-      while($dn = $req->fetch())
-      { ?> <option value="<?php print_r($dn['Code_pj']); ?>" ><?php echo $dn['ProjetName']." , ".$dn['type_p']." , ".$dn['Etages']; ?></option>\n<?php } ?> '
 
 /*$.post("/AGC/test.php",
       {
