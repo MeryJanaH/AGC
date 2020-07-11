@@ -379,16 +379,42 @@ include 'footer.php'; ?>
     <!-- Moment.js -->
     <script src="assets/vendor/moment.min.js"></script>
 
+
+
+
     <script>
-    var show="a";
     var res="a";
-    $.post("/AGC/test.php",
+    var show=[{
+        title: "Hey!",
+        start: new Date($.now() + 158e6),
+        className: "bg-warning"
+    }, {
+        title: "See John Deo",
+        start: new Date($.now()),
+        end: new Date($.now()),
+        className: "bg-success"
+    }, {
+        title: "Meet John Deo",
+        start: new Date($.now() + 168e6),
+        className: "bg-info"
+    }, {
+        title: "Buy a Theme",
+        start: new Date($.now() + 338e6),
+        className: "bg-primary"
+    }];
+  var commerciaux='<?php
+        require 'LBD.php';
+        $req=$bdd->query("SELECT ID_cm, CName, Email FROM Commerciaux");
+        while($dn = $req->fetch())
+        { ?> <option value="<?php print_r($dn['ID_cm']); ?>" ><?php echo $dn['CName']." , ".$dn['Email']; ?></option>\n<?php } ?> '
+
+    /*$.post("/AGC/test.php",
       {
-        op: "show"
+        op: "test"
       },
       function(data,status){
-        show=data;
-      });
+        res=data;
+      });*/
 
     //  console.log(res);
 
