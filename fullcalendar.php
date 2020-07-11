@@ -37,7 +37,7 @@ $_SESSION['current_page']="calendar";
 
 
     <!-- FullCalendar -->
-    <link type="text/css" href="assets/vendor/fullcalendar/fullcalendar.min.css" rel="stylesheet">
+    <link type="text/css" href="assets/vendor/fullcalendar/lib/main.css" rel="stylesheet">
 
     <!-- Select2 -->
     <link type="text/css" href="assets/css/vendor-select2.css" rel="stylesheet">
@@ -322,11 +322,59 @@ include 'footer.php'; ?>
                     <h4 class="modal-title">Add New Event</h4>
                 </div>
                 <div class="modal-body pt-3 pr-4 pl-4">
+
+                  <input type="hidden" id="startTime"/>
+                  <input type="hidden" id="endTime"/>
+
+                  <form id="form1">    <div class="row">       <div class="col-12">
+                        <div class="form-group">
+                       <label class="control-label" for="select01">Commercial</label>
+                              <select id="select01" data-toggle="select" class="form-control" name="commercial">
+                                <?php
+                                      require 'LBD.php';
+                                      $req=$bdd->query("SELECT ID_cm, CName, Email FROM Commerciaux WHERE CName !=''");
+                                      while($dn = $req->fetch())
+                                      { ?> <option value="<?php print_r($dn['ID_cm']); ?>" ><?php echo $dn['CName']." , ".$dn['Email']; ?></option><?php } ?>
+                              </select>
+                            <label class="control-label" for="select02">Client</label>
+                    <select id="select02" data-toggle="select" class="form-control" name="client">
+                      <?php
+                        require 'LBD.php';
+                        $req=$bdd->query("SELECT * FROM Clients");
+                        while($dn = $req->fetch())
+                        { ?> <option value="<?php print_r($dn['ID_client']); ?>" ><?php echo $dn['Name']." , ".$dn['phnumber']." , ".$dn['Notes']." , ".$dn['Source']; ?></option><?php } ?>
+                       </select>
+                      <label class="control-label" for="select03">Projet</label>
+                              <select id="select03" data-toggle="select" class="form-control" name="projet">
+                                <?php
+                                  require 'LBD.php';
+                                  $req=$bdd->query("SELECT *  FROM Projets");
+                                  while($dn = $req->fetch())
+                                  { ?> <option value="<?php print_r($dn['Code_pj']); ?>" ><?php echo $dn['ProjetName']." , ".$dn['type_p']." , ".$dn['Etages']; ?></option><?php } ?>
+                       </select>
+                     </div>
+                  </div>
+                            <div class="col-12">
+                           <div class="form-group">
+                           <label class="control-label">Category</label>
+                          <select class="form-control custom-select" name="category">
+                <option value="bg-danger">Danger</option>
+                 <option value="bg-success">Success</option>
+                 <option value="bg-primary">Primary</option>
+                 <option value="bg-info">Info</option>
+                 <option value="bg-dark">Dark</option>
+                 <option value="bg-warning">Warning</option>
+                  </select>
+                   </div>
+                   </div>
+                  </div>
+                  </form>
                 </div>
+
                 <div class="text-right pb-4 pr-4">
                     <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success save-event">Create event</button>
-                    <button type="button" class="btn btn-danger delete-event" data-dismiss="modal">Delete</button>
+                    <button type="button" class="btn btn-success save-event" id="submitButton">Create event</button>
+                  <!--  <button type="button" class="btn btn-danger delete-event" data-dismiss="modal">Delete</button>-->
                 </div>
             </div> <!-- end modal-content-->
         </div> <!-- end modal dialog-->
@@ -370,6 +418,7 @@ include 'footer.php'; ?>
         </div> <!-- end modal dialog-->
     </div>
     <!-- end modal-->
+
 
     <!-- jQuery UI (for draggable) -->
     <script src="assets/vendor/jquery-ui.min.js"></script>
@@ -434,12 +483,106 @@ include 'footer.php'; ?>
 
     </script>
 
-
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.css' rel='stylesheet' />
+    <link href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.1/css/all.css' rel='stylesheet'>
 
     <!-- FullCalendar -->
-    <script src="assets/vendor/fullcalendar/fullcalendar.min.js"></script>
-    <script src="assets/js/fullcalendar.js"></script>
+    <script src="assets/vendor/fullcalendar/lib/main.js"></script>
+     <script src="assets/js/test.js"></script>
 
+<script src='assets/vendor/fullcalendar/lib/locales/fr.js'></script>
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          locale: 'fr',
+          selectable: true,
+          editable: true,
+          droppable: true,
+          eventLimit: true,
+          slotDuration: "00:30:00",
+          minTime: "08:00:00",
+          maxTime: "19:00:00",
+          defaultView: "month",
+          handleWindowResize: true,
+          height: $(window).height() - 200,
+          themeSystem: 'bootstrap',
+          headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+          },
+          weekNumbers: true,
+          dayMaxEvents: true, // allow "more" link when too many events
+          events: 'https://fullcalendar.io/demo-events.json',
+          select: function(info) {
+            //alert('selected ' + info.startStr + ' to ' + info.endStr);
+
+            $('#event-modal #startTime').val(info.startStr);
+            $('#event-modal #endTime').val(info.endStr);
+            //$('#createEventModal #when').text(mywhen);
+            $('#event-modal').modal('toggle');
+            $('#submitButton').on('click', function(e){
+                 // We don't want this to act as a link so cancel the link action
+                 e.preventDefault();
+                 $("#event-modal").modal('hide');
+                 var startTime = $('#startTime').val();
+                 var endTime = $('#endTime').val();
+
+                 alert("You have selected the client - " + client);
+
+                 $.ajax({
+                     url: 'test.php',
+                     data: 'action=add&commercial='+commercial+'&client='+client+'&projet='+projet,
+                     type: "POST",
+                     success: function(json) {
+                         calendar.addEvent({
+                             title: commercial,
+                             start: startTime,
+                             end: endTime,
+                         },
+                         true);
+                     }
+                 });
+             });
+
+
+          },
+          eventClick: function(info) {
+              alert('Event: ' + info.event.title);
+              alert('View: ' + info.view.type);
+
+              // change the border color just for fun
+              info.el.style.borderColor = 'red';
+            }
+          });
+        calendar.render();
+      });
+
+
+       var commercial;
+       $(document).ready(function(){
+           $("#select01").change(function(){
+               commercial = $(this).children("option:selected").val();
+           });
+         });
+
+         var client;
+         $(document).ready(function(){
+             $("#select02").change(function(){
+                 client = $(this).children("option:selected").val();
+             });
+           });
+
+           var projet;
+           $(document).ready(function(){
+               $("#select03").change(function(){
+                   projet = $(this).children("option:selected").val();
+               });
+             });
+
+    </script>
 
 </body>
 
