@@ -404,11 +404,23 @@ include 'footer.php'; ?>
     }];
   var commerciaux='<?php
         require 'LBD.php';
-        $req=$bdd->query("SELECT ID_cm, CName, Email FROM Commerciaux");
+        $req=$bdd->query("SELECT ID_cm, CName, Email FROM Commerciaux WHERE CName !=''");
         while($dn = $req->fetch())
         { ?> <option value="<?php print_r($dn['ID_cm']); ?>" ><?php echo $dn['CName']." , ".$dn['Email']; ?></option>\n<?php } ?> '
 
-    /*$.post("/AGC/test.php",
+
+  var clients='<?php
+    require 'LBD.php';
+    $req=$bdd->query("SELECT * FROM Clients");
+    while($dn = $req->fetch())
+    { ?> <option value="<?php print_r($dn['ID_client']); ?>" ><?php echo $dn['Name']." , ".$dn['phnumber']." , ".$dn['Notes']." , ".$dn['Source']; ?></option>\n<?php } ?> '
+
+    var projets='<?php
+      require 'LBD.php';
+      $req=$bdd->query("SELECT *  FROM Projets");
+      while($dn = $req->fetch())
+      { ?> <option value="<?php print_r($dn['Code_pj']); ?>" ><?php echo $dn['ProjetName']." , ".$dn['type_p']." , ".$dn['Etages']; ?></option>\n<?php } ?> '
+/*$.post("/AGC/test.php",
       {
         op: "test"
       },
