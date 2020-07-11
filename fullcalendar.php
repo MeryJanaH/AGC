@@ -18,6 +18,10 @@ $_SESSION['current_page']="calendar";
     <!-- Simplebar -->
     <link type="text/css" href="assets/vendor/simplebar.min.css" rel="stylesheet">
 
+    <!-- Flatpickr -->
+    <link type="text/css" href="assets/css/vendor-flatpickr.css" rel="stylesheet">
+
+
     <!-- App CSS -->
     <link type="text/css" href="assets/css/app.css" rel="stylesheet">
     <link type="text/css" href="assets/css/app.rtl.css" rel="stylesheet">
@@ -98,13 +102,14 @@ $_SESSION['current_page']="calendar";
                                     <label class="custom-control-label" for="drop-remove">Remove after drop</label>
                                 </div>
 
-
+                                <div class="form-group">
+                                    <label for="flatpickrSample01">Date</label>
+                                    <input id="flatpickrSample01" type="text" class="form-control" placeholder="Flatpickr example" data-toggle="flatpickr" value="today">
+                                </div>
 
                             </div> <!-- end col-->
                         </div> <!-- end row -->
                     </div>
-
-
 
                 </div>
                 <!-- // END header-layout__content -->
@@ -439,6 +444,10 @@ include 'footer.php'; ?>
     <!-- Select2 -->
     <script src="assets/vendor/select2/select2.min.js"></script>
     <script src="assets/js/select2.js"></script>
+
+    <!-- Flatpickr -->
+    <script src="assets/vendor/flatpickr/flatpickr.min.js"></script>
+    <script src="assets/js/flatpickr.js"></script>
 
 
 
