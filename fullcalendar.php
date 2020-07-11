@@ -18,9 +18,6 @@ $_SESSION['current_page']="calendar";
     <!-- Simplebar -->
     <link type="text/css" href="assets/vendor/simplebar.min.css" rel="stylesheet">
 
-    <!-- Flatpickr -->
-    <link type="text/css" href="assets/css/vendor-flatpickr.css" rel="stylesheet">
-
 
     <!-- App CSS -->
     <link type="text/css" href="assets/css/app.css" rel="stylesheet">
@@ -102,10 +99,6 @@ $_SESSION['current_page']="calendar";
                                     <label class="custom-control-label" for="drop-remove">Remove after drop</label>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="flatpickrSample01">Date</label>
-                                    <input id="flatpickrSample01" type="text" class="form-control" placeholder="Flatpickr example" data-toggle="flatpickr" value="today">
-                                </div>
 
                             </div> <!-- end col-->
                         </div> <!-- end row -->
@@ -385,7 +378,9 @@ include 'footer.php'; ?>
     <script src="assets/vendor/moment.min.js"></script>
 
 
-
+    <!-- Select2 -->
+    <script src="assets/vendor/select2/select2.min.js"></script>
+    <script src="assets/js/select2.js"></script>
 
     <script>
     var res="a";
@@ -407,6 +402,7 @@ include 'footer.php'; ?>
         start: new Date($.now() + 338e6),
         className: "bg-primary"
     }];
+
   var commerciaux='<?php
         require 'LBD.php';
         $req=$bdd->query("SELECT ID_cm, CName, Email FROM Commerciaux WHERE CName !=''");
@@ -425,6 +421,7 @@ include 'footer.php'; ?>
       $req=$bdd->query("SELECT *  FROM Projets");
       while($dn = $req->fetch())
       { ?> <option value="<?php print_r($dn['Code_pj']); ?>" ><?php echo $dn['ProjetName']." , ".$dn['type_p']." , ".$dn['Etages']; ?></option>\n<?php } ?> '
+
 /*$.post("/AGC/test.php",
       {
         op: "test"
@@ -437,18 +434,11 @@ include 'footer.php'; ?>
 
     </script>
 
+
+
     <!-- FullCalendar -->
     <script src="assets/vendor/fullcalendar/fullcalendar.min.js"></script>
     <script src="assets/js/fullcalendar.js"></script>
-
-    <!-- Select2 -->
-    <script src="assets/vendor/select2/select2.min.js"></script>
-    <script src="assets/js/select2.js"></script>
-
-    <!-- Flatpickr -->
-    <script src="assets/vendor/flatpickr/flatpickr.min.js"></script>
-    <script src="assets/js/flatpickr.js"></script>
-
 
 
 </body>
