@@ -53,9 +53,10 @@ CREATE TABLE `Clients` (
 
 CREATE TABLE `Calendrier` (
   `id` int(15) NOT NULL AUTO_INCREMENT,
-  `date_time` varchar(40) DEFAULT NULL,
-  `Event` varchar(30) DEFAULT NULL,
-  `Description` varchar(80) DEFAULT NULL,
+  `date_tdébut` varchar(40) DEFAULT NULL,
+  `date_tfin` varchar(40) DEFAULT NULL,
+  `Event` varchar(50) DEFAULT NULL,
+  `Description` varchar(100) DEFAULT NULL,
   `ID_client` int(15) DEFAULT NULL,
   `ID_cm` int(15) NOT NULL ,
   `Code_pj` int(15) NOT NULL,

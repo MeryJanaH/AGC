@@ -214,7 +214,7 @@
                                     i.modal({
                                         backdrop: "static"
                                     });
-                                    var a = $('<form>\n      <div class="row">\n        <div class="col-12">\n          <div class="form-group">\n          <script src="assets/vendor/select2/select2.min.js"></script>\n   <script src="assets/js/select2.js"></script>  \n    <label class="control-label" for="select01">Commercial</label>\n          <select id="select01" data-toggle="select" class="form-control" name="commercial">\n' + commerciaux + '   </select> \n          <label class="control-label" for="select02">Client</label>\n          <select id="select02" data-toggle="select" class="form-control" name="client">\n' + clients + '      </select> \n  <label class="control-label" for="select03">Projet</label>\n          <select id="select03" data-toggle="select" class="form-control" name="projet">\n' + projets + '      </select> \n   </div>\n        </div>\n        <div class="col-12">\n          <div class="form-group">\n            <label class="control-label">Category</label>\n            <select class="form-control custom-select" name="category">\n              <option value="bg-danger">Danger</option>\n              <option value="bg-success">Success</option>\n              <option value="bg-primary">Primary</option>\n              <option value="bg-info">Info</option>\n              <option value="bg-dark">Dark</option>\n              <option value="bg-warning">Warning</option>\n            </select>\n          </div>\n        </div>\n      </div>\n    </form>');
+                                    var a = $('<form>\n      <div class="row">\n        <div class="col-12">\n          <div class="form-group">\n          <script src="assets/vendor/select2/select2.min.js"></script>\n   <script src="assets/js/select2.js"></script>  \n    <label class="control-label" for="select01">Commercial</label>\n          <select id="select01" data-toggle="select" class="form-control" name="commercial">\n' + commerciaux + '   </select> \n          <label class="control-label" for="select02">Client</label>\n          <select id="select02" data-toggle="select" class="form-control" name="client">\n' + clients + '      </select> \n  <label class="control-label" for="select03">Projet</label>\n          <select id="select03" data-toggle="select" class="form-control" name="projet">\n' + projets + '      </select> \n   <label class="control-label">Titre</label>\n     <input class="form-control" placeholder="Ajouter un titre" type="text" name="titre" />\n  <label class="control-label">Description</label>\n     <input class="form-control" placeholder="Ajouter une description" type="text" name="description" />\n</div>\n        </div>\n        <div class="col-12">\n          <div class="form-group">\n            <label class="control-label">Category</label>\n            <select class="form-control custom-select" name="category">\n        <option value="bg-danger">RDV annulé</option>\n              <option value="bg-success">RDV</option>\n   </select>\n          </div>\n        </div>\n      </div>\n    </form>');
                                     i.find(".delete-event").hide().end().find(".save-event").show().end().find(".modal-body").empty().prepend(a).end().find(".save-event").unbind("click").click(function() {
                                         a.submit()
                                     }), i.find("form").on("submit", function(e) {
@@ -222,15 +222,20 @@
                                         var comm = (a.find('input[name="beginning"]').val(), a.find('input[name="ending"]').val(), a.find('select[name="commercial"] option:checked').val()),
                                             client = (a.find('input[name="beginning"]').val(), a.find('input[name="ending"]').val(), a.find('select[name="client"] option:checked').val()),
                                             projet = (a.find('input[name="beginning"]').val(), a.find('input[name="ending"]').val(), a.find('select[name="projet"] option:checked').val()),
+                                            titre = a.find('input[name="titre"]').val(),
+                                            description = a.find('input[name="description"]').val(),
                                             c = (a.find('input[name="beginning"]').val(), a.find('input[name="ending"]').val(), a.find('select[name="category"] option:checked').val());
 
                                         if (null !== r && 0 != r.length)
                                         {
-                                          $.post("/AGC/test.php",
+                                          $.post("/AGC/fct_calend.php",
                                             {
                                               op: "add",
                                               comm: comm,
                                               client: client,
+                                              projet: projet,
+                                              titre: titre,
+                                              description: description,
                                               start: n.toString(),
                                               end: t.toString(),
                                               c: c
@@ -239,7 +244,7 @@
                                               alert("Data: " + data + "\nStatus: " + status);
                                             });
                                           return o.fullCalendar("renderEvent", {
-                                             title: client,
+                                             title: titre,
                                              start: n,
                                              end: t,
                                              allDay: !1,
