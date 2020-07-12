@@ -337,7 +337,7 @@ function  add_client($c_n,$nm_t,$c_nt,$c_s,$c_p)
   require 'LBD.php';
   for ($a = 0; $a < count($c_n); $a++)
   {
-      $re = $bdd->prepare("SELECT ProjetName FROM Projets WHERE Code_pj =$c_p[$a]");
+      $re = $bdd->prepare("SELECT Code_pj FROM Projets WHERE ProjetName =$c_p[$a]");
       $re->execute();
       $res = $re->fetch();
 
