@@ -99,6 +99,9 @@
                                     <a class="sidebar-menu-button" href="ui-projets.php">
                                         <span class="sidebar-menu-text">Table des projets</span>
                                     </a>
+                                    <a class="sidebar-menu-button" href="table_clients.php">
+                                        <span class="sidebar-menu-text">Table des clients</span>
+                                    </a>
                                 </li>
                                 <li class="sidebar-menu-item">
                                     <a class="sidebar-menu-button" href="ui-buttons.html">

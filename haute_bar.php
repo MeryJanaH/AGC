@@ -28,7 +28,10 @@
                   <?php }if($_SESSION['current_page']=="edit"){ ?>
                     <a href="edit-account.php" class="navbar-brand flex ">
                     <span>Modifier vos informations</span>
-                  <?php } ?>
+                  <?php }if($_SESSION['current_page']=="clients"){ ?>
+                     <a href="table_clients.php" class="navbar-brand flex ">
+                     <span>Table de clients</span>
+                   <?php } ?>
                 </a>
 
 

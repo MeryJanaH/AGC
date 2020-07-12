@@ -259,22 +259,61 @@ function update_table_projets()
      <?php
       }
     }
-    ?>
-<script>
-function add_pj()
-  {
-    var html = "<tr>";
-        html += "<td><input id ='n' name='proj_name[]'></td>";
-        html += "<td><input id ='t' name='proj_type[]'></td>";
-        html += "<td><input id ='e' name='proj_etage[]'></td>";
-        html += "<td><input id ='s' name='proj_surface[]'></td>";
-        html += "<td><input id ='p' name='proj_prix[]'></td>";
-        html += "</tr>";
 
-   var row = document.getElementById("staff02").insertRow();
-        row.innerHTML = html;
-  }
-</script>
+function update_table_clients()
+    {
+      require 'LBD.php';
+      $req=$bdd->query("SELECT * FROM Clients");
+
+      while($dn = $req->fetch())
+      { ?>
+        <tr>
+            <td><span class="js-lists-values-employee-name"><?php print_r($dn['Name']); ?></span></td>
+            <td><span class="text-muted"><?php print_r($dn['phnumber']) ?></span></td>
+            <td><span class="text-muted"><?php print_r($dn['Notes']) ?></span></td>
+            <td><span class="text-muted"><?php print_r($dn['Source']) ?></span></td>
+            <td><span class="text-muted"><?php print_r($dn['Code_pj']) ?></span></td>
+        </tr>
+     <?php
+      }
+    }
+
+    ?>
+    <script>
+    function add_pj()
+      {
+        var html = "<tr>";
+            html += "<td><input id ='n' name='proj_name[]'></td>";
+            html += "<td><input id ='t' name='proj_type[]'></td>";
+            html += "<td><input id ='e' name='proj_etage[]'></td>";
+            html += "<td><input id ='s' name='proj_surface[]'></td>";
+            html += "<td><input id ='p' name='proj_prix[]'></td>";
+            html += "</tr>";
+
+       var row = document.getElementById("staff02").insertRow();
+            row.innerHTML = html;
+      }
+
+      function add_ct()
+        {
+          var html = "<tr>";
+              html += "<td><input id ='n' name='name_client[]'></td>";
+              html += "<td><input id ='nm' name='num[]'></td>";
+              html += "<td><input id ='nt' name='Note[]'></td>";
+              html += "<td><input id ='s' name='source[]'></td>";
+              html += "<td><select>
+                            <?php
+                               require 'LBD.php';
+                               $req=$bdd->query('SELECT *  FROM Projets');
+                               while($dn = $req->fetch())
+                               { ?> <option value='<?php print_r($dn['Code_pj']); ?>'><?php echo $dn['ProjetName'];?></option><?php}?>
+                       </select></td>";
+              html += "</tr>";
+
+         var row = document.getElementById("staff03").insertRow();
+              row.innerHTML = html;
+        }
+    </script>
 
 <?php
 
@@ -288,10 +327,14 @@ function  add_projet($p_n,$p_t,$p_e,$p_s,$p_p)
   }
 }
 
-function add_calendar()
+function  add_client($c_n,$nm_t,$c_nt,$c_s,$c_p)
 {
-
+  require 'LBD.php';
+  for ($a = 0; $a < count($c_n); $a++)
+  {
+      $req = $bdd->prepare("INSERT INTO Clients (Name, phnumber,Notes,Source,Code_pj) VALUES ('" . $c_n[$a] . "','" . $nm_t[$a]."','" . $c_nt[$a]."','" . $c_s[$a]."','" . $c_p[$a]."')");
+      $req->execute();
+  }
 }
-
 
 ?>

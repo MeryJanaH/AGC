@@ -331,10 +331,10 @@ include 'footer.php'; ?>
                        <label class="control-label" for="select01">Commercial</label>
                             <select id="select01" data-toggle="select" class="form-control" name="commercial">
                               <?php
-                                    require 'LBD.php';
-                                    $req=$bdd->query("SELECT ID_cm, CName, Email FROM Commerciaux WHERE CName !=''");
-                                    while($dn = $req->fetch())
-                                    { ?> <option value="<?php print_r($dn['ID_cm']); ?>" ><?php echo $dn['CName']." , ".$dn['Email']; ?></option><?php } ?>
+                              require 'LBD.php';
+                              $req=$bdd->query("SELECT ID_cm, CName, Email FROM Commerciaux WHERE CName !=''");
+                              while($dn = $req->fetch())
+                              { ?> <option value="<?php print_r($dn['ID_cm']); ?>" ><?php echo $dn['CName']." , ".$dn['Email']; ?></option><?php } ?>
                             </select>
                        <label class="control-label" for="select02">Client</label>
                          <select id="select02" data-toggle="select" class="form-control" name="client">
@@ -354,14 +354,22 @@ include 'footer.php'; ?>
                          </select>
                      </div>
                   </div>
-              <div class="col-12">
-                  <div class="form-group">
-                    <label class="control-label">Category</label>
-                    <select class="form-control custom-select" name="category" id="category">
-                       <option value="bg-danger">Danger</option>
-                       <option value="bg-success">Success</option>
-                    </select>
+
+                 <div class="col-12">
+                    <label class="control-label">Titre</label>
+                    <input class="form-control" placeholder="Ajouter un titre" type="text" id="titre" name="titre" />
+                    <label class="control-label">Description</label>
+                    <input class="form-control" placeholder="Ajouter une description" type="text" id="desc" name="description" />
                  </div>
+
+                 <div class="col-12">
+                   <div class="form-group">
+                      <label class="control-label">Category</label>
+                      <select class="form-control custom-select" name="category" id="category">
+                         <option value="bg-danger">Danger</option>
+                         <option value="bg-success">Success</option>
+                      </select>
+                  </div>
               </div>
             </div>
         </form>
@@ -477,12 +485,11 @@ include 'footer.php'; ?>
           selectable: true,
           editable: true,
           droppable: true,
-          eventLimit: true,
           slotDuration: "00:30:00",
-          minTime: "08:00:00",
-          maxTime: "19:00:00",
+          slotMinTime: "08:00:00",
+          slotMaxTime: "19:00:00",
           initialView:"timeGridWeek",
-          defaultView: "month",
+          navLinks:true,
           handleWindowResize: true,
           height: $(window).height() - 200,
           themeSystem: 'bootstrap',
@@ -493,14 +500,31 @@ include 'footer.php'; ?>
           },
           weekNumbers: true,
           dayMaxEvents: true, // allow "more" link when too many events
-          events: 'https://fullcalendar.io/demo-events.json',
+          events: [{
+              title: "Hey!",
+              start: new Date($.now() + 158e6),
+              className: "bg-warning"
+          }, {
+              title: "See John Deo",
+              start: new Date($.now()),
+              end: new Date($.now()),
+              className: "bg-success"
+          }, {
+              title: "Meet John Deo",
+              start: new Date($.now() + 168e6),
+              className: "bg-info"
+          }, {
+              title: "Buy a Theme",
+              start: new Date($.now() + 338e6),
+              className: "bg-primary"
+          }],
           select: function(info) {
 
             $('#event-modal #startTime').val(info.startStr);
             $('#event-modal #endTime').val(info.endStr);
             //$('#createEventModal #when').text(mywhen);
             $('#event-modal').modal('toggle');
-            $('#submitButton').on('click', function(e){
+            $('#submitButton').unbind('click').on('click', function(e){
                  // We don't want this to act as a link so cancel the link action
                  e.preventDefault();
                  $("#event-modal").modal('hide');
@@ -510,18 +534,17 @@ include 'footer.php'; ?>
                  var client = $("#select02").children("option:selected").val();
                  var projet = $("#select03").children("option:selected").val();
                  var category = $("#category").children("option:selected").val();
-
-                 alert("You have selected the comm - " + commercial);
+                 var titre = $("#titre").val();
+                 var description = $("#desc").val();
 
                  calendar.addEvent({
-                     /*id: 1,*/
-                     title: commercial,
+                     title: titre,
                      start: startTime,
                      end: endTime,
                      classNames: category,
                      allDay:false
                  });
-              /*   $.post("/AGC/fct_calend.php",
+                 $.post("/AGC/fct_calend.php",
                    {
                      op: "add",
                      comm: commercial,
@@ -531,11 +554,8 @@ include 'footer.php'; ?>
                      description: description,
                      start:startTime,
                      end: endTime,
-                     c: c
-                   },
-                   function(data,status){
-                     alert("Data: " + data + "\nStatus: " + status);
-                   });*/
+                     c: category
+                   });
              });
           },
           eventClick: function(info) {
