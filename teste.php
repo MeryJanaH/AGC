@@ -1,10 +1,20 @@
 <?php
-require 'LBD.php';
-require 'functions.php';
+
  //$inter=email_exist($_POST['email_2']);
  //echo $inter;
+function  fill_unit_select_box(){
+  require 'LBD.php';
+    $output = '';
+    $req=$bdd->query('SELECT *  FROM Projets');
+    while($dn = $req->fetch())
+    {$output .=  '<option value="'.$dn['Code_pj'].'">'.$dn['ProjetName'].'</option>';}
 
-  $sql="UPDATE Commerciaux SET lastLog = NOW() WHERE Email = 'Yassine.Oukassou@ieee.org' AND Password= 'oks123';
+    return $output;}
+
+echo fill_unit_select_box();
+
+
+  //$sql="UPDATE Commerciaux SET lastLog = NOW() WHERE Email = 'Yassine.Oukassou@ieee.org' AND Password= 'oks123';
 
  /*<!--$req=$bdd->querCName FROM Commerciaux");
  while(>!--$dn = $req->fetch())
