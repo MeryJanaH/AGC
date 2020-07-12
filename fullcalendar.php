@@ -456,15 +456,18 @@ include 'footer.php'; ?>
         className: "bg-primary"
     }];
 
-/*$.post("/AGC/test.php",
+  /*  $.post("/AGC/fct_calend.php",
       {
-        op: "test"
-      },
-      function(data,status){
-        res=data;
+        op: "show",
+        comm: commercial,
+        client: client,
+        projet: projet,
+        titre: titre,
+        description: description,
+        start:startTime,
+        end: endTime,
+        c: category
       });*/
-
-    //  console.log(res);
 
     </script>
 
@@ -517,7 +520,8 @@ include 'footer.php'; ?>
               title: "Buy a Theme",
               start: new Date($.now() + 338e6),
               className: "bg-primary"
-          }],
+          }];
+
           select: function(info) {
 
             $('#event-modal #startTime').val(info.startStr);
@@ -544,6 +548,7 @@ include 'footer.php'; ?>
                      classNames: category,
                      allDay:false
                  });
+
                  $.post("/AGC/fct_calend.php",
                    {
                      op: "add",
@@ -559,8 +564,8 @@ include 'footer.php'; ?>
              });
           },
           eventClick: function(info) {
-              alert('Event: ' + info.event.title);
-              alert('View: ' + info.view.type);
+            //  alert('Titre: ' + info.event.title +'\nCommercial: ' + info.event.comm +'\nClient: ' + info.event.client +'\nProjet: ' + info.event.projet+'\nDescription: ' + info.event.description+'\nTemps: \n   -De : '+info.event.start+'\n   -Ä : '+info.event.end);
+
 
               // change the border color just for fun
               info.el.style.borderColor = 'red';
