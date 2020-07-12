@@ -520,7 +520,7 @@ include 'footer.php'; ?>
               title: "Buy a Theme",
               start: new Date($.now() + 338e6),
               className: "bg-primary"
-          }];
+          }],
 
           select: function(info) {
 
