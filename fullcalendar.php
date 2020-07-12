@@ -357,7 +357,7 @@ include 'footer.php'; ?>
               <div class="col-12">
                   <div class="form-group">
                     <label class="control-label">Category</label>
-                    <select class="form-control custom-select" name="category">
+                    <select class="form-control custom-select" name="category" id="category">
                        <option value="bg-danger">Danger</option>
                        <option value="bg-success">Success</option>
                     </select>
@@ -465,7 +465,7 @@ include 'footer.php'; ?>
 
     <!-- FullCalendar -->
     <script src="assets/vendor/fullcalendar/lib/main.js"></script>
-     <script src="assets/js/test.js"></script>
+  <!--   <script src="assets/js/test.js"></script>-->
 
 <script src='assets/vendor/fullcalendar/lib/locales/fr.js'></script>
     <script>
@@ -481,6 +481,7 @@ include 'footer.php'; ?>
           slotDuration: "00:30:00",
           minTime: "08:00:00",
           maxTime: "19:00:00",
+          initialView:"timeGridWeek",
           defaultView: "month",
           handleWindowResize: true,
           height: $(window).height() - 200,
@@ -494,7 +495,6 @@ include 'footer.php'; ?>
           dayMaxEvents: true, // allow "more" link when too many events
           events: 'https://fullcalendar.io/demo-events.json',
           select: function(info) {
-            //alert('selected ' + info.startStr + ' to ' + info.endStr);
 
             $('#event-modal #startTime').val(info.startStr);
             $('#event-modal #endTime').val(info.endStr);
@@ -506,25 +506,37 @@ include 'footer.php'; ?>
                  $("#event-modal").modal('hide');
                  var startTime = $('#startTime').val();
                  var endTime = $('#endTime').val();
+                 var commercial = $("#select01").children("option:selected").val();
+                 var client = $("#select02").children("option:selected").val();
+                 var projet = $("#select03").children("option:selected").val();
+                 var category = $("#category").children("option:selected").val();
 
-                 alert("You have selected the client - " + client);
+                 alert("You have selected the comm - " + commercial);
 
-                 $.ajax({
-                     url: 'test.php',
-                     data: 'action=add&commercial='+commercial+'&client='+client+'&projet='+projet,
-                     type: "POST",
-                     success: function(json) {
-                         calendar.addEvent({
-                             title: commercial,
-                             start: startTime,
-                             end: endTime,
-                         },
-                         true);
-                     }
+                 calendar.addEvent({
+                     /*id: 1,*/
+                     title: commercial,
+                     start: startTime,
+                     end: endTime,
+                     classNames: category,
+                     allDay:false
                  });
+              /*   $.post("/AGC/fct_calend.php",
+                   {
+                     op: "add",
+                     comm: commercial,
+                     client: client,
+                     projet: projet,
+                     titre: titre,
+                     description: description,
+                     start:startTime,
+                     end: endTime,
+                     c: c
+                   },
+                   function(data,status){
+                     alert("Data: " + data + "\nStatus: " + status);
+                   });*/
              });
-
-
           },
           eventClick: function(info) {
               alert('Event: ' + info.event.title);
@@ -532,32 +544,24 @@ include 'footer.php'; ?>
 
               // change the border color just for fun
               info.el.style.borderColor = 'red';
+            },
+          eventResize: function(info) {
+            alert(info.event.title + " end is now " + info.event.end.toISOString());
+
+            if (!confirm("is this okay?")) {
+              info.revert();
             }
+          },
+          eventDrop: function(info) {
+            alert(info.event.title + " was dropped on " + info.event.start.toISOString());
+
+            if (!confirm("Are you sure about this change?")) {
+              info.revert();
+            }
+          }
           });
         calendar.render();
       });
-
-
-       var commercial;
-       $(document).ready(function(){
-           $("#select01").change(function(){
-               commercial = $(this).children("option:selected").val();
-           });
-         });
-
-         var client;
-         $(document).ready(function(){
-             $("#select02").change(function(){
-                 client = $(this).children("option:selected").val();
-             });
-           });
-
-           var projet;
-           $(document).ready(function(){
-               $("#select03").change(function(){
-                   projet = $(this).children("option:selected").val();
-               });
-             });
 
     </script>
 
