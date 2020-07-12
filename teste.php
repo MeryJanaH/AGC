@@ -1,8 +1,14 @@
 <?php
 
+print_r($_POST['projet']);
+/*require 'LBD.php';
+$re = $bdd->prepare("SELECT  ProjetName FROM Projets WHERE Code_pj=1");
+$re->execute();
+$res = $re->fetch();
+print_r($res['0']); */
  //$inter=email_exist($_POST['email_2']);
  //echo $inter;
-function  fill_unit_select_box(){
+/*function  fill_unit_select_box(){
   require 'LBD.php';
     $output = '';
     $req=$bdd->query('SELECT *  FROM Projets');
@@ -11,7 +17,7 @@ function  fill_unit_select_box(){
 
     return $output;}
 
-echo fill_unit_select_box();
+echo fill_unit_select_box();*/
 
 
   //$sql="UPDATE Commerciaux SET lastLog = NOW() WHERE Email = 'Yassine.Oukassou@ieee.org' AND Password= 'oks123';

@@ -312,7 +312,7 @@ function update_table_clients()
               html += "<td><input id ='nm' name='num[]'></td>";
               html += "<td><input id ='nt' name='Note[]'></td>";
               html += "<td><input id ='s' name='source[]'></td>";
-              html += "<td><select id = 'pj' class='form-control item_unit' name='pj_unit[]'><option value=''>Select Projet</option><?php echo fill_unit_select_box();?></select></td>";
+              html += "<td><select id = 'pj' class='form-control item_unit' name='c_p[]'><option value=''>Select Projet</option><?php echo fill_unit_select_box();?></select></td>";
               html += "</tr>";
 
          var row = document.getElementById("staff03").insertRow();
@@ -337,7 +337,11 @@ function  add_client($c_n,$nm_t,$c_nt,$c_s,$c_p)
   require 'LBD.php';
   for ($a = 0; $a < count($c_n); $a++)
   {
-      $req = $bdd->prepare("INSERT INTO Clients (Name, phnumber,Notes,Source,Code_pj) VALUES ('" . $c_n[$a] . "','" . $nm_t[$a]."','" . $c_nt[$a]."','" . $c_s[$a]."','" . $c_p[$a]."')");
+      $re = $bdd->prepare("SELECT ProjetName FROM Projets WHERE Code_pj =$c_p[$a]");
+      $re->execute();
+      $res = $re->fetch();
+
+      $req = $bdd->prepare("INSERT INTO Clients (Name, phnumber,Notes,Source,Code_pj) VALUES ('" . $c_n[$a] . "','" . $nm_t[$a]."','" . $c_nt[$a]."','" . $c_s[$a]."','" . $res['0']."')");
       $req->execute();
   }
 }

@@ -26,29 +26,29 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
           <?php include 'haute_bar.php';
                           if(isset($_POST["name_client"]))
                           {
-                            if($_POST["name_client"][0]!="")
+                            if($_POST["name_client"][0]!="" and $_POST["num"][0]!="" and $_POST["Note"][0]!="" and $_POST["source"][0]!="" and $_POST["projet"]!="")
                             {
                               if (isset($_POST["add"]))
                               {
-                                  add_client($_POST["name_client"],$_POST["num"],$_POST["Note"],$_POST["source"],$_POST["projet"]);
+                                  add_client($_POST["name_client"],$_POST["num"],$_POST["Note"],$_POST["source"],$_POST["c_p"]);
                               }
                             }
                             else
                             {
                               ?>
                             <script>
-                              alert("Vous avez pas renseigner tous les champs concernant le projet");
+                              alert("Vous avez pas renseigner tous les champs concernant le client");
                             </script>
                             <?php
                            }
                           }
                           else {
-                            header('Location: table_clients.php');
+                           header('Location: table_clients.php');
                           }
                  ?>
 
                     <!-- Header Layout Content -->
-                    <form action="#add_projet" method="POST">
+                    <form action="#Ajouter" method="POST">
                     <div class="mdk-header-layout__content mdk-header-layout__content--fullbleed mdk-header-layout__content--scrollable page">
                         <div class="container-fluid page__container">
                             <div class="card card-form">
@@ -81,7 +81,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                           <br/>
                                           <br/>
                                            <input type="button" id="btnShowMsg1"  style="width: 200px; color: green;" value="Ajouter un nouveau client !" onClick="add_ct()"/>
-                                           <input type="button" id="btnShowMsg2"  style="width: 300px; color: red;" value="Modifier les informations des clients !" onClick="window.location.href='in_p.php';"/>
+                                           <input type="button" id="btnShowMsg2"  style="width: 300px; color: red;" value="Modifier les informations des clients !" onClick="window.location.href='in.php';"/>
                                            <br/>
                                            <br/>
                                         <div class="form-group">
