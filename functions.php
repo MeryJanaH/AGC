@@ -284,7 +284,7 @@ function update_table_clients()
        $output = '';
        $req=$bdd->query('SELECT *  FROM Projets');
        while($dn = $req->fetch())
-       {$output .=  '<option value="'.$dn['Code_pj'].'">'.$dn['ProjetName'].'</option>';}
+       {$output .=  '<option>'.$dn['ProjetName'].'</option>';}
 
       return $output;
     }
@@ -312,7 +312,7 @@ function update_table_clients()
               html += "<td><input id ='nm' name='num[]'></td>";
               html += "<td><input id ='nt' name='Note[]'></td>";
               html += "<td><input id ='s' name='source[]'></td>";
-              html += "<td><select id = 'pj' name='pj_unit[]'><option value=''>Select Projet</option><?php echo fill_unit_select_box();?></select></td>";
+              html += "<td><select id = 'pj' class='form-control item_unit' name='pj_unit[]'><option value=''>Select Projet</option><?php echo fill_unit_select_box();?></select></td>";
               html += "</tr>";
 
          var row = document.getElementById("staff03").insertRow();
