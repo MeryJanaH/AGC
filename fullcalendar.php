@@ -436,25 +436,7 @@ include 'footer.php'; ?>
     <script src="assets/js/select2.js"></script>
 
     <script>
-    var res="a";
-    var show=[{
-        title: "Hey!",
-        start: new Date($.now() + 158e6),
-        className: "bg-warning"
-    }, {
-        title: "See John Deo",
-        start: new Date($.now()),
-        end: new Date($.now()),
-        className: "bg-success"
-    }, {
-        title: "Meet John Deo",
-        start: new Date($.now() + 168e6),
-        className: "bg-info"
-    }, {
-        title: "Buy a Theme",
-        start: new Date($.now() + 338e6),
-        className: "bg-primary"
-    }];
+
 
   /*  $.post("/AGC/fct_calend.php",
       {
@@ -503,25 +485,23 @@ include 'footer.php'; ?>
           },
           weekNumbers: true,
           dayMaxEvents: true, // allow "more" link when too many events
-          events: [{
-              title: "Hey!",
-              start: new Date($.now() + 158e6),
-              className: "bg-warning"
-          }, {
-              title: "See John Deo",
-              start: new Date($.now()),
-              end: new Date($.now()),
-              className: "bg-success"
-          }, {
-              title: "Meet John Deo",
-              start: new Date($.now() + 168e6),
-              className: "bg-info"
-          }, {
-              title: "Buy a Theme",
-              start: new Date($.now() + 338e6),
-              className: "bg-primary"
-          }],
+          events: [
+            <?php
+            require 'LBD.php';
+            $req=$bdd->query("SELECT * FROM Calendrier ");
+            while($dn = $req->fetch())
+            { ?>  {
+               id: <?php print_r($dn['id']) ?>,
+               title: "<?php
+                      $rq=$bdd->query("SELECT Name FROM Clients WHERE ID_client=". $dn['ID_client']."");
+                      $res = $rq->fetch();
+               print_r($res['Name']) ?>",
+               start: new Date("<?php print_r($dn['date_tdébut']) ?>"),
+               end: new Date("<?php print_r($dn['date_tfin']) ?>"),
+               classNames: "<?php print_r($dn['Category']) ?>"
+            }, <?php } ?>
 
+          ],
           select: function(info) {
 
             $('#event-modal #startTime').val(info.startStr);
@@ -542,6 +522,7 @@ include 'footer.php'; ?>
                  var description = $("#desc").val();
 
                  calendar.addEvent({
+                    /*id:1*/
                      title: titre,
                      start: startTime,
                      end: endTime,
@@ -559,7 +540,7 @@ include 'footer.php'; ?>
                      description: description,
                      start:startTime,
                      end: endTime,
-                     c: category
+                     category: category
                    });
              });
           },

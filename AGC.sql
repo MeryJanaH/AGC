@@ -53,10 +53,10 @@ CREATE TABLE `Clients` (
 
 CREATE TABLE `Calendrier` (
   `id` int(15) NOT NULL AUTO_INCREMENT,
-  `date_tdébut` varchar(40) DEFAULT NULL,
-  `date_tfin` varchar(40) DEFAULT NULL,
-  `Event` varchar(50) DEFAULT NULL,
+  `date_tdébut` varchar(50) DEFAULT NULL,
+  `date_tfin` varchar(50) DEFAULT NULL,
   `Description` varchar(100) DEFAULT NULL,
+  `Category` varchar(20) DEFAULT NULL,
   `ID_client` int(15) DEFAULT NULL,
   `ID_cm` int(15) NOT NULL ,
   `Code_pj` int(15) NOT NULL,
@@ -69,4 +69,3 @@ CREATE TABLE `Calendrier` (
 
 INSERT INTO Admin (ID_admin,AdminName,Email,Password) VALUES(3,"Annouar","meryem.annouar@ieee.org","202cb962ac59075b964b07152d234b70");
 INSERT INTO Commerciaux (ID_cm,CName,Email,Password) VALUES(5,"Yassine","Yassine.Oukassou@ieee.org","202cb962ac59075b964b07152d234b70");
-INSERT INTO `clients`(`Name`, `phnumber`, `Notes`, `Source`, `Code_pj`) VALUES ("mery","06587","hiiiiii","site",1);

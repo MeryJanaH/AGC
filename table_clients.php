@@ -26,10 +26,11 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
           <?php include 'haute_bar.php';
                           if(isset($_POST["name_client"]))
                           {
-                            if($_POST["name_client"][0]!="" and $_POST["num"][0]!="" and $_POST["Note"][0]!="" and $_POST["source"][0]!="" and $_POST["projet"]!="")
+                            if($_POST["name_client"][0]!="" and $_POST["num"][0]!="" and $_POST["Note"][0]!="" and $_POST["source"][0]!="" and $_POST["c_p"]!="")
                             {
                               if (isset($_POST["add"]))
                               {
+
                                   add_client($_POST["name_client"],$_POST["num"],$_POST["Note"],$_POST["source"],$_POST["c_p"]);
                               }
                             }
@@ -81,7 +82,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                           <br/>
                                           <br/>
                                            <input type="button" id="btnShowMsg1"  style="width: 200px; color: green;" value="Ajouter un nouveau client !" onClick="add_ct()"/>
-                                           <input type="button" id="btnShowMsg2"  style="width: 300px; color: red;" value="Modifier les informations des clients !" onClick="window.location.href='in.php';"/>
+                                           <input type="button" id="btnShowMsg2"  style="width: 300px; color: red;" value="Modifier les informations des clients !" onClick="window.location.href='in.php?data=clients';"/>
                                            <br/>
                                            <br/>
                                         <div class="form-group">
