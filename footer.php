@@ -6,7 +6,7 @@
             <div class="d-flex align-items-center sidebar-p-a border-bottom sidebar-account flex-shrink-0">
                 <a href="index.php" class="flex d-flex align-items-center text-underline-0 text-body">
                     <span class="mr-3">
-                        <img src="assets/images/logo.svg" width="43" height="43" alt="avatar">
+                        <img src="assets/images/logo.png" width="43" height="43" alt="avatar">
                     </span>
                     <span class="flex d-flex flex-column">
                         <strong style="font-size: 1.125rem;">bienvenu</strong>
