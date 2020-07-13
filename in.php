@@ -1,9 +1,17 @@
 <?php
+session_start();
+if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION['login']))
+{
+      header('Location: login.php');
+}
 require 'LBD.php';
 
 if(isset($_GET['data'])){
-$req=$bdd->query("SELECT * FROM Clients");
-}
+   if($_GET['data']=="clients"){
+    $req=$bdd->query("SELECT * FROM Clients");
+  }else {
+    echo "Vous avez pas le droit d'accéder à cette page";
+  }}
 else{
 $req=$bdd->query("SELECT * FROM Projets");
 }
@@ -23,17 +31,18 @@ $req=$bdd->query("SELECT * FROM Projets");
        <br />
        <br />
       <div class="table-responsive">
-    <?php if(isset($_GET['data'])){?>
+    <?php if(isset($_GET['data'])){
+      if ($_GET['data']=="clients"){?>
         <h3 align="center">Apporter des modifications sur les clients (supprimer/éditer) :</h3><br />
         <table id="editable_table" class="table table-bordered table-striped">
            <thead>
             <tr>
-             <th>ID</th>
-             <th>Nom</th>
-             <th>Numéro de téléphone</th>
-             <th>Notes</th>
-             <th>Source</th>
-             <th>Projet</th>
+             <th style="width: 60px;">ID</th>
+             <th style="width: 200px;">Nom</th>
+             <th style="width: 200px;">Numéro de téléphone</th>
+             <th style="width: 200px;">Notes</th>
+             <th style="width: 150px;">Source</th>
+             <th style="width: 150px;">Projet</th>
             </tr>
            </thead>
            <tbody>
@@ -51,7 +60,10 @@ $req=$bdd->query("SELECT * FROM Projets");
             </tr>
             ';
            }
-          } else {?>
+           }else {
+             echo "Vous avez pas le droit d'accéder à cette page";
+           }
+         } else {?>
          <h3 align="center">Apporter des modifications sur les projets (supprimer/éditer) :</h3><br />
           <table id="editable_table" class="table table-bordered table-striped">
              <thead>
@@ -82,9 +94,13 @@ $req=$bdd->query("SELECT * FROM Projets");
            }?>
              </tbody>
           </table>
-        <?php if(isset($_GET['data'])){?>
+        <?php if(isset($_GET['data'])){
+          if($_GET['data']=="clients"){?>
         <input type="button" id="btnShowMsg1"  style="width: 400px; color: red;" value="Enregistrer les modifiations et retourner à la page précedente !" onClick="window.location.href='table_clients.php';"/>
-        <?php } else { ?>
+      <?php }else {
+            echo "Vous avez pas le droit d'accéder à cette page";
+            }
+          } else { ?>
           <input type="button" id="btnShowMsg1"  style="width: 400px; color: red;" value="Enregistrer les modifiations et retourner à la page précedente !" onClick="window.location.href='ui-projets.php';"/>
         <?php } ?>
        </div>
@@ -94,7 +110,8 @@ $req=$bdd->query("SELECT * FROM Projets");
 <script>
 $(document).ready(function(){
      $('#editable_table').Tabledit({
-      <?php if(isset($_GET['data'])){ ?>
+  <?php if(isset($_GET['data'])){
+         if($_GET['data']=="clients"){?>
       url:'action.php?data=clients',
       columns:{
       identifier:[0, "ID_client"],
@@ -108,7 +125,11 @@ $(document).ready(function(){
         $('#'+data.ID_client).remove();
        }
       }
-      <?php } else {?>
+      <?php }else {
+         echo "Vous avez pas le droit d'accéder à cette page";
+      }
+
+    } else {?>
       url:'action.php',
       columns:{
       identifier:[0, "Code_pj"],

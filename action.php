@@ -1,10 +1,15 @@
 <?php
+session_start();
+if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION['login']))
+{
+      header('Location: login.php');
+}
 //action.php
 require 'LBD.php';
 
 $input = filter_input_array(INPUT_POST);
 
-if(isset($_GET['data']))
+if(isset($_GET['data']) and $_GET['data']=="clients")
 {
   $Nom = $input["Name"];
   $num = $input["phnumber"];
@@ -44,4 +49,5 @@ else {
     $req->execute();
   }
 }
+
 ?>

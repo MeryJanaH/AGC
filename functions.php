@@ -264,15 +264,19 @@ function update_table_clients()
     {
       require 'LBD.php';
       $req=$bdd->query("SELECT * FROM Clients");
-
       while($dn = $req->fetch())
-      { ?>
+      {
+        $rq = $bdd->prepare("SELECT ProjetName FROM Projets WHERE Code_pj= '" . $dn['Code_pj'] . "'");
+        if($rq->execute()){
+        $rs = $rq->fetch();
+        }
+        ?>
         <tr>
-            <td><span class="js-lists-values-employee-name"><?php print_r($dn['Name']); ?></span></td>
-            <td><span class="text-muted"><?php print_r($dn['phnumber']) ?></span></td>
-            <td><span class="text-muted"><?php print_r($dn['Notes']) ?></span></td>
-            <td><span class="text-muted"><?php print_r($dn['Source']) ?></span></td>
-            <td><span class="text-muted"><?php print_r($dn['Code_pj']) ?></span></td>
+            <td style="width: 200px;"><span class="js-lists-values-employee-name"><?php print_r($dn['Name']); ?></span></td>
+            <td style="width: 200px;"><span class="text-muted"><?php print_r($dn['phnumber']) ?></span></td>
+            <td style="width: 200px;"><span class="text-muted"><?php print_r($dn['Notes']) ?></span></td>
+            <td style="width: 150px;"><span class="text-muted"><?php print_r($dn['Source']) ?></span></td>
+            <td style="width: 150px;"><span class="text-muted"><?php print_r($rs['ProjetName']) ?></span></td>
         </tr>
      <?php
       }
