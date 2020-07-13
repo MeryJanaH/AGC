@@ -1,7 +1,15 @@
 <?php
 
 
-$input = filter_input_array(INPUT_POST);
+require 'LBD.php';
+
+$req = $bdd->prepare("SELECT * FROM Admin WHERE Email='meryem.annouar@ieee.org'");
+
+  $req->execute();
+  $res = $req->fetch();
+
+print_r($res);
+/*$input = filter_input_array(INPUT_POST);
 
   $Nom = $input["Name"];
   $num = $input["phnumber"];
@@ -16,7 +24,7 @@ $input = filter_input_array(INPUT_POST);
 
 
 <?php
-
+*/
 
 
 
