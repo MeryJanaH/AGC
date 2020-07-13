@@ -17,7 +17,7 @@
                     <a href="ui-projets.php" class="navbar-brand flex ">
                     <span>Table des projets</span>
                   <?php }if($_SESSION['current_page']=="index"){?>
-                    <a href="fullcalendar.php" class="navbar-brand flex ">
+                    <a href="index.php" class="navbar-brand flex ">
                     <span>Calendrier</span>
                   <?php }if($_SESSION['current_page']=="commerciaux"){ ?>
                     <a href="ui-tables.php" class="navbar-brand flex ">
