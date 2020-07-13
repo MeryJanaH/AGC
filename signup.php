@@ -79,7 +79,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
             if($inter == "true")
             {
               $_SESSION['enrg'] = "true";
-              header('Location: signup.php');
+              //header('Location: signup.php');
             }
             else
             {
@@ -104,7 +104,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                 <strong>Erreur - </strong> Email déjà enregistré
             </div>
             <?php
-            $_SESSION['enrg'] == "None";
+            $_SESSION['enrg'] = "None";
           }
         }
 
