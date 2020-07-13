@@ -39,7 +39,7 @@ $_SESSION['current_page']="edit";
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="fname">Nom utilisateur</label>
-                                                <input id="fname" name="user_name" required="" type="text" class="form-control" placeholder="First name" value="">
+                                                <input id="fname" name="user_name" required="" type="text" class="form-control" placeholder="Entrez votre nom utilisateur" value="">
                                             </div>
                                         </div>
                                     </div>
@@ -88,11 +88,11 @@ $_SESSION['current_page']="edit";
                     //password d'utilisateur
                       $dn = user();
 
-                  if($dn['Password'] == $_POST['mdp_1'])
+                  if($dn['Password'] == md5($_POST['mdp_1']))
                       {
                         if($_POST['mdp_2'] == $_POST['mdp_3'])
                         {
-                           $nv_mdp = $_POST['mdp_2'];
+                           $nv_mdp = md5($_POST['mdp_2']);
                           if($_POST['user_name'])
                           {
                             $name = $_POST['user_name'];

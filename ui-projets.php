@@ -26,21 +26,10 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
           <?php include 'haute_bar.php';
                           if(isset($_POST["proj_name"]))
                           {
-                            if($_POST["proj_name"][0]!="" and $_POST["proj_type"][0]!="" and $_POST["proj_etage"][0]!="" and $_POST["Surface"][0]!="" and $_POST["proj_prix"][0]!="")
-                            {
                               if (isset($_POST["add"]))
                               {
                                   add_projet($_POST["proj_name"],$_POST["proj_type"],$_POST["proj_etage"],$_POST["proj_surface"],$_POST["proj_prix"]);
                               }
-                            }
-                            else
-                            {
-                              ?>
-                            <script>
-                              alert("Vous avez pas renseigner tous les champs concernant le projet");
-                            </script>
-                            <?php
-                           }
                           }
                           else {
                             header('Location: ui-projets.php');

@@ -199,7 +199,7 @@ function update_table_emp()
                 function showMessage<?php echo $dn['ID_cm'];?>()
                 {
                     var txt;
-                    if (confirm("êtes-vous sûr de supprimer <?php print_r($dn['CName']) ?> ? après il ne va pas le droit d'accéder à cette application \"AGC\" ! ")) {
+                    if (confirm("êtes-vous sûr de supprimer <?php print_r($dn['CName']) ?> ? après cette action il ne va pas le droit d'accéder à cette application \"AGC\" ! ")) {
                         txt = "You pressed OK!";
                     } else {
                         txt = "You pressed Cancel!";
@@ -272,11 +272,11 @@ function update_table_clients()
         }
         ?>
         <tr>
-            <td style="width: 200px;"><span class="js-lists-values-employee-name"><?php print_r($dn['Name']); ?></span></td>
+            <td style="width: 120px;"><span class="js-lists-values-employee-name"><?php print_r($dn['Name']); ?></span></td>
             <td style="width: 200px;"><span class="text-muted"><?php print_r($dn['phnumber']) ?></span></td>
+            <td style="width: 150px;"><span class="text-muted"><?php print_r($rs['ProjetName']) ?></span></td>
             <td style="width: 200px;"><span class="text-muted"><?php print_r($dn['Notes']) ?></span></td>
             <td style="width: 150px;"><span class="text-muted"><?php print_r($dn['Source']) ?></span></td>
-            <td style="width: 150px;"><span class="text-muted"><?php print_r($rs['ProjetName']) ?></span></td>
         </tr>
      <?php
       }
@@ -298,11 +298,11 @@ function update_table_clients()
     function add_pj()
       {
         var html = "<tr>";
-            html += "<td><input id ='n' name='proj_name[]'></td>";
-            html += "<td><input id ='t' name='proj_type[]'></td>";
-            html += "<td><input id ='e' name='proj_etage[]'></td>";
-            html += "<td><input id ='s' name='proj_surface[]'></td>";
-            html += "<td><input id ='p' name='proj_prix[]'></td>";
+            html += "<td><input required='' id ='n' name='proj_name[]'></td>";
+            html += "<td><input required='' id ='t' name='proj_type[]'></td>";
+            html += "<td><input required='' id ='e' name='proj_etage[]'></td>";
+            html += "<td><input required='' id ='s' name='proj_surface[]'></td>";
+            html += "<td><input required='' id ='p' name='proj_prix[]'></td>";
             html += "</tr>";
 
        var row = document.getElementById("staff02").insertRow();
@@ -312,11 +312,11 @@ function update_table_clients()
       function add_ct()
         {
           var html = "<tr>";
-              html += "<td><input id ='n' name='name_client[]'></td>";
-              html += "<td><input id ='nm' type='number' name='num[]'></td>";
-              html += "<td><input id ='nt' name='Note[]'></td>";
-              html += "<td><input id ='s' name='source[]'></td>";
-              html += "<td><select id = 'pj' class='form-control item_unit' name='c_p[]'><option value=''>Select Projet</option><?php echo fill_unit_select_box();?></select></td>";
+              html += "<td><input required='' id ='n' name='name_client[]'></td>";
+              html += "<td><input required='' id ='nm' type='number' name='num[]'></td>";
+              html += "<td><select required='' id = 'pj' class='form-control item_unit' name='c_p[]'></option><?php echo fill_unit_select_box();?></select></td>";
+              html += "<td><input required='' id ='nt' name='Note[]'></td>";
+              html += "<td><input required='' id ='s' name='source[]'></td>";
               html += "</tr>";
 
          var row = document.getElementById("staff03").insertRow();
