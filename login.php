@@ -87,7 +87,7 @@ else {
 
 
             <div class="page-separator">
-                <div class="page-separator__text">Bonjour</div>
+                <div class="page-separator__text">GUESSPROMO</div>
             </div>
                 <?php
                 if(isset($_SESSION['login']))

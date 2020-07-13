@@ -42,7 +42,7 @@
                         <li class="sidebar-menu-item ">
                       <?php } ?>
                             <a class="sidebar-menu-button" href="index.php">
-                                <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dvr</i>
+                              <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">date_range</i>
                                 <span class="sidebar-menu-text">tableau de bord</span>
                             </a>
                         </li>
@@ -121,17 +121,6 @@
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">donut_small</i>
                                 <span class="sidebar-menu-text">Charts</span>
                             </a>
-                        </li>
-                        <?php if($_SESSION['current_page']=="calendar"){?>
-                          <li class="sidebar-menu-item active">
-                        <?php }else{ ?>
-                          <li class="sidebar-menu-item ">
-                        <?php } ?>
-                            <a class="sidebar-menu-button" href="fullcalendar.php">
-                                <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">date_range</i>
-                                <span class="sidebar-menu-text">Calendrier</span>
-                            </a>
-                        </li>
                     </ul>
                 </div>
 
