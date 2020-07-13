@@ -28,6 +28,7 @@ $req=$bdd->query("SELECT * FROM Projets");
         <table id="editable_table" class="table table-bordered table-striped">
            <thead>
             <tr>
+             <th>ID</th>
              <th>Nom</th>
              <th>Numéro de téléphone</th>
              <th>Notes</th>
@@ -41,6 +42,7 @@ $req=$bdd->query("SELECT * FROM Projets");
            {
             echo '
             <tr>
+            <td>'.$row["ID_client"].'</td>
              <td>'.$row["Name"].'</td>
              <td>'.$row["phnumber"].'</td>
              <td>'.$row["Notes"].'</td>
@@ -92,7 +94,7 @@ $req=$bdd->query("SELECT * FROM Projets");
 <script>
 $(document).ready(function(){
      $('#editable_table').Tabledit({
-      <?php if(isset($_GET['data'])){?>
+      <?php if(isset($_GET['data'])){ ?>
       url:'action.php?data=clients',
       columns:{
       identifier:[0, "ID_client"],
