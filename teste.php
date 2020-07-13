@@ -5,7 +5,7 @@ require 'LBD.php';
 $re = $bdd->prepare("SELECT Code_pj FROM Projets WHERE ProjetName ='hi'");
 $re->execute();
 $res = $re->fetch();
-print_r($res['0']); 
+print_r($res['0']);
  //$inter=email_exist($_POST['email_2']);
  //echo $inter;
 /*function  fill_unit_select_box(){
