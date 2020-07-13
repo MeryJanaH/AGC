@@ -79,7 +79,7 @@ else {
     <div class="layout-login-centered-boxed__form">
         <div class="d-flex flex-column justify-content-center align-items-center mt-2 mb-2 navbar-light">
             <a href="index.php" class="navbar-brand text-center mb-2 mr-0" style="min-width: 0">
-                <img class="navbar-brand-icon" src="assets/images/logo.svg" width="43" alt="Flat">
+                <img class="navbar-brand-icon" src="assets/images/logo.png" width="43" alt="Flat">
             </a>
         </div>
 
