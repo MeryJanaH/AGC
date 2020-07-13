@@ -39,17 +39,9 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
     <link type="text/css" href="assets/css/vendor-ion-rangeslider.css" rel="stylesheet">
     <link type="text/css" href="assets/css/vendor-ion-rangeslider.rtl.css" rel="stylesheet">
 
-
-
-
-
 </head>
 
 <body class="layout-login-centered-boxed">
-
-
-
-
 
     <div class="layout-login-centered-boxed__form">
         <div class="d-flex flex-column justify-content-center align-items-center mt-2 mb-4 navbar-light">
@@ -78,20 +70,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
             <?php
             $_SESSION['send']="NULL";
             }
-            if(isset($_SESSION['enrg']))
-            {
-              if($_SESSION['enrg'] == "true")
-              {
-                ?>
-                <div class="alert alert-danger" role="alert">
-                    <strong>Erreur - </strong> Email déjà enregistré
-                </div>
-                <?php
-              }
-            }
         }
-
-
         if(isset($_POST['submit']))
         {
             $_SESSION['enrg'] = "false";
@@ -114,6 +93,18 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
               first_mail($_SESSION['email'], $_POST['email_2'], 'AGC',$txt);
               header('Location: signup.php');
             }
+        }
+
+        if(isset($_SESSION['enrg']))
+        {
+          if($_SESSION['enrg'] == "true")
+          {
+            ?>
+            <div class="alert alert-danger" role="alert">
+                <strong>Erreur - </strong> Email déjà enregistré
+            </div>
+            <?php
+          }
         }
 
 

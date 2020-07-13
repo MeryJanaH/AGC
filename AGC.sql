@@ -39,7 +39,7 @@ CREATE TABLE `Projets` (
 CREATE TABLE `Clients` (
   `ID_client` int(15) NOT NULL AUTO_INCREMENT,
   `Name` varchar(30) DEFAULT NULL,
-  `phnumber` bigint(10) DEFAULT NULL,
+  `phnumber` varchar(15) DEFAULT NULL,
   `Notes` mediumtext DEFAULT NULL,
   `Source` varchar(50) DEFAULT NULL,
   `Code_pj` int(15) NOT NULL,

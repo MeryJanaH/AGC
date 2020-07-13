@@ -302,7 +302,7 @@ function update_table_clients()
             html += "<td><input required='' id ='t' name='proj_type[]'></td>";
             html += "<td><input required='' id ='e' name='proj_etage[]'></td>";
             html += "<td><input required='' id ='s' name='proj_surface[]'></td>";
-            html += "<td><input required='' id ='p' name='proj_prix[]'></td>";
+            html += "<td><input required='' id ='p' type='number' name='proj_prix[]'></td>";
             html += "</tr>";
 
        var row = document.getElementById("staff02").insertRow();
@@ -313,7 +313,7 @@ function update_table_clients()
         {
           var html = "<tr>";
               html += "<td><input required='' id ='n' name='name_client[]'></td>";
-              html += "<td><input required='' id ='nm' type='number' name='num[]'></td>";
+              html += "<td><input required='' id ='nm' type='tel' name='num[]'></td>";
               html += "<td><select required='' id = 'pj' class='form-control item_unit' name='c_p[]'></option><?php echo fill_unit_select_box();?></select></td>";
               html += "<td><input required='' id ='nt' name='Note[]'></td>";
               html += "<td><input required='' id ='s' name='source[]'></td>";
