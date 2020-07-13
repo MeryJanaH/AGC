@@ -4,6 +4,27 @@ require 'LBD.php';
 
 $input = filter_input_array(INPUT_POST);
 
+if(isset($_GET['data']))
+{
+  $Nom = $input["Name"];
+  $num = $input["phnumber"];
+  $Notes = $input["Notes"];
+  $Source = $input["Source"];
+  $Projet = $input["Code_pj"];
+  $id= $input["ID_client"];
+
+  if($input["action"] === 'edit')
+  {
+   $sql= $bdd->prepare("UPDATE Clients SET Name= '" . $Nom . "',phnumber= '" . $num . "',Notes= '" . $Notes . "',Source= '" . $Source . "', Code_pj= '" . $Projet . "' WHERE ID_client= '" . $id . "'");
+   $sql->execute();
+  }
+  if($input["action"] === 'delete')
+  {
+    $req = $bdd->prepare("DELETE FROM Clients WHERE ID_client = $id");
+    $req->execute();
+  }
+}
+else {
   $Projet = $input["ProjetName"];
   $Type = $input["type_p"];
   $Etage = $input["Etages"];
@@ -22,4 +43,5 @@ $input = filter_input_array(INPUT_POST);
     $req = $bdd->prepare("DELETE FROM Projets WHERE Code_pj = $id");
     $req->execute();
   }
+}
 ?>

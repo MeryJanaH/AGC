@@ -1,11 +1,31 @@
 <?php
 
+
+$input = filter_input_array(INPUT_POST);
+
+  $Nom = $input["Name"];
+  $num = $input["phnumber"];
+  $Notes = $input["Notes"];
+  $Source = $input["Source"];
+  $Projet = $input["Code_pj"];
+  $id= $input["ID_client"];
+
+
+?>
+<script> alert("mery"); </script>
+
+
+<?php
+
+
+
+
 //print_r($_POST['projet']);
-require 'LBD.php';
+/*require 'LBD.php';
 $re = $bdd->prepare("SELECT Code_pj FROM Projets WHERE ProjetName ='hi'");
 $re->execute();
 $res = $re->fetch();
-print_r($res['0']);
+print_r($res['0']);*/
  //$inter=email_exist($_POST['email_2']);
  //echo $inter;
 /*function  fill_unit_select_box(){

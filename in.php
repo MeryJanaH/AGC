@@ -93,7 +93,7 @@ $req=$bdd->query("SELECT * FROM Projets");
 $(document).ready(function(){
      $('#editable_table').Tabledit({
       <?php if(isset($_GET['data'])){?>
-      url:'action_client.php',
+      url:'action.php?data=clients',
       columns:{
       identifier:[0, "ID_client"],
       editable:[[1, 'Name'], [2, 'phnumber'], [3, 'Notes'], [4, 'Source'], [5, 'Code_pj']]
