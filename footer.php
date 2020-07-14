@@ -106,7 +106,11 @@
                             </ul>
                         </li>
 
-                        <li class="sidebar-menu-item">
+                        <?php if($_SESSION['current_page']=="Graphe"){?>
+                          <li class="sidebar-menu-item active">
+                        <?php }else{ ?>
+                          <li class="sidebar-menu-item ">
+                        <?php } ?>
                             <a class="sidebar-menu-button" href="Graphe.php">
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">donut_small</i>
                                 <span class="sidebar-menu-text">Graphe</span>
