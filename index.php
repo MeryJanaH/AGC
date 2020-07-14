@@ -279,7 +279,7 @@ include 'footer.php'; ?>
         </div>
     </div>
 
-    <!-- App Settings FAB -->
+    <!-- App Settings FAB-->
     <div id="app-settings">
         <app-settings></app-settings>
     </div>
@@ -311,7 +311,7 @@ include 'footer.php'; ?>
     <script src="assets/js/sidebar-mini.js"></script>
     <script src="assets/js/app.js"></script>
 
-    <!-- App Settings (safe to remove) -->
+    <!-- App Settings (safe to remove)-->
     <script src="assets/js/app-settings.js"></script>
 
 
@@ -398,16 +398,16 @@ include 'footer.php'; ?>
             <div class="modal-content">
                 <div class="modal-header pr-4 pl-4 border-bottom-0 d-block">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Ajouter un nouveau événement</h4>
+                    <h4 class="modal-title">Modifier un événement</h4>
                 </div>
                 <div class="modal-body pt-3 pr-4 pl-4">
 
                   <input type="hidden" id="startTime2"/>
                   <input type="hidden" id="endTime2"/>
 
-                  <form id="form2">    <div class="row">       <div class="col-12">
+                  <form id="form2">    <div class="row">     <div class="col-12">
                       <div class="form-group">
-                       <label class="control-label" for="select01">Commercial :</label>
+                       <label class="control-label" for="commercial">Commercial :</label>
                             <select id="commercial" data-toggle="select" class="form-control" name="commercial">
                               <?php
                               require 'LBD.php';
@@ -459,7 +459,7 @@ include 'footer.php'; ?>
 
                 <div class="text-right pb-4 pr-4">
                     <button type="button" class="btn btn-light" data-dismiss="modal">Fermer</button>
-                    <button type="button" class="btn btn-success " id="modifier">Créer</button>
+                    <button type="button" class="btn btn-success " id="modifier">Modifier</button>
                   <button type="button" class="btn btn-danger delete-event" id="DELETE" data-dismiss="modal">Delete</button>
                 </div>
             </div> <!-- end modal-content-->
@@ -581,14 +581,13 @@ include 'footer.php'; ?>
             { ?>  {
                id: <?php print_r($dn['id']) ?>,
                title: "<?php
-                      $rq=$bdd->query("SELECT Name FROM Clients WHERE ID_client=". $dn['ID_client']."");
+                      $rq=$bdd->query("SELECT Name,phnumber FROM Clients WHERE ID_client=". $dn['ID_client']."");
                       $res = $rq->fetch();
-               print_r($res['Name']); ?>",
-               start: new Date("<?php print_r($dn['date_tdébut']) ?>"),
+               print_r($res['Name'].",".$res['phnumber']); ?>",
+               start: new Date("<?php print_r($dn['date_tdebut']) ?>"),
                end: new Date("<?php print_r($dn['date_tfin']) ?>"),
                classNames: "<?php print_r($dn['Category']) ?>"
             }, <?php } ?>
-
           ],
           select: function(info) {
 
@@ -606,12 +605,17 @@ include 'footer.php'; ?>
                  var client = $("#select02").children("option:selected").val();
                  var projet = $("#select03").children("option:selected").val();
                  var category = $("#category").children("option:selected").val();
-                 var titre = $("#titre").val();
                  var description = $("#desc").val();
 
                  calendar.addEvent({
-                    /*id:1*/
-                     title: document.getElementById(client).innerText,
+                    id:<?php $rq=$bdd->query("SELECT id FROM `Calendrier` ORDER BY `id` DESC LIMIT 1");
+                        if ($res = $rq->fetch()) {
+                          print_r(intval($res['id'])+1);
+                        }else {
+                          echo 1;
+                        }
+                         ?>,
+                     title: $("#select02").children("option:selected").text(),
                      start: startTime,
                      end: endTime,
                      classNames: category,
@@ -624,7 +628,6 @@ include 'footer.php'; ?>
                      comm: commercial,
                      client: client,
                      projet: projet,
-                     titre: titre,
                      description: description,
                      start:startTime,
                      end: endTime,
@@ -638,31 +641,47 @@ include 'footer.php'; ?>
             //  alert('Titre: ' + info.event.title +'\nCommercial: ' + info.event.comm +'\nClient: ' + info.event.client +'\nProjet: ' + info.event.projet+'\nDescription: ' + info.event.description+'\nTemps: \n   -De : '+info.event.start+'\n   -Ä : '+info.event.end);
             $('#event-edit #startTime').val(info.event.startStr);
             $('#event-edit #endTime').val(info.event.endStr);
+
             var values;
             $.post("/AGC/fct_calend.php",
               {
                 op: "get",
                 id: info.event.id
               }, function(json){
-                values=json;
-                console.log(values);
+                values=JSON.parse(json);
+                //console.log(values);
            });
 
-
             setTimeout(function(){
-              console.log(values['Description']);
-            /*$("#commercial").children("option:selected").val()=
-            $("#client").children("option:selected").val()=
-            $("#projet").children("option:selected").val()=
-            $("#etat").children("option:selected").val()=*/
+              //console.log(values['Description']);
 
-            //document.querySelector('#commercial [value="' + values.ID_cm + '"]').selected = true;
-            document.getElementById("description").value = values['Description'];
-            //$('#createEventModal #when').text(mywhen);
-            $('#event-edit').modal('toggle');
+              /*$("#commercial").children("option:selected").val()=
+              $("#client").children("option:selected").val()=
+              $("#projet").children("option:selected").val()=
+              $("#etat").children("option:selected").val()=*/
+
+              document.querySelector('#commercial [value="' + values['ID_cm'] + '"]').selected = true;
+              var comm = document.querySelector('#commercial [value="' + values['ID_cm'] + '"]').innerText ;
+              document.querySelector('#select2-commercial-container ').innerText = comm;
+
+              document.querySelector('#client [value="' + values['ID_client'] + '"]').selected = true;
+              var client = document.querySelector('#client [value="' + values['ID_client'] + '"]').innerText ;
+              document.querySelector('#select2-client-container ').innerText = client;
+
+              document.querySelector('#projet [value="' + values['Code_pj'] + '"]').selected = true;
+              var projet = document.querySelector('#projet [value="' + values['Code_pj'] + '"]').innerText ;
+
+              document.querySelector('#select2-projet-container ').innerText = projet;
+
+              document.querySelector('#etat [value="' + values['Category'] + '"]').selected = true;
 
 
-          }, 2000);
+              document.getElementById("description").value = values['Description'];
+              //$('#createEventModal #when').text(mywhen);
+              $('#event-edit').modal('toggle');
+
+              //console.log($("#commercial").children("option:selected").val());
+            }, 2000);
 
 
             $('#modifier').unbind('click').on('click', function(e){
@@ -676,30 +695,29 @@ include 'footer.php'; ?>
                  var projet = $("#projet").children("option:selected").val();
                  var category = $("#etat").children("option:selected").val();
                  var description = $("#description").val();
+                 var id_calendar=info.event.id;
 
-                 info.event.remove();
-                 calendar.addEvent({
-                    /*id:1*/
-                     title: client,
-                     start: startTime,
-                     end: endTime,
-                     classNames: category,
-                     allDay:false
-                 });
-
+                 //console.log(id_calendar);
+                 //var event = calendar.getEventById( id_calendar );
+                 info.event.setProp('title',$("#client").children("option:selected").text());
+                 info.event.setProp('classNames', category)
+                 //event.className= category;
+                 //console.log($("#client").children("option:selected").text());
+                 //console.log(category);
                  $.post("/AGC/fct_calend.php",
                    {
                      op: "modif",
-                     comm: commercial,
+                     id: id_calendar,
+                     commercial: commercial,
                      client: client,
                      projet: projet,
-                     titre: titre,
                      description: description,
                      start:startTime,
                      end: endTime,
                      category: category
                    }, function(data, status){
-                  location.reload();
+                     //alert(data);
+                  //location.reload();
                 });
              });
 
@@ -709,7 +727,7 @@ include 'footer.php'; ?>
                    op: "sup",
                    id: info.event.id
                  }, function(data, status){
-                   alert(info.event.id+"removed");
+                   //alert(info.event.id+"removed");
                 info.event.remove();
               });
 
@@ -718,17 +736,38 @@ include 'footer.php'; ?>
               info.el.style.borderColor = 'red';
             },
           eventResize: function(info) {
-            alert(info.event.title + " end is now " + info.event.end.toISOString());
+            //alert(info.event.title + " end is now " + info.event.end.toString());
+            //alert(info.event.title + " start is now " + info.event.start.toString());
 
             if (!confirm("is this okay?")) {
               info.revert();
+            }else {
+              $.post("/AGC/fct_calend.php",
+                {
+                  op: "time",
+                  id: info.event.id,
+                  start:info.event.start.toString(),
+                  end: info.event.end.toString()
+                }, function(data, status){
+                  //alert(data);
+             });
             }
           },
           eventDrop: function(info) {
-            alert(info.event.title + " was dropped on " + info.event.start.toISOString());
+            //alert(info.event.title + " was dropped on " + info.event.start.toString());
 
             if (!confirm("Are you sure about this change?")) {
               info.revert();
+            }else {
+              $.post("/AGC/fct_calend.php",
+                {
+                  op: "time",
+                  id: info.event.id,
+                  start:info.event.start.toString(),
+                  end: info.event.end.toString()
+                }, function(data, status){
+                  //alert(data);
+             });
             }
           }
           });
