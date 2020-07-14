@@ -8,7 +8,15 @@ $req->execute();
   require 'LBD.php';
 //  $req=$bdd->query("SELECT * FROM Calendrier WHERE ");
   //$dn = $req->fetch();
-
+}elseif ($_POST['op']=="sup") {
+  require 'LBD.php';
+  $req = $bdd->prepare("DELETE FROM `Calendrier` WHERE id =". $_POST['id'] ." ");
+  $req->execute();
+}elseif ($_POST['op']=="get"){
+  $req = $bdd->prepare("SELECT * FROM `Calendrier` WHERE id = ".$_POST['id']." ");
+  $req->execute();
+  $res = $req->fetch();
+  echo json_encode($res);
 }
 
 

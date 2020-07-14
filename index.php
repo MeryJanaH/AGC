@@ -347,7 +347,7 @@ include 'footer.php'; ?>
                             require 'LBD.php';
                             $req=$bdd->query("SELECT * FROM Clients");
                             while($dn = $req->fetch())
-                            { ?> <option value="<?php print_r($dn['ID_client']); ?>" id="<?php print_r($dn['ID_client']); ?>" ><?php echo $dn['Name']." , ".$dn['phnumber']; ?></option><?php } ?>
+                            { ?> <option value="<?php print_r($dn['ID_client']); ?>" ><?php echo $dn['Name']." , ".$dn['phnumber']; ?></option><?php } ?>
                           </select>
                         <div class="form-group"></br>
                         <label class="control-label" for="select03">Projet :</label>
@@ -638,21 +638,46 @@ include 'footer.php'; ?>
             //  alert('Titre: ' + info.event.title +'\nCommercial: ' + info.event.comm +'\nClient: ' + info.event.client +'\nProjet: ' + info.event.projet+'\nDescription: ' + info.event.description+'\nTemps: \n   -De : '+info.event.start+'\n   -Ä : '+info.event.end);
             $('#event-edit #startTime').val(info.event.startStr);
             $('#event-edit #endTime').val(info.event.endStr);
+            var values;
+            $.post("/AGC/fct_calend.php",
+              {
+                op: "get",
+                id: info.event.id
+              }, function(json){
+                values=json;
+                console.log(values);
+           });
+
+
+            setTimeout(function(){
+              console.log(values['Description']);
+            /*$("#commercial").children("option:selected").val()=
+            $("#client").children("option:selected").val()=
+            $("#projet").children("option:selected").val()=
+            $("#etat").children("option:selected").val()=*/
+
+            //document.querySelector('#commercial [value="' + values.ID_cm + '"]').selected = true;
+            document.getElementById("description").value = values['Description'];
             //$('#createEventModal #when').text(mywhen);
             $('#event-edit').modal('toggle');
+
+
+          }, 2000);
+
+
             $('#modifier').unbind('click').on('click', function(e){
                  // We don't want this to act as a link so cancel the link action
                  e.preventDefault();
                  $("#event-edit").modal('hide');
-                 var startTime = $('#startTime').val();
-                 var endTime = $('#endTime').val();
-                 var commercial = $("#select01").children("option:selected").val();
-                 var client = $("#select02").children("option:selected").val();
-                 var projet = $("#select03").children("option:selected").val();
-                 var category = $("#category").children("option:selected").val();
-                 var titre = $("#titre").val();
-                 var description = $("#desc").val();
+                 var startTime = $('#startTime2').val();
+                 var endTime = $('#endTime2').val();
+                 var commercial = $("#commercial").children("option:selected").val();
+                 var client = $("#client").children("option:selected").val();
+                 var projet = $("#projet").children("option:selected").val();
+                 var category = $("#etat").children("option:selected").val();
+                 var description = $("#description").val();
 
+                 info.event.remove();
                  calendar.addEvent({
                     /*id:1*/
                      title: client,
@@ -664,7 +689,7 @@ include 'footer.php'; ?>
 
                  $.post("/AGC/fct_calend.php",
                    {
-                     op: "add",
+                     op: "modif",
                      comm: commercial,
                      client: client,
                      projet: projet,
@@ -678,6 +703,17 @@ include 'footer.php'; ?>
                 });
              });
 
+             $('#DELETE').unbind('click').on('click', function(e){
+               $.post("/AGC/fct_calend.php",
+                 {
+                   op: "sup",
+                   id: info.event.id
+                 }, function(data, status){
+                   alert(info.event.id+"removed");
+                info.event.remove();
+              });
+
+            });
               // change the border color just for fun
               info.el.style.borderColor = 'red';
             },
