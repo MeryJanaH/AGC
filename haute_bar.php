@@ -16,16 +16,19 @@
                   <?php if($_SESSION['current_page']=="projets"){?>
                     <a href="ui-projets.php" class="navbar-brand flex ">
                     <span>Table des projets</span>
+                  <?php }if($_SESSION['current_page']=="index"){?>
+                    <a href="index.php" class="navbar-brand flex ">
+                    <span>Calendrier</span>
                   <?php }if($_SESSION['current_page']=="commerciaux"){ ?>
                     <a href="ui-tables.php" class="navbar-brand flex ">
                     <span>Table des commerciaux</span>
-                  <?php }if($_SESSION['current_page']=="index"){ ?>
-                    <a href="index.php" class="navbar-brand flex ">
-                    <span>Tableau de bord</span>
                   <?php }if($_SESSION['current_page']=="edit"){ ?>
                     <a href="edit-account.php" class="navbar-brand flex ">
                     <span>Modifier vos informations</span>
-                  <?php } ?>
+                  <?php }if($_SESSION['current_page']=="clients"){ ?>
+                     <a href="table_clients.php" class="navbar-brand flex ">
+                     <span>Table de clients</span>
+                   <?php } ?>
                 </a>
 
 
