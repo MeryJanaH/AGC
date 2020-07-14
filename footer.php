@@ -107,7 +107,7 @@
                         </li>
 
                         <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button" href="ui-charts.html">
+                            <a class="sidebar-menu-button" href="Graphe.php">
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">donut_small</i>
                                 <span class="sidebar-menu-text">Graphe</span>
                             </a>
