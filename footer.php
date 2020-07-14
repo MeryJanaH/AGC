@@ -19,7 +19,7 @@
                             <div><strong><?php echo $_SESSION['name'] ?></strong></div>
                         </div>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item active" href="index.php">tableau de bord</a>
+                        <a class="dropdown-item active" href="index.php">Tableau de bord</a>
                         <a class="dropdown-item" href="edit-account.php">Modifier le compte</a>
                         <div class="dropdown-divider"></div>
                       <form action="login.php" method="POST">
@@ -43,7 +43,7 @@
                       <?php } ?>
                             <a class="sidebar-menu-button" href="index.php">
                               <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">date_range</i>
-                                <span class="sidebar-menu-text">tableau de bord</span>
+                                <span class="sidebar-menu-text">Tableau de bord</span>
                             </a>
                         </li>
                         <?php if($_SESSION['current_page']=="edit"){?>
