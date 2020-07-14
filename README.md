@@ -13,4 +13,4 @@ Here is the documentation page that you can use to understand the code snippet a
 
 - Send a monthly report to the administrator by email including statistics and visualizations
 
-- 
+- Make a solution for the case when we have multiple clients with the same name.
