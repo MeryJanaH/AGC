@@ -1,6 +1,10 @@
 <?php
 require 'LBD.php';
 require 'functions.php';
+if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION['login']))
+{
+      header('Location: login.php');
+}
 
 ?>
 <!DOCTYPE html>
