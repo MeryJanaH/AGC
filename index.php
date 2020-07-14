@@ -347,7 +347,7 @@ include 'footer.php'; ?>
                             require 'LBD.php';
                             $req=$bdd->query("SELECT * FROM Clients");
                             while($dn = $req->fetch())
-                            { ?> <option value="<?php print_r($dn['ID_client']); ?>" ><?php echo $dn['Name']." , ".$dn['phnumber']; ?></option><?php } ?>
+                            { ?> <option value="<?php print_r($dn['ID_client']); ?>" id="<?php print_r($dn['ID_client']); ?>" ><?php echo $dn['Name']." , ".$dn['phnumber']; ?></option><?php } ?>
                           </select>
                         <div class="form-group"></br>
                         <label class="control-label" for="select03">Projet :</label>
@@ -374,6 +374,7 @@ include 'footer.php'; ?>
                       <select class="form-control custom-select" name="category" id="category">
                          <option value="bg-danger">Annulé</option>
                          <option value="bg-success">Prévu</option>
+                         <option value="bg-primary">Notification</option>
                       </select>
                   </div>
               </div>
@@ -385,6 +386,81 @@ include 'footer.php'; ?>
                     <button type="button" class="btn btn-light" data-dismiss="modal">Fermer</button>
                     <button type="button" class="btn btn-success save-event" id="submitButton">Créer</button>
                   <!--  <button type="button" class="btn btn-danger delete-event" data-dismiss="modal">Delete</button>-->
+                </div>
+            </div> <!-- end modal-content-->
+        </div> <!-- end modal dialog-->
+    </div>
+    <!-- end modal-->
+
+    <!-- Edit New Event MODAL -->
+    <div class="modal fade" id="event-edit" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header pr-4 pl-4 border-bottom-0 d-block">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Ajouter un nouveau événement</h4>
+                </div>
+                <div class="modal-body pt-3 pr-4 pl-4">
+
+                  <input type="hidden" id="startTime2"/>
+                  <input type="hidden" id="endTime2"/>
+
+                  <form id="form2">    <div class="row">       <div class="col-12">
+                      <div class="form-group">
+                       <label class="control-label" for="select01">Commercial :</label>
+                            <select id="commercial" data-toggle="select" class="form-control" name="commercial">
+                              <?php
+                              require 'LBD.php';
+                              $req=$bdd->query("SELECT ID_cm, CName, Email FROM Commerciaux WHERE CName !=''");
+                              while($dn = $req->fetch())
+                              { ?> <option value="<?php print_r($dn['ID_cm']); ?>" ><?php echo $dn['CName']." , ".$dn['Email']; ?></option><?php } ?>
+                            </select>
+                      <div class="form-group"></br>
+                       <label class="control-label" for="select02">Client :</label>
+                         <select id="client" data-toggle="select" class="form-control" name="client">
+                           <?php
+                            require 'LBD.php';
+                            $req=$bdd->query("SELECT * FROM Clients");
+                            while($dn = $req->fetch())
+                            { ?> <option value="<?php print_r($dn['ID_client']); ?>"  ><?php echo $dn['Name']." , ".$dn['phnumber']; ?></option><?php } ?>
+                          </select>
+                        <div class="form-group"></br>
+                        <label class="control-label" for="select03">Projet :</label>
+                          <select id="projet" data-toggle="select" class="form-control" name="projet">
+                            <?php
+                              require 'LBD.php';
+                              $req=$bdd->query("SELECT *  FROM Projets");
+                              while($dn = $req->fetch())
+                              { ?> <option value="<?php print_r($dn['Code_pj']); ?>" ><?php echo $dn['ProjetName']." , ".$dn['type_p']." , ".$dn['Etages']; ?></option><?php } ?>
+                         </select>
+                        </div>
+                      </div>
+                     </div>
+                  </div>
+
+                 <div class="col-12"></br>
+                    <label class="control-label">Description :</label>
+                    <input class="form-control" placeholder="Ajouter une description" type="text" id="description" name="description" />
+                 </div>
+
+                 <div class="col-12">
+                   <div class="form-group"></br>
+                      <label class="control-label">Category :</label>
+                      <select class="form-control custom-select" name="category" id="etat">
+                         <option value="bg-danger">Annulé</option>
+                         <option value="bg-success">Prévu</option>
+                         <option value="bg-primary">Notification</option>
+                      </select>
+                  </div>
+              </div>
+            </div>
+        </form>
+      </div>
+
+                <div class="text-right pb-4 pr-4">
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-success " id="modifier">Créer</button>
+                  <button type="button" class="btn btn-danger delete-event" id="DELETE" data-dismiss="modal">Delete</button>
                 </div>
             </div> <!-- end modal-content-->
         </div> <!-- end modal dialog-->
@@ -495,6 +571,8 @@ include 'footer.php'; ?>
           },
           weekNumbers: false,
           dayMaxEvents: true, // allow "more" link when too many events
+          selectLongPressDelay:1,
+          longPressDelay:1,
           events: [
             <?php
             require 'LBD.php';
@@ -505,7 +583,7 @@ include 'footer.php'; ?>
                title: "<?php
                       $rq=$bdd->query("SELECT Name FROM Clients WHERE ID_client=". $dn['ID_client']."");
                       $res = $rq->fetch();
-               print_r($res['Name']) ?>",
+               print_r($res['Name']); ?>",
                start: new Date("<?php print_r($dn['date_tdébut']) ?>"),
                end: new Date("<?php print_r($dn['date_tfin']) ?>"),
                classNames: "<?php print_r($dn['Category']) ?>"
@@ -522,6 +600,50 @@ include 'footer.php'; ?>
                  // We don't want this to act as a link so cancel the link action
                  e.preventDefault();
                  $("#event-modal").modal('hide');
+                 var startTime = $('#startTime').val();
+                 var endTime = $('#endTime').val();
+                 var commercial = $("#select01").children("option:selected").val();
+                 var client = $("#select02").children("option:selected").val();
+                 var projet = $("#select03").children("option:selected").val();
+                 var category = $("#category").children("option:selected").val();
+                 var titre = $("#titre").val();
+                 var description = $("#desc").val();
+
+                 calendar.addEvent({
+                    /*id:1*/
+                     title: document.getElementById(client).innerText,
+                     start: startTime,
+                     end: endTime,
+                     classNames: category,
+                     allDay:false
+                 });
+
+                 $.post("/AGC/fct_calend.php",
+                   {
+                     op: "add",
+                     comm: commercial,
+                     client: client,
+                     projet: projet,
+                     titre: titre,
+                     description: description,
+                     start:startTime,
+                     end: endTime,
+                     category: category
+                   }, function(data, status){
+                  //location.reload();
+                });
+             });
+          },
+          eventClick: function(info) {
+            //  alert('Titre: ' + info.event.title +'\nCommercial: ' + info.event.comm +'\nClient: ' + info.event.client +'\nProjet: ' + info.event.projet+'\nDescription: ' + info.event.description+'\nTemps: \n   -De : '+info.event.start+'\n   -Ä : '+info.event.end);
+            $('#event-edit #startTime').val(info.event.startStr);
+            $('#event-edit #endTime').val(info.event.endStr);
+            //$('#createEventModal #when').text(mywhen);
+            $('#event-edit').modal('toggle');
+            $('#modifier').unbind('click').on('click', function(e){
+                 // We don't want this to act as a link so cancel the link action
+                 e.preventDefault();
+                 $("#event-edit").modal('hide');
                  var startTime = $('#startTime').val();
                  var endTime = $('#endTime').val();
                  var commercial = $("#select01").children("option:selected").val();
@@ -551,12 +673,10 @@ include 'footer.php'; ?>
                      start:startTime,
                      end: endTime,
                      category: category
-                   });
+                   }, function(data, status){
+                  location.reload();
+                });
              });
-          },
-          eventClick: function(info) {
-            //  alert('Titre: ' + info.event.title +'\nCommercial: ' + info.event.comm +'\nClient: ' + info.event.client +'\nProjet: ' + info.event.projet+'\nDescription: ' + info.event.description+'\nTemps: \n   -De : '+info.event.start+'\n   -Ä : '+info.event.end);
-
 
               // change the border color just for fun
               info.el.style.borderColor = 'red';
