@@ -56,7 +56,7 @@ function email_exist($email){
     $req->execute();
     $res = $req->fetch();
 
-    if($res == NULL)
+    if($res == "")
     {
       $req = $bdd->prepare("SELECT * FROM Admin WHERE Email=:email");
       $req->bindParam(':email', $email);
@@ -65,13 +65,13 @@ function email_exist($email){
         $res = $req->fetch();
     }
 
-    if($res != NULL)
+    if($res != "")
     {
-      return true;
+      return "true";
     }
     else
     {
-      return false;
+      return "false";
     }
 }
 
@@ -199,7 +199,7 @@ function update_table_emp()
                 function showMessage<?php echo $dn['ID_cm'];?>()
                 {
                     var txt;
-                    if (confirm("êtes-vous sûr de supprimer <?php print_r($dn['CName']) ?> ? après il ne va pas le droit d'accéder à cette application \"AGC\" ! ")) {
+                    if (confirm("êtes-vous sûr de supprimer <?php print_r($dn['CName']) ?> ? après cette action il ne va pas le droit d'accéder à cette application \"AGC\" ! ")) {
                         txt = "You pressed OK!";
                     } else {
                         txt = "You pressed Cancel!";
@@ -259,22 +259,70 @@ function update_table_projets()
      <?php
       }
     }
-    ?>
-<script>
-function add_pj()
-  {
-    var html = "<tr>";
-        html += "<td><input id ='n' name='proj_name[]'></td>";
-        html += "<td><input id ='t' name='proj_type[]'></td>";
-        html += "<td><input id ='e' name='proj_etage[]'></td>";
-        html += "<td><input id ='s' name='proj_surface[]'></td>";
-        html += "<td><input id ='p' name='proj_prix[]'></td>";
-        html += "</tr>";
 
-   var row = document.getElementById("staff02").insertRow();
-        row.innerHTML = html;
-  }
-</script>
+function update_table_clients()
+    {
+      require 'LBD.php';
+      $req=$bdd->query("SELECT * FROM Clients");
+      while($dn = $req->fetch())
+      {
+        $rq = $bdd->prepare("SELECT ProjetName FROM Projets WHERE Code_pj= '" . $dn['Code_pj'] . "'");
+        if($rq->execute()){
+        $rs = $rq->fetch();
+        }
+        ?>
+        <tr>
+            <td style="width: 120px;"><span class="js-lists-values-employee-name"><?php print_r($dn['Name']); ?></span></td>
+            <td style="width: 200px;"><span class="text-muted"><?php print_r($dn['phnumber']) ?></span></td>
+            <td style="width: 150px;"><span class="text-muted"><?php print_r($rs['ProjetName']) ?></span></td>
+            <td style="width: 200px;"><span class="text-muted"><?php print_r($dn['Notes']) ?></span></td>
+            <td style="width: 150px;"><span class="text-muted"><?php print_r($dn['Source']) ?></span></td>
+        </tr>
+     <?php
+      }
+    }
+
+    function fill_unit_select_box()
+    {
+       require 'LBD.php';
+       $output = '';
+       $req=$bdd->query('SELECT *  FROM Projets');
+       while($dn = $req->fetch())
+       {$output .=  '<option value='.$dn['Code_pj'].'>'.$dn['ProjetName'].'</option>';}
+
+      return $output;
+    }
+
+    ?>
+    <script>
+    function add_pj()
+      {
+        var html = "<tr>";
+            html += "<td><input required='' id ='n' name='proj_name[]'></td>";
+            html += "<td><input required='' id ='t' name='proj_type[]'></td>";
+            html += "<td><input required='' id ='e' name='proj_etage[]'></td>";
+            html += "<td><input required='' id ='s' name='proj_surface[]'></td>";
+            html += "<td><input required='' id ='p' type='number' name='proj_prix[]'></td>";
+            html += "</tr>";
+
+       var row = document.getElementById("staff02").insertRow();
+            row.innerHTML = html;
+      }
+
+      function add_ct()
+        {
+          var html = "<tr>";
+              html += "<td><input required='' id ='n' name='name_client[]'></td>";
+              html += "<td><input required='' id ='nm' type='tel' name='num[]'></td>";
+              html += "<td><select required='' id = 'pj' class='form-control item_unit' name='c_p[]'></option><?php echo fill_unit_select_box();?></select></td>";
+              html += "<td><input required='' id ='nt' name='Note[]'></td>";
+              html += "<td><input required='' id ='s' name='source[]'></td>";
+              html += "</tr>";
+
+         var row = document.getElementById("staff03").insertRow();
+              row.innerHTML = html;
+        }
+    </script>
 
 <?php
 
@@ -287,4 +335,16 @@ function  add_projet($p_n,$p_t,$p_e,$p_s,$p_p)
       $req->execute();
   }
 }
+
+function  add_client($c_n,$nm_t,$c_nt,$c_s,$c_p)
+{
+  require 'LBD.php';
+  for ($a = 0; $a < count($c_n); $a++)
+  {
+
+      $req = $bdd->prepare("INSERT INTO Clients (Name, phnumber,Notes,Source,Code_pj) VALUES ('" . $c_n[$a] . "','" . $nm_t[$a]."','" . $c_nt[$a]."','" . $c_s[$a]."','" . $c_p[$a]."')");
+      $req->execute();
+  }
+}
+
 ?>

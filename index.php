@@ -1,8 +1,6 @@
 <?php
 session_start();
-
 $_SESSION['current_page']="index";
-
 if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION['login']))
 {
       header('Location: login.php');
@@ -12,693 +10,104 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-<?php include 'head.php';?>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Calendrier</title>
+
+    <!-- Prevent the demo from appearing in search engines -->
+    <meta name="robots" content="noindex">
+
+    <!-- Simplebar -->
+    <link type="text/css" href="assets/vendor/simplebar.min.css" rel="stylesheet">
+
+
+    <!-- App CSS -->
+    <link type="text/css" href="assets/css/app.css" rel="stylesheet">
+    <link type="text/css" href="assets/css/app.rtl.css" rel="stylesheet">
+
+    <!-- Material Design Icons -->
+    <link type="text/css" href="assets/css/vendor-material-icons.css" rel="stylesheet">
+    <link type="text/css" href="assets/css/vendor-material-icons.rtl.css" rel="stylesheet">
+
+    <!-- Font Awesome FREE Icons -->
+    <link type="text/css" href="assets/css/vendor-fontawesome-free.css" rel="stylesheet">
+    <link type="text/css" href="assets/css/vendor-fontawesome-free.rtl.css" rel="stylesheet">
+
+    <!-- ion Range Slider -->
+    <link type="text/css" href="assets/css/vendor-ion-rangeslider.css" rel="stylesheet">
+    <link type="text/css" href="assets/css/vendor-ion-rangeslider.rtl.css" rel="stylesheet">
+
+
+    <!-- FullCalendar -->
+    <link type="text/css" href="assets/vendor/fullcalendar/lib/main.css" rel="stylesheet">
+
+    <!-- Select2 -->
+    <link type="text/css" href="assets/css/vendor-select2.css" rel="stylesheet">
+    <link type="text/css" href="assets/css/vendor-select2.rtl.css" rel="stylesheet">
+    <link type="text/css" href="assets/vendor/select2/select2.min.css" rel="stylesheet">
+
+
+</head>
 
 <body class="layout-default">
     <div class="preloader"></div>
+
     <div class="mdk-drawer-layout js-mdk-drawer-layout" data-push data-responsive-width="992px" data-fullbleed>
         <div class="mdk-drawer-layout__content">
 
             <!-- Header Layout -->
             <div class="mdk-header-layout js-mdk-header-layout" data-has-scrolling-region>
 
-              <?php  include 'haute_bar.php'; ?>
-              
+              <?php include 'haute_bar.php'; ?>
+
                 <!-- Header Layout Content -->
                 <div class="mdk-header-layout__content mdk-header-layout__content--fullbleed mdk-header-layout__content--scrollable page">
 
-                    <div class="container-fluid page__container">
 
-                        <div class="row">
-                            <div class="col-md">
-                                <div class="card card-stats">
-                                    <div class="d-flex align-items-center mb-2">
-                                        <div class="card-header__title flex">Sales</div>
-                                        $3,181 <span class="text-muted">&nbsp;/ $3,200</span>
+                    <div >
+                        <div >
+                            <div >
+                                <div class="card ">
+                                    <div id="calendar" data-toggle="fullcalendar"></div>
+                                </div>
+                            </div> <!-- end col -->
+<!--
+                            <div class="col-lg-3">
+                                <a href="" data-toggle="modal" data-target="#add-category" class="btn btn-primary btn-block"><i class="material-icons">today</i> New Event</a>
+                                <hr>
+                                <div id="external-events">
+                                    <p class="text-muted">Drag and drop your event or click in the calendar.</p>
+                                    <div class="external-event bg-success" data-class="bg-success">
+                                        <i class="mr-2 material-icons">drag_handle</i>
+                                        <span class="external-event__title">New Theme Release</span>
                                     </div>
-                                    <div class="position-relative d-flex align-items-start z-0">
-                                        <div class="progress flex" style="height: 4px;">
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <i class="material-icons text-success bg-white position-absolute" style="right: -4px; top: -10px; z-index: 2;">check_box</i>
+                                    <div class="external-event bg-info" data-class="bg-info">
+                                        <i class="mr-2 material-icons">drag_handle</i>
+                                        <span class="external-event__title">My Event</span>
+                                    </div>
+                                    <div class="external-event bg-warning" data-class="bg-warning">
+                                        <i class="mr-2 material-icons">drag_handle</i>
+                                        <span class="external-event__title">Meet manager</span>
+                                    </div>
+                                    <div class="external-event bg-danger" data-class="bg-danger">
+                                        <i class="mr-2 material-icons">drag_handle</i>
+                                        <span class="external-event__title">Create New theme</span>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md">
-                                <div class="card card-stats">
-                                    <div class="d-flex align-items-center mb-2">
-                                        <div class="card-header__title flex">Visitors</div>
-                                        <strong class="text-primary">340</strong>&nbsp;/ 2,122
-                                    </div>
-                                    <div class="progress" style="height: 4px;">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 33%;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
+
+                                - checkbox -
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="drop-remove">
+                                    <label class="custom-control-label" for="drop-remove">Remove after drop</label>
                                 </div>
-                            </div>
-                            <div class="col-md">
-                                <div class="card card-stats">
-                                    <div class="d-flex align-items-center mb-2">
-                                        <div class="card-header__title flex">Expenses</div>
-                                        $1,395 <span class="text-muted">&nbsp;/ $8,210</span>
-                                    </div>
-                                    <div class="progress" style="height: 4px;">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 17%;" aria-valuenow="17" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="row card-group-row">
-                            <div class="col-lg-4 col-md-5 card-group-row__col">
-                                <div class="card card-group-row__card">
-                                    <div class="card-header card-header-large bg-light d-flex align-items-center">
-                                        <div class="flex">
-                                            <h4 class="card-header__title">Current Balance</h4>
-                                            <div class="card-subtitle text-muted">This billing cycle</div>
-                                        </div>
-                                        <div class="dropdown ml-auto">
-                                            <a href="#" data-toggle="dropdown" data-caret="false" class="text-dark-gray"><i class="material-icons">more_horiz</i></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a href="javascript:void(0)" class="dropdown-item">Go to Report</a>
-                                                <a href="javascript:void(0)" class="dropdown-item">Next Cycle</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body d-flex align-items-center justify-content-center" style="height: 250px;">
-                                        <div class="chart z-0" style="width: calc(250px - 1.25rem * 2); height: calc(250px - 1.25rem * 2);">
-                                            <div style="width: calc(250px - 1.25rem * 2); height: calc(250px - 1.25rem * 2); position: absolute; top: 0; left: 0;" class="d-flex flex-column align-items-center justify-content-center">
-                                                <div class="text-muted mb-1">Next bill</div>
-                                                <div class="card-header__title">15.03.2019</div>
-                                            </div>
-                                            <canvas class="position-relative" id="billingChart" style="z-index: 2;"></canvas>
-                                        </div>
-                                    </div>
-                                    <div class="card-body pt-0 text-center">
-                                        <div class="text-amount mb-1">&dollar;37,290</div>
-                                        <div class="text-muted">Current balance this billing cycle</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-8 col-md-7 card-group-row__col">
-                                <div class="card card-group-row__card">
-                                    <div class="card-header card-header-large bg-light d-flex align-items-center">
-                                        <div class="flex">
-                                            <h4 class="card-header__title">Total Transactions</h4>
-                                            <div class="card-subtitle text-muted">This billing cycle</div>
-                                        </div>
-                                        <div class="dropdown ml-auto">
-                                            <a href="#" data-toggle="dropdown" data-caret="false" class="text-dark-gray"><i class="material-icons">more_horiz</i></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a href="javascript:void(0)" class="dropdown-item">Action</a>
-                                                <a href="javascript:void(0)" class="dropdown-item">Other Action</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a href="javascript:void(0)" class="dropdown-item">Some Other Action</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body d-flex align-items-center">
-                                        <div class="chart w-100" style="height: calc(328px - 1.25rem * 2);">
-                                            <canvas id="transactionsChart"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="row card-group-row">
-                            <div class="col-lg-7 card-group-row__col">
-                                <div class="card card-group-row__card">
-                                    <div class="card-header card-header-large bg-light d-flex align-items-center">
-                                        <div class="flex">
-                                            <h4 class="card-header__title">Patient Statistics</h4>
-                                        </div>
-                                        <div class="dropdown ml-auto">
-                                            <a href="#" data-toggle="dropdown" data-caret="false" class="text-dark-gray"><i class="material-icons">more_horiz</i></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a href="javascript:void(0)" class="dropdown-item">Some Action</a>
-                                                <a href="javascript:void(0)" class="dropdown-item">Another Action</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body d-flex">
-                                        <div>
-                                            <div class="text-muted mb-1">Female patients</div>
-                                            <div class="text-amount">64%</div>
-                                        </div>
-                                        <div class="border-left mx-3"></div>
-                                        <div>
-                                            <div class="text-muted mb-1">Male patients</div>
-                                            <div class="text-amount">36%</div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body d-flex align-items-center" style="height: 250px;">
-                                        <div class="chart w-100" style="height: calc(250px - 1.25rem * 2);">
-                                            <canvas id="genderChart"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-5 card-group-row__col">
-                                <div class="card card-group-row__card">
-                                    <div class="card-header card-header-large bg-light d-flex align-items-center">
-                                        <div class="flex">
-                                            <h4 class="card-header__title">Upcoming Appointments</h4>
-                                        </div>
-                                        <div class="dropdown ml-auto">
-                                            <a href="#" data-toggle="dropdown" data-caret="false" class="text-dark-gray"><i class="material-icons">more_horiz</i></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a href="javascript:void(0)" class="dropdown-item">Some Action</a>
-                                                <a href="javascript:void(0)" class="dropdown-item">Another Action</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="list-group list-group-flush">
-
-
-                                        <div class="list-group-item list-group-item-action d-flex align-items-center">
-                                            <div class="avatar avatar-sm mr-3">
-                                                <img src="assets/images/256_rsz_1andy-lee-642320-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                            </div>
-
-                                            <div class="d-flex flex-column flex">
-                                                <strong class="text-15pt">Jenell D. Matney</strong>
-                                                <small class="text-muted">28 February 2019, 10:00 AM</small>
-                                            </div>
-
-                                            <i class="material-icons icon-muted ml-3">arrow_forward</i>
-                                        </div>
-
-                                        <div class="list-group-item list-group-item-action d-flex align-items-center">
-                                            <div class="avatar avatar-sm mr-3">
-                                                <img src="assets/images/256_daniel-gaffey-1060698-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                            </div>
-
-                                            <div class="d-flex flex-column flex">
-                                                <strong class="text-15pt">Sherri J. Cardenas</strong>
-                                                <small class="text-muted">28 February 2019, 11:00 AM</small>
-                                            </div>
-
-                                            <i class="material-icons icon-muted ml-3">arrow_forward</i>
-                                        </div>
-
-                                        <div class="list-group-item list-group-item-action d-flex align-items-center">
-                                            <div class="avatar avatar-sm mr-3">
-                                                <img src="assets/images/256_jeremy-banks-798787-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                            </div>
-
-                                            <div class="d-flex flex-column flex">
-                                                <strong class="text-15pt">Joseph S. Ferland</strong>
-                                                <small class="text-muted">28 February 2019, 12:00 PM</small>
-                                            </div>
-
-                                            <i class="material-icons icon-muted ml-3">arrow_forward</i>
-                                        </div>
-
-                                        <div class="list-group-item list-group-item-action d-flex align-items-center">
-                                            <div class="avatar avatar-sm mr-3">
-                                                <img src="assets/images/256_joao-silas-636453-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                            </div>
-
-                                            <div class="d-flex flex-column flex">
-                                                <strong class="text-15pt">Bryan K. Davis</strong>
-                                                <small class="text-muted">28 February 2019, 01:00 PM</small>
-                                            </div>
-
-                                            <i class="material-icons icon-muted ml-3">arrow_forward</i>
-                                        </div>
-
-                                        <div class="list-group-item list-group-item-action d-flex align-items-center">
-                                            <div class="avatar avatar-sm mr-3">
-                                                <img src="assets/images/256_michael-dam-258165-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                            </div>
-
-                                            <div class="d-flex flex-column flex">
-                                                <strong class="text-15pt">Kaci M. Langston</strong>
-                                                <small class="text-muted">28 February 2019, 02:00 PM</small>
-                                            </div>
-
-                                            <i class="material-icons icon-muted ml-3">arrow_forward</i>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg">
-                                <div class="card">
-                                    <div class="card-header card-header-large bg-white d-flex align-items-center">
-                                        <h4 class="card-header__title flex m-0">Recent Activity</h4>
-                                        <div data-toggle="flatpickr" data-flatpickr-wrap="true" data-flatpickr-static="true" data-flatpickr-mode="range" data-flatpickr-alt-format="d/m/Y" data-flatpickr-date-format="d/m/Y">
-                                            <a href="javascript:void(0)" class="link-date" data-toggle>13/03/2018 <span class="text-muted mx-1">to</span> 20/03/2018</a>
-                                            <input class="d-none" type="hidden" value="13/03/2018 to 20/03/2018" data-input>
-                                        </div>
-                                    </div>
-                                    <div class="card-header card-header-tabs-basic nav" role="tablist">
-                                        <a href="#activity_all" class="active" data-toggle="tab" role="tab" aria-controls="activity_all" aria-selected="true">All</a>
-                                        <a href="#activity_purchases" data-toggle="tab" role="tab" aria-controls="activity_purchases" aria-selected="false">Purchases</a>
-                                        <a href="#activity_emails" data-toggle="tab" role="tab" aria-controls="activity_emails" aria-selected="false">Emails</a>
-                                        <a href="#activity_quotes" data-toggle="tab" role="tab" aria-controls="activity_quotes" aria-selected="false">Quotes</a>
-                                    </div>
-                                    <div class="list-group tab-content list-group-flush">
-                                        <div class="tab-pane active show fade" id="activity_all">
-
-
-                                            <div class="list-group-item list-group-item-action d-flex align-items-center ">
-                                                <div class="avatar avatar-xs mr-3">
-                                                    <span class="avatar-title rounded-circle  bg-primary">
-                                                        <i class="material-icons">monetization_on</i>
-                                                    </span>
-                                                </div>
-
-
-                                                <div class="flex">
-                                                    <div class="d-flex align-items-middle">
-                                                        <div class="avatar avatar-xxs mr-1">
-                                                            <img src="assets/images/256_rsz_1andy-lee-642320-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                                        </div>
-
-
-                                                        <strong class="text-15pt mr-1">Jenell D. Matney</strong>
-                                                    </div>
-                                                    <small class="text-muted">4 days ago</small>
-                                                </div>
-                                                <div>$573</div>
-
-
-                                                <i class="material-icons icon-muted ml-3">arrow_forward</i>
-                                            </div>
-
-                                            <div class="list-group-item list-group-item-action d-flex align-items-center ">
-                                                <div class="avatar avatar-xs mr-3">
-                                                    <span class="avatar-title rounded-circle  bg-success">
-                                                        <i class="material-icons">email</i>
-                                                    </span>
-                                                </div>
-
-
-                                                <div class="flex">
-                                                    <div class="d-flex align-items-middle">
-                                                        <div class="avatar avatar-xxs mr-1">
-                                                            <img src="assets/images/256_daniel-gaffey-1060698-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                                        </div>
-
-
-                                                        <strong class="text-15pt mr-1">Sherri J. Cardenas</strong>
-                                                    </div>
-                                                    <small>Improve spacings on Projects page</small>
-                                                </div>
-                                                <small class="text-muted">3 days ago</small>
-
-
-                                                <i class="material-icons icon-muted ml-3">arrow_forward</i>
-                                            </div>
-
-                                            <div class="list-group-item list-group-item-action d-flex align-items-center  bg-light ">
-                                                <div class="avatar avatar-xs mr-3">
-                                                    <span class="avatar-title rounded-circle  ">
-                                                        <i class="material-icons">monetization_on</i>
-                                                    </span>
-                                                </div>
-
-
-                                                <div class="flex">
-                                                    <div class="d-flex align-items-middle">
-                                                        <div class="avatar avatar-xxs mr-1">
-                                                            <img src="assets/images/256_jeremy-banks-798787-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                                        </div>
-
-
-                                                        <strong class="text-15pt mr-1">Joseph S. Ferland</strong>
-                                                    </div>
-                                                    <small class="text-muted">2 days ago</small>
-                                                </div>
-                                                <div>$244</div>
-
-
-                                                <i class="material-icons icon-muted ml-3">arrow_forward</i>
-                                            </div>
-
-                                            <div class="list-group-item list-group-item-action d-flex align-items-center  bg-light ">
-                                                <div class="avatar avatar-xs mr-3">
-                                                    <span class="avatar-title rounded-circle  ">
-                                                        <i class="material-icons">monetization_on</i>
-                                                    </span>
-                                                </div>
-
-
-                                                <div class="flex">
-                                                    <div class="d-flex align-items-middle">
-                                                        <div class="avatar avatar-xxs mr-1">
-                                                            <img src="assets/images/256_joao-silas-636453-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                                        </div>
-
-
-                                                        <strong class="text-15pt mr-1">Bryan K. Davis</strong>
-                                                    </div>
-                                                    <small class="text-muted">1 day ago</small>
-                                                </div>
-                                                <div>$664</div>
-
-
-                                                <i class="material-icons icon-muted ml-3">arrow_forward</i>
-                                            </div>
-
-                                            <div class="list-group-item list-group-item-action d-flex align-items-center  bg-light ">
-                                                <div class="avatar avatar-xs mr-3">
-                                                    <span class="avatar-title rounded-circle  ">
-                                                        <i class="material-icons">description</i>
-                                                    </span>
-                                                </div>
-
-
-                                                <div class="flex">
-                                                    <div class="d-flex align-items-middle">
-                                                        <div class="avatar avatar-xxs mr-1">
-                                                            <img src="assets/images/256_luke-porter-261779-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                                        </div>
-
-
-                                                        <strong class="text-15pt mr-1">Kaci M. Langston</strong>
-                                                    </div>
-                                                    <small class="text-muted">just now</small>
-                                                </div>
-                                                <div>$631</div>
-
-
-                                                <i class="material-icons icon-muted ml-3">arrow_forward</i>
-                                            </div>
-
-                                            <div class="card-footer text-center border-0">
-                                                <a class="text-muted" href="">View All (54)</a>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane" id="activity_purchases">
-
-                                            <div class="list-group-item list-group-item-action d-flex align-items-center ">
-                                                <div class="avatar avatar-xs mr-3">
-                                                    <span class="avatar-title rounded-circle  bg-primary">
-                                                        <i class="material-icons">monetization_on</i>
-                                                    </span>
-                                                </div>
-
-                                                <div class="flex">
-                                                    <div class="d-flex align-items-middle">
-                                                        <div class="avatar avatar-xxs mr-1">
-                                                            <img src="assets/images/256_rsz_1andy-lee-642320-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                                        </div>
-                                                        <strong class="text-15pt mr-1">Sherri J. Cardenas</strong>
-
-                                                    </div>
-                                                    <small class="text-muted">4 days ago</small>
-                                                </div>
-                                                <div>$573</div>
-                                                <i class="material-icons icon-muted ml-3">arrow_forward</i>
-                                            </div>
-
-                                            <div class="list-group-item list-group-item-action d-flex align-items-center ">
-                                                <div class="avatar avatar-xs mr-3">
-                                                    <span class="avatar-title rounded-circle  bg-primary">
-                                                        <i class="material-icons">monetization_on</i>
-                                                    </span>
-                                                </div>
-
-                                                <div class="flex">
-                                                    <div class="d-flex align-items-middle">
-                                                        <div class="avatar avatar-xxs mr-1">
-                                                            <img src="assets/images/256_daniel-gaffey-1060698-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                                        </div>
-                                                        <strong class="text-15pt mr-1">Joseph S. Ferland</strong>
-
-                                                    </div>
-                                                    <small class="text-muted">3 days ago</small>
-                                                </div>
-                                                <div>$612</div>
-                                                <i class="material-icons icon-muted ml-3">arrow_forward</i>
-                                            </div>
-
-                                            <div class="list-group-item list-group-item-action d-flex align-items-center ">
-                                                <div class="avatar avatar-xs mr-3">
-                                                    <span class="avatar-title rounded-circle  bg-primary">
-                                                        <i class="material-icons">monetization_on</i>
-                                                    </span>
-                                                </div>
-
-                                                <div class="flex">
-                                                    <div class="d-flex align-items-middle">
-                                                        <div class="avatar avatar-xxs mr-1">
-                                                            <img src="assets/images/256_jeremy-banks-798787-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                                        </div>
-                                                        <strong class="text-15pt mr-1">Bryan K. Davis</strong>
-
-                                                    </div>
-                                                    <small class="text-muted">2 days ago</small>
-                                                </div>
-                                                <div>$244</div>
-                                                <i class="material-icons icon-muted ml-3">arrow_forward</i>
-                                            </div>
-
-                                            <div class="list-group-item list-group-item-action d-flex align-items-center  bg-light ">
-                                                <div class="avatar avatar-xs mr-3">
-                                                    <span class="avatar-title rounded-circle ">
-                                                        <i class="material-icons">monetization_on</i>
-                                                    </span>
-                                                </div>
-
-                                                <div class="flex">
-                                                    <div class="d-flex align-items-middle">
-                                                        <div class="avatar avatar-xxs mr-1">
-                                                            <img src="assets/images/256_joao-silas-636453-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                                        </div>
-                                                        <strong class="text-15pt mr-1">Kaci M. Langston</strong>
-
-                                                    </div>
-                                                    <small class="text-muted">1 day ago</small>
-                                                </div>
-                                                <div>$664</div>
-                                                <i class="material-icons icon-muted ml-3">arrow_forward</i>
-                                            </div>
-
-                                            <div class="list-group-item list-group-item-action d-flex align-items-center  bg-light ">
-                                                <div class="avatar avatar-xs mr-3">
-                                                    <span class="avatar-title rounded-circle ">
-                                                        <i class="material-icons">monetization_on</i>
-                                                    </span>
-                                                </div>
-
-                                                <div class="flex">
-                                                    <div class="d-flex align-items-middle">
-                                                        <div class="avatar avatar-xxs mr-1">
-                                                            <img src="assets/images/256_michael-dam-258165-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                                        </div>
-                                                        <strong class="text-15pt mr-1"></strong>
-
-                                                    </div>
-                                                    <small class="text-muted">just now</small>
-                                                </div>
-                                                <div>$631</div>
-                                                <i class="material-icons icon-muted ml-3">arrow_forward</i>
-                                            </div>
-
-                                        </div>
-                                        <div class="tab-pane" id="activity_emails">
-
-                                            <div class="list-group-item list-group-item-action d-flex align-items-center ">
-                                                <div class="avatar avatar-xs mr-3">
-                                                    <span class="avatar-title rounded-circle  bg-success">
-                                                        <i class="material-icons">email</i>
-                                                    </span>
-                                                </div>
-
-                                                <div class="flex">
-                                                    <div class="d-flex align-items-middle">
-                                                        <div class="avatar avatar-xxs mr-1">
-                                                            <img src="assets/images/256_rsz_1andy-lee-642320-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                                        </div>
-                                                        <strong class="text-15pt mr-1">Jenell D. Matney</strong>
-
-                                                    </div>
-                                                    <small>Confirmation required for design</small>
-                                                </div>
-                                                <small class="text-muted">4 days ago</small>
-                                                <i class="material-icons icon-muted ml-3">arrow_forward</i>
-                                            </div>
-
-                                            <div class="list-group-item list-group-item-action d-flex align-items-center ">
-                                                <div class="avatar avatar-xs mr-3">
-                                                    <span class="avatar-title rounded-circle  bg-success">
-                                                        <i class="material-icons">email</i>
-                                                    </span>
-                                                </div>
-
-                                                <div class="flex">
-                                                    <div class="d-flex align-items-middle">
-                                                        <div class="avatar avatar-xxs mr-1">
-                                                            <img src="assets/images/256_daniel-gaffey-1060698-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                                        </div>
-                                                        <strong class="text-15pt mr-1">Sherri J. Cardenas</strong>
-
-                                                    </div>
-                                                    <small>Improve spacings on Projects page</small>
-                                                </div>
-                                                <small class="text-muted">3 days ago</small>
-                                                <i class="material-icons icon-muted ml-3">arrow_forward</i>
-                                            </div>
-
-                                            <div class="list-group-item list-group-item-action d-flex align-items-center ">
-                                                <div class="avatar avatar-xs mr-3">
-                                                    <span class="avatar-title rounded-circle  bg-success">
-                                                        <i class="material-icons">email</i>
-                                                    </span>
-                                                </div>
-
-                                                <div class="flex">
-                                                    <div class="d-flex align-items-middle">
-                                                        <div class="avatar avatar-xxs mr-1">
-                                                            <img src="assets/images/256_jeremy-banks-798787-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                                        </div>
-                                                        <strong class="text-15pt mr-1">Joseph S. Ferland</strong>
-
-                                                    </div>
-                                                    <small>You unlocked a new Badge</small>
-                                                </div>
-                                                <small class="text-muted">2 days ago</small>
-                                                <i class="material-icons icon-muted ml-3">arrow_forward</i>
-                                            </div>
-
-                                            <div class="list-group-item list-group-item-action d-flex align-items-center  bg-light ">
-                                                <div class="avatar avatar-xs mr-3">
-                                                    <span class="avatar-title rounded-circle ">
-                                                        <i class="material-icons">email</i>
-                                                    </span>
-                                                </div>
-
-                                                <div class="flex">
-                                                    <div class="d-flex align-items-middle">
-                                                        <div class="avatar avatar-xxs mr-1">
-                                                            <img src="assets/images/256_joao-silas-636453-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                                        </div>
-                                                        <strong class="text-15pt mr-1">Bryan K. Davis</strong>
-
-                                                    </div>
-                                                    <small>Meeting on Friday</small>
-                                                </div>
-                                                <small class="text-muted">1 day ago</small>
-                                                <i class="material-icons icon-muted ml-3">arrow_forward</i>
-                                            </div>
-
-                                            <div class="list-group-item list-group-item-action d-flex align-items-center  bg-light ">
-                                                <div class="avatar avatar-xs mr-3">
-                                                    <span class="avatar-title rounded-circle ">
-                                                        <i class="material-icons">email</i>
-                                                    </span>
-                                                </div>
-
-                                                <div class="flex">
-                                                    <div class="d-flex align-items-middle">
-                                                        <div class="avatar avatar-xxs mr-1">
-                                                            <img src="assets/images/256_luke-porter-261779-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                                        </div>
-                                                        <strong class="text-15pt mr-1">Kaci M. Langston</strong>
-
-                                                    </div>
-                                                    <small>Design a new Brochure</small>
-                                                </div>
-                                                <small class="text-muted">just now</small>
-                                                <i class="material-icons icon-muted ml-3">arrow_forward</i>
-                                            </div>
-
-                                        </div>
-                                        <div class="tab-pane" id="activity_quotes"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg">
-                                <div class="row card-group-row">
-                                    <div class="col-lg-6 card-group-row__col">
-                                        <div class="card card-group-row__card card-body card-body-x-lg" style="position: relative; padding-bottom: calc(80px - 1.25rem); overflow: hidden; z-index: 0;">
-                                            <div class="card-header__title text-muted mb-2">Products</div>
-                                            <div class="text-amount">&dollar;8,391</div>
-                                            <div class="text-stats text-success">31.5% <i class="material-icons">arrow_upward</i></div>
-                                            <div class="chart" style="height: 80px; position: absolute; left: 0; right: 0; bottom: 0;">
-                                                <canvas id="productsChart"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 card-group-row__col">
-                                        <div class="card card-group-row__card card-body card-body-x-lg" style="position: relative; padding-bottom: calc(80px - 1.25rem); overflow: hidden; z-index: 0;">
-                                            <div class="card-header__title text-muted mb-2">Courses</div>
-                                            <div class="text-amount">15,021</div>
-                                            <div class="text-stats text-danger">31.5% <i class="material-icons">arrow_downward</i></div>
-                                            <div class="chart" style="height: 80px; position: absolute; left: 0; right: 0; bottom: 0;">
-                                                <canvas id="coursesChart"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header card-header-large bg-white">
-                                        <h4 class="card-header__title">Team Skills</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <ul class="list-unstyled list-skills">
-                                            <li>
-                                                <div>HTML</div>
-                                                <div class="flex">
-                                                    <div class="progress" style="height: 6px;">
-                                                        <div class="progress-bar" role="progressbar" style="width: 61%;" aria-valuenow="61" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="text-dark-gray"><strong>61%</strong></div>
-                                            </li>
-                                            <li>
-                                                <div>CSS/SCSS</div>
-                                                <div class="flex">
-                                                    <div class="progress" style="height: 6px;">
-                                                        <div class="progress-bar bg-success" role="progressbar" style="width: 39%;" aria-valuenow="39" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="text-dark-gray"><strong>39%</strong></div>
-                                            </li>
-                                            <li>
-                                                <div>JAVASCRIPT</div>
-                                                <div class="flex">
-                                                    <div class="progress" style="height: 6px;">
-                                                        <div class="progress-bar bg-dark-gray" role="progressbar" style="width: 76%;" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="text-dark-gray"><strong>76%</strong></div>
-                                            </li>
-                                            <li>
-                                                <div>RUBY ON RAILS</div>
-                                                <div class="flex">
-                                                    <div class="progress" style="height: 6px;">
-                                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 28%;" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="text-dark-gray"><strong>28%</strong></div>
-                                            </li>
-                                            <li>
-                                                <div>VUEJS</div>
-                                                <div class="flex">
-                                                    <div class="progress" style="height: 6px;">
-                                                        <div class="progress-bar bg-dark" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="text-dark-gray"><strong>50%</strong></div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="card-footer text-center border-0">
-                                        <a href="#">
-                                            <span class="text-muted">View All</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            </div> end col-->
+                        </div> <!-- end row -->
                     </div>
+
                 </div>
                 <!-- // END header-layout__content -->
 
@@ -708,8 +117,167 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
         </div>
         <!-- // END drawer-layout__content -->
 
-<?php include 'footer.php';?>
+<?php
+include 'footer.php'; ?>
 
+    <div class="mdk-drawer js-mdk-drawer" id="events-drawer" data-align="end">
+        <div class="mdk-drawer__content">
+            <div class="sidebar sidebar-light sidebar-left simplebar" data-simplebar>
+
+
+
+
+                <small class="text-dark-gray px-3 py-1">
+                    <strong>Thursday, 28 Feb</strong>
+                </small>
+
+                <div class="list-group list-group-flush">
+
+                    <div class="list-group-item bg-light">
+                        <div class="row">
+                            <div class="col-auto d-flex flex-column">
+                                <small>12:30 PM</small>
+                                <small class="text-dark-gray">2 hrs</small>
+                            </div>
+                            <div class="col">
+                                <div class="d-flex flex-column flex">
+                                    <a href="#" class="text-body"><strong class="text-15pt">Marketing Team Meeting</strong></a>
+
+                                    <small class="text-muted d-flex align-items-center"><i class="material-icons icon-16pt mr-1">location_on</i> 16845 Hicks Road</small>
+
+
+                                </div>
+                                <div class="avatar-group mt-2">
+
+                                    <div class="avatar avatar-xs">
+                                        <img src="assets/images/256_joao-silas-636453-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+                                    </div>
+
+                                    <div class="avatar avatar-xs">
+                                        <img src="assets/images/256_jeremy-banks-798787-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+                                    </div>
+
+                                    <div class="avatar avatar-xs">
+                                        <img src="assets/images/256_daniel-gaffey-1060698-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <small class="text-dark-gray px-3 py-1">
+                    <strong>Wednesday, 27 Feb</strong>
+                </small>
+
+                <div class="list-group list-group-flush">
+
+                    <div class="list-group-item bg-light">
+                        <div class="row">
+                            <div class="col-auto d-flex flex-column">
+                                <small>07:48 PM</small>
+                                <small class="text-dark-gray">30 min</small>
+                            </div>
+                            <div class="col">
+                                <div class="d-flex flex-column flex">
+                                    <a href="#" class="text-body"><strong class="text-15pt">Call Alex</strong></a>
+
+
+                                    <small class="text-muted d-flex align-items-center"><i class="material-icons icon-16pt mr-1">phone</i> 202-555-0131</small>
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <small class="text-dark-gray px-3 py-1">
+                    <strong>Tuesday, 26 Feb</strong>
+                </small>
+
+                <div class="list-group list-group-flush">
+
+                    <div class="list-group-item bg-light">
+                        <div class="row">
+                            <div class="col-auto d-flex flex-column">
+                                <small>03:13 PM</small>
+                                <small class="text-dark-gray">2 hrs</small>
+                            </div>
+                            <div class="col">
+                                <div class="d-flex flex-column flex">
+                                    <a href="#" class="text-body"><strong class="text-15pt">Design Team Meeting</strong></a>
+
+                                    <small class="text-muted d-flex align-items-center"><i class="material-icons icon-16pt mr-1">location_on</i> 16845 Hicks Road</small>
+
+
+                                </div>
+                                <div class="avatar-group mt-2">
+
+                                    <div class="avatar avatar-xs">
+                                        <img src="assets/images/256_rsz_1andy-lee-642320-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+                                    </div>
+
+                                    <div class="avatar avatar-xs">
+                                        <img src="assets/images/256_michael-dam-258165-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+                                    </div>
+
+                                    <div class="avatar avatar-xs">
+                                        <img src="assets/images/256_luke-porter-261779-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+                                    </div>
+
+                                    <div class="avatar avatar-xs">
+                                        <img src="assets/images/stories/256_rsz_clem-onojeghuo-193397-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <small class="text-dark-gray px-3 py-1">
+                    <strong>Monday, 25 Feb</strong>
+                </small>
+
+                <div class="list-group list-group-flush">
+
+                    <div class="list-group-item bg-light">
+                        <div class="row">
+                            <div class="col-auto d-flex flex-column">
+                                <small>12:30 PM</small>
+                                <small class="text-dark-gray">2 hrs</small>
+                            </div>
+                            <div class="col d-flex">
+                                <div class="d-flex flex-column flex">
+                                    <a href="#" class="text-body"><strong class="text-15pt">Call Wendy</strong></a>
+
+
+                                    <small class="text-muted d-flex align-items-center"><i class="material-icons icon-16pt mr-1">phone</i> 202-555-0131</small>
+
+                                </div>
+
+
+                                <div class="avatar avatar-xs">
+                                    <img src="assets/images/256_michael-dam-258165-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <!-- App Settings FAB -->
     <div id="app-settings">
@@ -748,27 +316,270 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
 
 
 
-    <!-- Flatpickr -->
-    <script src="assets/vendor/flatpickr/flatpickr.min.js"></script>
-    <script src="assets/js/flatpickr.js"></script>
 
-    <!-- Global Settings -->
-    <script src="assets/js/settings.js"></script>
+    <!-- Add New Event MODAL -->
+    <div class="modal fade" id="event-modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header pr-4 pl-4 border-bottom-0 d-block">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Ajouter un nouveau événement</h4>
+                </div>
+                <div class="modal-body pt-3 pr-4 pl-4">
 
-    <!-- Chart.js -->
-    <script src="assets/vendor/Chart.min.js"></script>
+                  <input type="hidden" id="startTime"/>
+                  <input type="hidden" id="endTime"/>
 
-    <!-- App Charts JS -->
-    <script src="assets/js/chartjs-rounded-bar.js"></script>
-    <script src="assets/js/charts.js"></script>
+                  <form id="form1">    <div class="row">       <div class="col-12">
+                      <div class="form-group">
+                       <label class="control-label" for="select01">Commercial :</label>
+                            <select id="select01" data-toggle="select" class="form-control" name="commercial">
+                              <?php
+                              require 'LBD.php';
+                              $req=$bdd->query("SELECT ID_cm, CName, Email FROM Commerciaux WHERE CName !=''");
+                              while($dn = $req->fetch())
+                              { ?> <option value="<?php print_r($dn['ID_cm']); ?>" ><?php echo $dn['CName']." , ".$dn['Email']; ?></option><?php } ?>
+                            </select>
+                      <div class="form-group"></br>
+                       <label class="control-label" for="select02">Client :</label>
+                         <select id="select02" data-toggle="select" class="form-control" name="client">
+                           <?php
+                            require 'LBD.php';
+                            $req=$bdd->query("SELECT * FROM Clients");
+                            while($dn = $req->fetch())
+                            { ?> <option value="<?php print_r($dn['ID_client']); ?>" ><?php echo $dn['Name']." , ".$dn['phnumber']; ?></option><?php } ?>
+                          </select>
+                        <div class="form-group"></br>
+                        <label class="control-label" for="select03">Projet :</label>
+                          <select id="select03" data-toggle="select" class="form-control" name="projet">
+                            <?php
+                              require 'LBD.php';
+                              $req=$bdd->query("SELECT *  FROM Projets");
+                              while($dn = $req->fetch())
+                              { ?> <option value="<?php print_r($dn['Code_pj']); ?>" ><?php echo $dn['ProjetName']." , ".$dn['type_p']." , ".$dn['Etages']; ?></option><?php } ?>
+                         </select>
+                        </div>
+                      </div>
+                     </div>
+                  </div>
 
-    <!-- Vector Maps -->
-    <script src="assets/vendor/jqvmap/jquery.vmap.min.js"></script>
-    <script src="assets/vendor/jqvmap/maps/jquery.vmap.world.js"></script>
-    <script src="assets/js/vector-maps.js"></script>
+                 <div class="col-12"></br>
+                    <label class="control-label">Description :</label>
+                    <input class="form-control" placeholder="Ajouter une description" type="text" id="desc" name="description" />
+                 </div>
 
-    <!-- Chart Samples -->
-    <script src="assets/js/page.dashboard.js"></script>
+                 <div class="col-12">
+                   <div class="form-group"></br>
+                      <label class="control-label">Category :</label>
+                      <select class="form-control custom-select" name="category" id="category">
+                         <option value="bg-danger">Annulé</option>
+                         <option value="bg-success">Prévu</option>
+                      </select>
+                  </div>
+              </div>
+            </div>
+        </form>
+      </div>
+
+                <div class="text-right pb-4 pr-4">
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-success save-event" id="submitButton">Créer</button>
+                  <!--  <button type="button" class="btn btn-danger delete-event" data-dismiss="modal">Delete</button>-->
+                </div>
+            </div> <!-- end modal-content-->
+        </div> <!-- end modal dialog-->
+    </div>
+    <!-- end modal-->
+
+    <!-- Modal Add Category
+    <div class="modal fade" id="add-category" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0 d-block">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Add a category</h4>
+                </div>
+                <div class="modal-body p-4">
+                    <form>
+                        <div class="form-group">
+                            <label class="control-label">Category Name</label>
+                            <input class="form-control form-white" placeholder="Enter name" type="text" name="category-name" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Choose Category Color</label>
+                            <select class="form-control form-white" data-placeholder="Choose a color..." name="category-color">
+                                <option value="primary">Primary</option>
+                                <option value="success">Success</option>
+                                <option value="danger">Danger</option>
+                                <option value="info">Info</option>
+                                <option value="warning">Warning</option>
+                                <option value="dark">Dark</option>
+                            </select>
+                        </div>
+                    </form>
+
+                    <div class="text-right">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary ml-1 save-category" data-dismiss="modal">Save</button>
+                    </div>
+
+                </div> - end modal-body-
+            </div> - end modal-content-
+        </div> - end modal dialog-
+    </div>-->
+    <!-- end modal-->
+
+
+
+
+
+    <!-- jQuery UI (for draggable) -->
+    <script src="assets/vendor/jquery-ui.min.js"></script>
+
+    <!-- Moment.js -->
+    <script src="assets/vendor/moment.min.js"></script>
+
+
+    <!-- Select2 -->
+    <script src="assets/vendor/select2/select2.min.js"></script>
+    <script src="assets/js/select2.js"></script>
+
+    <script>
+
+
+  /*  $.post("/AGC/fct_calend.php",
+      {
+        op: "show",
+        comm: commercial,
+        client: client,
+        projet: projet,
+        titre: titre,
+        description: description,
+        start:startTime,
+        end: endTime,
+        c: category
+      });*/
+
+    </script>
+
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.css' rel='stylesheet' />
+    <link href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.1/css/all.css' rel='stylesheet'>
+
+    <!-- FullCalendar -->
+    <script src="assets/vendor/fullcalendar/lib/main.js"></script>
+  <!--   <script src="assets/js/test.js"></script>-->
+
+<script src='assets/vendor/fullcalendar/lib/locales/fr.js'></script>
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          locale: 'fr',
+          selectable: true,
+          editable: true,
+          droppable: true,
+          slotDuration: "00:30:00",
+          slotMinTime: "08:00:00",
+          slotMaxTime: "19:00:00",
+          initialView:"timeGridWeek",
+          navLinks:true,
+          handleWindowResize: true,
+          /*aspectRatio: 3,*/
+          height: $(window).height() - 150,
+          themeSystem: 'bootstrap',
+          headerToolbar: {
+            left: 'prev,next',/* today*/
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,listMonth'/*,timeGridDay,listMonth*/
+          },
+          weekNumbers: false,
+          dayMaxEvents: true, // allow "more" link when too many events
+          events: [
+            <?php
+            require 'LBD.php';
+            $req=$bdd->query("SELECT * FROM Calendrier ");
+            while($dn = $req->fetch())
+            { ?>  {
+               id: <?php print_r($dn['id']) ?>,
+               title: "<?php
+                      $rq=$bdd->query("SELECT Name FROM Clients WHERE ID_client=". $dn['ID_client']."");
+                      $res = $rq->fetch();
+               print_r($res['Name']) ?>",
+               start: new Date("<?php print_r($dn['date_tdébut']) ?>"),
+               end: new Date("<?php print_r($dn['date_tfin']) ?>"),
+               classNames: "<?php print_r($dn['Category']) ?>"
+            }, <?php } ?>
+
+          ],
+          select: function(info) {
+
+            $('#event-modal #startTime').val(info.startStr);
+            $('#event-modal #endTime').val(info.endStr);
+            //$('#createEventModal #when').text(mywhen);
+            $('#event-modal').modal('toggle');
+            $('#submitButton').unbind('click').on('click', function(e){
+                 // We don't want this to act as a link so cancel the link action
+                 e.preventDefault();
+                 $("#event-modal").modal('hide');
+                 var startTime = $('#startTime').val();
+                 var endTime = $('#endTime').val();
+                 var commercial = $("#select01").children("option:selected").val();
+                 var client = $("#select02").children("option:selected").val();
+                 var projet = $("#select03").children("option:selected").val();
+                 var category = $("#category").children("option:selected").val();
+                 var titre = $("#titre").val();
+                 var description = $("#desc").val();
+
+                 calendar.addEvent({
+                    /*id:1*/
+                     title: client,
+                     start: startTime,
+                     end: endTime,
+                     classNames: category,
+                     allDay:false
+                 });
+
+                 $.post("/AGC/fct_calend.php",
+                   {
+                     op: "add",
+                     comm: commercial,
+                     client: client,
+                     projet: projet,
+                     titre: titre,
+                     description: description,
+                     start:startTime,
+                     end: endTime,
+                     category: category
+                   });
+             });
+          },
+          eventClick: function(info) {
+            //  alert('Titre: ' + info.event.title +'\nCommercial: ' + info.event.comm +'\nClient: ' + info.event.client +'\nProjet: ' + info.event.projet+'\nDescription: ' + info.event.description+'\nTemps: \n   -De : '+info.event.start+'\n   -Ä : '+info.event.end);
+
+
+              // change the border color just for fun
+              info.el.style.borderColor = 'red';
+            },
+          eventResize: function(info) {
+            alert(info.event.title + " end is now " + info.event.end.toISOString());
+
+            if (!confirm("is this okay?")) {
+              info.revert();
+            }
+          },
+          eventDrop: function(info) {
+            alert(info.event.title + " was dropped on " + info.event.start.toISOString());
+
+            if (!confirm("Are you sure about this change?")) {
+              info.revert();
+            }
+          }
+          });
+        calendar.render();
+      });
+
+    </script>
 
 </body>
 

@@ -1,10 +1,54 @@
 <?php
+
+
 require 'LBD.php';
-require 'functions.php';
+
+$req = $bdd->prepare("SELECT * FROM Admin WHERE Email='meryem.annouar@ieee.org'");
+
+  $req->execute();
+  $res = $req->fetch();
+
+print_r($res);
+/*$input = filter_input_array(INPUT_POST);
+
+  $Nom = $input["Name"];
+  $num = $input["phnumber"];
+  $Notes = $input["Notes"];
+  $Source = $input["Source"];
+  $Projet = $input["Code_pj"];
+  $id= $input["ID_client"];
+
+
+?>
+<script> alert("mery"); </script>
+
+
+<?php
+*/
+
+
+
+//print_r($_POST['projet']);
+/*require 'LBD.php';
+$re = $bdd->prepare("SELECT Code_pj FROM Projets WHERE ProjetName ='hi'");
+$re->execute();
+$res = $re->fetch();
+print_r($res['0']);*/
  //$inter=email_exist($_POST['email_2']);
  //echo $inter;
+/*function  fill_unit_select_box(){
+  require 'LBD.php';
+    $output = '';
+    $req=$bdd->query('SELECT *  FROM Projets');
+    while($dn = $req->fetch())
+    {$output .=  '<option value="'.$dn['Code_pj'].'">'.$dn['ProjetName'].'</option>';}
 
-  $sql="UPDATE Commerciaux SET lastLog = NOW() WHERE Email = 'Yassine.Oukassou@ieee.org' AND Password= 'oks123';
+    return $output;}
+
+echo fill_unit_select_box();*/
+
+
+  //$sql="UPDATE Commerciaux SET lastLog = NOW() WHERE Email = 'Yassine.Oukassou@ieee.org' AND Password= 'oks123';
 
  /*<!--$req=$bdd->querCName FROM Commerciaux");
  while(>!--$dn = $req->fetch())

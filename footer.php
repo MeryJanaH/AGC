@@ -6,7 +6,7 @@
             <div class="d-flex align-items-center sidebar-p-a border-bottom sidebar-account flex-shrink-0">
                 <a href="index.php" class="flex d-flex align-items-center text-underline-0 text-body">
                     <span class="mr-3">
-                        <img src="assets/images/logo.svg" width="43" height="43" alt="avatar">
+                        <img src="assets/images/logo.png" width="43" height="43" alt="avatar">
                     </span>
                     <span class="flex d-flex flex-column">
                         <strong style="font-size: 1.125rem;">bienvenu</strong>
@@ -19,7 +19,7 @@
                             <div><strong><?php echo $_SESSION['name'] ?></strong></div>
                         </div>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item active" href="index.php">tableau de bord</a>
+                        <a class="dropdown-item active" href="index.php">Tableau de bord</a>
                         <a class="dropdown-item" href="edit-account.php">Modifier le compte</a>
                         <div class="dropdown-divider"></div>
                       <form action="login.php" method="POST">
@@ -42,8 +42,8 @@
                         <li class="sidebar-menu-item ">
                       <?php } ?>
                             <a class="sidebar-menu-button" href="index.php">
-                                <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dvr</i>
-                                <span class="sidebar-menu-text">tableau de bord</span>
+                              <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">date_range</i>
+                                <span class="sidebar-menu-text">Tableau de bord</span>
                             </a>
                         </li>
                         <?php if($_SESSION['current_page']=="edit"){?>
@@ -99,6 +99,9 @@
                                     <a class="sidebar-menu-button" href="ui-projets.php">
                                         <span class="sidebar-menu-text">Table des projets</span>
                                     </a>
+                                    <a class="sidebar-menu-button" href="table_clients.php">
+                                        <span class="sidebar-menu-text">Table des clients</span>
+                                    </a>
                                 </li>
                                 <li class="sidebar-menu-item">
                                     <a class="sidebar-menu-button" href="ui-buttons.html">
@@ -118,13 +121,6 @@
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">donut_small</i>
                                 <span class="sidebar-menu-text">Charts</span>
                             </a>
-                        </li>
-                        <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button" href="fullcalendar.html">
-                                <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">date_range</i>
-                                <span class="sidebar-menu-text">Calendar</span>
-                            </a>
-                        </li>
                     </ul>
                 </div>
 
@@ -132,7 +128,7 @@
                 <a class="sidebar-link" href="login.php">
                   <p>
                     <form action="login.php" method="POST">
-                      <button name="decnx" style="width: 100px; color:blue";>Déconnexion</button>
+                      <button name="decnx" style="width: 100px;">Déconnexion</button>
                       <i class="sidebar-menu-icon ml-2 material-icons icon-16pt">exit_to_app</i>
                     </form>
                   </p>
@@ -144,5 +140,3 @@
 </div>
 </div>
 <!-- // END drawer-layout -->
-
-</body>
