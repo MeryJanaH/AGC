@@ -95,11 +95,6 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
     <?php include 'footer.php';?>
 
 
-        <!-- App Settings FAB -->
-        <div id="app-settings">
-            <app-settings></app-settings>
-        </div>
-
         <!-- jQuery -->
         <script src="assets/vendor/jquery.min.js"></script>
 

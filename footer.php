@@ -1,6 +1,6 @@
 
 <!-- // barre bleu -->
-<div class="mdk-drawer  js-mdk-drawer" id="default-drawer" data-align="start">
+<div class="mdk-drawer  js-mdk-drawer" id="default-drawer" data-align="start" style="background-color: Navy;">
     <div class="mdk-drawer__content">
         <div class="sidebar sidebar-dark sidebar-left simplebar" data-simplebar>
             <div class="d-flex align-items-center sidebar-p-a border-bottom sidebar-account flex-shrink-0">
@@ -9,7 +9,7 @@
                         <img src="assets/images/logo.png" width="43" height="43" alt="avatar">
                     </span>
                     <span class="flex d-flex flex-column">
-                        <strong style="font-size: 1.125rem;">bienvenu</strong>
+                        <strong style="font-size: 1.125rem;">GUESSPROMO</strong>
                     </span>
                 </a>
                 <div class="dropdown ml-auto">
@@ -103,23 +103,13 @@
                                         <span class="sidebar-menu-text">Table des clients</span>
                                     </a>
                                 </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="ui-buttons.html">
-                                        <span class="sidebar-menu-text">button</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="ui-alerts.html">
-                                        <span class="sidebar-menu-text">alert</span>
-                                    </a>
-                                </li>
                             </ul>
                         </li>
 
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button" href="ui-charts.html">
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">donut_small</i>
-                                <span class="sidebar-menu-text">Charts</span>
+                                <span class="sidebar-menu-text">Graphe</span>
                             </a>
                     </ul>
                 </div>

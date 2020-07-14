@@ -279,11 +279,7 @@ include 'footer.php'; ?>
         </div>
     </div>
 
-    <!-- App Settings FAB-->
-    <div id="app-settings">
-        <app-settings></app-settings>
-    </div>
-
+  
     <!-- jQuery -->
     <script src="assets/vendor/jquery.min.js"></script>
 

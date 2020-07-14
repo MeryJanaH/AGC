@@ -151,10 +151,6 @@ $_SESSION['current_page']="edit";
     ?>
 <?php include 'footer.php';?>
 
-<!-- App Settings FAB -->
-    <div id="app-settings">
-        <app-settings></app-settings>
-    </div>
 
     <!-- jQuery -->
     <script src="assets/vendor/jquery.min.js"></script>
