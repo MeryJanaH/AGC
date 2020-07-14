@@ -62,14 +62,14 @@ $_SESSION['current_page']="index";
                 <div class="mdk-header-layout__content mdk-header-layout__content--fullbleed mdk-header-layout__content--scrollable page">
 
 
-                    <div class="container-fluid page__container">
-                        <div class="row">
-                            <div class="col-lg-9">
-                                <div class="card card-body">
+                    <div >
+                        <div >
+                            <div >
+                                <div class="card ">
                                     <div id="calendar" data-toggle="fullcalendar"></div>
                                 </div>
                             </div> <!-- end col -->
-
+<!--
                             <div class="col-lg-3">
                                 <a href="" data-toggle="modal" data-target="#add-category" class="btn btn-primary btn-block"><i class="material-icons">today</i> New Event</a>
                                 <hr>
@@ -93,14 +93,14 @@ $_SESSION['current_page']="index";
                                     </div>
                                 </div>
 
-                                <!-- checkbox -->
+                                - checkbox -
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="drop-remove">
                                     <label class="custom-control-label" for="drop-remove">Remove after drop</label>
                                 </div>
 
 
-                            </div> <!-- end col-->
+                            </div> end col-->
                         </div> <!-- end row -->
                     </div>
 
@@ -387,7 +387,7 @@ include 'footer.php'; ?>
     </div>
     <!-- end modal-->
 
-    <!-- Modal Add Category -->
+    <!-- Modal Add Category
     <div class="modal fade" id="add-category" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -419,10 +419,10 @@ include 'footer.php'; ?>
                         <button type="button" class="btn btn-primary ml-1 save-category" data-dismiss="modal">Save</button>
                     </div>
 
-                </div> <!-- end modal-body-->
-            </div> <!-- end modal-content-->
-        </div> <!-- end modal dialog-->
-    </div>
+                </div> - end modal-body-
+            </div> - end modal-content-
+        </div> - end modal dialog-
+    </div>-->
     <!-- end modal-->
 
 
@@ -481,14 +481,15 @@ include 'footer.php'; ?>
           initialView:"timeGridWeek",
           navLinks:true,
           handleWindowResize: true,
-          height: $(window).height() - 200,
+          /*aspectRatio: 3,*/
+          height: $(window).height() - 150,
           themeSystem: 'bootstrap',
           headerToolbar: {
-            left: 'prev,next today',
+            left: 'prev,next',/* today*/
             center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+            right: 'dayGridMonth,timeGridWeek,listMonth'/*,timeGridDay,listMonth*/
           },
-          weekNumbers: true,
+          weekNumbers: false,
           dayMaxEvents: true, // allow "more" link when too many events
           events: [
             <?php
