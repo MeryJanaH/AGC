@@ -53,7 +53,7 @@ CREATE TABLE `Clients` (
 
 CREATE TABLE `Calendrier` (
   `id` int(15) NOT NULL AUTO_INCREMENT,
-  `date_tdébut` varchar(50) DEFAULT NULL,
+  `date_tdebut` varchar(50) DEFAULT NULL,
   `date_tfin` varchar(50) DEFAULT NULL,
   `Description` varchar(100) DEFAULT NULL,
   `Category` varchar(20) DEFAULT NULL,
@@ -67,5 +67,5 @@ CREATE TABLE `Calendrier` (
   FOREIGN KEY (ID_cm) REFERENCES Commerciaux(ID_cm)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO Admin (ID_admin,AdminName,Email,Password) VALUES(3,"Annouar","meryem.annouar@ieee.org","202cb962ac59075b964b07152d234b70");
-INSERT INTO Commerciaux (ID_cm,CName,Email,Password) VALUES(5,"Yassine","Yassine.Oukassou@ieee.org","202cb962ac59075b964b07152d234b70");
+INSERT INTO Admin (AdminName,Email,Password) VALUES("Annouar","meryem.annouar@ieee.org","202cb962ac59075b964b07152d234b70");
+INSERT INTO Commerciaux (CName,Email,Password) VALUES("Yassine","Yassine.Oukassou@ieee.org","202cb962ac59075b964b07152d234b70");
