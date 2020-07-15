@@ -18,6 +18,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Statistiques</title>
 
+
     <!-- Prevent the demo from appearing in search engines -->
     <meta name="robots" content="noindex">
 
@@ -57,6 +58,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
             <div class="mdk-header-layout js-mdk-header-layout" data-has-scrolling-region>
 
               <?php include('haute_bar.php'); ?>
+
 
               <script>
                   var terrain = [25, 20, 30, 22, 17, 10, 18, 26, 28, 26, 20, 35];
@@ -106,6 +108,11 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
 
 
     <?php include 'footer.php';?>
+
+
+    <!-- List.js -->
+    <script src="assets/vendor/list.min.js"></script>
+    <script src="assets/js/list.js"></script>
 
 
     <!-- jQuery -->
