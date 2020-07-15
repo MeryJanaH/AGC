@@ -59,7 +59,7 @@
                             yAxes: [{
                                 ticks: {
                                     callback: function(e) {
-                                        if (!(e % 10)) return "$" + e + "k"
+                                        if (!(e % 10)) return /*"$" +*/ e /*+ "k"*/
                                     }
                                 }
                             }]
@@ -70,7 +70,7 @@
                                     var a = t.datasets[e.datasetIndex].label || "",
                                         r = e.yLabel,
                                         n = "";
-                                    return 1 < t.datasets.length && (n += '<span class="popover-body-label mr-auto">' + a + "</span>"), n + '<span class="popover-body-value">$' + r + "k</span>"
+                                    return 1 < t.datasets.length && (n += '<span class="popover-body-label mr-auto">' + a + "</span>"), n + '<span class="popover-body-value">'/*$*/ + r + /*k*/"</span>"
                                 }
                             }
                         }
@@ -92,7 +92,7 @@
                             yAxes: [{
                                 ticks: {
                                     callback: function(e) {
-                                        if (!(e % 10)) return "$" + e + "k"
+                                        if (!(e % 10)) return /*"$" +*/ e /*+ "k"*/
                                     }
                                 }
                             }]
@@ -103,7 +103,7 @@
                                     var a = t.datasets[e.datasetIndex].label || "",
                                         r = e.yLabel,
                                         n = "";
-                                    return 1 < t.datasets.length && (n += '<span class="popover-body-label mr-auto">' + a + "</span>"), n + '<span class="popover-body-value">$' + r + "k</span>"
+                                    return 1 < t.datasets.length && (n += '<span class="popover-body-label mr-auto">' + a + "</span>"), n + '<span class="popover-body-value">'/*$*/ + r + /*k*/"</span>"
                                 }
                             }
                         }
@@ -112,7 +112,7 @@
                         labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                         datasets: [{
                             label: "Terrain",
-                            data: [25, 20, 30, 22, 17, 10, 18, 26, 28, 26, 20, 35]
+                            data: terrain
                         }]
                     })
                 };

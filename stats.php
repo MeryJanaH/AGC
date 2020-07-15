@@ -261,7 +261,9 @@
                 </div>
 
                 <!-- // END Header -->
-
+            <script>
+                var terrain = [25, 20, 30, 22, 17, 10, 18, 26, 28, 26, 20, 35];
+            </script>
                 <!-- Header Layout Content -->
                 <div class="mdk-header-layout__content mdk-header-layout__content--fullbleed mdk-header-layout__content--scrollable page">
 
