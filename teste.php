@@ -1,6 +1,20 @@
 <?php
 
+function fill_unit_select_box_source()
+{
+  $output = '';
+   // A sample product array
+   $products = array("Mobile", "Laptop", "Tablet", "Camera");
 
+   // Iterating through the product array
+   foreach($products as $item){
+   $output.='<option value='.strtolower($item).'>'.$item.'</option>';
+   }
+   return $output;
+}
+
+echo fill_unit_select_box_source();
+/*
 require 'LBD.php';
 
 $req = $bdd->prepare("SELECT * FROM Admin WHERE Email='meryem.annouar@ieee.org'");
@@ -8,7 +22,7 @@ $req = $bdd->prepare("SELECT * FROM Admin WHERE Email='meryem.annouar@ieee.org'"
   $req->execute();
   $res = $req->fetch();
 
-print_r($res);
+print_r($res);*/
 /*$input = filter_input_array(INPUT_POST);
 
   $Nom = $input["Name"];

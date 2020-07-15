@@ -50,7 +50,6 @@ CREATE TABLE `Clients` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-
 CREATE TABLE `Calendrier` (
   `id` int(15) NOT NULL AUTO_INCREMENT,
   `date_tdebut` varchar(50) DEFAULT NULL,

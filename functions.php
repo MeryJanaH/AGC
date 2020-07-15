@@ -282,7 +282,7 @@ function update_table_clients()
       }
     }
 
-    function fill_unit_select_box()
+    function fill_unit_select_box_projet()
     {
        require 'LBD.php';
        $output = '';
@@ -291,6 +291,19 @@ function update_table_clients()
        {$output .=  '<option value='.$dn['Code_pj'].'>'.$dn['ProjetName'].'</option>';}
 
       return $output;
+    }
+
+    function fill_unit_select_box_source()
+    {
+      $output = '';
+       // A sample product array
+       $products = array("Facebook/Instagram", "Avito/Mubawab", "Ancien client", "Prospection", "Connaissance", "Annonce", "De passage");
+
+       // Iterating through the product array
+       foreach($products as $item){
+       $output.='<option value='.strtolower($item).'>'.$item.'</option>';
+       }
+       return $output;
     }
 
     ?>
@@ -314,9 +327,9 @@ function update_table_clients()
           var html = "<tr>";
               html += "<td><input required='' id ='n' name='name_client[]'></td>";
               html += "<td><input required='' id ='nm' type='tel' name='num[]'></td>";
-              html += "<td><select required='' id = 'pj' class='form-control item_unit' name='c_p[]'></option><?php echo fill_unit_select_box();?></select></td>";
+              html += "<td><select required='' id = 'pj' class='form-control item_unit' name='c_p[]'></option><?php echo fill_unit_select_box_projet();?></select></td>";
               html += "<td><input required='' id ='nt' name='Note[]'></td>";
-              html += "<td><input required='' id ='s' name='source[]'></td>";
+              html += "<td><select required='' id = 's' class='form-control item_unit' name='source[]'></option><?php echo fill_unit_select_box_source();?></select></td>";
               html += "</tr>";
 
          var row = document.getElementById("staff03").insertRow();

@@ -13,7 +13,6 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
 <?php include 'head.php';?>
 
 
-
 <body class="layout-default">
     <div class="preloader"></div>
 
