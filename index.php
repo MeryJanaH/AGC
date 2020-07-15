@@ -374,8 +374,8 @@ include 'footer.php'; ?>
                       <label class="control-label">Category :</label>
                       <select class="form-control custom-select" name="category" id="category">
                          <option value="bg-danger">Annulé</option>
-                         <option value="bg-success">Prévu</option>
-                         <option value="bg-primary">Notification</option>
+                         <option value="bg-success">Venu</option>
+                         <option value="bg-primary">Prévu</option>
                       </select>
                   </div>
               </div>
@@ -385,6 +385,8 @@ include 'footer.php'; ?>
                    <select class="form-control custom-select" name="category" id="type">
                       <option value="Bureau">Bureau</option>
                       <option value="Chantier">Chantier</option>
+                      <option value="Appel">Appel</option>
+                      <option value="Vente">Vente</option>
                    </select>
                </div>
            </div>
@@ -458,8 +460,8 @@ include 'footer.php'; ?>
                       <label class="control-label">Category :</label>
                       <select class="form-control custom-select" name="category" id="etat">
                          <option value="bg-danger">Annulé</option>
-                         <option value="bg-success">Prévu</option>
-                         <option value="bg-primary">Notification</option>
+                         <option value="bg-success">Venu</option>
+                         <option value="bg-primary">Prévu</option>
                       </select>
                   </div>
               </div>
@@ -469,6 +471,8 @@ include 'footer.php'; ?>
                    <select class="form-control custom-select" name="category" id="visite">
                       <option value="Bureau">Bureau</option>
                       <option value="Chantier">Chantier</option>
+                      <option value="Vente">Vente</option>
+                      <option value="Appel">Appel</option>
                    </select>
                </div>
            </div>
@@ -603,7 +607,7 @@ include 'footer.php'; ?>
                title: "<?php
                       $rq=$bdd->query("SELECT Name,phnumber FROM Clients WHERE ID_client=". $dn['ID_client']."");
                       $res = $rq->fetch();
-               print_r($res['Name'].",".$res['phnumber']); ?>",
+               print_r($res['Name']." , ".$res['phnumber']); ?>",
                start: new Date("<?php print_r($dn['date_tdebut']) ?>"),
                end: new Date("<?php print_r($dn['date_tfin']) ?>"),
                classNames: "<?php print_r($dn['Category']) ?>"
@@ -613,7 +617,6 @@ include 'footer.php'; ?>
 
             $('#event-modal #startTime').val(info.startStr);
             $('#event-modal #endTime').val(info.endStr);
-            //$('#createEventModal #when').text(mywhen);
             $('#event-modal').modal('toggle');
             $('#submitButton').unbind('click').on('click', function(e){
                  // We don't want this to act as a link so cancel the link action
@@ -723,7 +726,7 @@ include 'footer.php'; ?>
                  //console.log(id_calendar);
                  //var event = calendar.getEventById( id_calendar );
                  info.event.setProp('title',$("#client").children("option:selected").text());
-                 info.event.setProp('classNames', category)
+                 info.event.setProp('classNames', category);
                  //event.className= category;
                  //console.log($("#client").children("option:selected").text());
                  //console.log(category);
