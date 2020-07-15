@@ -96,12 +96,12 @@ $req=$bdd->query("SELECT * FROM Projets");
           </table>
         <?php if(isset($_GET['data'])){
           if($_GET['data']=="clients"){?>
-        <input type="button" id="btnShowMsg1"  style="width: 400px; color: red;" value="Enregistrer les modifiations et retourner à la page précedente !" onClick="window.location.href='table_clients.php';"/>
+        <input type="button" id="btnShowMsg1"  style="width: 400px; color: red;" value="Enregistrer les modifiations et retourner à la page précedente !" onClick="window.location.href='Clients.php';"/>
       <?php }else {
             echo "Vous avez pas le droit d'accéder à cette page";
             }
           } else { ?>
-          <input type="button" id="btnShowMsg1"  style="width: 400px; color: red;" value="Enregistrer les modifiations et retourner à la page précedente !" onClick="window.location.href='ui-projets.php';"/>
+          <input type="button" id="btnShowMsg1"  style="width: 400px; color: red;" value="Enregistrer les modifiations et retourner à la page précedente !" onClick="window.location.href='Projets.php';"/>
         <?php } ?>
        </div>
       </div>

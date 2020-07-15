@@ -31,7 +31,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                               }
                           }
                           else {
-                            header('Location: ui-projets.php');
+                            header('Location: Projets.php');
                           }
                  ?>
 
@@ -69,7 +69,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                           <br/>
                                           <br/>
                                            <input type="button" id="btnShowMsg1"  style="width: 200px; color: green;" value="Ajouter un nouveau projet !" onClick="add_pj()"/>
-                                           <input type="button" id="btnShowMsg2"  style="width: 200px; color: red;" value="Modifier un projets !" onClick="window.location.href='in.php';"/>
+                                           <input type="button" id="btnShowMsg2"  style="width: 200px; color: red;" value="Modifier un projets !" onClick="window.location.href='éditer.php';"/>
                                            <br/>
                                            <br/>
                                         <div class="form-group">

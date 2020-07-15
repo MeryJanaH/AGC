@@ -209,7 +209,7 @@ function update_table_emp()
                       $.post('fct.php', {id: <?php echo $dn['ID_cm'];?>});
                       $.ajax({
                           type: "POST",
-                          url: "ui-tables.php",
+                          url: "Commerciaux.php",
                           success: function() {
                               location.reload();
                           }

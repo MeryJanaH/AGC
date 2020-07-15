@@ -30,7 +30,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
 
     <div class="layout-login-centered-boxed__form">
         <div class="d-flex flex-column justify-content-center align-items-center mt-2 mb-4 navbar-light">
-            <a href="signup.php" class="navbar-brand text-center mb-2 mr-0 flex-column" style="min-width: 0">
+            <a href="Nouveau.php" class="navbar-brand text-center mb-2 mr-0 flex-column" style="min-width: 0">
                 <img class="navbar-brand-icon mb-3" src="assets/images/logo.png" width="43" alt="Flat">
                 <span>Créer un compte</span>
             </a>
@@ -64,7 +64,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
             if($inter == "true")
             {
               $_SESSION['enrg'] = "true";
-              //header('Location: signup.php');
+              //header('Location: Nouveau.php');
             }
             else
             {
@@ -76,7 +76,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                 $req->execute(array($_POST['email_2'], md5($default_password)));
 
               first_mail($_SESSION['email'], $_POST['email_2'], 'AGC',$txt);
-              header('Location: signup.php');
+              header('Location: Nouveau.php');
             }
         }
 

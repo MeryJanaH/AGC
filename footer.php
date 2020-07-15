@@ -19,8 +19,8 @@
                             <div><strong><?php echo $_SESSION['name'] ?></strong></div>
                         </div>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item active" href="index.php">Tableau de bord</a>
-                        <a class="dropdown-item" href="edit-account.php">Modifier le compte</a>
+                        <a class="dropdown-item active" href="index.php">Calendrier</a>
+                        <a class="dropdown-item" href="Modifications.php">Modifier le compte</a>
                         <div class="dropdown-divider"></div>
                       <form action="login.php" method="POST">
                         <button name="decnx" class="dropdown-item">Déconnexion</button>
@@ -43,7 +43,7 @@
                       <?php } ?>
                             <a class="sidebar-menu-button" href="index.php">
                               <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">date_range</i>
-                                <span class="sidebar-menu-text">Tableau de bord</span>
+                                <span class="sidebar-menu-text">Calendrier</span>
                             </a>
                         </li>
                         <?php if($_SESSION['current_page']=="edit"){?>
@@ -54,12 +54,12 @@
 
                             <a class="sidebar-menu-button" data-toggle="collapse" href="#pages_menu">
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">description</i>
-                                <span class="sidebar-menu-text">Pages</span>
+                                <span class="sidebar-menu-text">Modifier-Créer</span>
                                 <span class="sidebar-menu-toggle-icon"></span>
                             </a>
                             <ul class="sidebar-submenu collapse" id="pages_menu">
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="edit-account.php">
+                                    <a class="sidebar-menu-button" href="Modifications.php">
                                         <span class="sidebar-menu-text">Modifier le compte</span>
                                     </a>
                                 </li>
@@ -68,7 +68,7 @@
                                 {
                                 ?>
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="signup.php">
+                                    <a class="sidebar-menu-button" href="Nouveau.php">
                                         <span class="sidebar-menu-text">Créer un compte</span>
                                     </a>
                                 </li>
@@ -85,21 +85,21 @@
 
                             <a class="sidebar-menu-button" data-toggle="collapse" href="#components_menu">
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">developer_board</i>
-                                <span class="sidebar-menu-text">UI Elements</span>
+                                <span class="sidebar-menu-text">Tables</span>
                                 <span class="ml-auto sidebar-menu-toggle-icon"></span>
                             </a>
                             <ul class="sidebar-submenu collapse" id="components_menu">
                                 <li class="sidebar-menu-item">
                                   <?php if($_SESSION['user']=="admin")
                                   { ?>
-                                    <a class="sidebar-menu-button" href="ui-tables.php">
+                                    <a class="sidebar-menu-button" href="Commerciaux.php">
                                         <span class="sidebar-menu-text">Table des commerciaux</span>
                                     </a>
                                   <?php } ?>
-                                    <a class="sidebar-menu-button" href="ui-projets.php">
+                                    <a class="sidebar-menu-button" href="Projets.php">
                                         <span class="sidebar-menu-text">Table des projets</span>
                                     </a>
-                                    <a class="sidebar-menu-button" href="table_clients.php">
+                                    <a class="sidebar-menu-button" href="Clients.php">
                                         <span class="sidebar-menu-text">Table des clients</span>
                                     </a>
                                 </li>
@@ -111,9 +111,9 @@
                         <?php }else{ ?>
                           <li class="sidebar-menu-item ">
                         <?php } ?>
-                            <a class="sidebar-menu-button" href="Graphe.php">
+                            <a class="sidebar-menu-button" href="Statistiques.php">
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">donut_small</i>
-                                <span class="sidebar-menu-text">Graphe</span>
+                                <span class="sidebar-menu-text">Statistiques</span>
                             </a>
                     </ul>
                 </div>

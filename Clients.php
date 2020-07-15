@@ -32,7 +32,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                               }
                           }
                           else {
-                           header('Location: table_clients.php');
+                           header('Location: Clients.php');
                           }
                  ?>
 
@@ -71,7 +71,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                           <br/>
                                           <br/>
                                            <input type="button" id="btnShowMsg1"  style="width: 200px; color: green;" value="Ajouter un nouveau client !" onClick="add_ct()"/>
-                                           <input type="button" id="btnShowMsg2"  style="width: 300px; color: red;" value="Modifier les informations des clients !" onClick="window.location.href='in.php?data=clients';"/>
+                                           <input type="button" id="btnShowMsg2"  style="width: 300px; color: red;" value="Modifier les informations des clients !" onClick="window.location.href='éditer.php?data=clients';"/>
                                            <br/>
                                            <br/>
                                         <div class="form-group">
