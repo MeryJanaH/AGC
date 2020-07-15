@@ -63,7 +63,7 @@ $_SESSION['current_page']="edit";
                                     <div class="form-group">
                                         <label class="text-label" for="email">Adresse email:</label>
                                         <div class="input-group input-group-merge">
-                                            <input  type="email" name="email_r" value="" required="" id="email_r" required="" class="form-control form-control-prepended" placeholder="user@exemple.com">
+                                            <input  type="email" name="email_r" value="" required="" id="email_r" required="" class="form-control " placeholder="user@exemple.com">
                                         </div>
                                     </div>
                                 </div>
