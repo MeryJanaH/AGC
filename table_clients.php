@@ -59,6 +59,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                                     <th style="width: 120px;" name="projet">Projet</th>
                                                     <th style="width: 120px;" name="Note">Notes</th>
                                                     <th style="width: 120px;" name="source">Source</th>
+                                                    <th style="width: 120px;" name="source">Date du 1er visite</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="list" id="staff03">

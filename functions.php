@@ -277,6 +277,7 @@ function update_table_clients()
             <td style="width: 150px;"><span class="text-muted"><?php print_r($rs['ProjetName']) ?></span></td>
             <td style="width: 200px;"><span class="text-muted"><?php print_r($dn['Notes']) ?></span></td>
             <td style="width: 150px;"><span class="text-muted"><?php print_r($dn['Source']) ?></span></td>
+            <td style="width: 150px;"><span class="text-muted"><?php print_r($dn['Premier_visite']) ?></span></td>
         </tr>
      <?php
       }
@@ -355,7 +356,7 @@ function  add_client($c_n,$nm_t,$c_nt,$c_s,$c_p)
   for ($a = 0; $a < count($c_n); $a++)
   {
 
-      $req = $bdd->prepare("INSERT INTO Clients (Name, phnumber,Notes,Source,Code_pj) VALUES ('" . $c_n[$a] . "','" . $nm_t[$a]."','" . $c_nt[$a]."','" . $c_s[$a]."','" . $c_p[$a]."')");
+      $req = $bdd->prepare("INSERT INTO Clients (Name, phnumber,Notes,Source,Code_pj,Premier_visite) VALUES ('" . $c_n[$a] . "','" . $nm_t[$a]."','" . $c_nt[$a]."','" . $c_s[$a]."','" . $c_p[$a]."',now())");
       $req->execute();
   }
 }

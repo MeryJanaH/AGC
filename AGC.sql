@@ -41,6 +41,7 @@ CREATE TABLE `Clients` (
   `Name` varchar(30) DEFAULT NULL,
   `phnumber` varchar(15) DEFAULT NULL,
   `Notes` mediumtext DEFAULT NULL,
+  `Premier_visite` timestamp NULL DEFAULT current_timestamp(),
   `Source` varchar(50) DEFAULT NULL,
   `Code_pj` int(15) NOT NULL,
 
