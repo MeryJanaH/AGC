@@ -55,7 +55,7 @@
                             <a class="sidebar-menu-button" data-toggle="collapse" href="#pages_menu">
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">description</i>
                                 <span class="sidebar-menu-text">Modifier-Créer</span>
-                                <span class="sidebar-menu-toggle-icon"></span>
+                                <span class="ml-auto sidebar-menu-toggle-icon"></span>
                             </a>
                             <ul class="sidebar-submenu collapse" id="pages_menu">
                                 <li class="sidebar-menu-item">
