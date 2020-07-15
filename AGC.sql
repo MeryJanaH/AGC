@@ -85,10 +85,10 @@ INSERT INTO `Projets`(`ProjetName`, `type_p`, `Etages`, `Surface`, `Prix`) VALUE
 
 
 
-INSERT INTO `clients`(`Name`, `phnumber`, `Notes`, `Source`, `Code_pj`) VALUES ("Mme Zoubida","0698878325","A14 67 m² 3ème étage","Connaissance",7);
-INSERT INTO `clients`(`Name`, `phnumber`, `Notes`, `Source`, `Code_pj`) VALUES ("M. Youssef ","0661361570","duplex 201 m²","De passage",5);
-INSERT INTO `clients`(`Name`, `phnumber`, `Notes`, `Source`, `Code_pj`) VALUES ("Mme badraoui","0665084531","app 107 m² 1er étage","De passage",5);
-INSERT INTO `clients`(`Name`, `phnumber`, `Notes`, `Source`, `Code_pj`) VALUES ("M. Yassine","+971554090091","App / Va venir au Maroc le mois 1","Annonce",7);
-INSERT INTO `clients`(`Name`, `phnumber`, `Notes`, `Source`, `Code_pj`) VALUES ("M. Said","+32488082069","App / Va venir au Maroc Après le confinement","Annonce",5);
-INSERT INTO `clients`(`Name`, `phnumber`, `Notes`, `Source`, `Code_pj`) VALUES ("M. Hamza","0707185896","App","Annonce",5);
-INSERT INTO `clients`(`Name`, `phnumber`, `Notes`, `Source`, `Code_pj`) VALUES ("M. Brahim","066930354","App / ََA1+A3","De passage",5);
+INSERT INTO `Clients`(`Name`, `phnumber`, `Notes`, `Source`, `Code_pj`) VALUES ("Mme Zoubida","0698878325","A14 67 m² 3ème étage","Connaissance",7);
+INSERT INTO `Clients`(`Name`, `phnumber`, `Notes`, `Source`, `Code_pj`) VALUES ("M. Youssef ","0661361570","duplex 201 m²","De passage",5);
+INSERT INTO `Clients`(`Name`, `phnumber`, `Notes`, `Source`, `Code_pj`) VALUES ("Mme badraoui","0665084531","app 107 m² 1er étage","De passage",5);
+INSERT INTO `Clients`(`Name`, `phnumber`, `Notes`, `Source`, `Code_pj`) VALUES ("M. Yassine","+971554090091","App / Va venir au Maroc le mois 1","Annonce",7);
+INSERT INTO `Clients`(`Name`, `phnumber`, `Notes`, `Source`, `Code_pj`) VALUES ("M. Said","+32488082069","App / Va venir au Maroc Après le confinement","Annonce",5);
+INSERT INTO `Clients`(`Name`, `phnumber`, `Notes`, `Source`, `Code_pj`) VALUES ("M. Hamza","0707185896","App","Annonce",5);
+INSERT INTO `Clients`(`Name`, `phnumber`, `Notes`, `Source`, `Code_pj`) VALUES ("M. Brahim","066930354","App / ََA1+A3","De passage",5);

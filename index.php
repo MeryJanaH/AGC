@@ -66,10 +66,15 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                 <div class="mdk-header-layout__content mdk-header-layout__content--fullbleed mdk-header-layout__content--scrollable page">
 
 
-                    <div >
+
+<!--   <div class="container-fluid page__container">
+      <div class="row">
+          <div class="col-lg-9">
+              <div class="card card-body">-->
+                    <div class="container-fluid page__container">
                         <div >
                             <div >
-                                <div class="card ">
+                                <div class="card">
                                     <div id="calendar" data-toggle="fullcalendar"></div>
                                 </div>
                             </div> <!-- end col -->
@@ -279,7 +284,7 @@ include 'footer.php'; ?>
         </div>
     </div>
 
-  
+
     <!-- jQuery -->
     <script src="assets/vendor/jquery.min.js"></script>
 
@@ -374,6 +379,15 @@ include 'footer.php'; ?>
                       </select>
                   </div>
               </div>
+              <div class="col-12">
+                <div class="form-group"></br>
+                   <label class="control-label">Type de visite :</label>
+                   <select class="form-control custom-select" name="category" id="type">
+                      <option value="Bureau">Bureau</option>
+                      <option value="Chantier">Chantier</option>
+                   </select>
+               </div>
+           </div>
             </div>
         </form>
       </div>
@@ -449,6 +463,15 @@ include 'footer.php'; ?>
                       </select>
                   </div>
               </div>
+              <div class="col-12">
+                <div class="form-group"></br>
+                   <label class="control-label">Type de visite :</label>
+                   <select class="form-control custom-select" name="category" id="visite">
+                      <option value="Bureau">Bureau</option>
+                      <option value="Chantier">Chantier</option>
+                   </select>
+               </div>
+           </div>
             </div>
         </form>
       </div>
@@ -554,11 +577,11 @@ include 'footer.php'; ?>
           slotDuration: "00:30:00",
           slotMinTime: "08:00:00",
           slotMaxTime: "19:00:00",
-          initialView:"timeGridWeek",
+          initialView:"dayGridMonth",
           navLinks:true,
           handleWindowResize: true,
-          /*aspectRatio: 3,*/
-          height: $(window).height() - 150,
+          aspectRatio: 1,
+          height: $(window).height() - 10,
           themeSystem: 'bootstrap',
           headerToolbar: {
             left: 'prev,next',/* today*/
@@ -567,8 +590,9 @@ include 'footer.php'; ?>
           },
           weekNumbers: false,
           dayMaxEvents: true, // allow "more" link when too many events
-          selectLongPressDelay:1,
-          longPressDelay:1,
+          selectLongPressDelay:500,
+          longPressDelay:500,
+          expandRows:true,
           events: [
             <?php
             require 'LBD.php';
@@ -601,6 +625,7 @@ include 'footer.php'; ?>
                  var client = $("#select02").children("option:selected").val();
                  var projet = $("#select03").children("option:selected").val();
                  var category = $("#category").children("option:selected").val();
+                 var visite = $("#type").children("option:selected").val();
                  var description = $("#desc").val();
 
                  calendar.addEvent({
@@ -627,6 +652,7 @@ include 'footer.php'; ?>
                      description: description,
                      start:startTime,
                      end: endTime,
+                     visite:visite,
                      category: category
                    }, function(data, status){
                   //location.reload();
@@ -649,7 +675,7 @@ include 'footer.php'; ?>
            });
 
             setTimeout(function(){
-              //console.log(values['Description']);
+              console.log(values['Visite']);
 
               /*$("#commercial").children("option:selected").val()=
               $("#client").children("option:selected").val()=
@@ -670,14 +696,14 @@ include 'footer.php'; ?>
               document.querySelector('#select2-projet-container ').innerText = projet;
 
               document.querySelector('#etat [value="' + values['Category'] + '"]').selected = true;
-
+              document.querySelector('#visite [value="' + values['Visite'] + '"]').selected = true;
 
               document.getElementById("description").value = values['Description'];
               //$('#createEventModal #when').text(mywhen);
               $('#event-edit').modal('toggle');
 
               //console.log($("#commercial").children("option:selected").val());
-            }, 2000);
+            }, 1000);
 
 
             $('#modifier').unbind('click').on('click', function(e){
@@ -690,6 +716,7 @@ include 'footer.php'; ?>
                  var client = $("#client").children("option:selected").val();
                  var projet = $("#projet").children("option:selected").val();
                  var category = $("#etat").children("option:selected").val();
+                 var visite = $("#visite").children("option:selected").val();
                  var description = $("#description").val();
                  var id_calendar=info.event.id;
 
@@ -710,6 +737,7 @@ include 'footer.php'; ?>
                      description: description,
                      start:startTime,
                      end: endTime,
+                     visite:visite,
                      category: category
                    }, function(data, status){
                      //alert(data);
@@ -767,7 +795,15 @@ include 'footer.php'; ?>
             }
           }
           });
+
         calendar.render();
+$(document).ready(function(){
+  setTimeout(function(){
+
+    $(".fc-timeGridWeek-button").click();
+
+},10);
+});
       });
 
     </script>
