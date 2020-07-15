@@ -250,11 +250,11 @@ function update_table_projets()
       while($dn = $req->fetch())
       { ?>
         <tr>
-            <td><span class="js-lists-values-employee-name"><?php print_r($dn['ProjetName']); ?></span></td>
-            <td><span class="text-muted"><?php print_r($dn['type_p']) ?></span></td>
-            <td><span class="text-muted"><?php print_r($dn['Etages']) ?></span></td>
-            <td><span class="text-muted"><?php print_r($dn['Surface']) ?></span></td>
-            <td><span class="text-muted"><?php print_r($dn['Prix']) ?></span></td>
+            <td style="width: 120px";><span class="js-lists-values-employee-name"><?php print_r($dn['ProjetName']); ?></span></td>
+            <td style="width: 180px";><span class="text-muted"><?php print_r($dn['type_p']) ?></span></td>
+            <td style="width: 150px";><span class="text-muted"><?php print_r($dn['Etages']) ?></span></td>
+            <td style="width: 150px";><span class="text-muted"><?php print_r($dn['Surface']) ?></span></td>
+            <td style="width: 100px";><span class="text-muted"><?php print_r($dn['Prix']) ?></span></td>
         </tr>
      <?php
       }
