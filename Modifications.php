@@ -1,5 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Modifications</title>
+
+
+    <!-- Simplebar -->
+    <link type="text/css" href="assets/vendor/simplebar.min.css" rel="stylesheet">
+
+    <!-- App CSS -->
+    <link type="text/css" href="assets/css/app.css" rel="stylesheet">
+
+    <!-- Material Design Icons -->
+    <link type="text/css" href="assets/css/vendor-material-icons.css" rel="stylesheet">
+
+</head>
+
 <?php
 
 require 'functions.php';
@@ -7,8 +26,6 @@ require 'LBD.php';
 
 if(isset($_SESSION['name']))
 {
-include 'head.php';
-
 $_SESSION['current_page']="edit";
 ?>
 

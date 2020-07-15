@@ -10,7 +10,23 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-<?php include 'head.php';?>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Commerciaux</title>
+
+
+    <!-- Simplebar -->
+    <link type="text/css" href="assets/vendor/simplebar.min.css" rel="stylesheet">
+
+    <!-- App CSS -->
+    <link type="text/css" href="assets/css/app.css" rel="stylesheet">
+
+    <!-- Material Design Icons -->
+    <link type="text/css" href="assets/css/vendor-material-icons.css" rel="stylesheet">
+
+</head>
 
 <body class="layout-default">
     <div class="preloader"></div>
