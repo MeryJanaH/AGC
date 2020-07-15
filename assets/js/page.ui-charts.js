@@ -109,7 +109,7 @@
                         }
                     }, a);
                     Charts.create(e, t, a, {
-                        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                        labels: ["Jan", "Fev", "Mar", "Avr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                         datasets: [{
                             label: "Terrain",
                             data: terrain
