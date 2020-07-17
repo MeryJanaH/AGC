@@ -13,6 +13,14 @@ SELECT ProjetName, Visite, COUNT(Visite) FROM
                       LEFT JOIN
 
 
+
+                      if(isset($dn['count'])){?>
+                        <td class="c_projet"><?php print_r($dn['count']) ?></td>
+                      <?php }else{ ?><td class="c_projet">0</td>
+                      <?php }if(Visite == "Vente"){ ?>
+                        <td class="vente"><?php print_r($dn['c']) ?></td>
+                      <?php }else{ ?><td class="vente">0</td> <?php} ?>
+
 <?php
 require 'LBD.php';
  $n=0;

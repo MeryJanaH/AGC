@@ -414,28 +414,31 @@ function Total_client_projets()
 {
   require 'LBD.php';
    $n=0;
-   $req=$bdd->query("SELECT ProjetName,Visite,c,count FROM
-                    (SELECT Code_pj, ProjetName FROM Projets) t1
-                    LEFT JOIN
-                    (SELECT Code_pj, Visite,COUNT(Visite)as c , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-07-01 00:00:00' AND date_tdebut < '2020-08-01 00:00:00'
-                     GROUP BY Visite) t2 ON t1.Code_pj = t2.Code_pj
-                    LEFT JOIN
-                    (SELECT Code_pj, COUNT(Source) AS count, Premier_visite FROM Clients WHERE Premier_visite >= '2020-07-01 00:00:00' AND Premier_visite < '2020-08-01 00:00:00' GROUP BY Code_pj) t3
-                    ON t1.Code_pj = t3.Code_pj");
+   $req=$bdd->query("SELECT ProjetName,c_bureau,c_vente,c_projets  FROM (SELECT Code_pj, ProjetName FROM Projets) t1
+                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-07-01 00:00:00' AND date_tdebut < '2020-08-01 00:00:00' AND Visite = 'Bureau' GROUP BY Code_pj) t2
+                      ON t1.Code_pj = t2.Code_pj
+                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-07-01 00:00:00' AND date_tdebut < '2020-08-01 00:00:00' AND Visite = 'Vente' GROUP BY Code_pj) t3
+                      ON t1.Code_pj = t3.Code_pj
+                      LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE Premier_visite >= '2020-07-01 00:00:00' AND Premier_visite < '2020-08-01 00:00:00' GROUP BY Code_pj) t4
+                      ON t1.Code_pj = t4.Code_pj");
    while($dn = $req->fetch())
     { ?>
       <tr>
       <td class="id" style="display:none;"><?php $n+1; ?></td>
       <td class="Pj"><?php print_r($dn['ProjetName']) ?></td>
-    <?php if(Visite == "Bureau") {?>
-      <td class="bureau"><?php print_r($dn['c']) ?></td>
-    <?php }else{ ?><td class="bureau">0</td>
-    <?php} if(isset($dn['count'])){?>
-      <td class="c_projet"><?php print_r($dn['count']) ?></td>
-    <?php }else{ ?><td class="c_projet">0</td>
-  <?php }if(Visite == "Vente"){ ?>
-      <td class="vente"><?php print_r($dn['c']) ?></td>
-    <?php }else{ ?><td class="vente">0</td> <?php} ?>
+    <?php if(isset($dn['c_bureau'])) {?>
+      <td class="bureau"><?php print_r($dn['c_bureau']) ?></td>
+    <?php }  else { ?>
+      <td class="bureau">0</td>
+     <?php } if(isset($dn['c_projets'])){ ?>
+      <td class="c_projet"><?php print_r($dn['c_projets']) ?></td>
+    <?php }  else { ?>
+      <td class="c_projet">0</td>
+     <?php }if(isset($dn['c_vente'])){ ?>
+      <td class="vente"><?php print_r($dn['c_vente']) ?></td>
+    <?php } else { ?>
+      <td class="vente">0</td>
+     <?php } ?>
     </tr>
 <?php }
 }
