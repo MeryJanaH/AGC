@@ -1,10 +1,6 @@
 <?php
 require 'functions.php';
 $_SESSION['current_page']="projets";
-if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION['login']))
-{
-      header('Location: login.php');
-}
 
 ?>
 
@@ -47,57 +43,75 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                 <!-- Header Layout Content -->
 
                 <div class="mdk-header-layout__content mdk-header-layout__content--fullbleed mdk-header-layout__content--scrollable page">
-
                     <div class="container-fluid page__container">
                         <div class="card card-form">
                             <div class="row no-gutters">
-                                <div class="col-lg-8 card-form__body border-left">
-                                    <div id="contacts"  >
+                                <div class="col-lg-12 card-form__body border-left">
+                                    <div id="contacts">
                                         <table class="table mb-0 thead-border-top-0">
+                                              <thead>
+                                                  <tr>
+                                                    <th class="sort" data-sort="Projets">Projets</th>
+                                                    <th class="sort" data-sort="Facebook">Facebook/Instagram</th>
+                                                    <th class="sort" data-sort="Avito">Avito/Mubawab</th>
+                                                    <th class="sort" data-sort="Ancien">Ancien client</th>
+                                                    <th class="sort" data-sort="Prospection">Prospection</th>
+                                                    <th class="sort" data-sort="Connaissance">Connaissance</th>
+                                                    <th class="sort" data-sort="Annonce">Annonce</th>
+                                                    <th class="sort" data-sort="Passage">De passage</th>
+                                                   <tr> <th class="Total">Total</th> </tr>
+                                                  </tr>
+                                                </thead>
+                                                <tbody class="list">
 
-                                                  <thead>
-                                                      <tr>
-                                                        <th class="sort" data-sort="name">Name</th>
-                                                        <th class="sort" data-sort="age">Age</th>
-                                                        <th class="sort" data-sort="city">City</th>
-                                                      </tr>
-                                                    </thead>
-                                                    <tbody class="list">
-                                                      <tr>
-                                                        <td class="id" style="display:none;">1</td>
-                                                        <td class="name">Jonny</td>
-                                                        <td class="age">27</td>
-                                                        <td class="city">Stockholm</td>
-                                                      </tr>
-                                                      <tr>
-                                                        <td class="id" style="display:none;">2</td>
-                                                        <td class="name">Jonas</td>
-                                                        <td class="age">-132</td>
-                                                        <td class="city">Berlin</td>
-                                                      </tr>
-
-                                                    </tbody>
-                                                  </table>
+                                                  <?php
+                                                  clients_par_source();
+                                                  ?>
+                                                </tbody>
+                                          </table>
+                                        </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                                          <br/>
+                                          <br/>
+                                          <br/>
 
+                        <div class="container-fluid page__container">
+                            <div class="card card-form">
+                                <div class="row no-gutters">
+                                    <div class="col-lg-12 card-form__body border-left">
+                                        <div id="contacts2">
+                                          <table class="table mb-0 thead-border-top-0">
+                                                <thead>
+                                                    <tr>
+                                                      <th class="sort" data-sort="Pj">Projets</th>
+                                                      <th class="sort" data-sort="bureau">Clients au bureau</th>
+                                                      <th class="sort" data-sort="c_projet">Clients par projet</th>
+                                                      <th class="sort" data-sort="vente">Ventes</th>
+                                                     <tr> <th class="Total">Total</th> </tr>
+                                                    </tr>
+                                                  </thead>
+                                                  <tbody class="list">
+
+                                                    <?php
+                                                    Total_client_projets();
+                                                    ?>
+                                                  </tbody>
+                                            </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
-                <!-- // END header-layout__content -->
-
             </div>
-            <!-- // END header-layout -->
-
         </div>
-        <!-- // END drawer-layout__content -->
-
         <script>
+
           var options = {
-          valueNames: [ 'id', 'name', 'age', 'city' ]
+          valueNames: [ 'id', 'Projets', 'Facebook', 'Avito', 'Ancien', 'Prospection', 'Connaissance', 'Annonce', 'Passage']
         };
 
         // Init list
@@ -109,6 +123,21 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
             var itemId = $(this).closest('tr').find('.id').text();
           });
         }
+
+
+        var options2 = {
+        valueNames: [ 'id', 'Pj', 'vente', 'bureau', 'c_projet']
+      };
+
+      // Init list
+      var contactList = new List('contacts', options2);
+
+      function refreshCallbacks() {
+        // Needed to add new buttons to jQuery-extended object
+        removeBtns.click(function() {
+          var itemId = $(this).closest('tr').find('.id').text();
+        });
+      }
         </script>
 
 

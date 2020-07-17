@@ -1,6 +1,39 @@
 <?php
 
-function fill_unit_select_box_source()
+SELECT ProjetName,Visite, COUNT(Visite) FROM
+
+(SELECT Code_pj, ProjetName FROM Projets) t1
+LEFT JOIN
+(SELECT Code_pj, Visite,COUNT(Visite) , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-07-01 00:00:00' AND date_tdebut < '2020-08-01 00:00:00' GROUP BY Visite) t2
+ON t1.Code_pj = t2.Code_pj
+
+
+SELECT ProjetName, Visite, COUNT(Visite) FROM
+                      (SELECT Code_pj, ProjetName FROM Projets) t1
+                      LEFT JOIN
+
+
+<?php
+require 'LBD.php';
+ $n=0;
+ $req2=$bdd->query("SELECT ProjetName, count, Source FROM
+                    (SELECT Code_pj, ProjetName FROM Projets) t1
+                    LEFT JOIN
+                    (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE Premier_visite >= '2020-07-01 00:00:00' AND Premier_visite < '2020-08-01 00:00:00' GROUP BY Source) t2
+                    ON t1.Code_pj = t2.Code_pj"); ?>
+
+<?php  while($dn2 = $req2->fetch())
+  {?>
+  <tr><td><?php print_r($dn2['count']) ?></td></tr>
+<?php if(!isset($dn2['count'])){ ?><tr><td> class="Total">0</td></tr><?php }}?>
+
+
+      require 'LBD.php';
+$req=$bdd->query("SELECT * FROM Clients ");
+  $res = $req->fetch();
+
+  echo "2020-08-01 00:00:00" > $res[Premier_visite];
+/*function fill_unit_select_box_source()
 {
   $output = '';
    // A sample product array
@@ -13,7 +46,7 @@ function fill_unit_select_box_source()
    return $output;
 }
 
-echo fill_unit_select_box_source();
+echo fill_unit_select_box_source();*/
 /*
 require 'LBD.php';
 

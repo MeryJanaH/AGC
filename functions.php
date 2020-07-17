@@ -361,4 +361,83 @@ function  add_client($c_n,$nm_t,$c_nt,$c_s,$c_p)
   }
 }
 
+function clients_par_source()
+{
+  require 'LBD.php';
+   $n=0;
+   $req=$bdd->query("SELECT ProjetName, count, Source FROM
+                      (SELECT Code_pj, ProjetName FROM Projets) t1
+                      LEFT JOIN
+                      (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE Premier_visite >= '2020-07-01 00:00:00' AND Premier_visite < '2020-08-01 00:00:00' GROUP BY ID_client) t2
+                      ON t1.Code_pj = t2.Code_pj");
+   while($dn = $req->fetch())
+    { ?>
+      <tr>
+      <td class="id" style="display:none;"><?php $n+1; ?></td>
+      <td class="Projets"><?php print_r($dn['ProjetName']) ?></td>
+<?php if($dn['Source'] == "facebook/instagram"){ ?>
+      <td class="Facebook"><?php print_r($dn['count']) ?></td>
+
+<?php }else {?>
+      <td class="Facebook">0</td>
+<?php } if($dn['Source'] == "avito/mubawab"){?>
+      <td class="Avito"><?php print_r($dn['count']) ?></td>
+      <?php } else {?>
+        <td class="Avito">0</td>
+<?php }if($dn['Source'] == "ancien"){?>
+      <td class="Ancien"><?php print_r($dn['count']) ?></td>
+      <?php } else {?>
+        <td class="Ancien">0</td>
+<?php }if($dn['Source'] == "prospection"){?>
+      <td class="Prospection"><?php print_r($dn['count']) ?></td>
+      <?php } else {?>
+        <td class="Prospection">0</td>
+<?php }if($dn['Source'] == "connaissance"){?>
+      <td class="Connaissance"><?php print_r($dn['count']) ?></td>
+      <?php } else {?>
+        <td class="Connaissance">0</td>
+<?php }if($dn['Source'] == "annonce"){?>
+      <td class="Annonce"><?php print_r($dn['count']) ?></td>
+      <?php } else {?>
+        <td class="Annonce">0</td>
+<?php }if($dn['Source'] == "de passage"){?>
+       <td class="Passage"><?php print_r($dn['count']) ?></td>
+      <?php  }else {?>
+        <td class="Passage">0</td>
+<?php  } ?>
+      </tr>
+    <?php
+     }
+}
+
+function Total_client_projets()
+{
+  require 'LBD.php';
+   $n=0;
+   $req=$bdd->query("SELECT ProjetName,Visite,c,count FROM
+                    (SELECT Code_pj, ProjetName FROM Projets) t1
+                    LEFT JOIN
+                    (SELECT Code_pj, Visite,COUNT(Visite)as c , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-07-01 00:00:00' AND date_tdebut < '2020-08-01 00:00:00'
+                     GROUP BY Visite) t2 ON t1.Code_pj = t2.Code_pj
+                    LEFT JOIN
+                    (SELECT Code_pj, COUNT(Source) AS count, Premier_visite FROM Clients WHERE Premier_visite >= '2020-07-01 00:00:00' AND Premier_visite < '2020-08-01 00:00:00' GROUP BY Code_pj) t3
+                    ON t1.Code_pj = t3.Code_pj");
+   while($dn = $req->fetch())
+    { ?>
+      <tr>
+      <td class="id" style="display:none;"><?php $n+1; ?></td>
+      <td class="Pj"><?php print_r($dn['ProjetName']) ?></td>
+    <?php if(Visite == "Bureau") {?>
+      <td class="bureau"><?php print_r($dn['c']) ?></td>
+    <?php }else{ ?><td class="bureau">0</td>
+    <?php} if(isset($dn['count'])){?>
+      <td class="c_projet"><?php print_r($dn['count']) ?></td>
+    <?php }else{ ?><td class="c_projet">0</td>
+  <?php }if(Visite == "Vente"){ ?>
+      <td class="vente"><?php print_r($dn['c']) ?></td>
+    <?php }else{ ?><td class="vente">0</td> <?php} ?>
+    </tr>
+<?php }
+}
+
 ?>
