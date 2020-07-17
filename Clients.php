@@ -60,9 +60,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                 <div class="row no-gutters">
 
                                     <div class="col-lg-12 card-form__body">
-
-                                        <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
-
+                                        <div  id="contacts">
                                             <div class="search-form search-form--light m-3">
                                                 <input type="text" class="form-control search" placeholder="Search">
                                                 <button class="btn" type="button" role="button"><i class="material-icons">search</i></button>
@@ -81,6 +79,17 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                             <tbody class="list" id="staff03">
                                               <!--table des Employés-->
                                               <?php update_table_clients(); ?>
+                                                  <tr>
+                                                  <td><input type='hidden' id='id-field'/></td>
+                                                  <td><input required='' id ='name' name='name_client[]'></td>
+                                                  <td><input required='' id ='num' type='tel' name='num[]'></td>
+                                                  <td><select required='' id = 'projet' class='form-control item_unit' name='c_p[]'><option> </option><?php echo fill_unit_select_box_projet();?></select></td>
+                                                  <td><input required='' id ='note' name='Note[]'></td>
+                                                  <td><select required='' id = 'source' class='form-control item_unit' name='source[]'><option> </option><?php echo fill_unit_select_box_source();?></select></td>
+                                                  <td >
+                                                    <button id="edit-btn">Edit</button>
+                                                  </td>
+                                                  </tr>
                                             </tbody>
                                         </table>
                                         <td>
@@ -109,6 +118,8 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
             </div>
             <!-- // END drawer-layout__content -->
 
+
+
     <?php include 'footer.php';?>
 
 
@@ -134,9 +145,70 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
     <!-- App Settings (safe to remove) -->
     <script src="assets/js/app-settings.js"></script>
 
-    <!-- List.js -->
+    <!-- List.js-->
     <script src="assets/vendor/list.min.js"></script>
     <script src="assets/js/list.js"></script>
+
+    <script>
+    var options = {
+      valueNames: [ 'id', 'name', 'phnumber', 'projet_name', 'notes', 'source', 'visite' ]
+    };
+
+    // Init list
+    var contactList = new List('contacts', options);
+    console.log(contactList);
+    var idField = $('#id-field'),
+        nameField = $('#name'),
+        numField = $('#num'),
+        projetField = $('#projet').children("option:selected"),
+        srcField = $('#source').children("option:selected"),
+        noteField = $('#note'),
+        //editBtn = $('#edit-btn').hide(),
+        editBtns = $('.edit-item-btn');
+
+    console.log(idField.val());
+    console.log(nameField.val());
+    console.log(numField.val());
+    console.log(projetField.val());
+    console.log(srcField.val());
+    console.log(noteField.val());
+    // Sets callbacks to the buttons in the list
+    refreshCallbacks();
+/*
+    editBtn.click(function() {
+      cityField = $('#city-field').children("option:selected");
+      var item = contactList.get('id', idField.val())[0];
+      item.values({
+        id:idField.val(),
+        name: nameField.val(),
+        age: ageField.val(),
+        city: cityField.val()
+      });
+      clearFields();
+      editBtn.hide();
+      addBtn.show();
+    });   noteeee: codePen : Yassine*/
+
+    function refreshCallbacks() {
+      // Needed to add new buttons to jQuery-extended object
+      editBtns = $(editBtns.selector);
+
+      editBtns.click(function() {
+        alert("tt");
+        var itemId = $(this).closest('tr').find('.id').text();
+        var itemValues = contactList.get('id', itemId)[0].values();
+        idField.val(itemValues.id);
+        nameField.val(itemValues.name);
+        numField.val(itemValues.num);
+        projetField.val(itemValues.projet);
+        projetField.text(itemValues.projet);
+        srcField.val(itemValues.source);
+        srcField.text(itemValues.source);
+        noteField.val(itemValues.note);
+      });
+    }
+
+    </script>
 
     </body>
 
