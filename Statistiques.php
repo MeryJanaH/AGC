@@ -58,11 +58,50 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
             <div class="mdk-header-layout js-mdk-header-layout" data-has-scrolling-region>
 
               <?php include('haute_bar.php'); ?>
+<?php
+require 'LBD.php';
+$sql="SELECT ProjetName,Janv,Fév,Mars,Avril,Juin,Juil,Août,Sep,Oct,Nov,Déc
+FROM (SELECT Code_pj, ProjetName FROM Projets) t1
+                      LEFT JOIN
+     (SELECT Code_pj, Visite,COUNT(Visite)as Janv , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-01-01 00:00:00' AND date_tdebut < '2020-02-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t2
+                      ON t1.Code_pj = t2.Code_pj
+                      LEFT JOIN
+      (SELECT Code_pj, Visite,COUNT(Visite)as Fév , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-02-01 00:00:00' AND date_tdebut < '2020-03-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t3
+                      ON t1.Code_pj = t3.Code_pj
+                      LEFT JOIN
+      (SELECT Code_pj, Visite,COUNT(Visite)as Mars , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-03-01 00:00:00' AND date_tdebut < '2020-04-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t4
+                      ON t1.Code_pj = t4.Code_pj
+                      LEFT JOIN
+      (SELECT Code_pj, Visite,COUNT(Visite)as Avril , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-04-01 00:00:00' AND date_tdebut < '2020-05-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t5
+                      ON t1.Code_pj = t5.Code_pj
+                      LEFT JOIN
+      (SELECT Code_pj, Visite,COUNT(Visite)as Mai , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-05-01 00:00:00' AND date_tdebut < '2020-06-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t6
+                      ON t1.Code_pj = t6.Code_pj
+                      LEFT JOIN
+      (SELECT Code_pj, Visite,COUNT(Visite)as Juin , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-06-01 00:00:00' AND date_tdebut < '2020-07-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t7
+                      ON t1.Code_pj = t7.Code_pj
+                      LEFT JOIN
+      (SELECT Code_pj, Visite,COUNT(Visite)as Juil , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-07-01 00:00:00' AND date_tdebut < '2020-08-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t8
+                      ON t1.Code_pj = t8.Code_pj
+                      LEFT JOIN
+      (SELECT Code_pj, Visite,COUNT(Visite)as Août , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-08-01 00:00:00' AND date_tdebut < '2020-09-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t9
+                      ON t1.Code_pj = t9.Code_pj
+                      LEFT JOIN
+      (SELECT Code_pj, Visite,COUNT(Visite)as Sep , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-09-01 00:00:00' AND date_tdebut < '2020-10-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t10
+                      ON t1.Code_pj = t10.Code_pj
+                      LEFT JOIN
+      (SELECT Code_pj, Visite,COUNT(Visite)as Oct , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-10-01 00:00:00' AND date_tdebut < '2020-11-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t11
+                      ON t1.Code_pj = t11.Code_pj
+                      LEFT JOIN
+      (SELECT Code_pj, Visite,COUNT(Visite)as Nov , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-10-01 00:00:00' AND date_tdebut < '2020-11-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t12
+                      ON t1.Code_pj = t12.Code_pj
+                      LEFT JOIN
+      (SELECT Code_pj, Visite,COUNT(Visite)as Déc , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-11-01 00:00:00' AND date_tdebut < '2020-12-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t13
+                      ON t1.Code_pj = t13.Code_pj";
 
+$req=$bdd->query($sql);
 
-              <script>
-                  var terrain = [25, 20, 30, 22, 17, 10, 18, 26, 28, 26, 20, 35];
-              </script>
+ ?>
 
                 <!-- Header Layout Content -->
                 <div class="mdk-header-layout__content mdk-header-layout__content--fullbleed mdk-header-layout__content--scrollable page">
@@ -75,7 +114,8 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                   <label for="chart-switch-toggle" class="mb-0">Show affiliate:</label>
                                   <div class="custom-control custom-checkbox-toggle ml-2">
                                       <input checked="" aria-checked="true" type="checkbox" id="chart-switch-toggle" class="custom-control-input" role="switch" data-toggle="chart" data-target="#ordersChartSwitch" data-add='{"data":{"datasets":[
-                                      {"data":[15,10,20,12,7,0,8,16,18,16,10,22],"backgroundColor":"#b2e599","label":"Wafae1"},
+                                      <?php $dn=$req->fetch(); ?>
+                                      {"data":[<?php echo $dn[1]; ?>,10,20,12,7,0,8,16,18,16,10,22],"backgroundColor":"#b2e599","label":"Hanae1"},
                                       {"data":[5,10,21,12,7,10,8,16,18,16,10,22],"backgroundColor":"#b2e549","label":"Wafae2"},
                                       {"data":[5,10,21,12,7,10,8,16,18,16,10,22],"backgroundColor":"#b205a9","label":"Walili1"},
                                       {"data":[5,10,21,12,7,10,8,16,18,16,10,22],"backgroundColor":"#b2e59b","label":"Walili2"},
@@ -83,6 +123,10 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                       {"data":[5,10,21,12,7,10,8,16,18,16,10,22],"backgroundColor":"#b2e509","label":"Hanae2"},
                                       {"data":[5,10,21,12,7,10,8,16,18,16,10,22],"backgroundColor":"#a2e5d9","label":"Hanae3"}]}}'>
                                       <label class="custom-control-label" for="chart-switch-toggle"><span class="sr-only">Show affiliate</span></label>
+                                      <?php $dn=$req->fetch(); ?>
+                                      <script>
+                                          var terrain = [25, 20, 30, 22, 17, 10, 18, 26, 28, 26, 20, 35];
+                                      </script>
                                   </div>
                               </div>
                           </div>

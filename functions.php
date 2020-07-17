@@ -279,7 +279,7 @@ function update_table_clients()
             <td style="width: 200px;" class="notes"><span class="text-muted"><?php print_r($dn['Notes']) ?></span></td>
             <td style="width: 150px;" class="source"><span class="text-muted"><?php print_r($dn['Source']) ?></span></td>
             <td style="width: 150px;" class="visite"><span class="text-muted"><?php print_r($dn['Premier_visite']) ?></span></td>
-            <td>
+            <td class="edit">
               <button class="edit-item-btn">Edit</button>
             </td>
         </tr>

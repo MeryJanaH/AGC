@@ -52,8 +52,8 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                           }
                  ?>
 
-                    <!-- Header Layout Content -->
-                    <form action="#Ajouter" method="POST">
+                    <!-- Header Layout Content
+                    <form action="#Ajouter" method="POST">-->
                     <div class="mdk-header-layout__content mdk-header-layout__content--fullbleed mdk-header-layout__content--scrollable page">
                         <div class="container-fluid page__container">
                             <div class="card card-form">
@@ -73,19 +73,18 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                                     <th style="width: 120px;" name="projet">Projet</th>
                                                     <th style="width: 120px;" name="Note">Notes</th>
                                                     <th style="width: 120px;" name="source">Source</th>
-                                                    <th style="width: 120px;" name="source">Date du 1er visite</th>
+                                                    <th style="width: 120px;" name="visite">Date du 1er visite</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="list" id="staff03">
                                               <!--table des Employés-->
                                               <?php update_table_clients(); ?>
                                                   <tr>
-                                                  <td><input type='hidden' id='id-field'/></td>
-                                                  <td><input required='' id ='name' name='name_client[]'></td>
-                                                  <td><input required='' id ='num' type='tel' name='num[]'></td>
-                                                  <td><select required='' id = 'projet' class='form-control item_unit' name='c_p[]'><option> </option><?php echo fill_unit_select_box_projet();?></select></td>
-                                                  <td><input required='' id ='note' name='Note[]'></td>
-                                                  <td><select required='' id = 'source' class='form-control item_unit' name='source[]'><option> </option><?php echo fill_unit_select_box_source();?></select></td>
+                                                  <td class="name"><input type='hidden' id='id-field'/><input required='' id ='name' name='name_client[]'></td>
+                                                  <td class="phnumber"><input required='' id ='num' type='tel' name='num[]'></td>
+                                                  <td class="projet_name"><select required='' id = 'projet' class='form-control item_unit' name='c_p[]'><option> </option><?php echo fill_unit_select_box_projet();?></select></td>
+                                                  <td class="notes"><input required='' id ='note' name='Note[]'></td>
+                                                  <td class="source"><select required='' id = 'source' class='form-control item_unit' name='source[]'><option> </option><?php echo fill_unit_select_box_source();?></select></td>
                                                   <td >
                                                     <button id="edit-btn">Edit</button>
                                                   </td>
@@ -109,8 +108,8 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                             </div>
                         </div>
                     </div>
-                </form>
-                    <!-- // END header-layout__content -->
+              <!--  </form>
+                     // END header-layout__content -->
 
                 </div>
                 <!-- // END header-layout -->
@@ -149,9 +148,12 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
     <script src="assets/vendor/list.min.js"></script>
     <script src="assets/js/list.js"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+
     <script>
     var options = {
-      valueNames: [ 'id', 'name', 'phnumber', 'projet_name', 'notes', 'source', 'visite' ]
+      valueNames: [ 'id', 'name', 'phnumber', 'projet_name', 'notes', 'source' ]
     };
 
     // Init list
@@ -194,7 +196,6 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
       editBtns = $(editBtns.selector);
 
       editBtns.click(function() {
-        alert("tt");
         var itemId = $(this).closest('tr').find('.id').text();
         var itemValues = contactList.get('id', itemId)[0].values();
         idField.val(itemValues.id);
