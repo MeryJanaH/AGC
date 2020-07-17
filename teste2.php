@@ -7,9 +7,6 @@ $_SESSION['current_page']="projets";
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
 
     <head>
         <meta charset="utf-8">

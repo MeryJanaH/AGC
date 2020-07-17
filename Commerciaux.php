@@ -64,7 +64,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                                 <th style="width: 120px;">Dernier connexion</th>
                                                 <th style="width: 120px;">"id"</th>
                                             </tr>
-                                        </thead>
+                                        </thead>                                
                                         <tbody class="list" id="staff02">
                                           <!--table des Employés-->
                                           <?php update_table_emp(); ?>

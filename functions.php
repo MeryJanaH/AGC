@@ -272,12 +272,16 @@ function update_table_clients()
         }
         ?>
         <tr>
-            <td style="width: 120px;"><span class="js-lists-values-employee-name"><?php print_r($dn['Name']); ?></span></td>
-            <td style="width: 200px;"><span class="text-muted"><?php print_r($dn['phnumber']) ?></span></td>
-            <td style="width: 150px;"><span class="text-muted"><?php print_r($rs['ProjetName']) ?></span></td>
-            <td style="width: 200px;"><span class="text-muted"><?php print_r($dn['Notes']) ?></span></td>
-            <td style="width: 150px;"><span class="text-muted"><?php print_r($dn['Source']) ?></span></td>
-            <td style="width: 150px;"><span class="text-muted"><?php print_r($dn['Premier_visite']) ?></span></td>
+           <td class="id" style="display:none;"><?php echo $dn['ID_client'] ?></td>
+            <td style="width: 120px;" class="name"><span class="js-lists-values-employee-name"><?php print_r($dn['Name']); ?></span></td>
+            <td style="width: 200px;" class="phnumber"><span class="text-muted"><?php print_r($dn['phnumber']) ?></span></td>
+            <td style="width: 150px;" class="projet_name"><span class="text-muted"><?php print_r($rs['ProjetName']) ?></span></td>
+            <td style="width: 200px;" class="notes"><span class="text-muted"><?php print_r($dn['Notes']) ?></span></td>
+            <td style="width: 150px;" class="source"><span class="text-muted"><?php print_r($dn['Source']) ?></span></td>
+            <td style="width: 150px;" class="visite"><span class="text-muted"><?php print_r($dn['Premier_visite']) ?></span></td>
+            <td>
+              <button class="edit-item-btn">Edit</button>
+            </td>
         </tr>
      <?php
       }
@@ -328,14 +332,29 @@ function update_table_clients()
           var html = "<tr>";
               html += "<td><input required='' id ='n' name='name_client[]'></td>";
               html += "<td><input required='' id ='nm' type='tel' name='num[]'></td>";
-              html += "<td><select required='' id = 'pj' class='form-control item_unit' name='c_p[]'></option><?php echo fill_unit_select_box_projet();?></select></td>";
+              html += "<td><select required='' id = 'pj' class='form-control item_unit' name='c_p[]'><?php echo fill_unit_select_box_projet();?></select></td>";
               html += "<td><input required='' id ='nt' name='Note[]'></td>";
-              html += "<td><select required='' id = 's' class='form-control item_unit' name='source[]'></option><?php echo fill_unit_select_box_source();?></select></td>";
+              html += "<td><select required='' id = 's' class='form-control item_unit' name='source[]'><?php echo fill_unit_select_box_source();?></select></td>";
               html += "</tr>";
 
          var row = document.getElementById("staff03").insertRow();
               row.innerHTML = html;
         }
+
+        function edit_ct()
+          {
+            var html = "<tr>";
+                html += "<td><input type='hidden' id='id-field'/></td>";
+                html += "<td><input required='' id ='name' name='name_client[]'></td>";
+                html += "<td><input required='' id ='num' type='tel' name='num[]'></td>";
+                html += "<td><select required='' id = 'projet' class='form-control item_unit' name='c_p[]'><option> </option><?php echo fill_unit_select_box_projet();?></select></td>";
+                html += "<td><input required='' id ='note' name='Note[]'></td>";
+                html += "<td><select required='' id = 'source' class='form-control item_unit' name='source[]'><option> </option><?php echo fill_unit_select_box_source();?></select></td>";
+                html += "</tr>";
+
+           var row = document.getElementById("staff03").insertRow();
+                row.innerHTML = html;
+          }
     </script>
 
 <?php
