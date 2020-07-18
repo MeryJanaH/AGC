@@ -29,9 +29,11 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
 
         <!-- Material Design Icons -->
         <link type="text/css" href="assets/css/vendor-material-icons.css" rel="stylesheet">
-
-
+        <!-- Classement -->
         <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+
+        <!-- Year picker -->
+
 
     </head>
 
@@ -106,7 +108,6 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                   ?>
 
                 <!-- Header Layout Content -->
-
                 <div class="mdk-header-layout__content mdk-header-layout__content--fullbleed mdk-header-layout__content--scrollable page">
                   <div class="container-fluid page__container">
                       <div class="row">
@@ -230,7 +231,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
     <script src="assets/vendor/list.min.js"></script>
     <script src="assets/js/list.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <!-- Picker year -->
 
 </body>
 

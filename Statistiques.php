@@ -119,7 +119,8 @@ $req=$bdd->query($sql);
                                   <div class="custom-control custom-checkbox-toggle ml-2">
                                       <input checked="" aria-checked="true" type="checkbox" id="chart-switch-toggle" class="custom-control-input" role="switch" data-toggle="chart" data-target="#ordersChartSwitch" data-add='{"data":{"datasets":[
                                       <?php $dn=$req->fetch(); ?>
-                                      {"data":[<?php echo $dn[1]; ?>,10,20,12,7,0,8,16,18,16,10,22],"backgroundColor":"#b2e599","label":"Hanae1"},
+                                      {"data":[<?php echo $dn['Janv']. "," .$dn[2] ; ?>,20,12,7,0,8,16,18,16,10,22],"backgroundColor":"#b2e599","label":"Hanae1"},
+                                      <?php $dn=$req->fetch(); ?>
                                       {"data":[5,10,21,12,7,10,8,16,18,16,10,22],"backgroundColor":"#b2e549","label":"Wafae2"},
                                       {"data":[5,10,21,12,7,10,8,16,18,16,10,22],"backgroundColor":"#b205a9","label":"Walili1"},
                                       {"data":[5,10,21,12,7,10,8,16,18,16,10,22],"backgroundColor":"#b2e59b","label":"Walili2"},
