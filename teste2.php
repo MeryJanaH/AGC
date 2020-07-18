@@ -34,6 +34,9 @@ $_SESSION['current_page']="projets";
         <link type="text/css" href="assets/css/vendor-ion-rangeslider.css" rel="stylesheet">
         <link type="text/css" href="assets/css/vendor-ion-rangeslider.rtl.css" rel="stylesheet">
 
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+
     </head>
 
     <body class="layout-default">
@@ -45,99 +48,36 @@ $_SESSION['current_page']="projets";
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout" data-has-scrolling-region>
 
-              <?php include 'haute_bar.php';?>
-
-                <!-- Header Layout Content -->
-
-                <div class="mdk-header-layout__content mdk-header-layout__content--fullbleed mdk-header-layout__content--scrollable page">
-                  <div class="container-fluid page__container">
-                      <div class="row">
-                          <div class="col-lg">
-                              <div class="card">
-                                  <div class="card-header card-header-large bg-white d-flex align-items-center">
-                                      <h4 class="card-header__title flex m-0">Recent Activity</h4>
-                                      <div>
-                                          <a href="javascript:void(0)" class="link-date">13/03/2018 <span class="text-muted mx-1">to</span> 20/03/2018</a>
-                                      </div>
-                                  </div>
-                                  <div class="card-header card-header-tabs-basic nav" role="tablist">
-                                      <a href="#Janvier" class="active" data-toggle="tab" role="tab" aria-controls="activity_all" aria-selected="true">Janvier</a>
-                                      <a href="#Fevrier" data-toggle="tab" role="tab"  aria-selected="false">Fevrier</a>
-                                      <a href="#activity_emails" data-toggle="tab" role="tab" aria-selected="false">Emails</a>
-                                      <a href="#activity_quotes" data-toggle="tab" role="tab" aria-selected="false">Quotes</a>
-                                  </div>
-                                  <div class="card-body tab-content">
-                                      <div class="tab-pane active show fade" id="Janvier">
-
-                                            <div class="card card-form">
-                                                <div class="row no-gutters">
-                                                    <div class="col-lg-12 card-form__body border-left">
-                                                        <div id="contacts">
-                                                            <table class="table mb-0 thead-border-top-0">
-                                                                  <thead>
-                                                                      <tr>
-                                                                        <th class="sort" data-sort="Projets">Projets</th>
-                                                                        <th class="sort" data-sort="Facebook">Facebook/Instagram</th>
-                                                                        <th class="sort" data-sort="Avito">Avito/Mubawab</th>
-                                                                        <th class="sort" data-sort="Ancien">Ancien client</th>
-                                                                        <th class="sort" data-sort="Prospection">Prospection</th>
-                                                                        <th class="sort" data-sort="Connaissance">Connaissance</th>
-                                                                        <th class="sort" data-sort="Annonce">Annonce</th>
-                                                                        <th class="sort" data-sort="Passage">De passage</th>
-                                                                       <tr> <th class="Total">Total</th> </tr>
-                                                                      </tr>
-                                                                    </thead>
-                                                                    <tbody class="list">
-                                                                      <?php
-                                                                      clients_par_source();
-                                                                      ?>
-                                                                    </tbody>
-                                                              </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                      <div class="tab-pane  fade" id="Fevrier">
-                                        <div class="card card-form">
-                                            <div class="row no-gutters">
-                                                <div class="col-lg-12 card-form__body border-left">
-                                                    <div id="contacts">
-                                                        <table class="table mb-0 thead-border-top-0">
-                                                              <thead>
-                                                                  <tr>
-                                                                    <th class="sort" data-sort="Projets">Projets</th>
-                                                                    <th class="sort" data-sort="Facebook">Facebook/Instagram</th>
-                                                                    <th class="sort" data-sort="Avito">Avito/Mubawab</th>
-                                                                    <th class="sort" data-sort="Ancien">Ancien client</th>
-                                                                    <th class="sort" data-sort="Prospection">Prospection</th>
-                                                                    <th class="sort" data-sort="Connaissance">Connaissance</th>
-                                                                    <th class="sort" data-sort="Annonce">Annonce</th>
-                                                                    <th class="sort" data-sort="Passage">De passage</th>
-                                                                   <tr> <th class="Total">Total</th> </tr>
-                                                                  </tr>
-                                                                </thead>
-                                                                <tbody class="list">
-                                                                  <?php
-                                                                  clients_par_source();
-                                                                  ?>
-                                                                </tbody>
-                                                          </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
+              <?php include 'haute_bar.php';
+  function tables($id){ ?>
+                    <div class="card card-form">
+                        <div class="row no-gutters">
+                            <div class="col-lg-12 card-form__body border-left">
+                                <div id="contacts">
+                                    <table class="table mb-0 thead-border-top-0">
+                                          <thead>
+                                              <tr>
+                                                <th class="sort" data-sort="Projets">Projets</th>
+                                                <th class="sort" data-sort="Facebook">Facebook/Instagram</th>
+                                                <th class="sort" data-sort="Avito">Avito/Mubawab</th>
+                                                <th class="sort" data-sort="Ancien">Ancien client</th>
+                                                <th class="sort" data-sort="Prospection">Prospection</th>
+                                                <th class="sort" data-sort="Connaissance">Connaissance</th>
+                                                <th class="sort" data-sort="Annonce">Annonce</th>
+                                                <th class="sort" data-sort="Passage">De passage</th>
+                                               <tr> <th class="Total">Total</th> </tr>
+                                              </tr>
+                                            </thead>
+                                            <tbody class="list">
+                                              <?php
+                                              clients_par_source($id);
+                                              ?>
+                                            </tbody>
+                                      </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-                                          <br/>
-                                          <br/>
-                                          <br/>
-
                         <div class="container-fluid page__container">
                             <div class="card card-form">
                                 <div class="row no-gutters">
@@ -156,7 +96,7 @@ $_SESSION['current_page']="projets";
                                                   <tbody class="list">
 
                                                     <?php
-                                                    Total_client_projets();
+                                                    Total_client_projets($id);
                                                     ?>
                                                   </tbody>
                                             </table>
@@ -165,6 +105,71 @@ $_SESSION['current_page']="projets";
                             </div>
                         </div>
                     </div>
+                    <?php
+                  }
+                  ?>
+
+                <!-- Header Layout Content -->
+
+                <div class="mdk-header-layout__content mdk-header-layout__content--fullbleed mdk-header-layout__content--scrollable page">
+                  <div class="container-fluid page__container">
+                      <div class="row">
+                          <div class="col-lg">
+                              <div class="card">
+                                  <div class="card-header card-header-tabs-basic nav" role="tablist">
+                                      <a href="#Janvier" class="active" data-toggle="tab" role="tab" aria-controls="activity_all" aria-selected="true">Janvier</a>
+                                      <a href="#Fevrier" data-toggle="tab" role="tab"  aria-selected="false">Fevrier</a>
+                                      <a href="#Mars" data-toggle="tab" role="tab" aria-selected="false">Mars</a>
+                                      <a href="#Juin" data-toggle="tab" role="tab" aria-selected="false">Juin</a>
+                                      <a href="#Juillet" data-toggle="tab" role="tab"  aria-selected="false">Juillet</a>
+                                      <a href="#Aout" data-toggle="tab" role="tab" aria-selected="false">Août</a>
+                                      <a href="#Septembre" data-toggle="tab" role="tab" aria-selected="false">Septembre</a>
+                                      <a href="#Octobre" data-toggle="tab" role="tab" aria-selected="false">Octobre</a>
+                                      <a href="#Novembre" data-toggle="tab" role="tab"  aria-selected="false">Novembre</a>
+                                      <a href="#Decembre" data-toggle="tab" role="tab" aria-selected="false">Décembre</a>
+                                  </div>
+                                  <div class="card-body tab-content">
+                                            <div class="tab-pane  active show fade" id="Janvier">
+                                              <?php $id="Janvier"; tables("$id"); ?>
+                                            </div>
+                                            <div class="tab-pane fade" id="Fevrier">
+                                              <?php $id="Fevrier"; tables("$id"); ?>
+                                            </div>
+                                            <div class="tab-pane fade" id="Mars">
+                                                <?php $id="Mars"; tables($id); ?>
+                                            </div>
+                                            <div class="tab-pane fade" id="Avril">
+                                                <?php $id="Avril"; tables($id); ?>
+                                            </div>
+                                            <div class="tab-pane fade" id="Mai">
+                                                <?php $id="Mai"; tables($id); ?>
+                                            </div>
+                                            <div class="tab-pane fade" id="Juin">
+                                                <?php $id="Juin"; tables($id); ?>
+                                            </div>
+                                            <div class="tab-pane fade" id="Juillet">
+                                                <?php $id="Juillet"; tables($id); ?>
+                                            </div>
+                                            <div class="tab-pane fade" id="Aout">
+                                                <?php $id="Aout"; tables($id); ?>
+                                            </div>
+                                            <div class="tab-pane fade" id="Septembre">
+                                                <?php $id="Septembre"; tables($id); ?>
+                                            </div>
+                                            <div class="tab-pane fade" id="Octobre">
+                                                <?php $id="Octobre"; tables($id); ?>
+                                            </div>
+                                            <div class="tab-pane fade" id="Novembre">
+                                                <?php $id="Novembre"; tables($id); ?>
+                                            </div>
+                                            <div class="tab-pane fade" id="Decembre">
+                                                <?php $id="Decembre"; tables($id); ?>
+                                            </div>
+                                    </div>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -190,7 +195,7 @@ $_SESSION['current_page']="projets";
       };
 
       // Init list
-      var contactList = new List('contacts', options2);
+      var contactList = new List('contacts2', options2);
 
       function refreshCallbacks() {
         // Needed to add new buttons to jQuery-extended object
@@ -202,8 +207,6 @@ $_SESSION['current_page']="projets";
 
 
     <?php include 'footer.php';?>
-
-
 
     <!-- jQuery -->
     <script src="assets/vendor/jquery.min.js"></script>
@@ -238,6 +241,8 @@ $_SESSION['current_page']="projets";
     <!-- List.js -->
     <script src="assets/vendor/list.min.js"></script>
     <script src="assets/js/list.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 
 </body>
 
