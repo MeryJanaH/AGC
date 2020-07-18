@@ -60,7 +60,9 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
               <?php include('haute_bar.php'); ?>
 <?php
 require 'LBD.php';
-$sql="SELECT ProjetName,Janv,Fév,Mars,Avril,Juin,Juil,Août,Sep,Oct,Nov,Déc
+
+$sql="SELECT ProjetName,IFNULL(Janv,0) AS Janv,IFNULL(Fév,0) AS Fév,IFNULL(Mars,0) AS Mars,IFNULL(Avril,0) AS Avril,IFNULL(Mai,0) AS Mai,IFNULL(Juin,0) AS Juin,IFNULL(Juil,0) AS Juil,IFNULL(Août,0) AS Août,IFNULL(Sep,0) AS Sep,IFNULL(Oct,0) AS Oct,
+                        IFNULL(Nov,0) AS Nov,IFNULL(Déc,0) AS Déc
 FROM (SELECT Code_pj, ProjetName FROM Projets) t1
                       LEFT JOIN
      (SELECT Code_pj, Visite,COUNT(Visite)as Janv , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-01-01 00:00:00' AND date_tdebut < '2020-02-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t2
@@ -98,6 +100,7 @@ FROM (SELECT Code_pj, ProjetName FROM Projets) t1
                       LEFT JOIN
       (SELECT Code_pj, Visite,COUNT(Visite)as Déc , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-11-01 00:00:00' AND date_tdebut < '2020-12-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t13
                       ON t1.Code_pj = t13.Code_pj";
+
 
 $req=$bdd->query($sql);
 
