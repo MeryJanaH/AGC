@@ -61,7 +61,8 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
 <?php
 require 'LBD.php';
 
-$sql="SELECT ProjetName,IFNULL(Janv,0) AS Janv,IFNULL(Fév,0) AS Fév,IFNULL(Mars,0) AS Mars,IFNULL(Avril,0) AS Avril,IFNULL(Mai,0) AS Mai,IFNULL(Juin,0) AS Juin,IFNULL(Juil,0) AS Juil,IFNULL(Août,0) AS Août,IFNULL(Sep,0) AS Sep,IFNULL(Oct,0) AS Oct,
+$sql="SELECT ProjetName,IFNULL(Janv,0) AS Janv,IFNULL(Fév,0) AS Fév,IFNULL(Mars,0) AS Mars,IFNULL(Avril,0) AS Avril,IFNULL(Mai,0) AS Mai,IFNULL(Juin,0) AS Juin,IFNULL(Juil,0) AS Juil,IFNULL(Août,0) AS Août,
+                        IFNULL(Sep,0) AS Sep,IFNULL(Oct,0) AS Oct,
                         IFNULL(Nov,0) AS Nov,IFNULL(Déc,0) AS Déc
 FROM (SELECT Code_pj, ProjetName FROM Projets) t1
                       LEFT JOIN
