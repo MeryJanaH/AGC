@@ -167,13 +167,13 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
         noteField = $('#note'),
         //editBtn = $('#edit-btn').hide(),
         editBtns = $('.edit-item-btn');
-
+/*
     console.log(idField.val());
     console.log(nameField.val());
     console.log(numField.val());
     console.log(projetField.val());
     console.log(srcField.val());
-    console.log(noteField.val());
+    console.log(noteField.val());*/
     // Sets callbacks to the buttons in the list
     refreshCallbacks();
 /*

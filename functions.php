@@ -380,7 +380,7 @@ function  add_client($c_n,$nm_t,$c_nt,$c_s,$c_p)
   }
 }
 
-function clients_par_source($id)
+function clients_par_source($id,$year)
 {
   require 'LBD.php';
    $n=0;
@@ -388,73 +388,73 @@ function clients_par_source($id)
    $req=$bdd->query("SELECT ProjetName, count, Source FROM
                       (SELECT Code_pj, ProjetName FROM Projets) t1
                       LEFT JOIN
-                      (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE Premier_visite >= '2020-01-01 00:00:00' AND Premier_visite < '2020-02-01 00:00:00' GROUP BY ID_client) t2
+                      (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)='01' AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' GROUP BY ID_client) t2
                       ON t1.Code_pj = t2.Code_pj");}
   if($id == "Fevrier"){
   $req=$bdd->query("SELECT ProjetName, count, Source FROM
                      (SELECT Code_pj, ProjetName FROM Projets) t1
                      LEFT JOIN
-                     (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE Premier_visite >= '2020-02-01 00:00:00' AND Premier_visite < '2020-03-01 00:00:00' GROUP BY ID_client) t2
+                     (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)='02' AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' GROUP BY ID_client) t2
                      ON t1.Code_pj = t2.Code_pj");}
  if($id == "Mars"){
  $req=$bdd->query("SELECT ProjetName, count, Source FROM
                     (SELECT Code_pj, ProjetName FROM Projets) t1
                     LEFT JOIN
-                    (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE Premier_visite >= '2020-03-01 00:00:00' AND Premier_visite < '2020-04-01 00:00:00' GROUP BY ID_client) t2
+                    (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)='03' AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' GROUP BY ID_client) t2
                     ON t1.Code_pj = t2.Code_pj");}
   if($id == "Avril"){
   $req=$bdd->query("SELECT ProjetName, count, Source FROM
                      (SELECT Code_pj, ProjetName FROM Projets) t1
                      LEFT JOIN
-                     (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE Premier_visite >= '2020-04-01 00:00:00' AND Premier_visite < '2020-05-01 00:00:00' GROUP BY ID_client) t2
+                     (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)='04' AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' GROUP BY ID_client) t2
                      ON t1.Code_pj = t2.Code_pj");}
    if($id == "Mai"){
    $req=$bdd->query("SELECT ProjetName, count, Source FROM
                       (SELECT Code_pj, ProjetName FROM Projets) t1
                       LEFT JOIN
-                      (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE Premier_visite >= '2020-05-01 00:00:00' AND Premier_visite < '2020-06-01 00:00:00' GROUP BY ID_client) t2
+                      (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)='05' AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' GROUP BY ID_client) t2
                       ON t1.Code_pj = t2.Code_pj");}
   if($id == "Juin"){
   $req=$bdd->query("SELECT ProjetName, count, Source FROM
                      (SELECT Code_pj, ProjetName FROM Projets) t1
                      LEFT JOIN
-                     (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE Premier_visite >= '2020-06-01 00:00:00' AND Premier_visite < '2020-07-01 00:00:00' GROUP BY ID_client) t2
+                     (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)='06' AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' GROUP BY ID_client) t2
                      ON t1.Code_pj = t2.Code_pj");}
    if($id == "Juillet"){
    $req=$bdd->query("SELECT ProjetName, count, Source FROM
                       (SELECT Code_pj, ProjetName FROM Projets) t1
                       LEFT JOIN
-                      (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE Premier_visite >= '2020-07-01 00:00:00' AND Premier_visite < '2020-08-01 00:00:00' GROUP BY ID_client) t2
+                      (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)='07' AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' GROUP BY ID_client) t2
                       ON t1.Code_pj = t2.Code_pj");}
   if($id == "Aout"){
   $req=$bdd->query("SELECT ProjetName, count, Source FROM
                      (SELECT Code_pj, ProjetName FROM Projets) t1
                      LEFT JOIN
-                     (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE Premier_visite >= '2020-08-01 00:00:00' AND Premier_visite < '2020-09-01 00:00:00' GROUP BY ID_client) t2
+                     (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)='08' AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' GROUP BY ID_client) t2
                      ON t1.Code_pj = t2.Code_pj");}
    if($id == "Septembre"){
    $req=$bdd->query("SELECT ProjetName, count, Source FROM
                       (SELECT Code_pj, ProjetName FROM Projets) t1
                       LEFT JOIN
-                      (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE Premier_visite >= '2020-09-01 00:00:00' AND Premier_visite < '2020-10-01 00:00:00' GROUP BY ID_client) t2
+                      (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)='09' AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' GROUP BY ID_client) t2
                       ON t1.Code_pj = t2.Code_pj");}
     if($id == "Octobre"){
     $req=$bdd->query("SELECT ProjetName, count, Source FROM
                        (SELECT Code_pj, ProjetName FROM Projets) t1
                        LEFT JOIN
-                       (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE Premier_visite >= '2020-10-01 00:00:00' AND Premier_visite < '2020-11-01 00:00:00' GROUP BY ID_client) t2
+                       (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)='10' AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' GROUP BY ID_client) t2
                        ON t1.Code_pj = t2.Code_pj");}
    if($id == "Novembre"){
    $req=$bdd->query("SELECT ProjetName, count, Source FROM
                       (SELECT Code_pj, ProjetName FROM Projets) t1
                       LEFT JOIN
-                      (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE Premier_visite >= '2020-11-01 00:00:00' AND Premier_visite < '2020-12-01 00:00:00' GROUP BY ID_client) t2
+                      (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)='11' AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' GROUP BY ID_client) t2
                       ON t1.Code_pj = t2.Code_pj");}
   if($id == "Decembre"){
   $req=$bdd->query("SELECT ProjetName, count, Source FROM
                      (SELECT Code_pj, ProjetName FROM Projets) t1
                      LEFT JOIN
-                     (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE Premier_visite >= '2020-12-01 00:00:00' GROUP BY ID_client) t2
+                     (SELECT Code_pj, Source, COUNT(Source) AS count, Premier_visite FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)='12' AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' GROUP BY ID_client) t2
                      ON t1.Code_pj = t2.Code_pj");}
 
    while($dn = $req->fetch())
@@ -497,105 +497,105 @@ function clients_par_source($id)
      }
 }
 
-function Total_client_projets($id)
+function Total_client_projets($id,$year)
 {
   require 'LBD.php';
    $n=0;
    if($id == "Janvier"){
    $req=$bdd->query("SELECT ProjetName,c_bureau,c_vente,c_projets  FROM (SELECT Code_pj, ProjetName FROM Projets) t1
-                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-01-01 00:00:00' AND date_tdebut < '2020-02-01 00:00:00' AND Visite = 'Bureau' GROUP BY Code_pj) t2
+                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='01' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31' AND Visite = 'Bureau' GROUP BY Code_pj) t2
                       ON t1.Code_pj = t2.Code_pj
-                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-01-01 00:00:00' AND date_tdebut < '2020-02-01 00:00:00' AND Visite = 'Vente' GROUP BY Code_pj) t3
+                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='01' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31' AND Visite = 'Vente' GROUP BY Code_pj) t3
                       ON t1.Code_pj = t3.Code_pj
-                      LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE Premier_visite >= '2020-01-01 00:00:00' AND Premier_visite < '2020-02-01 00:00:00' GROUP BY Code_pj) t4
+                      LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)='01' AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' GROUP BY Code_pj) t4
                       ON t1.Code_pj = t4.Code_pj");}
   if($id == "Fevrier"){
   $req=$bdd->query("SELECT ProjetName,c_bureau,c_vente,c_projets  FROM (SELECT Code_pj, ProjetName FROM Projets) t1
-                     LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-02-01 00:00:00' AND date_tdebut < '2020-03-01 00:00:00' AND Visite = 'Bureau' GROUP BY Code_pj) t2
+                     LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='02' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31' AND Visite = 'Bureau' GROUP BY Code_pj) t2
                      ON t1.Code_pj = t2.Code_pj
-                     LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-02-01 00:00:00' AND date_tdebut < '2020-03-01 00:00:00' AND Visite = 'Vente' GROUP BY Code_pj) t3
+                     LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='02' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31' AND Visite = 'Vente' GROUP BY Code_pj) t3
                      ON t1.Code_pj = t3.Code_pj
-                     LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE Premier_visite >= '2020-02-01 00:00:00' AND Premier_visite < '2020-03-01 00:00:00' GROUP BY Code_pj) t4
+                     LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)='02' AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' GROUP BY Code_pj) t4
                      ON t1.Code_pj = t4.Code_pj");}
    if($id == "Mars"){
    $req=$bdd->query("SELECT ProjetName,c_bureau,c_vente,c_projets  FROM (SELECT Code_pj, ProjetName FROM Projets) t1
-                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-03-01 00:00:00' AND date_tdebut < '2020-04-01 00:00:00' AND Visite = 'Bureau' GROUP BY Code_pj) t2
+                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='03' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31' AND Visite = 'Bureau' GROUP BY Code_pj) t2
                       ON t1.Code_pj = t2.Code_pj
-                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-03-01 00:00:00' AND date_tdebut < '2020-04-01 00:00:00' AND Visite = 'Vente' GROUP BY Code_pj) t3
+                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='03' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31' AND Visite = 'Vente' GROUP BY Code_pj) t3
                       ON t1.Code_pj = t3.Code_pj
-                      LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE Premier_visite >= '2020-03-01 00:00:00' AND Premier_visite < '2020-04-01 00:00:00' GROUP BY Code_pj) t4
+                      LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)='03' AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' GROUP BY Code_pj) t4
                       ON t1.Code_pj = t4.Code_pj");}
   if($id == "Avril"){
   $req=$bdd->query("SELECT ProjetName,c_bureau,c_vente,c_projets  FROM (SELECT Code_pj, ProjetName FROM Projets) t1
-                     LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-04-01 00:00:00' AND date_tdebut < '2020-05-01 00:00:00' AND Visite = 'Bureau' GROUP BY Code_pj) t2
+                     LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='04' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31' AND Visite = 'Bureau' GROUP BY Code_pj) t2
                      ON t1.Code_pj = t2.Code_pj
-                     LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-04-01 00:00:00' AND date_tdebut < '2020-05-01 00:00:00' AND Visite = 'Vente' GROUP BY Code_pj) t3
+                     LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='04' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31' AND Visite = 'Vente' GROUP BY Code_pj) t3
                      ON t1.Code_pj = t3.Code_pj
-                     LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE Premier_visite >= '2020-04-01 00:00:00' AND Premier_visite < '2020-05-01 00:00:00' GROUP BY Code_pj) t4
+                     LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)='04' AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' GROUP BY Code_pj) t4
                      ON t1.Code_pj = t4.Code_pj");}
    if($id == "Mai"){
    $req=$bdd->query("SELECT ProjetName,c_bureau,c_vente,c_projets  FROM (SELECT Code_pj, ProjetName FROM Projets) t1
-                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-05-01 00:00:00' AND date_tdebut < '2020-06-01 00:00:00' AND Visite = 'Bureau' GROUP BY Code_pj) t2
+                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='05' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31' AND Visite = 'Bureau' GROUP BY Code_pj) t2
                       ON t1.Code_pj = t2.Code_pj
-                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-05-01 00:00:00' AND date_tdebut < '2020-06-01 00:00:00' AND Visite = 'Vente' GROUP BY Code_pj) t3
+                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='05' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31' AND Visite = 'Vente' GROUP BY Code_pj) t3
                       ON t1.Code_pj = t3.Code_pj
-                      LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE Premier_visite >= '2020-05-01 00:00:00' AND Premier_visite < '2020-06-01 00:00:00' GROUP BY Code_pj) t4
+                      LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)='05' AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' GROUP BY Code_pj) t4
                       ON t1.Code_pj = t4.Code_pj");}
   if($id == "Juin"){
   $req=$bdd->query("SELECT ProjetName,c_bureau,c_vente,c_projets  FROM (SELECT Code_pj, ProjetName FROM Projets) t1
-                     LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-06-01 00:00:00' AND date_tdebut < '2020-07-01 00:00:00' AND Visite = 'Bureau' GROUP BY Code_pj) t2
+                     LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='06' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31' AND Visite = 'Bureau' GROUP BY Code_pj) t2
                      ON t1.Code_pj = t2.Code_pj
-                     LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-06-01 00:00:00' AND date_tdebut < '2020-07-01 00:00:00' AND Visite = 'Vente' GROUP BY Code_pj) t3
+                     LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='06' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31' AND Visite = 'Vente' GROUP BY Code_pj) t3
                      ON t1.Code_pj = t3.Code_pj
-                     LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE Premier_visite >= '2020-06-01 00:00:00' AND Premier_visite < '2020-07-01 00:00:00' GROUP BY Code_pj) t4
+                     LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)='06' AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' GROUP BY Code_pj) t4
                      ON t1.Code_pj = t4.Code_pj");}
    if($id == "Juillet"){
    $req=$bdd->query("SELECT ProjetName,c_bureau,c_vente,c_projets  FROM (SELECT Code_pj, ProjetName FROM Projets) t1
-                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-07-01 00:00:00' AND date_tdebut < '2020-08-01 00:00:00' AND Visite = 'Bureau' GROUP BY Code_pj) t2
+                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='07' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31' AND Visite = 'Bureau' GROUP BY Code_pj) t2
                       ON t1.Code_pj = t2.Code_pj
-                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-07-01 00:00:00' AND date_tdebut < '2020-08-01 00:00:00' AND Visite = 'Vente' GROUP BY Code_pj) t3
+                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='07' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31' AND Visite = 'Vente' GROUP BY Code_pj) t3
                       ON t1.Code_pj = t3.Code_pj
-                      LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE Premier_visite >= '2020-07-01 00:00:00' AND Premier_visite < '2020-08-01 00:00:00' GROUP BY Code_pj) t4
+                      LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)='07' AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' GROUP BY Code_pj) t4
                       ON t1.Code_pj = t4.Code_pj");}
   if($id == "Aout"){
   $req=$bdd->query("SELECT ProjetName,c_bureau,c_vente,c_projets  FROM (SELECT Code_pj, ProjetName FROM Projets) t1
-                     LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-08-01 00:00:00' AND date_tdebut < '2020-09-01 00:00:00' AND Visite = 'Bureau' GROUP BY Code_pj) t2
+                     LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='08' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31' AND Visite = 'Bureau' GROUP BY Code_pj) t2
                      ON t1.Code_pj = t2.Code_pj
-                     LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-08-01 00:00:00' AND date_tdebut < '2020-09-01 00:00:00' AND Visite = 'Vente' GROUP BY Code_pj) t3
+                     LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='08' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31' AND Visite = 'Vente' GROUP BY Code_pj) t3
                      ON t1.Code_pj = t3.Code_pj
-                     LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE Premier_visite >= '2020-08-01 00:00:00' AND Premier_visite < '2020-09-01 00:00:00' GROUP BY Code_pj) t4
+                     LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)='08' AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' GROUP BY Code_pj) t4
                      ON t1.Code_pj = t4.Code_pj");}
    if($id == "Septembre"){
    $req=$bdd->query("SELECT ProjetName,c_bureau,c_vente,c_projets  FROM (SELECT Code_pj, ProjetName FROM Projets) t1
-                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-09-01 00:00:00' AND date_tdebut < '2020-10-01 00:00:00' AND Visite = 'Bureau' GROUP BY Code_pj) t2
+                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='09' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31' AND Visite = 'Bureau' GROUP BY Code_pj) t2
                       ON t1.Code_pj = t2.Code_pj
-                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-09-01 00:00:00' AND date_tdebut < '2020-10-01 00:00:00' AND Visite = 'Vente' GROUP BY Code_pj) t3
+                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='09' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31' AND Visite = 'Vente' GROUP BY Code_pj) t3
                       ON t1.Code_pj = t3.Code_pj
-                      LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE Premier_visite >= '2020-09-01 00:00:00' AND Premier_visite < '2020-10-01 00:00:00' GROUP BY Code_pj) t4
+                      LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)='09' AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' GROUP BY Code_pj) t4
                       ON t1.Code_pj = t4.Code_pj");}
   if($id == "Octobre"){
   $req=$bdd->query("SELECT ProjetName,c_bureau,c_vente,c_projets  FROM (SELECT Code_pj, ProjetName FROM Projets) t1
-                     LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-10-01 00:00:00' AND date_tdebut < '2020-11-01 00:00:00' AND Visite = 'Bureau' GROUP BY Code_pj) t2
+                     LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='10' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31' AND Visite = 'Bureau' GROUP BY Code_pj) t2
                      ON t1.Code_pj = t2.Code_pj
-                     LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-10-01 00:00:00' AND date_tdebut < '2020-11-01 00:00:00' AND Visite = 'Vente' GROUP BY Code_pj) t3
+                     LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='10' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31' AND Visite = 'Vente' GROUP BY Code_pj) t3
                      ON t1.Code_pj = t3.Code_pj
-                     LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE Premier_visite >= '2020-10-01 00:00:00' AND Premier_visite < '2020-11-01 00:00:00' GROUP BY Code_pj) t4
+                     LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)='12' AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' GROUP BY Code_pj) t4
                      ON t1.Code_pj = t4.Code_pj");}
    if($id == "Novembre"){
    $req=$bdd->query("SELECT ProjetName,c_bureau,c_vente,c_projets  FROM (SELECT Code_pj, ProjetName FROM Projets) t1
-                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-11-01 00:00:00' AND date_tdebut < '2020-12-01 00:00:00' AND Visite = 'Bureau' GROUP BY Code_pj) t2
+                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='11' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31' AND Visite = 'Bureau' GROUP BY Code_pj) t2
                       ON t1.Code_pj = t2.Code_pj
-                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-11-01 00:00:00' AND date_tdebut < '2020-12-01 00:00:00' AND Visite = 'Vente' GROUP BY Code_pj) t3
+                      LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='11' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31' AND Visite = 'Vente' GROUP BY Code_pj) t3
                       ON t1.Code_pj = t3.Code_pj
-                      LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE Premier_visite >= '2020-11-01 00:00:00' AND Premier_visite < '2020-12-01 00:00:00' GROUP BY Code_pj) t4
+                      LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)='12' AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' GROUP BY Code_pj) t4
                       ON t1.Code_pj = t4.Code_pj");}
   if($id == "Decembre"){
   $req=$bdd->query("SELECT ProjetName,c_bureau,c_vente,c_projets  FROM (SELECT Code_pj, ProjetName FROM Projets) t1
-                     LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-12-01 00:00:00'  AND Visite = 'Bureau' GROUP BY Code_pj) t2
+                     LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_bureau , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='12' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31'  AND Visite = 'Bureau' GROUP BY Code_pj) t2
                      ON t1.Code_pj = t2.Code_pj
-                     LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-12-01 00:00:00'  AND Visite = 'Vente' GROUP BY Code_pj) t3
+                     LEFT JOIN (SELECT Code_pj, Visite,COUNT(Visite)as c_vente , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='12' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31'  AND Visite = 'Vente' GROUP BY Code_pj) t3
                      ON t1.Code_pj = t3.Code_pj
-                     LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE Premier_visite >= '2020-12-01 00:00:00' GROUP BY Code_pj) t4
+                     LEFT JOIN (SELECT Code_pj, COUNT(Source) AS c_projets, Premier_visite FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)='012' AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' GROUP BY Code_pj) t4
                      ON t1.Code_pj = t4.Code_pj");}
 
 

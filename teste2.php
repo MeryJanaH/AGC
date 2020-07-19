@@ -33,7 +33,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
         <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
 
         <!-- Year picker -->
-
+        <link rel="stylesheet" href="assets/css/yearpicker.css" />
 
     </head>
 
@@ -47,10 +47,10 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                 <div class="mdk-header-layout js-mdk-header-layout" data-has-scrolling-region>
 
               <?php include 'haute_bar.php';
-                   function tables($id){ ?>
+                   function tables($id,$year){ ?>
                     <div class="card card-form">
                         <div class="row no-gutters">
-                            <div class="col-lg-12 card-form__body border-left">
+                            <div class="col-lg-16 card-form__body border-left">
                                 <div id="contacts">
                                     <table class="table mb-0 thead-border-top-0">
                                           <thead>
@@ -68,7 +68,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                             </thead>
                                             <tbody class="list">
                                               <?php
-                                              clients_par_source($id);
+                                              clients_par_source($id,$year);
                                               ?>
                                             </tbody>
                                       </table>
@@ -79,7 +79,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                         <div class="container-fluid page__container">
                             <div class="card card-form">
                                 <div class="row no-gutters">
-                                    <div class="col-lg-12 card-form__body border-left">
+                                    <div class="col-lg-16 card-form__body border-left">
                                         <div id="contacts2">
                                           <table class="table mb-0 thead-border-top-0">
                                                 <thead>
@@ -94,7 +94,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                                   <tbody class="list">
 
                                                     <?php
-                                                    Total_client_projets($id);
+                                                    Total_client_projets($id,$year);
                                                     ?>
                                                   </tbody>
                                             </table>
@@ -105,11 +105,59 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                     </div>
                     <?php
                   }
+
+              function years($year){
+                ?>
+                <div class="tab-pane  active show fade" id="Janvier">
+                  <?php $id="Janvier"; tables($id, $year); ?>
+                </div>
+                <div class="tab-pane fade" id="Fevrier">
+                  <?php $id="Fevrier"; tables($id,$year); ?>
+                </div>
+                <div class="tab-pane fade" id="Mars">
+                    <?php $id="Mars"; tables($id,$year); ?>
+                </div>
+                <div class="tab-pane fade" id="Avril">
+                    <?php $id="Avril"; tables($id,$year); ?>
+                </div>
+                <div class="tab-pane fade" id="Mai">
+                    <?php $id="Mai"; tables($id,$year); ?>
+                </div>
+                <div class="tab-pane fade" id="Juin">
+                    <?php $id="Juin"; tables($id,$year); ?>
+                </div>
+                <div class="tab-pane fade" id="Juillet">
+                    <?php $id="Juillet"; tables($id,$year); ?>
+                </div>
+                <div class="tab-pane fade" id="Aout">
+                    <?php $id="Aout"; tables($id,$year); ?>
+                </div>
+                <div class="tab-pane fade" id="Septembre">
+                    <?php $id="Septembre"; tables($id,$year); ?>
+                </div>
+                <div class="tab-pane fade" id="Octobre">
+                    <?php $id="Octobre"; tables($id,$year); ?>
+                </div>
+                <div class="tab-pane fade" id="Novembre">
+                    <?php $id="Novembre"; tables($id,$year); ?>
+                </div>
+                <div class="tab-pane fade" id="Decembre">
+                    <?php $id="Decembre"; tables($id,$year); ?>
+                </div>
+                <?php
+              }
                   ?>
 
                 <!-- Header Layout Content -->
                 <div class="mdk-header-layout__content mdk-header-layout__content--fullbleed mdk-header-layout__content--scrollable page">
                   <div class="container-fluid page__container">
+
+                       <div class="container">
+                          <div class="main">
+                            <input type="text" class="yearpicker form-control" value="" />
+                          </div>
+                        </div>
+
                       <div class="row">
                           <div class="col-lg">
                               <div class="card">
@@ -126,42 +174,11 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                       <a href="#Decembre" data-toggle="tab" role="tab" aria-selected="false">Décembre</a>
                                   </div>
                                   <div class="card-body tab-content">
-                                            <div class="tab-pane  active show fade" id="Janvier">
-                                              <?php $id="Janvier"; tables("$id"); ?>
-                                            </div>
-                                            <div class="tab-pane fade" id="Fevrier">
-                                              <?php $id="Fevrier"; tables("$id"); ?>
-                                            </div>
-                                            <div class="tab-pane fade" id="Mars">
-                                                <?php $id="Mars"; tables($id); ?>
-                                            </div>
-                                            <div class="tab-pane fade" id="Avril">
-                                                <?php $id="Avril"; tables($id); ?>
-                                            </div>
-                                            <div class="tab-pane fade" id="Mai">
-                                                <?php $id="Mai"; tables($id); ?>
-                                            </div>
-                                            <div class="tab-pane fade" id="Juin">
-                                                <?php $id="Juin"; tables($id); ?>
-                                            </div>
-                                            <div class="tab-pane fade" id="Juillet">
-                                                <?php $id="Juillet"; tables($id); ?>
-                                            </div>
-                                            <div class="tab-pane fade" id="Aout">
-                                                <?php $id="Aout"; tables($id); ?>
-                                            </div>
-                                            <div class="tab-pane fade" id="Septembre">
-                                                <?php $id="Septembre"; tables($id); ?>
-                                            </div>
-                                            <div class="tab-pane fade" id="Octobre">
-                                                <?php $id="Octobre"; tables($id); ?>
-                                            </div>
-                                            <div class="tab-pane fade" id="Novembre">
-                                                <?php $id="Novembre"; tables($id); ?>
-                                            </div>
-                                            <div class="tab-pane fade" id="Decembre">
-                                                <?php $id="Decembre"; tables($id); ?>
-                                            </div>
+                                    <?php if(isset($_GET['year'])){
+                                                years($_GET['year']);
+                                          } else {
+                                                years(date("Y"));
+                                           } ?>
                                     </div>
                                   </div>
                               </div>
@@ -232,6 +249,20 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
     <script src="assets/js/list.js"></script>
 
     <!-- Picker year -->
+    <script src="assets/js/yearpicker.js"></script>
+    <script>
+      $(document).ready(function() {
+        $(".yearpicker").yearpicker({
+          year: <?php if(isset($_GET['year'])){echo $_GET['year'];}else{echo date("Y");} ?>,
+          startYear: 2012,
+          endYear: 3000
+        });
+/*$('.yearpicker-items').on('click', function(e){
+          console.log(document.querySelector('.selected').innerText);
+  });*/
+
+      });
+    </script>
 
 </body>
 
