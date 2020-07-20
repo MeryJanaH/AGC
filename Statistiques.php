@@ -113,10 +113,12 @@ $req=$bdd->query($sql);
                     <div class="container-fluid page__container">
                       <div class="card">
                           <div class="card-header card-header-large bg-white d-flex align-items-center">
-                              <h4 class="card-header__title flex">Switch Toggle</h4>
+                              <h4 class="card-header__title flex">Visualisation des Statistiques de différents projets :</h4>
                               <div class="d-flex align-items-center">
-                                  <label for="chart-switch-toggle" class="mb-0">Show affiliate:</label>
                                   <div class="custom-control custom-checkbox-toggle ml-2">
+
+                                  <?php  $colors = array("#b2e599", "#b205a9", "#b2e59b", "#b0e5c9", "#b2e509", "#a2e5d9"); ?>
+
                                       <input checked="" aria-checked="true" type="checkbox" id="chart-switch-toggle" class="custom-control-input" role="switch" data-toggle="chart" data-target="#ordersChartSwitch" data-add='{"data":{"datasets":[
                                       <?php $dn=$req->fetch(); ?>
                                       {"data":[<?php echo $dn['Janv']. "," .$dn[2] ; ?>,20,12,7,0,8,16,18,16,10,22],"backgroundColor":"#b2e599","label":"Hanae1"},
@@ -127,6 +129,7 @@ $req=$bdd->query($sql);
                                       {"data":[5,10,21,12,7,10,8,16,18,16,10,22],"backgroundColor":"#b0e5c9","label":"Hanae1"},
                                       {"data":[5,10,21,12,7,10,8,16,18,16,10,22],"backgroundColor":"#b2e509","label":"Hanae2"},
                                       {"data":[5,10,21,12,7,10,8,16,18,16,10,22],"backgroundColor":"#a2e5d9","label":"Hanae3"}]}}'>
+
                                       <label class="custom-control-label" for="chart-switch-toggle"><span class="sr-only">Show affiliate</span></label>
                                       <?php $dn=$req->fetch(); ?>
                                       <script>
@@ -136,7 +139,6 @@ $req=$bdd->query($sql);
                               </div>
                           </div>
                           <div class="card-body">
-                              <p>Easily toggle an additional set of data with a simple interface based on the <code>data</code> attributes.</p>
                               <div class="chart">
                                   <canvas id="ordersChartSwitch" class="chart-canvas"></canvas>
                               </div>
