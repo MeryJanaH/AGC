@@ -18,7 +18,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Projets</title>
+        <title>Statistiques</title>
 
 
         <!-- Simplebar -->
@@ -63,7 +63,6 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                                 <th class="sort" data-sort="Connaissance">Connaissance</th>
                                                 <th class="sort" data-sort="Annonce">Annonce</th>
                                                 <th class="sort" data-sort="Passage">De passage</th>
-                                                <tr> <th class="Total">Total</th> </tr>
                                               </tr>
                                             </thead>
                                             <tbody class="list">
@@ -87,8 +86,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                                       <th class="sort" data-sort="Pj">Projets</th>
                                                       <th class="sort" data-sort="bureau">Clients au bureau</th>
                                                       <th class="sort" data-sort="c_projet">Clients par projet</th>
-                                                      <th class="sort" data-sort="vente">Ventes</th>
-                                                     <tr> <th class="Total">Total</th> </tr>
+                                                      <th class="sort" data-sort="vente">Ventes</th>                                                   
                                                     </tr>
                                                   </thead>
                                                   <tbody class="list">
@@ -163,7 +161,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                               <div class="card">
                                   <div class="card-header card-header-tabs-basic nav" role="tablist">
                                       <a href="#Janvier" class="active" data-toggle="tab" role="tab" aria-controls="activity_all" aria-selected="true">Janvier</a>
-                                      <a href="#Fevrier" data-toggle="tab" role="tab"  aria-selected="false">Fevrier</a>
+                                      <a href="#Fevrier" data-toggle="tab" role="tab"  aria-selected="false">Février</a>
                                       <a href="#Mars" data-toggle="tab" role="tab" aria-selected="false">Mars</a>
                                       <a href="#Juin" data-toggle="tab" role="tab" aria-selected="false">Juin</a>
                                       <a href="#Juillet" data-toggle="tab" role="tab"  aria-selected="false">Juillet</a>
@@ -253,7 +251,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
     <script>
       $(document).ready(function() {
         $(".yearpicker").yearpicker({
-          year: <?php if(isset($_GET['year'])){echo $_GET['year'];}else{echo date("Y");} ?>,
+          year: <?php if(isset($_GET['year']) && $_GET['year']>="2012" && $_GET['year']<="3000"){echo $_GET['year'];}else{echo date("Y");} ?>,
           startYear: 2012,
           endYear: 3000
         });

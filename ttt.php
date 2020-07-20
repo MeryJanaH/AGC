@@ -1,4 +1,10 @@
-<?php $year="2020";
+<?php '2020'="2020";
 require 'LBD.php';
-echo $year.'-07-01 00:00:00';
-//$req=$bdd->query("SELECT Code_pj, Premier_visite FROM Clients WHERE Premier_visite >= $year.'-07-01 00:00:00'");
+
+$req2=$bdd->query("SELECT Source, COUNT(Source) AS count FROM Clients GROUP BY Source");
+$dn2=$req2->fetch();
+echo $dn2['Source'];
+$dn2=$req2->fetch();
+echo $dn2['Source'];
+$dn2=$req2->fetch();
+echo $dn2['Source'];
