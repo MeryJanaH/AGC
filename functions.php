@@ -273,14 +273,14 @@ function update_table_clients()
         ?>
         <tr>
            <td class="id" style="display:none;"><?php echo $dn['ID_client'] ?></td>
-            <td style="width: 120px;" class="name"><span class="js-lists-values-employee-name"><?php print_r($dn['Name']); ?></span></td>
-            <td style="width: 200px;" class="phnumber"><span class="text-muted"><?php print_r($dn['phnumber']) ?></span></td>
-            <td style="width: 150px;" class="projet_name"><span class="text-muted"><?php print_r($rs['ProjetName']) ?></span></td>
-            <td style="width: 200px;" class="notes"><span class="text-muted"><?php print_r($dn['Notes']) ?></span></td>
-            <td style="width: 150px;" class="source"><span class="text-muted"><?php print_r($dn['Source']) ?></span></td>
-            <td style="width: 150px;" class="visite"><span class="text-muted"><?php print_r($dn['Premier_visite']) ?></span></td>
+            <td style="width: 120px;" class="name"><?php print_r($dn['Name']); ?></td>
+            <td style="width: 200px;" class="phnumber"><?php print_r($dn['phnumber']) ?></td>
+            <td style="width: 150px;" class="projet_name"><?php print_r($rs['ProjetName']) ?></td>
+            <span class="text-muted"><td style="width: 200px;" class="notes"><?php print_r($dn['Notes']) ?></td></span>
+            <td style="width: 150px;" class="source"><?php print_r($dn['Source']) ?></td>
+            <td style="width: 150px;" class="visite"><?php print_r($dn['Premier_visite']) ?></td>
             <td class="edit">
-              <button class="edit-item-btn">Edit</button>
+              <button type="button" class="edit-item-btn" onClick="edit_ct()">Edit</button>
             </td>
         </tr>
      <?php
@@ -302,11 +302,11 @@ function update_table_clients()
     {
       $output = '';
        // A sample product array
-       $products = array("Facebook/Instagram", "Avito/Mubawab", "Ancien client", "Prospection", "Connaissance", "Annonce", "De passage");
+       $products = array("Facebook/Instagram", "Avito/Mubawab", "Ancien_client", "Prospection", "Connaissance", "Annonce", "De_passage");
 
        // Iterating through the product array
        foreach($products as $item){
-       $output.='<option value='.strtolower($item).'>'.$item.'</option>';
+       $output.='<option value='.$item.'>'.$item.'</option>';
        }
        return $output;
     }
@@ -343,17 +343,7 @@ function update_table_clients()
 
         function edit_ct()
           {
-            var html = "<tr>";
-                html += "<td><input type='hidden' id='id-field'/></td>";
-                html += "<td><input required='' id ='name' name='name_client[]'></td>";
-                html += "<td><input required='' id ='num' type='tel' name='num[]'></td>";
-                html += "<td><select required='' id = 'projet' class='form-control item_unit' name='c_p[]'><option> </option><?php echo fill_unit_select_box_projet();?></select></td>";
-                html += "<td><input required='' id ='note' name='Note[]'></td>";
-                html += "<td><select required='' id = 'source' class='form-control item_unit' name='source[]'><option> </option><?php echo fill_unit_select_box_source();?></select></td>";
-                html += "</tr>";
 
-           var row = document.getElementById("staff03").insertRow();
-                row.innerHTML = html;
           }
     </script>
 

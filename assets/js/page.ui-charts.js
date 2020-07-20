@@ -76,7 +76,7 @@
                         }
                     }, a);
                     Charts.create(e, t, a, {
-                        labels: ["Janv", "Fév", "Mars", "Avril", "mai", "Juin", "Juil", "Août", "Sep", "Oct", "Nov", "Dec"],
+                        labels: ["Janv", "Fév", "Mars", "Avril", "mai", "Juin", "Juil", "Août", "Sep", "Oct", "Nov", "Déc"],
                         datasets: [{
                             label: "Performance",
                             data: [0, 10, 5, 15, 10, 20, 15, 25, 20, 30, 25, 40]
@@ -109,7 +109,7 @@
                         }
                     }, a);
                     Charts.create(e, t, a, {
-                        labels: ["Janv", "Fév", "Mars", "Avril", "mai", "Juin", "Juil", "Août", "Sep", "Oct", "Nov", "Dec"],
+                        labels: ["Janv", "Fév", "Mars", "Avril", "mai", "Juin", "Juil", "Août", "Sep", "Oct", "Nov", "Déc"],
                         datasets: [{
                             label: "Terrain",
                             data: terrain

@@ -42,9 +42,6 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
     <link type="text/css" href="assets/css/vendor-ion-rangeslider.rtl.css" rel="stylesheet">
 
 
-
-
-
 </head>
 
 <body class="layout-default">
@@ -161,11 +158,6 @@ $req=$bdd->query($sql);
     <?php include 'footer.php';?>
 
 
-    <!-- List.js -->
-    <script src="assets/vendor/list.min.js"></script>
-    <script src="assets/js/list.js"></script>
-
-
     <!-- jQuery -->
     <script src="assets/vendor/jquery.min.js"></script>
 
@@ -196,6 +188,9 @@ $req=$bdd->query($sql);
     <!-- App Settings (safe to remove) -->
     <script src="assets/js/app-settings.js"></script>
 
+    <!-- List.js -->
+    <script src="assets/vendor/list.min.js"></script>
+    <script src="assets/js/list.js"></script>
 
 
     <!-- Global Settings -->

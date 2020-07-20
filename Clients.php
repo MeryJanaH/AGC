@@ -52,8 +52,8 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                           }
                  ?>
 
-                    <!-- Header Layout Content
-                    <form action="#Ajouter" method="POST">-->
+                    <!-- Header Layout Content-->
+                    <form action="#Ajouter" method="POST">
                     <div class="mdk-header-layout__content mdk-header-layout__content--fullbleed mdk-header-layout__content--scrollable page">
                         <div class="container-fluid page__container">
                             <div class="card card-form">
@@ -80,13 +80,13 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                               <!--table des Employés-->
                                               <?php update_table_clients(); ?>
                                                   <tr>
-                                                  <td class="name"><input type='hidden' id='id-field'/><input required='' id ='name' name='name_client[]'></td>
-                                                  <td class="phnumber"><input required='' id ='num' type='tel' name='num[]'></td>
-                                                  <td class="projet_name"><select required='' id = 'projet' class='form-control item_unit' name='c_p[]'><option> </option><?php echo fill_unit_select_box_projet();?></select></td>
-                                                  <td class="notes"><input required='' id ='note' name='Note[]'></td>
-                                                  <td class="source"><select required='' id = 'source' class='form-control item_unit' name='source[]'><option> </option><?php echo fill_unit_select_box_source();?></select></td>
+                                                  <td class="name"><input type='hidden' id='id-field'/><input required='' id='name' name='name_client[]'></td>
+                                                  <td class="phnumber"><input required='' id='num' type='tel' name='num[]'></td>
+                                                  <td class="projet_name"><select required='' id='projet' class='form-control item_unit' name='c_p[]'><option value="none"> </option><?php echo fill_unit_select_box_projet();?></select></td>
+                                                  <td class="notes"><input required='' id='note' name='Note[]'></td>
+                                                  <td class="source"><select required='' id='source' class='form-control item_unit' name='source[]'><option value="none"> </option><?php echo fill_unit_select_box_source();?></select></td>
                                                   <td >
-                                                    <button id="edit-btn">Edit</button>
+                                                    <button type="button" id="edit-btn">Edit</button>
                                                   </td>
                                                   </tr>
                                             </tbody>
@@ -108,8 +108,8 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                             </div>
                         </div>
                     </div>
-              <!--  </form>
-                     // END header-layout__content -->
+                </form>
+                <!--     // END header-layout__content -->
 
                 </div>
                 <!-- // END header-layout -->
@@ -162,10 +162,10 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
     var idField = $('#id-field'),
         nameField = $('#name'),
         numField = $('#num'),
-        projetField = $('#projet').children("option:selected"),
-        srcField = $('#source').children("option:selected"),
+        projetField = $('#projet'),
+        srcField = $('#source'),
         noteField = $('#note'),
-        //editBtn = $('#edit-btn').hide(),
+        editBtn = $('#edit-btn').hide(),
         editBtns = $('.edit-item-btn');
 /*
     console.log(idField.val());
@@ -177,38 +177,71 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
     // Sets callbacks to the buttons in the list
     refreshCallbacks();
 /*
-    editBtn.click(function() {
-      cityField = $('#city-field').children("option:selected");
-      var item = contactList.get('id', idField.val())[0];
-      item.values({
-        id:idField.val(),
-        name: nameField.val(),
-        age: ageField.val(),
-        city: cityField.val()
-      });
-      clearFields();
-      editBtn.hide();
-      addBtn.show();
-    });   noteeee: codePen : Yassine*/
+       noteeee: codePen : Yassine*/
+       editBtn.click(function() {
+         var item = contactList.get('id', idField.val())[0];
+         item.values({
+           id:idField.val(),
+           name: nameField.val(),
+           phnumber: numField.val(),
+           projet_name: projetField.children("option:selected").text(),
+           notes: noteField.val(),
+           source: srcField.children("option:selected").val()
+         });
+         $.post("fct.php",
+           {
+             op: "edit",
+             id_client:idField.val(),
+             name: nameField.val(),
+             phnumber: numField.val(),
+             projet_id: projetField.children("option:selected").val(),
+             notes: noteField.val(),
+             source: srcField.children("option:selected").val()
+           }, function(data){
+             console.log(data);
+             if(data=='1'){
+               clearFields();
+               editBtn.hide();
+             }else {
+               alert('Une erreur est survenue');
+             }
 
+           });
+
+       });
     function refreshCallbacks() {
       // Needed to add new buttons to jQuery-extended object
       editBtns = $(editBtns.selector);
 
       editBtns.click(function() {
+        editBtn.show();
+
         var itemId = $(this).closest('tr').find('.id').text();
         var itemValues = contactList.get('id', itemId)[0].values();
         idField.val(itemValues.id);
         nameField.val(itemValues.name);
-        numField.val(itemValues.num);
-        projetField.val(itemValues.projet);
-        projetField.text(itemValues.projet);
-        srcField.val(itemValues.source);
-        srcField.text(itemValues.source);
-        noteField.val(itemValues.note);
-      });
-    }
+        numField.val(itemValues.phnumber);
+        noteField.val(itemValues.notes);
+        document.querySelector('#source [value="' + itemValues.source + '"]').selected = true;
+        $.post("fct.php",
+          {
+            op: "getid",
+            project_name: itemValues.projet_name
+          }, function(data){
+            var values=JSON.parse(data);
+            //console.log(values);
+            document.querySelector('#projet [value="' + values['Code_pj'] + '"]').selected = true;
+          });
+       });
 
+      }
+      function clearFields() {
+        nameField.val('');
+        numField.val('');
+        noteField.val('');
+        document.querySelector('#source [value="none"]').selected = true;
+        document.querySelector('#projet [value="none"]').selected = true;
+      }
     </script>
 
     </body>

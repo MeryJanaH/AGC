@@ -1,6 +1,20 @@
 <?php
-require 'functions.php';
+require 'LBD.php';
 
-if( $_POST['id'])
+if(isset($_POST['id'])){
+  require 'functions.php';
   delet_com( $_POST['id'] );
+}
+
+
+  if ($_POST['op']=="edit"){
+    $req = $bdd->prepare("UPDATE Clients SET Name='".$_POST['name']."', phnumber='".$_POST['phnumber']."',Code_pj='".$_POST['projet_id']."', Notes='".$_POST['notes']."', Source='".$_POST['source']."' WHERE ID_client='".$_POST['id_client']."'");
+    $res=$req->execute();
+    echo $res;
+  }elseif ($_POST['op']=="getid") {
+    $req = $bdd->prepare("SELECT Code_pj FROM Projets WHERE ProjetName ='".$_POST['project_name']."' ");
+    $req->execute();
+    $res = $req->fetch();
+    echo json_encode($res);
+  }
 ?>
