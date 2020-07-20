@@ -341,10 +341,6 @@ function update_table_clients()
               row.innerHTML = html;
         }
 
-        function edit_ct()
-          {
-
-          }
     </script>
 
 <?php
@@ -453,32 +449,32 @@ function clients_par_source($id,$year)
       <tr>
       <td class="id" style="display:none;"><?php $n+1; ?></td>
       <td class="Projets"><?php print_r($dn['ProjetName']) ?></td>
-<?php if($dn['Source'] == "facebook/instagram"){ ?>
+<?php if($dn['Source'] == "Facebook/Instagram"){ ?>
       <td class="Facebook"><?php print_r($dn['count']) ?></td>
 
 <?php }else {?>
       <td class="Facebook">0</td>
-<?php } if($dn['Source'] == "avito/mubawab"){?>
+<?php } if($dn['Source'] == "Avito/Mubawab"){?>
       <td class="Avito"><?php print_r($dn['count']) ?></td>
       <?php } else {?>
         <td class="Avito">0</td>
-<?php }if($dn['Source'] == "ancien"){?>
+<?php }if($dn['Source'] == "Ancien_client"){?>
       <td class="Ancien"><?php print_r($dn['count']) ?></td>
       <?php } else {?>
         <td class="Ancien">0</td>
-<?php }if($dn['Source'] == "prospection"){?>
+<?php }if($dn['Source'] == "Prospection"){?>
       <td class="Prospection"><?php print_r($dn['count']) ?></td>
       <?php } else {?>
         <td class="Prospection">0</td>
-<?php }if($dn['Source'] == "connaissance"){?>
+<?php }if($dn['Source'] == "Connaissance"){?>
       <td class="Connaissance"><?php print_r($dn['count']) ?></td>
       <?php } else {?>
         <td class="Connaissance">0</td>
-<?php }if($dn['Source'] == "annonce"){?>
+<?php }if($dn['Source'] == "Annonce"){?>
       <td class="Annonce"><?php print_r($dn['count']) ?></td>
       <?php } else {?>
         <td class="Annonce">0</td>
-<?php }if($dn['Source'] == "de passage"){?>
+<?php }if($dn['Source'] == "De_passage"){?>
        <td class="Passage"><?php print_r($dn['count']) ?></td>
       <?php  }else {?>
         <td class="Passage">0</td>
@@ -488,19 +484,19 @@ function clients_par_source($id,$year)
      }
 
      $req2=$bdd->query("SELECT IFNULL(facebook,0) AS facebook,IFNULL(avito,0) AS avito,IFNULL(ancien,0) AS ancien,IFNULL(prospection,0) AS prospection,IFNULL(connaissance,0) AS connaissance,IFNULL(annonce,0) AS annonce,IFNULL(passage,0) AS passage FROM
-                        (SELECT Premier_visite,COUNT(Source)AS facebook FROM clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='facebook/instagram')t1
+                        (SELECT Premier_visite,COUNT(Source)AS facebook FROM clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='Facebook/Instagram')t1
                          JOIN
-                        (SELECT Premier_visite,COUNT(Source)AS avito FROM clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='avito/mubawab')t2
+                        (SELECT Premier_visite,COUNT(Source)AS avito FROM clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='Avito/Mubawab')t2
                         JOIN
-                        (SELECT Premier_visite,COUNT(Source)AS ancien FROM clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='ancien')t3
+                        (SELECT Premier_visite,COUNT(Source)AS ancien FROM clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='Ancien_client')t3
                         JOIN
-                        (SELECT Premier_visite,COUNT(Source)AS prospection FROM clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='prospection')t4
+                        (SELECT Premier_visite,COUNT(Source)AS prospection FROM clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='Prospection')t4
                         JOIN
-                        (SELECT Premier_visite,COUNT(Source)AS connaissance FROM clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='connaissance')t5
+                        (SELECT Premier_visite,COUNT(Source)AS connaissance FROM clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='Connaissance')t5
                         JOIN
-                        (SELECT Premier_visite,COUNT(Source)AS annonce FROM clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='annonce')t6
+                        (SELECT Premier_visite,COUNT(Source)AS annonce FROM clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='Annonce')t6
                         JOIN
-                        (SELECT Premier_visite,COUNT(Source)AS passage FROM clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='de passage')t7");
+                        (SELECT Premier_visite,COUNT(Source)AS passage FROM clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='De_passage')t7");
 
       $dn2=$req2->fetch();
      ?>

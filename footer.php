@@ -13,7 +13,8 @@
                     </span>
                 </a>
                 <div class="dropdown ml-auto">
-                    <a href="#" data-toggle="dropdown" data-caret="false" class="text-muted"><i class="material-icons">keyboard_arrow_down</i></a>
+                  <?php if($_SESSION['current_page']!="clients" && $_SESSION['current_page']!="commerciaux" && $_SESSION['current_page']!="projets"){ ?>
+                    <a href="#" data-toggle="dropdown" data-caret="false" class="text-muted"><i class="material-icons">keyboard_arrow_down</i></a> <?php } ?>
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="dropdown-item-text dropdown-item-text--lh">
                             <div><strong><?php echo $_SESSION['name'] ?></strong></div>
@@ -50,8 +51,8 @@
                           <li class="sidebar-menu-item active">
                         <?php }else{ ?>
                           <li class="sidebar-menu-item ">
-                        <?php } ?>
-
+                        <?php }
+                            if($_SESSION['current_page']!="clients"){ ?>
                             <a class="sidebar-menu-button" data-toggle="collapse" href="#pages_menu">
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">description</i>
                                 <span class="sidebar-menu-text">Modifier-Créer</span>
@@ -73,7 +74,22 @@
                                     </a>
                                 </li>
                                 <?php
-                                 }
+                              }}else {
+                                ?>
+                                <a class="sidebar-menu-button" href="Modifications.php">
+                                    <span class="sidebar-menu-text">Modifier le compte</span>
+                                </a>
+                                <?php
+                                if($_SESSION['user']=="admin")
+                                {
+                                ?>
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button" href="Nouveau.php">
+                                        <span class="sidebar-menu-text">Créer un compte</span>
+                                    </a>
+                                </li>
+                                <?php
+                              }}
                                  ?>
                             </ul>
                         </li>
@@ -81,8 +97,8 @@
                           <li class="sidebar-menu-item active">
                         <?php }else{ ?>
                           <li class="sidebar-menu-item ">
-                        <?php } ?>
-
+                        <?php }
+                           if($_SESSION['current_page']!="clients"){ ?>
                             <a class="sidebar-menu-button" data-toggle="collapse" href="#components_menu">
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">developer_board</i>
                                 <span class="sidebar-menu-text">Tables</span>
@@ -104,6 +120,22 @@
                                     </a>
                                 </li>
                             </ul>
+                          <?php }else {
+                            ?>
+                            <?php if($_SESSION['user']=="admin")
+                             { ?>
+                              <a class="sidebar-menu-button" href="Commerciaux.php">
+                                  <span class="sidebar-menu-text">Table des commerciaux</span>
+                              </a>
+                            <?php } ?>
+                              <a class="sidebar-menu-button" href="Projets.php">
+                                  <span class="sidebar-menu-text">Table des projets</span>
+                              </a>
+                              <a class="sidebar-menu-button" href="Clients.php">
+                                  <span class="sidebar-menu-text">Table des clients</span>
+                              </a>
+                            <?php
+                          } ?>
                         </li>
 
                         <?php if($_SESSION['current_page']=="Graphe"){?>

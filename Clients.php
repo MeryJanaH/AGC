@@ -68,23 +68,23 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                         <table class="table mb-0 thead-border-top-0">
                                             <thead>
                                                 <tr>
-                                                    <th style="width: 120px;" name="name_client">Nom</th>
-                                                    <th style="width: 120px;" name="num">Numéro de téléphone</th>
-                                                    <th style="width: 120px;" name="projet">Projet</th>
-                                                    <th style="width: 120px;" name="Note">Notes</th>
-                                                    <th style="width: 120px;" name="source">Source</th>
-                                                    <th style="width: 120px;" name="visite">Date du 1er visite</th>
+                                                    <th  name="name_client">Nom</th>
+                                                    <th  name="num">Numéro de téléphone</th>
+                                                    <th  name="projet">Projet</th>
+                                                    <th  name="Note">Notes</th>
+                                                    <th  name="source">Source</th>
+                                                    <th  name="visite">Date du 1er visite</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="list" id="staff03">
                                               <!--table des Employés-->
                                               <?php update_table_clients(); ?>
                                                   <tr>
-                                                  <td class="name"><input type='hidden' id='id-field'/><input required='' id='name' name='name_client[]'></td>
-                                                  <td class="phnumber"><input required='' id='num' type='tel' name='num[]'></td>
-                                                  <td class="projet_name"><select required='' id='projet' class='form-control item_unit' name='c_p[]'><option value="none"> </option><?php echo fill_unit_select_box_projet();?></select></td>
-                                                  <td class="notes"><input required='' id='note' name='Note[]'></td>
-                                                  <td class="source"><select required='' id='source' class='form-control item_unit' name='source[]'><option value="none"> </option><?php echo fill_unit_select_box_source();?></select></td>
+                                                  <td class="name"><input type='hidden' id='id-field'/><input id='name'></td>
+                                                  <td class="phnumber"><input id='num' ></td>
+                                                  <td class="projet_name"><select id='projet' class='form-control item_unit'><option value="none"> </option><?php echo fill_unit_select_box_projet();?></select></td>
+                                                  <td class="notes"><input id='note'></td>
+                                                  <td class="source"><select id='source' class='form-control item_unit'><option value="none"> </option><?php echo fill_unit_select_box_source();?></select></td>
                                                   <td >
                                                     <button type="button" id="edit-btn">Edit</button>
                                                   </td>
@@ -95,7 +95,6 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                           <br/>
                                           <br/>
                                            <input type="button" id="btnShowMsg1"  style="width: 200px; color: green;" value="Ajouter un nouveau client !" onClick="add_ct()"/>
-                                           <input type="button" id="btnShowMsg2"  style="width: 300px; color: red;" value="Modifier les informations des clients !" onClick="window.location.href='éditer.php?data=clients';"/>
                                            <br/>
                                            <br/>
                                         <div class="form-group">
@@ -116,8 +115,6 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
 
             </div>
             <!-- // END drawer-layout__content -->
-
-
 
     <?php include 'footer.php';?>
 
@@ -144,7 +141,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
     <!-- App Settings (safe to remove) -->
     <script src="assets/js/app-settings.js"></script>
 
-    <!-- List.js-->
+    <!-- List.js -->
     <script src="assets/vendor/list.min.js"></script>
     <script src="assets/js/list.js"></script>
 
@@ -158,13 +155,13 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
 
     // Init list
     var contactList = new List('contacts', options);
-    console.log(contactList);
+
     var idField = $('#id-field'),
-        nameField = $('#name'),
-        numField = $('#num'),
-        projetField = $('#projet'),
-        srcField = $('#source'),
-        noteField = $('#note'),
+        nameField = $('#name').hide(),
+        numField = $('#num').hide(),
+        projetField = $('#projet').hide(),
+        srcField = $('#source').hide(),
+        noteField = $('#note').hide(),
         editBtn = $('#edit-btn').hide(),
         editBtns = $('.edit-item-btn');
 /*
@@ -215,6 +212,11 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
 
       editBtns.click(function() {
         editBtn.show();
+        noteField.show();
+        srcField.show();
+        projetField.show();
+        numField.show();
+        nameField.show();
 
         var itemId = $(this).closest('tr').find('.id').text();
         var itemValues = contactList.get('id', itemId)[0].values();
