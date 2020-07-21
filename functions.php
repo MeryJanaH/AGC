@@ -280,7 +280,7 @@ function update_table_clients()
             <td style="width: 150px;" class="source"><?php print_r($dn['Source']) ?></td>
             <td style="width: 150px;" class="visite"><?php print_r($dn['Premier_visite']) ?></td>
             <td class="edit">
-              <button type="button" class="edit-item-btn">Êdit</button>
+              <button type="button" class="edit-item-btn">Éditer</button>
             </td>
             <td class="remove">
                <button type="button" class="remove-item-btn">Supprimer</button>
@@ -313,40 +313,6 @@ function update_table_clients()
        }
        return $output;
     }
-
-    ?>
-    <script>
-    function add_pj()
-      {
-        var html = "<tr>";
-            html += "<td><input required='' id ='n' name='proj_name[]'></td>";
-            html += "<td><input required='' id ='t' name='proj_type[]'></td>";
-            html += "<td><input required='' id ='e' name='proj_etage[]'></td>";
-            html += "<td><input required='' id ='s' name='proj_surface[]'></td>";
-            html += "<td><input required='' id ='p' type='number' name='proj_prix[]'></td>";
-            html += "</tr>";
-
-       var row = document.getElementById("staff02").insertRow();
-            row.innerHTML = html;
-      }
-
-      function add_ct()
-        {
-          var html = "<tr>";
-              html += "<td><input required='' id ='n' name='name_client[]'></td>";
-              html += "<td><input required='' id ='nm' type='tel' name='num[]'></td>";
-              html += "<td><select required='' id = 'pj' class='form-control item_unit' name='c_p[]'><?php echo fill_unit_select_box_projet();?></select></td>";
-              html += "<td><input required='' id ='nt' name='Note[]'></td>";
-              html += "<td><select required='' id = 's' class='form-control item_unit' name='source[]'><?php echo fill_unit_select_box_source();?></select></td>";
-              html += "</tr>";
-
-         var row = document.getElementById("staff03").insertRow();
-              row.innerHTML = html;
-        }
-
-    </script>
-
-<?php
 
 function  add_projet($p_n,$p_t,$p_e,$p_s,$p_p)
 {
@@ -535,19 +501,19 @@ function clients_par_source($id,$year)
      }
 
      $req2=$bdd->query("SELECT IFNULL(facebook,0) AS facebook,IFNULL(avito,0) AS avito,IFNULL(ancien,0) AS ancien,IFNULL(prospection,0) AS prospection,IFNULL(connaissance,0) AS connaissance,IFNULL(annonce,0) AS annonce,IFNULL(passage,0) AS passage FROM
-                        (SELECT Premier_visite,COUNT(Source)AS facebook FROM clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='Facebook/Instagram')t1
+                        (SELECT Premier_visite,COUNT(Source)AS facebook FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='Facebook/Instagram')t1
                          JOIN
-                        (SELECT Premier_visite,COUNT(Source)AS avito FROM clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='Avito/Mubawab')t2
+                        (SELECT Premier_visite,COUNT(Source)AS avito FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='Avito/Mubawab')t2
                         JOIN
-                        (SELECT Premier_visite,COUNT(Source)AS ancien FROM clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='Ancien_client')t3
+                        (SELECT Premier_visite,COUNT(Source)AS ancien FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='Ancien_client')t3
                         JOIN
-                        (SELECT Premier_visite,COUNT(Source)AS prospection FROM clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='Prospection')t4
+                        (SELECT Premier_visite,COUNT(Source)AS prospection FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='Prospection')t4
                         JOIN
-                        (SELECT Premier_visite,COUNT(Source)AS connaissance FROM clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='Connaissance')t5
+                        (SELECT Premier_visite,COUNT(Source)AS connaissance FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='Connaissance')t5
                         JOIN
-                        (SELECT Premier_visite,COUNT(Source)AS annonce FROM clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='Annonce')t6
+                        (SELECT Premier_visite,COUNT(Source)AS annonce FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='Annonce')t6
                         JOIN
-                        (SELECT Premier_visite,COUNT(Source)AS passage FROM clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='De_passage')t7");
+                        (SELECT Premier_visite,COUNT(Source)AS passage FROM Clients WHERE YEAR(Premier_visite) = $year AND MONTH(Premier_visite)= $m AND DAY(Premier_visite) >= '01' AND DAY(Premier_visite) <= '31' AND Source='De_passage')t7");
 
       $dn2=$req2->fetch();
      ?>

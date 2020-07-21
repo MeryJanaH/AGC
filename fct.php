@@ -11,7 +11,12 @@ if(isset($_POST['id'])){
     $req = $bdd->prepare("UPDATE Clients SET Name='".$_POST['name']."', phnumber='".$_POST['phnumber']."',Code_pj='".$_POST['projet_id']."', Notes='".$_POST['notes']."', Source='".$_POST['source']."' WHERE ID_client='".$_POST['id_client']."'");
     $res=$req->execute();
     echo $res;
-  }elseif ($_POST['op']=="getid") {
+  }elseif ($_POST['op']=="supp") {
+    $req = $bdd->prepare("DELETE FROM `Clients` WHERE ID_client ='".$_POST['id_client']."'");
+    $res=$req->execute();
+    echo $res;
+  }
+  elseif ($_POST['op']=="getid") {
     $req = $bdd->prepare("SELECT Code_pj FROM Projets WHERE ProjetName ='".$_POST['project_name']."' ");
     $req->execute();
     $res = $req->fetch();

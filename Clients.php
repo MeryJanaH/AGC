@@ -103,7 +103,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                                   <td class="notes"><input id='note'></td>
                                                   <td class="source"><select id='source' class='form-control item_unit'><option value="none"> </option><?php echo fill_unit_select_box_source();?></select></td>
                                                   <td >
-                                                    <button type="button" id="edit-btn">Êdit</button>
+                                                    <button type="button" id="edit-btn">Éditer</button>
                                                   </td>
                                                   </tr>
                                             </tbody>
@@ -195,15 +195,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
 /*
        noteeee: codePen : Yassine*/
        editBtn.click(function() {
-         var item = contactList.get('id', idField.val())[0];
-         item.values({
-           id:idField.val(),
-           name: nameField.val(),
-           phnumber: numField.val(),
-           projet_name: projetField.children("option:selected").text(),
-           notes: noteField.val(),
-           source: srcField.children("option:selected").val()
-         });
+
          $.post("fct.php",
            {
              op: "edit",
@@ -216,6 +208,15 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
            }, function(data){
              console.log(data);
              if(data=='1'){
+               var item = contactList.get('id', idField.val())[0];
+               item.values({
+                 id:idField.val(),
+                 name: nameField.val(),
+                 phnumber: numField.val(),
+                 projet_name: projetField.children("option:selected").text(),
+                 notes: noteField.val(),
+                 source: srcField.children("option:selected").val()
+               });
                clearFields();
                editBtn.hide();
              }else {
@@ -230,12 +231,28 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
       editBtns = $(editBtns.selector);
       removeBtns = $(removeBtns.selector);
 
-
       removeBtns.click(function() {
         var itemId = $(this).closest('tr').find('.id').text();
-        contactList.remove('id', itemId);
+        var itemValues = contactList.get('id', itemId)[0].values();
+        if (confirm("êtes-vous sûr de supprimer le client "+itemValues.name)) {
+          $.post("fct.php",
+            {
+              op: "supp",
+              id_client:itemValues.id
+            }, function(data){
+              console.log(data);
+              if(data=='1'){
+                contactList.remove('id', itemId);
+              }else {
+                alert('Une erreur est survenue');
+              }
+
+            });
+
+        }
+
       });
-      
+
       editBtns.click(function() {
         editBtn.show();
         noteField.show();

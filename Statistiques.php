@@ -161,7 +161,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
       $req=annee(date("Y"));
 }
 
-$req2 = $bdd->prepare("SELECT COUNT(`Code_pj`) AS count_pj FROM `projets`");
+$req2 = $bdd->prepare("SELECT COUNT(`Code_pj`) AS count_pj FROM `Projets`");
 $d1 = $req2 -> execute();
 $d2 = $req2->fetch();
 
@@ -211,15 +211,14 @@ $d2 = $req2->fetch();
                                                   }" class="chartjs-render-monitor"></canvas>
                     	</div>
                     	<script>
-                        <?php    $req3 = $bdd->prepare("SELECT ProjetName FROM `projets`");
-                                 $dn3 = $req3 -> execute();?>
+
                     		var chartData = {
                     			labels: ['Janv', 'Fév', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Déc'],
                     			datasets: [
                           <?php
                           $n=0;
                           $colors = array("#b2e599", "#b205a9", "#b2e59b", "#b0e5c9", "#b2e509", "#a2e5d9","#b2e599");
-                          $req3 = $bdd->prepare("SELECT ProjetName FROM `projets`");
+                          $req3 = $bdd->prepare("SELECT ProjetName FROM `Projets`");
                           $dn3 = $req3 -> execute();
                           for ($x = 1; $x <= $d2['count_pj']; $x++) {
                             $dn4 = $req3->fetch();
