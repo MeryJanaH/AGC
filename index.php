@@ -706,7 +706,7 @@ include 'footer.php'; ?>
               $('#event-edit').modal('toggle');
 
               //console.log($("#commercial").children("option:selected").val());
-            }, 1000);
+            }, 500);
 
 
             $('#modifier').unbind('click').on('click', function(e){
