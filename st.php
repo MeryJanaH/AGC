@@ -3,8 +3,8 @@
 
 <head>
 	<title>Combo Bar-Line Chart</title>
-	<script src="chart.min.js"></script>
-	<script src="utils.js"></script>
+	<script src="assets/vendor/chart.min.js"></script>
+	<script src="assets/vendor/utils.js"></script>
 	<style>
 	canvas {
 		-moz-user-select: none;
