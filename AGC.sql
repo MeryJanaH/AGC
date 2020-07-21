@@ -1,5 +1,5 @@
-CREATE Database if not exists AGC;
-use AGC;
+CREATE Database if not exists sc2bomo9230_AGC;
+use sc2bomo9230_AGC;
 
 
 CREATE TABLE `Admin` (
