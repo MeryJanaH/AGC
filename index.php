@@ -546,7 +546,7 @@ include 'footer.php'; ?>
     <script>
 
 
-  /*  $.post("/AGC/fct_calend.php",
+  /*  $.post("fct_calend.php",
       {
         op: "show",
         comm: commercial,
@@ -646,7 +646,7 @@ include 'footer.php'; ?>
                      allDay:false
                  });
 
-                 $.post("/AGC/fct_calend.php",
+                 $.post("fct_calend.php",
                    {
                      op: "add",
                      comm: commercial,
@@ -668,7 +668,7 @@ include 'footer.php'; ?>
             $('#event-edit #endTime').val(info.event.endStr);
 
             var values;
-            $.post("/AGC/fct_calend.php",
+            $.post("fct_calend.php",
               {
                 op: "get",
                 id: info.event.id
@@ -730,7 +730,7 @@ include 'footer.php'; ?>
                  //event.className= category;
                  //console.log($("#client").children("option:selected").text());
                  //console.log(category);
-                 $.post("/AGC/fct_calend.php",
+                 $.post("fct_calend.php",
                    {
                      op: "modif",
                      id: id_calendar,
@@ -749,7 +749,7 @@ include 'footer.php'; ?>
              });
 
              $('#DELETE').unbind('click').on('click', function(e){
-               $.post("/AGC/fct_calend.php",
+               $.post("fct_calend.php",
                  {
                    op: "sup",
                    id: info.event.id
@@ -769,7 +769,7 @@ include 'footer.php'; ?>
             if (!confirm("is this okay?")) {
               info.revert();
             }else {
-              $.post("/AGC/fct_calend.php",
+              $.post("fct_calend.php",
                 {
                   op: "time",
                   id: info.event.id,
@@ -786,7 +786,7 @@ include 'footer.php'; ?>
             if (!confirm("Are you sure about this change?")) {
               info.revert();
             }else {
-              $.post("/AGC/fct_calend.php",
+              $.post("fct_calend.php",
                 {
                   op: "time",
                   id: info.event.id,
