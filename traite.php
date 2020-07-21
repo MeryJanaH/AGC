@@ -9,7 +9,7 @@ require 'functions.php';
 
       if ($res=="Utilisateur Non Enregistré" or $res =="ERROR_Syntaxe") {
           $_SESSION['login']="false";
-          header('Location: login.php');
+          header('Location: login');
       }else{
           if(isset($_POST['remember']))
           {
@@ -20,12 +20,12 @@ require 'functions.php';
           if(premier_login($_POST['email_2'])=="true" and $_SESSION['user']!="admin")
           {
             $_SESSION['log_befor']="true";
-            header('Location: registration.php');
+            header('Location: registration');
           }
           else
           {
             $_SESSION['login']="true";
-            header('Location: index.php');
+            header('Location: /');
           }
       }
 ?>

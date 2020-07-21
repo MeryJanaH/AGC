@@ -2,7 +2,7 @@
 session_start();
 if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION['login']))
 {
-      header('Location: login.php');
+      header('Location: login');
 }
 require 'LBD.php';
 
@@ -15,7 +15,7 @@ $req=$bdd->query("SELECT * FROM Projets");
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="assets/vendor/jquery-tabledit/jquery.tabledit.min.js"></script>
-
+    <link href="assets/images/logo.png" rel="shortcut icon" type="image/x-icon" />
     </head>
         <body>
       <div class="container">
@@ -52,7 +52,7 @@ $req=$bdd->query("SELECT * FROM Projets");
               }?>
              </tbody>
           </table>
-          <input type="button" id="btnShowMsg1"  style="width: 400px; color: red;" value="Enregistrer les modifiations et retourner à la page précedente !" onClick="window.location.href='Projets.php';"/>
+          <input type="button" id="btnShowMsg1"  style="width: 400px; color: red;" value="Enregistrer les modifiations et retourner à la page précedente !" onClick="window.location.href='Projets';"/>
        </div>
       </div>
      </body>
@@ -60,7 +60,7 @@ $req=$bdd->query("SELECT * FROM Projets");
 <script>
 $(document).ready(function(){
      $('#editable_table').Tabledit({
-      url:'action.php',
+      url:'action',
       columns:{
       identifier:[0, "Code_pj"],
       editable:[[1, 'ProjetName'], [2, 'type_p'], [3, 'Etages'], [4, 'Surface'], [5, 'Prix']]

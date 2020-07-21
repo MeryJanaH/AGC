@@ -4,7 +4,7 @@ require 'functions.php';
 if(isset($_SESSION['login'])){
     if($_SESSION['login']=="true")
     {
-      header('Location: index.php');
+      header('Location: /');
     }
 }
 
@@ -14,7 +14,7 @@ if(isset($_POST['decnx']))
  setcookie("Adresse_email", "", time() - 3600);
  setcookie("mot_de_passe", "", time() - 3600);
  unset($_COOKIE);
- header('Location: login.php');
+ header('Location: login');
 }
 else {
   if(isset($_COOKIE['Adresse_email']) and isset($_COOKIE['mot_de_passe']))
@@ -24,11 +24,11 @@ else {
     $res=login($email_p,md5($mot_p));
     if ($res=="Utilisateur Non Enregistré" or $res =="ERROR_Syntaxe") {
         $_SESSION['login']="false";
-        header('Location: login.php');
+        header('Location: login');
     }
     else{
       $_SESSION['login']="true";
-      header('Location: index.php');
+      header('Location: /');
     }
   }
 }
@@ -46,7 +46,7 @@ else {
 
     <!-- Prevent the demo from appearing in search engines -->
     <meta name="robots" content="noindex">
-
+    <link href="assets/images/logo.png" rel="shortcut icon" type="image/x-icon" />
 
     <!-- App CSS -->
     <link type="text/css" href="assets/css/app.css" rel="stylesheet">
@@ -66,7 +66,7 @@ else {
 
     <div class="layout-login-centered-boxed__form">
         <div class="d-flex flex-column justify-content-center align-items-center mt-2 mb-2 navbar-light">
-            <a href="index.php" class="navbar-brand text-center mb-2 mr-0" style="min-width: 0">
+            <a href="/" class="navbar-brand text-center mb-2 mr-0" style="min-width: 0">
                 <img class="navbar-brand-icon" src="assets/images/logo.png" width="43" alt="Flat">
             </a>
         </div>
@@ -92,7 +92,7 @@ else {
                 }
                 ?>
 
-            <form action="traite.php" method="POST">
+            <form action="traite" method="POST">
                 <div class="form-group">
                     <label class="text-label" for="email_2">Adresse email:</label>
                     <div class="input-group input-group-merge">
