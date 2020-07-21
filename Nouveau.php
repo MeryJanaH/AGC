@@ -4,7 +4,7 @@ require 'functions.php';
 
 if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION['login']) or $_SESSION['user']!="admin")
 {
-      header('Location: login');
+      header('Location: login.php');
 }
 
 ?>
@@ -30,7 +30,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
 
     <div class="layout-login-centered-boxed__form">
         <div class="d-flex flex-column justify-content-center align-items-center mt-2 mb-4 navbar-light">
-            <a href="Nouveau" class="navbar-brand text-center mb-2 mr-0 flex-column" style="min-width: 0">
+            <a href="Nouveau.php" class="navbar-brand text-center mb-2 mr-0 flex-column" style="min-width: 0">
                 <img class="navbar-brand-icon mb-3" src="assets/images/logo.png" width="43" alt="Flat">
                 <span>Créer un compte</span>
             </a>
@@ -69,14 +69,14 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
             else
             {
               $default_password = default_password();
-              $lien = "https://guesspromo.ga/login";
+              $lien = "http://localhost/AGC/login.php";
               $txt = "Voici votre mot de passe pour se connecter à AGC : ".'<br/>'."MDP : ".$default_password.'<br/>'."Adresse email : ".$_POST['email_2'].'<br/>'." Vous pouvez utiliser le lien suivent : ".$lien;
 
                 $req = $bdd->prepare('INSERT INTO Commerciaux (Email, Password) VALUES(?, ?)');
                 $req->execute(array($_POST['email_2'], md5($default_password)));
 
               first_mail($_SESSION['email'], $_POST['email_2'], 'AGC',$txt);
-              header('Location: Nouveau');
+              header('Location: Nouveau.php');
             }
         }
 
@@ -112,7 +112,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                   <button class="btn btn-primary mb-2" name="submit" type="submit">Créer un compte</button><br>
                 </div>
             </form>
-            <a href="/"><button type="button" class="btn btn-block btn-primary">Retourner à l'accueil</button></a>
+            <a href="index.php"><button type="button" class="btn btn-block btn-primary">Retourner à l'accueil</button></a>
         </div>
     </div>
 

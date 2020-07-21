@@ -3,7 +3,7 @@ require 'functions.php';
 $_SESSION['current_page']="projets";
 if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION['login']))
 {
-      header('Location: login');
+      header('Location: login.php');
 }
 
 ?>
@@ -16,7 +16,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Projets</title>
 
-<link href="assets/images/logo.png" rel="shortcut icon" type="image/x-icon" />
+
     <!-- Simplebar -->
     <link type="text/css" href="assets/vendor/simplebar.min.css" rel="stylesheet">
 
@@ -46,7 +46,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                               }
                           }
                           else {
-                            header('Location: Projets');
+                            header('Location: Projets.php');
                           }
 
        ?>
@@ -100,7 +100,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                           <br/>
                                           <br/>
                                            <input type="button" id="btnShowMsg1"  style="width: 200px; color: green;" value="Ajouter un nouveau projet !" onClick="add_pj()"/>
-                                           <input type="button" id="btnShowMsg2"  style="width: 200px; color: red;" value="Modifier un projets !" onClick="window.location.href='éditer';"/>
+                                           <input type="button" id="btnShowMsg2"  style="width: 200px; color: red;" value="Modifier un projets !" onClick="window.location.href='éditer.php';"/>
                                            <br/>
                                            <br/>
                                         <div class="form-group">

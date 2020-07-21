@@ -3,7 +3,7 @@ session_start();
 $_SESSION['current_page']="index";
 if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION['login']))
 {
-      header('Location: login');
+      header('Location: login.php');
 }
 ?>
 
@@ -18,7 +18,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
 
     <!-- Prevent the demo from appearing in search engines -->
     <meta name="robots" content="noindex">
-    <link href="assets/images/logo.png" rel="shortcut icon" type="image/x-icon" />
+
     <!-- Simplebar -->
     <link type="text/css" href="assets/vendor/simplebar.min.css" rel="stylesheet">
 
@@ -646,7 +646,7 @@ include 'footer.php'; ?>
                      allDay:false
                  });
 
-                 $.post("fct_calend",
+                 $.post("fct_calend.php",
                    {
                      op: "add",
                      comm: commercial,
@@ -668,7 +668,7 @@ include 'footer.php'; ?>
             $('#event-edit #endTime').val(info.event.endStr);
 
             var values;
-            $.post("fct_calend",
+            $.post("fct_calend.php",
               {
                 op: "get",
                 id: info.event.id
@@ -730,7 +730,7 @@ include 'footer.php'; ?>
                  //event.className= category;
                  //console.log($("#client").children("option:selected").text());
                  //console.log(category);
-                 $.post("fct_calend",
+                 $.post("fct_calend.php",
                    {
                      op: "modif",
                      id: id_calendar,
@@ -749,7 +749,7 @@ include 'footer.php'; ?>
              });
 
              $('#DELETE').unbind('click').on('click', function(e){
-               $.post("fct_calend",
+               $.post("fct_calend.php",
                  {
                    op: "sup",
                    id: info.event.id
@@ -769,7 +769,7 @@ include 'footer.php'; ?>
             if (!confirm("is this okay?")) {
               info.revert();
             }else {
-              $.post("fct_calend",
+              $.post("fct_calend.php",
                 {
                   op: "time",
                   id: info.event.id,
@@ -786,7 +786,7 @@ include 'footer.php'; ?>
             if (!confirm("Are you sure about this change?")) {
               info.revert();
             }else {
-              $.post("fct_calend",
+              $.post("fct_calend.php",
                 {
                   op: "time",
                   id: info.event.id,

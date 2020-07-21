@@ -4,7 +4,7 @@
     <div class="mdk-drawer__content">
         <div class="sidebar sidebar-dark sidebar-left simplebar" data-simplebar>
             <div class="d-flex align-items-center sidebar-p-a border-bottom sidebar-account flex-shrink-0">
-                <a href="/" class="flex d-flex align-items-center text-underline-0 text-body">
+                <a href="index.php" class="flex d-flex align-items-center text-underline-0 text-body">
                     <span class="mr-3">
                         <img src="assets/images/logo.png" width="43" height="43" alt="avatar">
                     </span>
@@ -19,10 +19,10 @@
                             <div><strong><?php echo $_SESSION['name'] ?></strong></div>
                         </div>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item active" href="/">Calendrier</a>
-                        <a class="dropdown-item" href="Modifications">Modifier le compte</a>
+                        <a class="dropdown-item active" href="index.php">Calendrier</a>
+                        <a class="dropdown-item" href="Modifications.php">Modifier le compte</a>
                         <div class="dropdown-divider"></div>
-                      <form action="login" method="POST">
+                      <form action="login.php" method="POST">
                         <button name="decnx" class="dropdown-item">Déconnexion</button>
                       </form>
                     </div>
@@ -41,7 +41,7 @@
                       <?php }else{ ?>
                         <li class="sidebar-menu-item ">
                       <?php } ?>
-                            <a class="sidebar-menu-button" href="/">
+                            <a class="sidebar-menu-button" href="index.php">
                               <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">date_range</i>
                                 <span class="sidebar-menu-text">Calendrier</span>
                             </a>
@@ -59,7 +59,7 @@
                             </a>
                             <ul class="sidebar-submenu collapse" id="pages_menu">
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="Modifications">
+                                    <a class="sidebar-menu-button" href="Modifications.php">
                                         <span class="sidebar-menu-text">Modifier le compte</span>
                                     </a>
                                 </li>
@@ -68,14 +68,14 @@
                                 {
                                 ?>
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="Nouveau">
+                                    <a class="sidebar-menu-button" href="Nouveau.php">
                                         <span class="sidebar-menu-text">Créer un compte</span>
                                     </a>
                                 </li>
                                 <?php
                               }}else {
                                 ?>
-                                <a class="sidebar-menu-button" href="Modifications">
+                                <a class="sidebar-menu-button" href="Modifications.php">
                                     <span class="sidebar-menu-text">Modifier le compte</span>
                                 </a>
                                 <?php
@@ -83,7 +83,7 @@
                                 {
                                 ?>
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="Nouveau">
+                                    <a class="sidebar-menu-button" href="Nouveau.php">
                                         <span class="sidebar-menu-text">Créer un compte</span>
                                     </a>
                                 </li>
@@ -107,14 +107,14 @@
                                 <li class="sidebar-menu-item">
                                   <?php if($_SESSION['user']=="admin")
                                   { ?>
-                                    <a class="sidebar-menu-button" href="Commerciaux">
+                                    <a class="sidebar-menu-button" href="Commerciaux.php">
                                         <span class="sidebar-menu-text">Table des commerciaux</span>
                                     </a>
                                   <?php } ?>
-                                    <a class="sidebar-menu-button" href="Projets">
+                                    <a class="sidebar-menu-button" href="Projets.php">
                                         <span class="sidebar-menu-text">Table des projets</span>
                                     </a>
-                                    <a class="sidebar-menu-button" href="Clients">
+                                    <a class="sidebar-menu-button" href="Clients.php">
                                         <span class="sidebar-menu-text">Table des clients</span>
                                     </a>
                                 </li>
@@ -123,14 +123,14 @@
                             ?>
                             <?php if($_SESSION['user']=="admin")
                              { ?>
-                              <a class="sidebar-menu-button" href="Commerciaux">
+                              <a class="sidebar-menu-button" href="Commerciaux.php">
                                   <span class="sidebar-menu-text">Table des commerciaux</span>
                               </a>
                             <?php } ?>
-                              <a class="sidebar-menu-button" href="Projets">
+                              <a class="sidebar-menu-button" href="Projets.php">
                                   <span class="sidebar-menu-text">Table des projets</span>
                               </a>
-                              <a class="sidebar-menu-button" href="Clients">
+                              <a class="sidebar-menu-button" href="Clients.php">
                                   <span class="sidebar-menu-text">Table des clients</span>
                               </a>
                             <?php
@@ -142,7 +142,7 @@
                         <?php }else{ ?>
                           <li class="sidebar-menu-item ">
                         <?php } ?>
-                            <a class="sidebar-menu-button" href="Statistiques">
+                            <a class="sidebar-menu-button" href="Statistiques.php">
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">donut_small</i>
                                 <span class="sidebar-menu-text">Statistiques</span>
                             </a>
@@ -150,9 +150,9 @@
                 </div>
 
             <div class="mt-auto sidebar-p-a sidebar-b-t d-flex flex-column flex-shrink-0">
-                <a class="sidebar-link" href="login">
+                <a class="sidebar-link" href="login.php">
                   <p>
-                    <form action="login" method="POST">
+                    <form action="login.php" method="POST">
                       <button name="decnx" style="width: 100px;">Déconnexion</button>
                       <i class="sidebar-menu-icon ml-2 material-icons icon-16pt">exit_to_app</i>
                     </form>

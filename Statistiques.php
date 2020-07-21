@@ -5,7 +5,7 @@ $_SESSION['current_page']="Graphe";
 
 if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION['login']))
 {
-      header('Location: login');
+      header('Location: login.php');
 }
 
 ?>
@@ -16,8 +16,8 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="assets/images/logo.png" rel="shortcut icon" type="image/x-icon" />
-    <title>Statistiques</title>
+
+    <title>Combo Bar-Line Chart</title>
 
     <style>
     canvas {
@@ -217,7 +217,7 @@ $d2 = $req2->fetch();
                     			datasets: [
                           <?php
                           $n=0;
-                          $colors = array("#00008B", "#D2691E", "#b2e59b", "##FF7F50", "#b2e509", "#a2e5d9","#b2e599","#483D8B","#FF1493","#8B0000","#008000","#66CDAA");
+                          $colors = array("#b2e599", "#b205a9", "#b2e59b", "#b0e5c9", "#b2e509", "#a2e5d9","#b2e599");
                           $req3 = $bdd->prepare("SELECT ProjetName FROM `Projets`");
                           $dn3 = $req3 -> execute();
                           $dn = $req -> execute();
@@ -245,14 +245,6 @@ $d2 = $req2->fetch();
                     				data: chartData,
                     				options: {
                     					responsive: true,
-                              scales: {
-                                    yAxes: [{
-                                        ticks: {
-                                            min: 0,
-                                            stepSize: 1
-                                        }
-                                    }]
-                                },
                     					title: {
                     						display: true,
                     						text: 'La cadence de visites de clients au chantier pour chaque projet'

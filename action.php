@@ -2,7 +2,7 @@
 session_start();
 if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION['login']))
 {
-      header('Location: login');
+      header('Location: login.php');
 }
 //action.php
 require 'LBD.php';

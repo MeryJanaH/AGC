@@ -206,10 +206,10 @@ function update_table_emp()
                     }
                     if(txt == "You pressed OK!")
                     {
-                      $.post('fct', {id: <?php echo $dn['ID_cm'];?>});
+                      $.post('fct.php', {id: <?php echo $dn['ID_cm'];?>});
                       $.ajax({
                           type: "POST",
-                          url: "Commerciaux",
+                          url: "Commerciaux.php",
                           success: function() {
                               location.reload();
                           }
