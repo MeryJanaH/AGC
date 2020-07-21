@@ -266,7 +266,11 @@ $d2 = $req2->fetch();
                     			datasets: [
                           <?php
                           $year=date("Y");
-                          $sql="SELECT ProjetName,IFNULL(Janv,0) AS Janv,IFNULL(Fév,0) AS Fév,IFNULL(Mars,0) AS Mars,IFNULL(Avril,0) AS Avril,IFNULL(Mai,0) AS Mai,IFNULL(Juin,0) AS Juin,IFNULL(Juil,0) AS Juil,IFNULL(Août,0) AS Août,
+                          $n=0;
+                          $colors = array("#00008B", "#D2691E", "#b2e59b", "##FF7F50", "#b2e509", "#a2e5d9","#b2e599","#483D8B","#FF1493","#8B0000","#008000","#66CDAA");
+                          $req3 = $bdd->prepare("SELECT ProjetName FROM `Projets`");
+                          $dn3 = $req3 -> execute();
+                          $req=$bdd->prepare("SELECT ProjetName,IFNULL(Janv,0) AS Janv,IFNULL(Fév,0) AS Fév,IFNULL(Mars,0) AS Mars,IFNULL(Avril,0) AS Avril,IFNULL(Mai,0) AS Mai,IFNULL(Juin,0) AS Juin,IFNULL(Juil,0) AS Juil,IFNULL(Août,0) AS Août,
                                                   IFNULL(Sep,0) AS Sep,IFNULL(Oct,0) AS Oct,
                                                   IFNULL(Nov,0) AS Nov,IFNULL(Déc,0) AS Déc
                           FROM (SELECT Code_pj, ProjetName FROM Projets) t1
@@ -305,23 +309,17 @@ $d2 = $req2->fetch();
                                                 ON t1.Code_pj = t12.Code_pj
                                                 LEFT JOIN
                                 (SELECT Code_pj, Visite,COUNT(Visite)as Déc , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='12' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31' AND Visite = 'Chantier' GROUP BY Code_pj) t13
-                                                ON t1.Code_pj = t13.Code_pj";
-                          $n=0;
-                          $colors = array("#00008B", "#D2691E", "#b2e59b", "##FF7F50", "#b2e509", "#a2e5d9","#b2e599","#483D8B","#FF1493","#8B0000","#008000","#66CDAA");
-                          $req3 = $bdd->prepare("SELECT ProjetName FROM `Projets`");
-                          $dn3 = $req3 -> execute();
-                          $req=$bdd->prepare($sql);
+                                                ON t1.Code_pj = t13.Code_pj");
                           $dn5 = $req->execute();
                           for ($x = 1; $x <= $d2['count_pj']; $x++) {
-                            $dn4 = $req3->fetch();
                             $dn = $req->fetch();
                             if($x != $d2['count_pj']){ ?>
-                            {type: 'bar', label:'<?php echo $dn4['ProjetName']; ?>', data:[<?php echo $dn[1]. "," .$dn[2]. "," .$dn[3]. "," .$dn[4]. "," .$dn[5].
+                            {type: 'bar', label:'<?php echo $dn[0]; ?>', data:[<?php echo $dn[1]. "," .$dn[2]. "," .$dn[3]. "," .$dn[4]. "," .$dn[5].
                                                                                       "," .$dn[6]. "," .$dn[7]. "," .$dn[8]. "," .$dn[9]. "," .$dn[10]. "," .$dn[11].
                                                                                      "," .$dn[12] ; ?>], backgroundColor:'<?php echo $colors[$n++]; ?>',borderColor: 'white',
                     				borderWidth: 1}, <?php
                             }else { ?>
-                              {type: 'bar', label:'<?php echo $dn4['ProjetName']; ?>', data:[<?php echo $dn[1]. "," .$dn[2]. "," .$dn[3]. "," .$dn[4]. "," .$dn[5].
+                              {type: 'bar', label:'<?php echo $dn[0]; ?>', data:[<?php echo $dn[1]. "," .$dn[2]. "," .$dn[3]. "," .$dn[4]. "," .$dn[5].
                                                                                         "," .$dn[6]. "," .$dn[7]. "," .$dn[8]. "," .$dn[9]. "," .$dn[10]. "," .$dn[11].
                                                                                        "," .$dn[12] ; ?>], backgroundColor:'<?php echo $colors[$n++]; ?>',borderColor: 'white',
                       				borderWidth: 1} <?php
