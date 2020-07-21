@@ -1,11 +1,7 @@
 <?php
 require 'functions.php';
-?>
-
-<?php
 
     $res=login($_POST['email_2'],md5($_POST['password_2']));
-
 
       if ($res=="Utilisateur Non Enregistré" or $res =="ERROR_Syntaxe") {
           $_SESSION['login']="false";
