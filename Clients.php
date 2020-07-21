@@ -76,7 +76,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                             <div class="card card-form">
                                 <div class="row no-gutters">
 
-                                    <div class="col-lg-12 card-form__body">
+                                    <div class="col-lg-16 card-form__body">
                                         <div  id="contacts">
                                             <div class="search-form search-form--light m-3">
                                                 <input type="text" class="form-control search" placeholder="Search">
@@ -103,7 +103,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                                   <td class="notes"><input id='note'></td>
                                                   <td class="source"><select id='source' class='form-control item_unit'><option value="none"> </option><?php echo fill_unit_select_box_source();?></select></td>
                                                   <td >
-                                                    <button type="button" id="edit-btn">Edit</button>
+                                                    <button type="button" id="edit-btn">Êdit</button>
                                                   </td>
                                                   </tr>
                                             </tbody>
@@ -180,6 +180,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
         projetField = $('#projet').hide(),
         srcField = $('#source').hide(),
         noteField = $('#note').hide(),
+        removeBtns = $('.remove-item-btn'),
         editBtn = $('#edit-btn').hide(),
         editBtns = $('.edit-item-btn');
 /*
@@ -227,7 +228,14 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
     function refreshCallbacks() {
       // Needed to add new buttons to jQuery-extended object
       editBtns = $(editBtns.selector);
+      removeBtns = $(removeBtns.selector);
 
+
+      removeBtns.click(function() {
+        var itemId = $(this).closest('tr').find('.id').text();
+        contactList.remove('id', itemId);
+      });
+      
       editBtns.click(function() {
         editBtn.show();
         noteField.show();
