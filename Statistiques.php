@@ -220,10 +220,10 @@ $d2 = $req2->fetch();
                           $colors = array("#00008B", "#D2691E", "#b2e59b", "##FF7F50", "#b2e509", "#a2e5d9","#b2e599","#483D8B","#FF1493","#8B0000","#008000","#66CDAA");
                           $req3 = $bdd->prepare("SELECT ProjetName FROM `Projets`");
                           $dn3 = $req3 -> execute();
-                          $dn = $req -> execute();
+                          $dn5 = $req -> execute();
                           for ($x = 1; $x <= $d2['count_pj']; $x++) {
                             $dn4 = $req3->fetch();
-                            $dn5=$req->fetch();
+                            $dn=$req->fetch();
                             if($x != $d2['count_pj']){ ?>
                             {type: 'bar', label:'<?php echo $dn4['ProjetName']; ?>', data:[<?php echo $dn[1]. "," .$dn[2]. "," .$dn[3]. "," .$dn[4]. "," .$dn[5].
                                                                                       "," .$dn[6]. "," .$dn[7]. "," .$dn[8]. "," .$dn[9]. "," .$dn[10]. "," .$dn[11].
