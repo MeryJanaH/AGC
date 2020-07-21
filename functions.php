@@ -379,7 +379,7 @@ function annee($year)
         (SELECT Code_pj, Visite,COUNT(Visite)as Déc , date_tdebut FROM Calendrier WHERE YEAR(date_tdebut) = $year AND MONTH(date_tdebut)='12' AND DAY(date_tdebut) >= '01' AND DAY(date_tdebut) <= '31' AND Visite = 'Chantier' GROUP BY Code_pj) t13
                         ON t1.Code_pj = t13.Code_pj";
 
-  $req=$bdd->query($sql);
+  $req=$bdd->prepare($sql);
   return $req;
 }
 

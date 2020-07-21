@@ -220,6 +220,7 @@ $d2 = $req2->fetch();
                           $colors = array("#b2e599", "#b205a9", "#b2e59b", "#b0e5c9", "#b2e509", "#a2e5d9","#b2e599");
                           $req3 = $bdd->prepare("SELECT ProjetName FROM `Projets`");
                           $dn3 = $req3 -> execute();
+                          $dn = $req -> execute();
                           for ($x = 1; $x <= $d2['count_pj']; $x++) {
                             $dn4 = $req3->fetch();
                             $dn=$req->fetch();
