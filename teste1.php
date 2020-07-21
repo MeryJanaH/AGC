@@ -125,10 +125,9 @@ $i++;
 }
 //projet , mois , val
 print_r($mois[1][3][0]. "," .$mois[1][4][0]);
-*/
 
 $req3 = $bdd->prepare("SELECT COUNT(Code_pj) AS count_pj,ProjetName FROM `Projets`");
 $req3 -> execute();
 $d2 = $req3->fetch();
 
-print_r($d2['count_pj']);
+print_r($d2['count_pj']);*/
