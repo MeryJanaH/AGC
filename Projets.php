@@ -48,7 +48,23 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                           else {
                             header('Location: Projets.php');
                           }
-                 ?>
+
+       ?>
+                          <script>
+                          function add_pj()
+                            {
+                              var html = "<tr>";
+                                  html += "<td><input required='' id ='n' name='proj_name[]'></td>";
+                                  html += "<td><input required='' id ='t' name='proj_type[]'></td>";
+                                  html += "<td><input required='' id ='e' name='proj_etage[]'></td>";
+                                  html += "<td><input required='' id ='s' name='proj_surface[]'></td>";
+                                  html += "<td><input required='' id ='p' type='number' name='proj_prix[]'></td>";
+                                  html += "</tr>";
+
+                             var row = document.getElementById("staff02").insertRow();
+                                  row.innerHTML = html;
+                            }
+                          </script>
 
                     <!-- Header Layout Content -->
                     <form action="#add_projet" method="POST">
@@ -113,6 +129,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
         <script src="assets/vendor/jquery.min.js"></script>
 
         <!-- Bootstrap -->
+        <script src="assets/vendor/popper.min.js"></script>
         <script src="assets/vendor/bootstrap.min.js"></script>
 
         <!-- Simplebar -->

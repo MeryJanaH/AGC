@@ -13,8 +13,7 @@
                     </span>
                 </a>
                 <div class="dropdown ml-auto">
-                  <?php if($_SESSION['current_page']!="clients" && $_SESSION['current_page']!="commerciaux" && $_SESSION['current_page']!="projets"){ ?>
-                    <a href="#" data-toggle="dropdown" data-caret="false" class="text-muted"><i class="material-icons">keyboard_arrow_down</i></a> <?php } ?>
+                    <a href="#" data-toggle="dropdown" data-caret="false" class="text-muted"><i class="material-icons">keyboard_arrow_down</i></a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="dropdown-item-text dropdown-item-text--lh">
                             <div><strong><?php echo $_SESSION['name'] ?></strong></div>

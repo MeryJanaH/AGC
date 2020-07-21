@@ -52,6 +52,23 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                           }
                  ?>
 
+              <script>
+                 function add_ct()
+                   {
+                     var html = "<tr>";
+                         html += "<td><input required='' id ='n' name='name_client[]'></td>";
+                         html += "<td><input required='' id ='nm' type='tel' name='num[]'></td>";
+                         html += "<td><select required='' id = 'pj' class='form-control item_unit' name='c_p[]'><?php echo fill_unit_select_box_projet();?></select></td>";
+                         html += "<td><input required='' id ='nt' name='Note[]'></td>";
+                         html += "<td><select required='' id = 's' class='form-control item_unit' name='source[]'><?php echo fill_unit_select_box_source();?></select></td>";
+                         html += "</tr>";
+
+                    var row = document.getElementById("staff03").insertRow();
+                         row.innerHTML = html;
+                   }
+
+               </script>
+
                     <!-- Header Layout Content-->
                     <form action="#Ajouter" method="POST">
                     <div class="mdk-header-layout__content mdk-header-layout__content--fullbleed mdk-header-layout__content--scrollable page">
@@ -123,6 +140,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
     <script src="assets/vendor/jquery.min.js"></script>
 
     <!-- Bootstrap -->
+    <script src="assets/vendor/popper.min.js"></script>
     <script src="assets/vendor/bootstrap.min.js"></script>
 
     <!-- Simplebar -->

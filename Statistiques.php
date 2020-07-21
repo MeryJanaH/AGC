@@ -1,6 +1,6 @@
 <?php
-session_start();
-
+require 'LBD.php';
+require 'functions.php';
 $_SESSION['current_page']="Graphe";
 
 if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION['login']))
@@ -16,35 +16,37 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Combo Bar-Line Chart</title>
+
+    <style>
+    canvas {
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+    }
+    </style>
+
     <title>Statistiques</title>
-
-
-    <!-- Prevent the demo from appearing in search engines -->
-    <meta name="robots" content="noindex">
 
     <!-- Simplebar -->
     <link type="text/css" href="assets/vendor/simplebar.min.css" rel="stylesheet">
 
     <!-- App CSS -->
     <link type="text/css" href="assets/css/app.css" rel="stylesheet">
-    <link type="text/css" href="assets/css/app.rtl.css" rel="stylesheet">
 
     <!-- Material Design Icons -->
     <link type="text/css" href="assets/css/vendor-material-icons.css" rel="stylesheet">
-    <link type="text/css" href="assets/css/vendor-material-icons.rtl.css" rel="stylesheet">
+    <!-- Classement -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
 
-    <!-- Font Awesome FREE Icons -->
-    <link type="text/css" href="assets/css/vendor-fontawesome-free.css" rel="stylesheet">
-    <link type="text/css" href="assets/css/vendor-fontawesome-free.rtl.css" rel="stylesheet">
-
-    <!-- ion Range Slider -->
-    <link type="text/css" href="assets/css/vendor-ion-rangeslider.css" rel="stylesheet">
-    <link type="text/css" href="assets/css/vendor-ion-rangeslider.rtl.css" rel="stylesheet">
+    <!-- Year picker -->
+    <link rel="stylesheet" href="assets/css/yearpicker.css" />
 
 
 </head>
 
-<body class="layout-default">
+<body>
 
     <div class="preloader"></div>
 
@@ -54,93 +56,216 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
             <!-- Header Layout -->
             <div class="mdk-header-layout js-mdk-header-layout" data-has-scrolling-region>
 
-              <?php include('haute_bar.php'); ?>
-<?php
-require 'LBD.php';
+              <?php include('haute_bar.php');
+              function tables($id,$year){ ?>
+               <div class="card card-form">
+                   <div class="row no-gutters">
+                       <div class="col-lg-16 card-form__body border-left">
+                           <div id="contacts">
+                               <table class="table mb-0 thead-border-top-0">
+                                     <thead>
+                                         <tr>
+                                           <th class="sort" data-sort="Projets">Projets</th>
+                                           <th class="sort" data-sort="Facebook">Facebook/Instagram</th>
+                                           <th class="sort" data-sort="Avito">Avito/Mubawab</th>
+                                           <th class="sort" data-sort="Ancien">Ancien client</th>
+                                           <th class="sort" data-sort="Prospection">Prospection</th>
+                                           <th class="sort" data-sort="Connaissance">Connaissance</th>
+                                           <th class="sort" data-sort="Annonce">Annonce</th>
+                                           <th class="sort" data-sort="Passage">De passage</th>
+                                         </tr>
+                                       </thead>
+                                       <tbody class="list">
+                                         <?php
+                                         clients_par_source($id,$year);
+                                         ?>
+                                       </tbody>
+                                 </table>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="container-fluid page__container">
+                       <div class="card card-form">
+                           <div class="row no-gutters">
+                               <div class="col-lg-16 card-form__body border-left">
+                                   <div id="contacts2">
+                                     <table class="table mb-0 thead-border-top-0">
+                                           <thead>
+                                               <tr>
+                                                 <th class="sort" data-sort="Pj">Projets</th>
+                                                 <th class="sort" data-sort="bureau">Clients au bureau</th>
+                                                 <th class="sort" data-sort="c_projet">Clients par projet</th>
+                                                 <th class="sort" data-sort="vente">Ventes</th>
+                                               </tr>
+                                             </thead>
+                                             <tbody class="list">
 
-$sql="SELECT ProjetName,IFNULL(Janv,0) AS Janv,IFNULL(Fév,0) AS Fév,IFNULL(Mars,0) AS Mars,IFNULL(Avril,0) AS Avril,IFNULL(Mai,0) AS Mai,IFNULL(Juin,0) AS Juin,IFNULL(Juil,0) AS Juil,IFNULL(Août,0) AS Août,
-                        IFNULL(Sep,0) AS Sep,IFNULL(Oct,0) AS Oct,
-                        IFNULL(Nov,0) AS Nov,IFNULL(Déc,0) AS Déc
-FROM (SELECT Code_pj, ProjetName FROM Projets) t1
-                      LEFT JOIN
-     (SELECT Code_pj, Visite,COUNT(Visite)as Janv , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-01-01 00:00:00' AND date_tdebut < '2020-02-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t2
-                      ON t1.Code_pj = t2.Code_pj
-                      LEFT JOIN
-      (SELECT Code_pj, Visite,COUNT(Visite)as Fév , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-02-01 00:00:00' AND date_tdebut < '2020-03-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t3
-                      ON t1.Code_pj = t3.Code_pj
-                      LEFT JOIN
-      (SELECT Code_pj, Visite,COUNT(Visite)as Mars , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-03-01 00:00:00' AND date_tdebut < '2020-04-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t4
-                      ON t1.Code_pj = t4.Code_pj
-                      LEFT JOIN
-      (SELECT Code_pj, Visite,COUNT(Visite)as Avril , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-04-01 00:00:00' AND date_tdebut < '2020-05-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t5
-                      ON t1.Code_pj = t5.Code_pj
-                      LEFT JOIN
-      (SELECT Code_pj, Visite,COUNT(Visite)as Mai , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-05-01 00:00:00' AND date_tdebut < '2020-06-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t6
-                      ON t1.Code_pj = t6.Code_pj
-                      LEFT JOIN
-      (SELECT Code_pj, Visite,COUNT(Visite)as Juin , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-06-01 00:00:00' AND date_tdebut < '2020-07-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t7
-                      ON t1.Code_pj = t7.Code_pj
-                      LEFT JOIN
-      (SELECT Code_pj, Visite,COUNT(Visite)as Juil , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-07-01 00:00:00' AND date_tdebut < '2020-08-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t8
-                      ON t1.Code_pj = t8.Code_pj
-                      LEFT JOIN
-      (SELECT Code_pj, Visite,COUNT(Visite)as Août , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-08-01 00:00:00' AND date_tdebut < '2020-09-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t9
-                      ON t1.Code_pj = t9.Code_pj
-                      LEFT JOIN
-      (SELECT Code_pj, Visite,COUNT(Visite)as Sep , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-09-01 00:00:00' AND date_tdebut < '2020-10-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t10
-                      ON t1.Code_pj = t10.Code_pj
-                      LEFT JOIN
-      (SELECT Code_pj, Visite,COUNT(Visite)as Oct , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-10-01 00:00:00' AND date_tdebut < '2020-11-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t11
-                      ON t1.Code_pj = t11.Code_pj
-                      LEFT JOIN
-      (SELECT Code_pj, Visite,COUNT(Visite)as Nov , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-10-01 00:00:00' AND date_tdebut < '2020-11-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t12
-                      ON t1.Code_pj = t12.Code_pj
-                      LEFT JOIN
-      (SELECT Code_pj, Visite,COUNT(Visite)as Déc , date_tdebut FROM Calendrier WHERE date_tdebut >= '2020-11-01 00:00:00' AND date_tdebut < '2020-12-01 00:00:00' AND Visite = 'Chantier' GROUP BY Code_pj) t13
-                      ON t1.Code_pj = t13.Code_pj";
+                                               <?php
+                                               Total_client_projets($id,$year);
+                                               ?>
+                                             </tbody>
+                                       </table>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+               <?php
+             }
 
+         function years($year){
+           ?>
+           <div class="tab-pane  active show fade" id="Janvier">
+             <?php $id="Janvier"; tables($id, $year); ?>
+           </div>
+           <div class="tab-pane fade" id="Fevrier">
+             <?php $id="Fevrier"; tables($id,$year); ?>
+           </div>
+           <div class="tab-pane fade" id="Mars">
+               <?php $id="Mars"; tables($id,$year); ?>
+           </div>
+           <div class="tab-pane fade" id="Avril">
+               <?php $id="Avril"; tables($id,$year); ?>
+           </div>
+           <div class="tab-pane fade" id="Mai">
+               <?php $id="Mai"; tables($id,$year); ?>
+           </div>
+           <div class="tab-pane fade" id="Juin">
+               <?php $id="Juin"; tables($id,$year); ?>
+           </div>
+           <div class="tab-pane fade" id="Juillet">
+               <?php $id="Juillet"; tables($id,$year); ?>
+           </div>
+           <div class="tab-pane fade" id="Aout">
+               <?php $id="Aout"; tables($id,$year); ?>
+           </div>
+           <div class="tab-pane fade" id="Septembre">
+               <?php $id="Septembre"; tables($id,$year); ?>
+           </div>
+           <div class="tab-pane fade" id="Octobre">
+               <?php $id="Octobre"; tables($id,$year); ?>
+           </div>
+           <div class="tab-pane fade" id="Novembre">
+               <?php $id="Novembre"; tables($id,$year); ?>
+           </div>
+           <div class="tab-pane fade" id="Decembre">
+               <?php $id="Decembre"; tables($id,$year); ?>
+           </div>
+           <?php
+         }
 
-$req=$bdd->query($sql);
+ if(isset($_GET['year'])){
+      $req=annee($_GET['year']);
+ } else {
+      $req=annee(date("Y"));
+}
+
+$req2 = $bdd->prepare("SELECT COUNT(`Code_pj`) AS count_pj FROM `projets`");
+$d1 = $req2 -> execute();
+$d2 = $req2->fetch();
 
  ?>
 
                 <!-- Header Layout Content -->
                 <div class="mdk-header-layout__content mdk-header-layout__content--fullbleed mdk-header-layout__content--scrollable page">
+                    <div>
 
-                    <div class="container-fluid page__container">
-                      <div class="card">
-                          <div class="card-header card-header-large bg-white d-flex align-items-center">
-                              <h4 class="card-header__title flex">Visualisation des Statistiques de différents projets :</h4>
-                              <div class="d-flex align-items-center">
-                                  <div class="custom-control custom-checkbox-toggle ml-2">
+                      <div class="container">
+                         <div class="main">
+                           <input type="text" class="yearpicker form-control" value="" />
+                         </div>
+                       </div>
 
-                                  <?php  $colors = array("#b2e599", "#b205a9", "#b2e59b", "#b0e5c9", "#b2e509", "#a2e5d9"); ?>
+                       <div class="row">
+                           <div class="col-lg">
+                               <div class="card">
+                                   <div class="card-header card-header-tabs-basic nav" role="tablist">
+                                       <a href="#Janvier" class="active" data-toggle="tab" role="tab" aria-controls="activity_all" aria-selected="true">Janvier</a>
+                                       <a href="#Fevrier" data-toggle="tab" role="tab"  aria-selected="false">Février</a>
+                                       <a href="#Mars" data-toggle="tab" role="tab" aria-selected="false">Mars</a>
+                                       <a href="#Juin" data-toggle="tab" role="tab" aria-selected="false">Juin</a>
+                                       <a href="#Juillet" data-toggle="tab" role="tab"  aria-selected="false">Juillet</a>
+                                       <a href="#Aout" data-toggle="tab" role="tab" aria-selected="false">Août</a>
+                                       <a href="#Septembre" data-toggle="tab" role="tab" aria-selected="false">Septembre</a>
+                                       <a href="#Octobre" data-toggle="tab" role="tab" aria-selected="false">Octobre</a>
+                                       <a href="#Novembre" data-toggle="tab" role="tab"  aria-selected="false">Novembre</a>
+                                       <a href="#Decembre" data-toggle="tab" role="tab" aria-selected="false">Décembre</a>
+                                   </div>
+                                   <div class="card-body tab-content">
+                                     <?php if(isset($_GET['year'])){
+                                                 years($_GET['year']);
+                                           } else {
+                                                 years(date("Y"));
+                                            } ?>
+                                     </div>
+                                   </div>
+                               </div>
+                           </div>
 
-                                      <input checked="" aria-checked="true" type="checkbox" id="chart-switch-toggle" class="custom-control-input" role="switch" data-toggle="chart" data-target="#ordersChartSwitch" data-add='{"data":{"datasets":[
-                                      <?php $dn=$req->fetch(); ?>
-                                      {"data":[<?php echo $dn['Janv']. "," .$dn[2] ; ?>,20,12,7,0,8,16,18,16,10,22],"backgroundColor":"#b2e599","label":"Hanae1"},
-                                      <?php $dn=$req->fetch(); ?>
-                                      {"data":[5,10,21,12,7,10,8,16,18,16,10,22],"backgroundColor":"#b2e549","label":"Wafae2"},
-                                      {"data":[5,10,21,12,7,10,8,16,18,16,10,22],"backgroundColor":"#b205a9","label":"Walili1"},
-                                      {"data":[5,10,21,12,7,10,8,16,18,16,10,22],"backgroundColor":"#b2e59b","label":"Walili2"},
-                                      {"data":[5,10,21,12,7,10,8,16,18,16,10,22],"backgroundColor":"#b0e5c9","label":"Hanae1"},
-                                      {"data":[5,10,21,12,7,10,8,16,18,16,10,22],"backgroundColor":"#b2e509","label":"Hanae2"},
-                                      {"data":[5,10,21,12,7,10,8,16,18,16,10,22],"backgroundColor":"#a2e5d9","label":"Hanae3"}]}}'>
+                      <div style="width: 100%">
+                    		<canvas id="canvas" style="@media only screen and (max-width: 600px) {
+                                                    body {
+                                                      height='200';
+                                                    }
+                                                  }" class="chartjs-render-monitor"></canvas>
+                    	</div>
+                    	<script>
+                        <?php    $req3 = $bdd->prepare("SELECT ProjetName FROM `projets`");
+                                 $dn3 = $req3 -> execute();?>
+                    		var chartData = {
+                    			labels: ['Janv', 'Fév', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Déc'],
+                    			datasets: [
+                          <?php
+                          $n=0;
+                          $colors = array("#b2e599", "#b205a9", "#b2e59b", "#b0e5c9", "#b2e509", "#a2e5d9","#b2e599");
+                          $req3 = $bdd->prepare("SELECT ProjetName FROM `projets`");
+                          $dn3 = $req3 -> execute();
+                          for ($x = 1; $x <= $d2['count_pj']; $x++) {
+                            $dn4 = $req3->fetch();
+                            $dn=$req->fetch();
+                            if($x != $d2['count_pj']){ ?>
+                            {type: 'bar', label:'<?php echo $dn4['ProjetName']; ?>', data:[<?php echo $dn[1]. "," .$dn[2]. "," .$dn[3]. "," .$dn[4]. "," .$dn[5].
+                                                                                      "," .$dn[6]. "," .$dn[7]. "," .$dn[8]. "," .$dn[9]. "," .$dn[10]. "," .$dn[11].
+                                                                                     "," .$dn[12] ; ?>], backgroundColor:'<?php echo $colors[$n++]; ?>',borderColor: 'white',
+                    				borderWidth: 1}, <?php
+                            }else { ?>
+                              {type: 'bar', label:'<?php echo $dn4['ProjetName']; ?>', data:[<?php echo $dn[1]. "," .$dn[2]. "," .$dn[3]. "," .$dn[4]. "," .$dn[5].
+                                                                                        "," .$dn[6]. "," .$dn[7]. "," .$dn[8]. "," .$dn[9]. "," .$dn[10]. "," .$dn[11].
+                                                                                       "," .$dn[12] ; ?>], backgroundColor:'<?php echo $colors[$n++]; ?>',borderColor: 'white',
+                      				borderWidth: 1} <?php
+                            }
+                          } ?>
+                          ]
+                    		};
+                    		window.onload = function() {
+                    			var ctx = document.getElementById('canvas').getContext('2d');
+                    			window.myMixedChart = new Chart(ctx, {
+                    				type: 'bar',
+                    				data: chartData,
+                    				options: {
+                    					responsive: true,
+                    					title: {
+                    						display: true,
+                    						text: 'La cadence de visites de clients au chantier pour chaque projet'
+                    					},
+                    					tooltips: {
+                    						mode: 'index',
+                    						intersect: true
+                    					}
+                    				}
+                    			});
+                    		};
 
-                                      <label class="custom-control-label" for="chart-switch-toggle"><span class="sr-only">Show affiliate</span></label>
-                                      <?php $dn=$req->fetch(); ?>
-                                      <script>
-                                          var terrain = [25, 20, 30, 22, 17, 10, 18, 26, 28, 26, 20, 35];
-                                      </script>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="card-body">
-                              <div class="chart">
-                                  <canvas id="ordersChartSwitch" class="chart-canvas"></canvas>
-                              </div>
-                          </div>
-                      </div>
+                    		document.getElementById('randomizeData').addEventListener('click', function() {
+                    			chartData.datasets.forEach(function(dataset) {
+                    				dataset.data = dataset.data.map(function() {
+                    					return randomScalingFactor();
+                    				});
+                    			});
+                    			window.myMixedChart.update();
+                    		});
+                    	</script>
 
                     </div>
 
@@ -155,8 +280,39 @@ $req=$bdd->query($sql);
         <!-- // END drawer-layout__content -->
 
 
-    <?php include 'footer.php';?>
+        <script>
 
+          var options = {
+          valueNames: [ 'id', 'Projets', 'Facebook', 'Avito', 'Ancien', 'Prospection', 'Connaissance', 'Annonce', 'Passage']
+        };
+
+        // Init list
+        var contactList = new List('contacts', options);
+
+        function refreshCallbacks() {
+          // Needed to add new buttons to jQuery-extended object
+          removeBtns.click(function() {
+            var itemId = $(this).closest('tr').find('.id').text();
+          });
+        }
+
+
+        var options2 = {
+        valueNames: [ 'id', 'Pj', 'vente', 'bureau', 'c_projet']
+      };
+
+      // Init list
+      var contactList = new List('contacts2', options2);
+
+      function refreshCallbacks() {
+        // Needed to add new buttons to jQuery-extended object
+        removeBtns.click(function() {
+          var itemId = $(this).closest('tr').find('.id').text();
+        });
+      }
+        </script>
+
+    <?php include 'footer.php';?>
 
     <!-- jQuery -->
     <script src="assets/vendor/jquery.min.js"></script>
@@ -174,37 +330,32 @@ $req=$bdd->query($sql);
     <!-- MDK -->
     <script src="assets/vendor/material-design-kit.js"></script>
 
-    <!-- Range Slider -->
-    <script src="assets/vendor/ion.rangeSlider.min.js"></script>
-    <script src="assets/js/ion-rangeslider.js"></script>
 
     <!-- App -->
-    <script src="assets/js/toggle-check-all.js"></script>
-    <script src="assets/js/check-selected-row.js"></script>
-    <script src="assets/js/dropdown.js"></script>
-    <script src="assets/js/sidebar-mini.js"></script>
     <script src="assets/js/app.js"></script>
 
     <!-- App Settings (safe to remove) -->
     <script src="assets/js/app-settings.js"></script>
 
-    <!-- List.js -->
-    <script src="assets/vendor/list.min.js"></script>
-    <script src="assets/js/list.js"></script>
+    <script src="assets/vendor/chart.min.js"></script>
+    <script src="assets/vendor/utils.js"></script>
 
+    <!-- Picker year -->
+    <script src="assets/js/yearpicker.js"></script>
+    <script>
+      $(document).ready(function() {
+        $(".yearpicker").yearpicker({
+          year: <?php if(isset($_GET['year']) && $_GET['year']>="2012" && $_GET['year']<="3000"){echo $_GET['year'];}else{echo date("Y");} ?>,
+          startYear: 2012,
+          endYear: 3000
+        });
+/*$('.yearpicker-items').on('click', function(e){
+          console.log(document.querySelector('.selected').innerText);
+  });*/
 
-    <!-- Global Settings -->
-    <script src="assets/js/settings.js"></script>
+      });
+    </script>
 
-    <!-- Chart.js -->
-    <script src="assets/vendor/Chart.min.js"></script>
-
-    <!-- UI Charts Page JS -->
-    <script src="assets/js/chartjs-rounded-bar.js"></script>
-    <script src="assets/js/charts.js"></script>
-
-    <!-- Chart.js Samples -->
-    <script src="assets/js/page.ui-charts.js"></script>
 
 </body>
 

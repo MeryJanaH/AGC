@@ -1,10 +1,6 @@
-<?php '2020'="2020";
+<?php
 require 'LBD.php';
 
-$req2=$bdd->query("SELECT Source, COUNT(Source) AS count FROM Clients GROUP BY Source");
-$dn2=$req2->fetch();
-echo $dn2['Source'];
-$dn2=$req2->fetch();
-echo $dn2['Source'];
-$dn2=$req2->fetch();
-echo $dn2['Source'];
+$colors = array("#b2e599", "#b205a9", "#b2e59b", "#b0e5c9", "#b2e509", "#a2e5d9","#b2e599");
+echo $colors[1];
+?>

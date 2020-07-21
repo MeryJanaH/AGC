@@ -143,7 +143,7 @@ var handlers = {
       default:
         break;
     }
-    window.location.replace("/AGC/teste2.php?year="+this.year);
+    window.location.replace("/AGC/Statistiques.php?year="+this.year);
 
   },
   globalClick: function globalClick(_ref) {

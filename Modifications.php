@@ -173,6 +173,7 @@ $_SESSION['current_page']="edit";
     <script src="assets/vendor/jquery.min.js"></script>
 
     <!-- Bootstrap -->
+    <script src="assets/vendor/popper.min.js"></script>
     <script src="assets/vendor/bootstrap.min.js"></script>
 
     <!-- Simplebar -->
