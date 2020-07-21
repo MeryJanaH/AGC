@@ -3,7 +3,7 @@ require 'functions.php';
 $_SESSION['current_page']="commerciaux";
 if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION['login']))
 {
-      header('Location: login.php');
+      header('Location: login');
 }
 
 ?>

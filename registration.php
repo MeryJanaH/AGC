@@ -3,7 +3,7 @@ require 'LBD.php';
 require 'functions.php';
 if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION['login']))
 {
-      header('Location: login.php');
+      header('Location: login');
 }
 
 ?>
@@ -32,7 +32,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
       if($_SESSION['log_befor']=="true")
       { ?>
         <div class="d-flex flex-column justify-content-center align-items-center mt-2 mb-4 navbar-light">
-            <a href="index.html" class="navbar-brand text-center mb-2 mr-0 flex-column" style="min-width: 0">
+            <a href="index" class="navbar-brand text-center mb-2 mr-0 flex-column" style="min-width: 0">
                 <img class="navbar-brand-icon mb-3" src="assets/images/logo.png" width="43" alt="Flat">
                 <span>Complétez vos informations</span>
             </a>
@@ -49,7 +49,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
               if($dn['Password']==md5($_POST['password_1']))
               {
                 register_bdd($_POST['nom'], md5($_POST['password_2']));
-                header('Location: index.php');
+                header('Location: /');
               }
               else
               {
@@ -101,7 +101,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
       <?php
          unset($_SESSION); }
       else {
-        header('Location: login.php');
+        header('Location: login');
       }?>
     </div>
 

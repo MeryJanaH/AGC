@@ -48,7 +48,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                               }
                           }
                           else {
-                           header('Location: Clients.php');
+                           header('Location: Clients');
                           }
                  ?>
 
@@ -196,7 +196,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
        noteeee: codePen : Yassine*/
        editBtn.click(function() {
 
-         $.post("fct.php",
+         $.post("fct",
            {
              op: "edit",
              id_client:idField.val(),
@@ -235,7 +235,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
         var itemId = $(this).closest('tr').find('.id').text();
         var itemValues = contactList.get('id', itemId)[0].values();
         if (confirm("êtes-vous sûr de supprimer le client "+itemValues.name)) {
-          $.post("fct.php",
+          $.post("fct",
             {
               op: "supp",
               id_client:itemValues.id
@@ -268,7 +268,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
         numField.val(itemValues.phnumber);
         noteField.val(itemValues.notes);
         document.querySelector('#source [value="' + itemValues.source + '"]').selected = true;
-        $.post("fct.php",
+        $.post("fct",
           {
             op: "getid",
             project_name: itemValues.projet_name

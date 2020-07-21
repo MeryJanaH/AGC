@@ -163,7 +163,7 @@ $_SESSION['current_page']="edit";
     else
     {
       unset($_SESSION);
-      header('Location: login.php');
+      header('Location: login');
     }
     ?>
 <?php include 'footer.php';?>
