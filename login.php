@@ -46,7 +46,7 @@ else {
 
     <!-- Prevent the demo from appearing in search engines -->
     <meta name="robots" content="noindex">
-
+    <link href="assets/images/logo.png" rel="shortcut icon" type="image/x-icon" />
 
     <!-- App CSS -->
     <link type="text/css" href="assets/css/app.css" rel="stylesheet">

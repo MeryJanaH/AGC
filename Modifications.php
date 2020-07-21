@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Modifications</title>
-
+<link href="assets/images/logo.png" rel="shortcut icon" type="image/x-icon" />
 
     <!-- Simplebar -->
     <link type="text/css" href="assets/vendor/simplebar.min.css" rel="stylesheet">

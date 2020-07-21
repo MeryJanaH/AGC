@@ -15,7 +15,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Enregistrement</title>
-
+    <link href="assets/images/logo.png" rel="shortcut icon" type="image/x-icon" />
     <!-- Prevent the demo from appearing in search engines -->
     <meta name="robots" content="noindex">
 

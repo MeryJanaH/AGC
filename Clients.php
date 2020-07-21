@@ -16,7 +16,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Clients</title>
 
-
+    <link href="assets/images/logo.png" rel="shortcut icon" type="image/x-icon" />
     <!-- Simplebar -->
     <link type="text/css" href="assets/vendor/simplebar.min.css" rel="stylesheet">
 

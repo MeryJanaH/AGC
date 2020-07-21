@@ -15,7 +15,7 @@ $req=$bdd->query("SELECT * FROM Projets");
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="assets/vendor/jquery-tabledit/jquery.tabledit.min.js"></script>
-
+    <link href="assets/images/logo.png" rel="shortcut icon" type="image/x-icon" />
     </head>
         <body>
       <div class="container">

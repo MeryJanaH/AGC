@@ -18,7 +18,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
 
     <!-- Prevent the demo from appearing in search engines -->
     <meta name="robots" content="noindex">
-
+    <link href="assets/images/logo.png" rel="shortcut icon" type="image/x-icon" />
     <!-- Simplebar -->
     <link type="text/css" href="assets/vendor/simplebar.min.css" rel="stylesheet">
 
