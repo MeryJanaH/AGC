@@ -273,7 +273,7 @@ $d2 = $req2->fetch();
                             $dn4 = $req3->fetch();
                             $dn = $req->fetch();
                             if($x != $d2['count_pj']){ ?>
-                            {type: 'bar', label:'<?php echo $dn4['ProjetName']; ?>', data:[<?php echo $dn[1]. "," .$dn[2]. "," .$dn[3]. "," .$dn[4]. "," .$dn[5].
+                            {type: 'bar', label:'<?php echo $dn4['ProjetName']; ?>', data:[<?php echo $dn['Janv']. "," .$dn[2]. "," .$dn[3]. "," .$dn[4]. "," .$dn[5].
                                                                                       "," .$dn[6]. "," .$dn[7]. "," .$dn[8]. "," .$dn[9]. "," .$dn[10]. "," .$dn[11].
                                                                                      "," .$dn[12] ; ?>], backgroundColor:'<?php echo $colors[$n++]; ?>',borderColor: 'white',
                     				borderWidth: 1}, <?php
