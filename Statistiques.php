@@ -314,7 +314,7 @@ $d2 = $req2->fetch();
 
                           $year=date("Y");
                           $n=0;
-                          $colors = array("#00008B", "#D2691E", "#b2e59b", "##FF7F50", "#b2e509", "#a2e5d9","#b2e599","#483D8B","#FF1493","#8B0000","#008000","#66CDAA");
+                          $colors = array("#00008B", "#D2691E", "#b2e59b", "#FF7F50", "#b2e509", "#a2e5d9","#b2e599","#483D8B","#FF1493","#8B0000","#008000","#66CDAA");
                           $req3 = $bdd->prepare("SELECT ProjetName FROM `Projets`");
                           $req3 -> execute();
                           //$dn5 = $req->execute();
