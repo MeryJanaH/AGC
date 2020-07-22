@@ -625,7 +625,7 @@ include 'footer.php'; ?>
           eventDrop: function(info) {
             //alert(info.event.title + " was dropped on " + info.event.start.toString());
 
-            if (!confirm("Are you sure about this change?")) {
+            if (!confirm("Sûr de mettre ce changement ?")) {
               info.revert();
             }else {
               $.post("fct_calend",

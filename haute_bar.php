@@ -35,149 +35,66 @@
                 </a>
 
 
-        <!--        <ul class="nav navbar-nav d-none d-md-flex">
-                    <li class="nav-item dropdown">
-                        <a href="#notifications_menu" class="nav-link dropdown-toggle" data-toggle="dropdown" data-caret="false">
-                            <i class="material-icons nav-icon navbar-notifications-indicator">notifications</i>
-                        </a>
-                        <div id="notifications_menu" class="dropdown-menu dropdown-menu-right navbar-notifications-menu">
-                            <div class="dropdown-item d-flex align-items-center py-2">
-                                <span class="flex navbar-notifications-menu__title m-0">Notifications</span>
-                                <a href="javascript:void(0)" class="text-muted"><small>Clear all</small></a>
-                            </div>
-                            <div class="navbar-notifications-menu__content" data-simplebar>
-                                <div class="py-2">
+                            <!-- Notif -->
+                                    <div class="dropdown">
+                                    <a href="#" data-toggle="dropdown" data-caret="false" class="dropdown-toggle navbar-toggler navbar-toggler-company border-left d-flex align-items-center ml-navbar">
+                                        <span class="rounded-circle">
+                                            <span class="material-icons">business</span>
+                                            <span class="badge badge-warning text-primary-dark rounded-circle badge-notifications">5</span>
+                                        </span>
+                                    </a>
 
-                                    <div class="dropdown-item d-flex">
-                                        <div class="mr-3">
-                                            <div class="avatar avatar-sm" style="width: 32px; height: 32px;">
-                                                <img src="assets/images/256_daniel-gaffey-1060698-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+
+                                    <div id="notifications_menu" class="dropdown-menu dropdown-menu-right navbar-notifications-menu">
+                                        <div class="dropdown-item d-flex align-items-center py-2">
+                                            <span class="flex navbar-notifications-menu__title m-0">Notifications</span>
+                                            <a href="javascript:void(0)" class="text-muted"><small>Supprimer Tout</small></a>
+                                        </div>
+                                        <div class="navbar-notifications-menu__content" data-simplebar>
+                                            <div class="py-2">
+
+                                              <?php
+                                              require 'LBD.php';
+                                              function name_client($id){
+                                                require 'LBD.php';
+                                                $rq = $bdd->prepare(" SELECT Name FROM Clients WHERE ID_client=$id ");
+                                                $rq->execute();
+                                                $req = $rq->fetch();
+                                                return $req['Name'];
+                                              }
+
+                                              $rq = $bdd->prepare(" SELECT * FROM Calendrier WHERE Category='bg-primary' ORDER BY date_tdebut ASC ");
+                                              $rq->execute();
+                                              WHILE($dn=$rq->fetch()){
+                                                  $currentDateTime = date('Y-m-d H:i:s');
+                                                  $last = date('Y-m-d H:i:s', strtotime($dn['date_tdebut']));
+
+
+                                              $date1 = $currentDateTime;
+                                              $date2 = $last;
+
+                                              $hours = round(abs(strtotime($date2) - strtotime($date1))/3600,2);
+
+
+                                              if($hours <= "16"){
+                                                ?>
+                                                  <div class="dropdown-item d-flex">
+                                                      <div class="flex">
+                                                          <b>NOTE :</b> Il reste around <?php echo floor($hours) ?> heurs pour le rendez-vous de <?php  echo name_client($dn['ID_client']); ?><br/> Pour plus de détails : <a href="">Cliquez ici</a><br>
+                                                          <small class="text-muted"><?php echo date("h:i:sa") ?></small>
+                                                      </div>
+                                                  </div>
+                                                <?php
+                                                  }
+                                              }
+                                              ?>
+
+
                                             </div>
                                         </div>
-                                        <div class="flex">
-                                            <a href="">A.Demian</a> left a comment on <a href="">Stack</a><br>
-                                            <small class="text-muted">1 minute ago</small>
-                                        </div>
+                                        <a href="javascript:void(0);" class="dropdown-item text-center navbar-notifications-menu__footer">Voir Tout</a>
                                     </div>
-                                    <div class="dropdown-item d-flex">
-                                        <div class="mr-3">
-                                            <a href="#">
-                                                <div class="avatar avatar-xs" style="width: 32px; height: 32px;">
-                                                    <span class="avatar-title bg-purple rounded-circle"><i class="material-icons icon-16pt">person_add</i></span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="flex">
-                                            New user <a href="#">Peter Parker</a> signed up.<br>
-                                            <small class="text-muted">1 hour ago</small>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown-item d-flex">
-                                        <div class="mr-3">
-                                            <a href="#">
-                                                <div class="avatar avatar-xs" style="width: 32px; height: 32px;">
-                                                    <span class="avatar-title rounded-circle">JD</span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="flex">
-                                            <a href="#">Big Joe</a> <small class="text-muted">wrote:</small><br>
-                                            <div>Hey, how are you? What about our next meeting</div>
-                                            <small class="text-muted">2 minutes ago</small>
-                                        </div>
-                                    </div>
-
-                                    <div class="dropdown-item d-flex">
-                                        <div class="mr-3">
-                                            <div class="avatar avatar-sm" style="width: 32px; height: 32px;">
-                                                <img src="assets/images/256_daniel-gaffey-1060698-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                            </div>
-                                        </div>
-                                        <div class="flex">
-                                            <a href="">A.Demian</a> left a comment on <a href="">Stack</a><br>
-                                            <small class="text-muted">1 minute ago</small>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown-item d-flex">
-                                        <div class="mr-3">
-                                            <a href="#">
-                                                <div class="avatar avatar-xs" style="width: 32px; height: 32px;">
-                                                    <span class="avatar-title bg-purple rounded-circle"><i class="material-icons icon-16pt">person_add</i></span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="flex">
-                                            New user <a href="#">Peter Parker</a> signed up.<br>
-                                            <small class="text-muted">1 hour ago</small>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown-item d-flex">
-                                        <div class="mr-3">
-                                            <a href="#">
-                                                <div class="avatar avatar-xs" style="width: 32px; height: 32px;">
-                                                    <span class="avatar-title rounded-circle">JD</span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="flex">
-                                            <a href="#">Big Joe</a> <small class="text-muted">wrote:</small><br>
-                                            <div>Hey, how are you? What about our next meeting</div>
-                                            <small class="text-muted">2 minutes ago</small>
-                                        </div>
-                                    </div>
-
-                                    <div class="dropdown-item d-flex">
-                                        <div class="mr-3">
-                                            <div class="avatar avatar-sm" style="width: 32px; height: 32px;">
-                                                <img src="assets/images/256_daniel-gaffey-1060698-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
-                                           </div>
-                                        </div>
-                                        <div class="flex">
-                                            <a href="">A.Demian</a> left a comment on <a href="">Stack</a><br>
-                                            <small class="text-muted">1 minute ago</small>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown-item d-flex">
-                                        <div class="mr-3">
-                                            <a href="#">
-                                                <div class="avatar avatar-xs" style="width: 32px; height: 32px;">
-                                                    <span class="avatar-title bg-purple rounded-circle"><i class="material-icons icon-16pt">person_add</i></span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="flex">
-                                            New user <a href="#">Peter Parker</a> signed up.<br>
-                                            <small class="text-muted">1 hour ago</small>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown-item d-flex">
-                                        <div class="mr-3">
-                                            <a href="#">
-                                                <div class="avatar avatar-xs" style="width: 32px; height: 32px;">
-                                                    <span class="avatar-title rounded-circle">JD</span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="flex">
-                                            <a href="#">Big Joe</a> <small class="text-muted">wrote:</small><br>
-                                            <div>Hey, how are you? What about our next meeting</div>
-                                            <small class="text-muted">2 minutes ago</small>
-                                        </div>
-                                    </div>
-
                                 </div>
-                            </div>
-                            <a href="javascript:void(0);" class="dropdown-item text-center navbar-notifications-menu__footer">View All</a>
-                        </div>
-                    </li>
-                </ul>-->
-                <div>
-                    <a  data-toggle="dropdown" data-caret="false" class="dropdown-toggle navbar-toggler navbar-toggler-company border-left d-flex align-items-center ml-navbar">
-                        <span class="rounded-circle">
-                            <span class="material-icons">business</span>
-                        </span>
-                    </a>
-                </div>
 
             </div>
         </div>

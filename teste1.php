@@ -130,7 +130,7 @@ $req3 = $bdd->prepare("SELECT COUNT(Code_pj) AS count_pj,ProjetName FROM `Projet
 $req3 -> execute();
 $d2 = $req3->fetch();
 
-print_r($d2['count_pj']);*/
+print_r($d2['count_pj']);
 
 
 $a= $bdd->prepare("SELECT ProjetName, IFNULL(count,0)AS count,date_tdebut FROM
@@ -222,4 +222,24 @@ $i++;
 }
 //count projet
 $data=[$m1,$m2,$m3,$m4,$m5,$m6,$m7,$m8,$m9,$m10,$m11,$m12];
-print_r($data[6][0]);
+print_r($data[6][0]) date('Y-m-d H:i:s')-
+
+$currentDateTime = date('Y-m-d H:i:s');
+echo $currentDateTime;;
+
+
+*/
+$rq = $bdd->prepare(" SELECT * FROM Calendrier WHERE Category='bg-primary' ");
+$rq->execute();
+WHILE($dn=$rq->fetch()){
+    $currentDateTime = date('Y-m-d H:i:s');
+    $last = date('Y-m-d H:i:s', strtotime($dn['date_tdebut']));
+
+
+$date1 = $currentDateTime;
+$date2 = $last;
+
+$diff = round(abs(strtotime($date2) - strtotime($date1))/3600,2);
+
+echo $diff;
+}
