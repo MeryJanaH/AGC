@@ -117,10 +117,96 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
              function annee($year)
              {
                require 'LBD.php';
+               $a= $bdd->prepare("SELECT ProjetName, IFNULL(count,0)AS count,date_tdebut FROM
+                      (SELECT Code_pj, ProjetName FROM Projets) t1
+                      LEFT JOIN
+                      (SELECT Code_pj,COUNT(Code_pj)AS count, MONTH(date_tdebut) AS date_tdebut FROM Calendrier WHERE Visite = 'Chantier' AND YEAR(date_tdebut) = $year GROUP BY Code_pj)t2
+                      ON t1.Code_pj = t2.Code_pj");
+               $a->execute();
 
-               $s= $bdd->prepare(" SELECT Code_pj, date_tdebut FROM Calendrier WHERE Visite = 'Chantier' AND YEAR(date_tdebut) = $year ");
-               $s->execute();
-               return $s;
+               $i=0;
+               while($b=$a->fetch()){
+               if($b['count']!="0"){
+               if($b['date_tdebut']=="1"){
+                 $m1[$i]=$b['count'];
+                 $m2[$i]=0;$m3[$i]=0;$m4[$i]=0;$m5[$i]=0;$m6[$i]=0;$m7[$i]=0;
+                 $m8[$i]=0;$m9[$i]=0;$m10[$i]=0;$m11[$i]=0;$m12[$i]=0;
+               }
+               if($b['date_tdebut']=="2"){
+                 $m1[$i]=0;
+                 $m2[$i]=$b['count'];
+                 $m3[$i]=0;$m4[$i]=0;$m5[$i]=0;$m6[$i]=0;$m7[$i]=0;
+                 $m8[$i]=0;$m9[$i]=0;$m10[$i]=0;$m11[$i]=0;$m12[$i]=0;
+               }
+               if($b['date_tdebut']=="3"){
+                 $m1[$i]=0;$m2[$i]=0;
+                 $m3[$i]=$b['count'];
+                 $m4[$i]=0;$m5[$i]=0;$m6[$i]=0;$m7[$i]=0;$m8[$i]=0;
+                 $m9[$i]=0;$m10[$i]=0;$m11[$i]=0;$m12[$i]=0;
+               }
+               if($b['date_tdebut']=="4"){
+                 $m1[$i]=0;$m2[$i]=0;$m3[$i]=0;
+                 $m4[$i]=$b['count'];
+                 $m5[$i]=0;$m6[$i]=0;$m7[$i]=0;$m8[$i]=0;
+                 $m9[$i]=0;$m10[$i]=0;$m11[$i]=0;$m12[$i]=0;
+               }
+               if($b['date_tdebut']=="5"){
+                 $m1[$i]=0;$m2[$i]=0;$m3[$i]=0;$m4[$i]=0;
+                 $m5[$i]=$b['count'];
+                 $m6[$i]=0;$m7[$i]=0;$m8[$i]=0;
+                 $m9[$i]=0;$m10[$i]=0;$m11[$i]=0;$m12[$i]=0;
+               }
+               if($b['date_tdebut']=="6"){
+                 $m1[$i]=0;$m2[$i]=0;$m3[$i]=0;$m4[$i]=0;$m5[$i]=0;
+                 $m6[$i]=$b['count'];
+                 $m7[$i]=0;$m8[$i]=0;
+                 $m9[$i]=0;$m10[$i]=0;$m11[$i]=0;$m12[$i]=0;
+               }
+               if($b['date_tdebut']=="7")
+               {
+                 $m1[$i]=0;$m2[$i]=0;$m3[$i]=0;$m4[$i]=0;$m5[$i]=0;$m6[$i]=0;
+                 $m7[$i]=$b['count'];
+                 $m8[$i]=0;$m9[$i]=0;$m10[$i]=0;$m11[$i]=0;$m12[$i]=0;
+               }
+               if($b['date_tdebut']=="08"){
+                 $m1[$i]=0;$m2[$i]=0;$m3[$i]=0;$m4[$i]=0;$m5[$i]=0;
+                 $m6[$i]=0;$m7[$i]=0;
+                 $m8[$i]=$b['count'];
+                 $m9[$i]=0;$m10[$i]=0;$m11[$i]=0;$m12[$i]=0;
+               }
+               if($b['date_tdebut']=="9"){
+                 $m1[$i]=0;$m2[$i]=0;$m3[$i]=0;$m4[$i]=0;$m5[$i]=0;
+                 $m6[$i]=0;$m7[$i]=0;$m8[$i]=0;
+                 $m9[$i]=$b['count'];
+                 $m10[$i]=0;$m11[$i]=0;$m12[$i]=0;
+               }
+               if($b['date_tdebut']=="10"){
+                 $m1[$i]=0;$m2[$i]=0;$m3[$i]=0;$m4[$i]=0;$m5[$i]=0;
+                 $m6[$i]=0;$m7[$i]=0;$m8[$i]=0;$m9[$i]=0;
+                 $m10[$i]=$b['count'];
+                 $m11[$i]=0;$m12[$i]=0;
+               }
+               if($b['date_tdebut']=="11"){
+                 $m1[$i]=0;$m2[$i]=0;$m3[$i]=0;$m4[$i]=0;$m5[$i]=0;
+                 $m6[$i]=0;$m7[$i]=0;$m8[$i]=0;$m9[$i]=0;$m10[$i]=0;
+                 $m11[$i]=$b['count'];
+                 $m12[$i]=0;
+               }
+               if($b['date_tdebut']=="12"){
+                 $m1[$i]=0;$m2[$i]=0;$m3[$i]=0;$m4[$i]=0;$m5[$i]=0;
+                 $m6[$i]=0;$m7[$i]=0;$m8[$i]=0;$m9[$i]=0;$m10[$i]=0;$m11[$i]=0;
+                 $m12[$i]=$b['count'];
+               }
+               }
+               else {
+                 $m1[$i]=0;$m2[$i]=0;$m3[$i]=0;$m4[$i]=0;$m5[$i]=0;
+                 $m6[$i]=0;$m7[$i]=0;$m8[$i]=0;$m9[$i]=0;$m10[$i]=0;$m11[$i]=0;$m12[$i]=0;
+               }
+               $i++;
+               }
+               //count projet
+               $data=[$m1,$m2,$m3,$m4,$m5,$m6,$m7,$m8,$m9,$m10,$m11,$m12];
+               return $data;
              }
 
          function years($year){
@@ -166,7 +252,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
 
 
 $req2 = $bdd->prepare("SELECT COUNT(`Code_pj`) AS count_pj FROM `Projets`");
-$d1 = $req2 -> execute();
+$req2 -> execute();
 $d2 = $req2->fetch();
 
  ?>
@@ -229,22 +315,22 @@ $d2 = $req2->fetch();
                           $year=date("Y");
                           $n=0;
                           $colors = array("#00008B", "#D2691E", "#b2e59b", "##FF7F50", "#b2e509", "#a2e5d9","#b2e599","#483D8B","#FF1493","#8B0000","#008000","#66CDAA");
-                          $req3 = $bdd->prepare("SELECT COUNT(Code_pj) AS count_pj,ProjetName FROM `Projets`");
+                          $req3 = $bdd->prepare("SELECT ProjetName FROM `Projets`");
                           $req3 -> execute();
                           //$dn5 = $req->execute();
                           //$dn = $req->fetch();
                           for ($x = 0; $x < $d2['count_pj']; $x++) {
-                            if($x != ($d2['count_pj']-1)){
-                              $d2 = $req3->fetch();?>
-                            {type: 'bar', label:'<?php echo $d2['ProjetName']; ?>', data:[<?php echo $mois[$x][0][0]. "," .$mois[$x][1][0]. "," .$mois[$x][2][0]. ","
-                                              .$mois[$x][3][0]. "," .$mois[$x][4][0]. ",".$mois[$x][5][0]. "," .$mois[$x][6][0]. "," .$mois[$x][7][0]. ","
-                                              .$mois[$x][8][0]. "," .$mois[$x][9][0]. "," .$mois[$x][10][0]. "," .$mois[$x][11][0];
+                            $d3=$req3->fetch();
+                            if($x != ($d2['count_pj']-1)){?>
+                            {type: 'bar', label:'<?php echo $d3['ProjetName']; ?>', data:[<?php echo $mois[0][$x]. "," .$mois[1][$x]. "," .$mois[2][$x]. ","
+                                              .$mois[3][$x]. "," .$mois[4][$x]. ",".$mois[5][$x]. "," .$mois[6][$x]. "," .$mois[7][$x]. ","
+                                              .$mois[8][$x]. "," .$mois[9][$x]. "," .$mois[10][$x]. "," .$mois[11][$x];
                                                                                        ?>], backgroundColor:'<?php echo $colors[$n++]; ?>',borderColor: 'white',
                     				borderWidth: 1}, <?php
                             }else { ?>
-                              {type: 'bar', label:'<?php echo $d2['ProjetName']; ?>', data:[<?php echo $mois[$x][0][0]. "," .$mois[$x][1][0]. "," .$mois[$x][2][0]. ","
-                                                .$mois[$x][3][0]. "," .$mois[$x][4][0]. ",".$mois[$x][5][0]. "," .$mois[$x][6][0]. "," .$mois[$x][7][0]. ","
-                                                .$mois[$x][8][0]. "," .$mois[$x][9][0]. "," .$mois[$x][10][0]. "," .$mois[$x][11][0];
+                              {type: 'bar', label:'<?php echo $d3['ProjetName']; ?>', data:[<?php echo $mois[0][$x]. "," .$mois[1][$x]. "," .$mois[2][$x]. ","
+                                                .$mois[3][$x]. "," .$mois[4][$x]. ",".$mois[5][$x]. "," .$mois[6][$x]. "," .$mois[7][$x]. ","
+                                                .$mois[8][$x]. "," .$mois[9][$x]. "," .$mois[10][$x]. "," .$mois[11][$x];
                                                                                          ?>], backgroundColor:'<?php echo $colors[$n++]; ?>',borderColor: 'white',
                       				borderWidth: 1} <?php
                             }
