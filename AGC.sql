@@ -46,7 +46,7 @@ CREATE TABLE `Clients` (
   `Code_pj` int(15) NOT NULL,
 
   primary key (ID_client),
-  FOREIGN KEY (Code_pj) REFERENCES Projets(Code_pj)
+  FOREIGN KEY (Code_pj) REFERENCES Projets(Code_pj) ON DELETE CASCADE
 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -63,9 +63,9 @@ CREATE TABLE `Calendrier` (
   `Code_pj` int(15) NOT NULL,
 
   primary key (id),
-  FOREIGN KEY (ID_client)REFERENCES Clients(ID_client),
-  FOREIGN KEY (Code_pj) REFERENCES Projets(Code_pj),
-  FOREIGN KEY (ID_cm) REFERENCES Commerciaux(ID_cm)
+  FOREIGN KEY (ID_client)REFERENCES Clients(ID_client) ON DELETE CASCADE,
+  FOREIGN KEY (Code_pj) REFERENCES Projets(Code_pj) ON DELETE CASCADE,
+  FOREIGN KEY (ID_cm) REFERENCES Commerciaux(ID_cm) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 

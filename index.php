@@ -483,7 +483,7 @@ include 'footer.php'; ?>
                 <div class="text-right pb-4 pr-4">
                     <button type="button" class="btn btn-light" data-dismiss="modal">Fermer</button>
                     <button type="button" class="btn btn-success " id="modifier">Modifier</button>
-                  <button type="button" class="btn btn-danger delete-event" id="DELETE" data-dismiss="modal">Delete</button>
+                  <button type="button" class="btn btn-danger delete-event" id="DELETE" data-dismiss="modal">Supprimer</button>
                 </div>
             </div> <!-- end modal-content-->
         </div> <!-- end modal dialog-->
@@ -766,7 +766,7 @@ include 'footer.php'; ?>
             //alert(info.event.title + " end is now " + info.event.end.toString());
             //alert(info.event.title + " start is now " + info.event.start.toString());
 
-            if (!confirm("is this okay?")) {
+            if (!confirm("Sûr de changer la période ?")) {
               info.revert();
             }else {
               $.post("fct_calend",
