@@ -633,7 +633,7 @@ include 'footer.php'; ?>
                   op: "time",
                   id: info.event.id,
                   start:info.event.start.toString(),
-                  end: info.event.end.toString()
+          //        end: info.event.end.toString()
                 }, function(data, status){
                   //alert(data);
              });

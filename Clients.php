@@ -87,7 +87,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                             <thead>
                                                 <tr>
                                                     <th  name="name_client">Nom</th>
-                                                    <th  name="num">Tel</th>
+                                                    <th  name="num">Téléphone</th>
                                                     <th  name="projet">Projet</th>
                                                     <th  name="Note">Notes</th>
                                                     <th  name="source">Source</th>

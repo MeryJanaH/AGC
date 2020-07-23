@@ -94,8 +94,8 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                            <thead>
                                                <tr>
                                                  <th class="sort" data-sort="Pj">Projets</th>
-                                                 <th class="sort" data-sort="bureau">Clients au bureau</th>
-                                                 <th class="sort" data-sort="c_projet">Clients par projet</th>
+                                                 <th class="sort" data-sort="bureau">Visite des clients au bureau</th>
+                                                 <th class="sort" data-sort="c_projet">Visite des clients par projet</th>
                                                  <th class="sort" data-sort="vente">Ventes</th>
                                                </tr>
                                              </thead>

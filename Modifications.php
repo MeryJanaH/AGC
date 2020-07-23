@@ -1,3 +1,4 @@
+<?php $_SESSION['current_page']="modif"; ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
