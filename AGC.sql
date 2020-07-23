@@ -43,7 +43,9 @@ CREATE TABLE `Clients` (
   `Notes` mediumtext DEFAULT NULL,
   `Premier_visite` timestamp NULL DEFAULT current_timestamp(),
   `Source` varchar(50) DEFAULT NULL,
+  `nb_visite` int(80) DEFAULT NULL,
   `Code_pj` int(15) NOT NULL,
+
 
   primary key (ID_client),
   FOREIGN KEY (Code_pj) REFERENCES Projets(Code_pj) ON DELETE CASCADE
@@ -85,10 +87,10 @@ INSERT INTO `Projets`(`ProjetName`, `type_p`, `Etages`, `Surface`, `Prix`) VALUE
 
 
 
-INSERT INTO `Clients`(`Name`, `phnumber`, `Notes`, `Source`, `Code_pj`) VALUES ("Mme Zoubida","0698878325","A14 67 m² 3ème étage","Connaissance",7);
-INSERT INTO `Clients`(`Name`, `phnumber`, `Notes`, `Source`, `Code_pj`) VALUES ("M. Youssef ","0661361570","duplex 201 m²","De passage",5);
-INSERT INTO `Clients`(`Name`, `phnumber`, `Notes`, `Source`, `Code_pj`) VALUES ("Mme badraoui","0665084531","app 107 m² 1er étage","De passage",5);
-INSERT INTO `Clients`(`Name`, `phnumber`, `Notes`, `Source`, `Code_pj`) VALUES ("M. Yassine","+971554090091","App / Va venir au Maroc le mois 1","Annonce",7);
-INSERT INTO `Clients`(`Name`, `phnumber`, `Notes`, `Source`, `Code_pj`) VALUES ("M. Said","+32488082069","App / Va venir au Maroc Après le confinement","Annonce",5);
-INSERT INTO `Clients`(`Name`, `phnumber`, `Notes`, `Source`, `Code_pj`) VALUES ("M. Hamza","0707185896","App","Annonce",5);
-INSERT INTO `Clients`(`Name`, `phnumber`, `Notes`, `Source`, `Code_pj`) VALUES ("M. Brahim","066930354","App / ََA1+A3","De passage",5);
+INSERT INTO `Clients`(`Name`, `phnumber`, `Notes`, `Source`,`nb_visite`, `Code_pj`) VALUES ("Mme Zoubida","0698878325","A14 67 m² 3ème étage","Connaissance",2,7);
+INSERT INTO `Clients`(`Name`, `phnumber`, `Notes`, `Source`,`nb_visite`, `Code_pj`) VALUES ("M. Youssef ","0661361570","duplex 201 m²","De passage",1,5);
+INSERT INTO `Clients`(`Name`, `phnumber`, `Notes`, `Source`,`nb_visite`, `Code_pj`) VALUES ("Mme badraoui","0665084531","app 107 m² 1er étage","De passage",4,5);
+INSERT INTO `Clients`(`Name`, `phnumber`, `Notes`, `Source`,`nb_visite`, `Code_pj`) VALUES ("M. Yassine","+971554090091","App / Va venir au Maroc le mois 1","Annonce",1,7);
+INSERT INTO `Clients`(`Name`, `phnumber`, `Notes`, `Source`,`nb_visite`, `Code_pj`) VALUES ("M. Said","+32488082069","App / Va venir au Maroc Après le confinement","Annonce",2,5);
+INSERT INTO `Clients`(`Name`, `phnumber`, `Notes`, `Source`,`nb_visite`, `Code_pj`) VALUES ("M. Hamza","0707185896","App","Annonce",4,5);
+INSERT INTO `Clients`(`Name`, `phnumber`, `Notes`, `Source`,`nb_visite`, `Code_pj`) VALUES ("M. Brahim","066930354","App / ََA1+A3","De passage",6,5);

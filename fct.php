@@ -8,7 +8,7 @@ if(isset($_POST['id'])){
 
 
   if ($_POST['op']=="edit"){
-    $req = $bdd->prepare("UPDATE Clients SET Name='".$_POST['name']."', phnumber='".$_POST['phnumber']."',Code_pj='".$_POST['projet_id']."', Notes='".$_POST['notes']."', Source='".$_POST['source']."' WHERE ID_client='".$_POST['id_client']."'");
+    $req = $bdd->prepare("UPDATE Clients SET Name='".$_POST['name']."', phnumber='".$_POST['phnumber']."',Code_pj='".$_POST['projet_id']."', Notes='".$_POST['notes']."', Source='".$_POST['source']."' ,nb_visite='".$_POST['nb_visite']."' WHERE ID_client='".$_POST['id_client']."'");
     $res=$req->execute();
     echo $res;
   }elseif ($_POST['op']=="supp") {

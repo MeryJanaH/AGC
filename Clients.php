@@ -44,7 +44,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                           {
                               if (isset($_POST["add"]))
                               {
-                                  add_client($_POST["name_client"],$_POST["num"],$_POST["Note"],$_POST["source"],$_POST["c_p"]);
+                                  add_client($_POST["name_client"],$_POST["num"],$_POST["Note"],$_POST["source"],$_POST["c_p"],$_POST["nb_visite"]);
                               }
                           }
                           else {
@@ -61,6 +61,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                          html += "<td><select required='' id = 'pj' class='form-control item_unit' name='c_p[]'><?php echo fill_unit_select_box_projet();?></select></td>";
                          html += "<td><input required='' id ='nt' name='Note[]'></td>";
                          html += "<td><select required='' id = 's' class='form-control item_unit' name='source[]'><?php echo fill_unit_select_box_source();?></select></td>";
+                         html += "<td><input required='' id ='v' type='number' name='nb_visite[]'></td>";
                          html += "</tr>";
 
                     var row = document.getElementById("staff03").insertRow();
@@ -86,11 +87,12 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                             <thead>
                                                 <tr>
                                                     <th  name="name_client">Nom</th>
-                                                    <th  name="num">Numéro de téléphone</th>
+                                                    <th  name="num">Tel</th>
                                                     <th  name="projet">Projet</th>
                                                     <th  name="Note">Notes</th>
                                                     <th  name="source">Source</th>
-                                                    <th  name="visite">Date du 1er visite</th>
+                                                    <th  name="visite">1er visite</th>
+                                                    <th  name="nb_visite">Nb Visites</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="list" id="staff03">
@@ -102,6 +104,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                                   <td class="projet_name"><select id='projet' class='form-control item_unit'><option value="none"> </option><?php echo fill_unit_select_box_projet();?></select></td>
                                                   <td class="notes"><input id='note'></td>
                                                   <td class="source"><select id='source' class='form-control item_unit'><option value="none"> </option><?php echo fill_unit_select_box_source();?></select></td>
+                                                  <td class="nb_visite"><input id='nb_visite'></td>
                                                   <td >
                                                     <button type="button" id="edit-btn">Éditer</button>
                                                   </td>
@@ -168,7 +171,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
 
     <script>
     var options = {
-      valueNames: [ 'id', 'name', 'phnumber', 'projet_name', 'notes', 'source' ]
+      valueNames: [ 'id', 'name', 'phnumber', 'projet_name', 'notes', 'source','nb_visite' ]
     };
 
     // Init list
@@ -179,6 +182,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
         numField = $('#num').hide(),
         projetField = $('#projet').hide(),
         srcField = $('#source').hide(),
+        nb_visiteField = $('#nb_visite').hide(),
         noteField = $('#note').hide(),
         removeBtns = $('.remove-item-btn'),
         editBtn = $('#edit-btn').hide(),
@@ -204,7 +208,8 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
              phnumber: numField.val(),
              projet_id: projetField.children("option:selected").val(),
              notes: noteField.val(),
-             source: srcField.children("option:selected").val()
+             source: srcField.children("option:selected").val(),
+             nb_visite : nb_visiteField.val()
            }, function(data){
              console.log(data);
              if(data=='1'){
@@ -215,7 +220,8 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                  phnumber: numField.val(),
                  projet_name: projetField.children("option:selected").text(),
                  notes: noteField.val(),
-                 source: srcField.children("option:selected").val()
+                 source: srcField.children("option:selected").val(),
+                 nb_visite : nb_visiteField.val()
                });
                clearFields();
                editBtn.hide();
@@ -260,6 +266,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
         projetField.show();
         numField.show();
         nameField.show();
+        nb_visiteField.show();
 
         var itemId = $(this).closest('tr').find('.id').text();
         var itemValues = contactList.get('id', itemId)[0].values();
@@ -267,6 +274,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
         nameField.val(itemValues.name);
         numField.val(itemValues.phnumber);
         noteField.val(itemValues.notes);
+        nb_visiteField.val(itemValues.nb_visite);
         document.querySelector('#source [value="' + itemValues.source + '"]').selected = true;
         $.post("fct",
           {
