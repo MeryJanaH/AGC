@@ -282,7 +282,7 @@ function update_table_clients()
             <td style="width: 150px;" class="projet_name"><?php print_r($rs['ProjetName']) ?></td>
             <span class="text-muted"><td style="width: 200px;" class="notes"><?php print_r($dn['Notes']) ?></td></span>
             <td style="width: 150px;" class="source"><?php print_r($dn['Source']) ?></td>
-            <td style="width: 100px"  class="nb_visite"><?php print_r($dn['nb_visite']) ?></td>
+            <td style="width: 100px"  type="number" class="nb_visite"><?php print_r($dn['nb_visite']) ?></td>
             <td style="width: 150px;" class="visite"><?php print_r($dn['Premier_visite']) ?></td>
             <td class="edit">
               <button type="button" class="edit-item-btn">Éditer</button>

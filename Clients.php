@@ -92,7 +92,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                                     <th  name="Note">Notes</th>
                                                     <th  name="source">Source</th>
                                                     <th  name="nb_visite">Nb Visites</th>
-                                                    <th  name="visite">1er visite</th>
+                                                    <th  type="number"  name="visite">1er visite</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="list" id="staff03">
