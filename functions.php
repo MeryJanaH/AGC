@@ -281,8 +281,8 @@ function update_table_emp()
         </td>
 
         <td>
-        <input type="button" id="susp" <?php if(check_susp($dn['ID_cm'])=="1"){ ?>value="Éliminer le suspend !"<?php } else {?> value="Suspendre !"<?php } ?>
-            onClick=<?php if(check_susp($dn['ID_cm'])=="1"){ ?>'delete_susp<?php echo $dn['ID_cm'];?>()'<?php } else { ?>'susp<?php echo $dn['ID_cm'];?>()'<?php } ?>/>
+        <input type="button" id="susp" <?php if(check_susp($dn['ID_cm'])=="1"){ ?>value="Éliminer le suspend !" onClick='delete_susp<?php echo $dn['ID_cm'];?>()' <?php }
+                                              else {?> value="Suspendre !" onClick='susp<?php echo $dn['ID_cm']; ?>()' <?php } ?> />
         </td>
     </tr>
  <?php
