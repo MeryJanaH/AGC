@@ -91,8 +91,8 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                                     <th  name="projet">Projet</th>
                                                     <th  name="Note">Notes</th>
                                                     <th  name="source">Source</th>
-                                                    <th  name="visite">1er visite</th>
                                                     <th  name="nb_visite">Nb Visites</th>
+                                                    <th  name="visite">1er visite</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="list" id="staff03">
@@ -187,8 +187,9 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
         removeBtns = $('.remove-item-btn'),
         editBtn = $('#edit-btn').hide(),
         editBtns = $('.edit-item-btn');
-/*
-    console.log(idField.val());
+
+  /*
+    console.log(nb_visiteField.val());
     console.log(nameField.val());
     console.log(numField.val());
     console.log(projetField.val());
@@ -292,6 +293,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
         nameField.val('');
         numField.val('');
         noteField.val('');
+        nb_visiteField.val('');
         document.querySelector('#source [value="none"]').selected = true;
         document.querySelector('#projet [value="none"]').selected = true;
       }
