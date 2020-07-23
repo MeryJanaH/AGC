@@ -190,7 +190,8 @@ function delet_projet($pj)
 
 function check_susp($id){
   require 'LBD.php';
-  $req=$bdd->query("SELECT Suspendre FROM Commerciaux WHERE ID_cm = $id");
+  $req=$bdd->prepare("SELECT Suspendre FROM Commerciaux WHERE ID_cm = $id ");
+  $res=$req->execute();
   $dn = $req->fetch();
   return $dn['Suspendre'];
 }
@@ -281,7 +282,7 @@ function update_table_emp()
 
         <td>
         <input type="button" id="susp" <?php if(check_susp($dn['ID_cm'])=="1"){ ?>value="Éliminer le suspend !"<?php } else {?> value="Suspendre !"<?php } ?>
-            onClick=<?php if(check_susp($dn['ID_cm'])=="1"){ ?>'delete_susp<?php echo $dn['ID_cm'];?>()'<?php } else { ?>'susp<?php echo $dn['ID_cm'];?>()'<?php } ?>/> 
+            onClick=<?php if(check_susp($dn['ID_cm'])=="1"){ ?>'delete_susp<?php echo $dn['ID_cm'];?>()'<?php } else { ?>'susp<?php echo $dn['ID_cm'];?>()'<?php } ?>/>
         </td>
     </tr>
  <?php
