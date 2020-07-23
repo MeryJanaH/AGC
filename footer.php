@@ -50,31 +50,7 @@
                           <li class="sidebar-menu-item active">
                         <?php }else{ ?>
                           <li class="sidebar-menu-item ">
-                        <?php }
-                            if($_SESSION['current_page']!="clients"){ ?>
-                            <a class="sidebar-menu-button" data-toggle="collapse" href="#pages_menu">
-                                <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">description</i>
-                                <span class="sidebar-menu-text">Modifier-Créer</span>
-                                <span class="ml-auto sidebar-menu-toggle-icon"></span>
-                            </a>
-                            <ul class="sidebar-submenu collapse" id="pages_menu">
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="Modifications">
-                                        <span class="sidebar-menu-text">Modifier le compte</span>
-                                    </a>
-                                </li>
-                                <?php
-                                if($_SESSION['user']=="admin")
-                                {
-                                ?>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="Nouveau">
-                                        <span class="sidebar-menu-text">Créer un compte</span>
-                                    </a>
-                                </li>
-                                <?php
-                              }}else {
-                                ?>
+                        <?php } ?>
                                 <a class="sidebar-menu-button" href="Modifications">
                                     <span class="sidebar-menu-text">Modifier le compte</span>
                                 </a>
@@ -88,54 +64,41 @@
                                     </a>
                                 </li>
                                 <?php
-                              }}
+                               }
                                  ?>
                             </ul>
                         </li>
-                        <?php if($_SESSION['current_page']=="projets" or $_SESSION['current_page']=="commerciaux"){?>
-                          <li class="sidebar-menu-item active">
-                        <?php }else{ ?>
-                          <li class="sidebar-menu-item ">
-                        <?php }
-                           if($_SESSION['current_page']!="clients"){ ?>
-                            <a class="sidebar-menu-button" data-toggle="collapse" href="#components_menu">
-                                <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">developer_board</i>
-                                <span class="sidebar-menu-text">Tables</span>
-                                <span class="ml-auto sidebar-menu-toggle-icon"></span>
+                      </li>
+<?php
+
+                          if($_SESSION['user']=="admin")
+                           { ?>
+                             <?php if($_SESSION['current_page']=="commerciaux"){?>
+                               <li class="sidebar-menu-item active">
+                             <?php }else{ ?>
+                               <li class="sidebar-menu-item ">
+                             <?php } ?>
+                            <a class="sidebar-menu-button" href="Commerciaux">
+                                <span class="sidebar-menu-text">Gestion des commerciaux</span>
                             </a>
-                            <ul class="sidebar-submenu collapse" id="components_menu">
-                                <li class="sidebar-menu-item">
-                                  <?php if($_SESSION['user']=="admin")
-                                  { ?>
-                                    <a class="sidebar-menu-button" href="Commerciaux">
-                                        <span class="sidebar-menu-text">Table des commerciaux</span>
-                                    </a>
-                                  <?php } ?>
-                                    <a class="sidebar-menu-button" href="Projets">
-                                        <span class="sidebar-menu-text">Table des projets</span>
-                                    </a>
-                                    <a class="sidebar-menu-button" href="Clients">
-                                        <span class="sidebar-menu-text">Table des clients</span>
-                                    </a>
-                                </li>
-                            </ul>
-                          <?php }else {
-                            ?>
-                            <?php if($_SESSION['user']=="admin")
-                             { ?>
-                              <a class="sidebar-menu-button" href="Commerciaux">
-                                  <span class="sidebar-menu-text">Table des commerciaux</span>
-                              </a>
+                          <?php } ?>
+                          <?php if($_SESSION['current_page']=="projets"){?>
+                            <li class="sidebar-menu-item active">
+                          <?php }else{ ?>
+                            <li class="sidebar-menu-item ">
+                          <?php } ?>
+                            <a class="sidebar-menu-button" href="Projets">
+                                <span class="sidebar-menu-text">Gestion des projets</span>
+                            </a>
+                            <?php if($_SESSION['current_page']=="clients"){?>
+                              <li class="sidebar-menu-item active">
+                            <?php }else{ ?>
+                              <li class="sidebar-menu-item ">
                             <?php } ?>
-                              <a class="sidebar-menu-button" href="Projets">
-                                  <span class="sidebar-menu-text">Table des projets</span>
-                              </a>
-                              <a class="sidebar-menu-button" href="Clients">
-                                  <span class="sidebar-menu-text">Table des clients</span>
-                              </a>
-                            <?php
-                          } ?>
-                        </li>
+                            <a class="sidebar-menu-button" href="Clients">
+                                <span class="sidebar-menu-text">Gestion des clients</span>
+                            </a>
+                      </li>
 
                         <?php if($_SESSION['current_page']=="Graphe"){?>
                           <li class="sidebar-menu-item active">
@@ -150,14 +113,11 @@
                 </div>
 
             <div class="mt-auto sidebar-p-a sidebar-b-t d-flex flex-column flex-shrink-0">
-                <a class="sidebar-link" href="login">
                   <p>
                     <form action="login" method="POST">
                       <button name="decnx" style="width: 100px;">Déconnexion</button>
-                      <i class="sidebar-menu-icon ml-2 material-icons icon-16pt">exit_to_app</i>
                     </form>
                   </p>
-                </a>
             </div>
 
         </div>

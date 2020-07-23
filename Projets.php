@@ -79,7 +79,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
 
                                             <div class="search-form search-form--light m-3">
                                                 <input type="text" class="form-control search" placeholder="Search">
-                                                <button class="btn" type="button" role="button"><i class="material-icons">search</i></button>
+                                                <button class="btn" type="button" role="button"><i class="material-icons">chercher</i></button>
                                             </div>
                                         <table class="table mb-0 thead-border-top-0">
                                             <thead>

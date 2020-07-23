@@ -221,6 +221,10 @@ function update_table_emp()
         <td>
         <input type="button" id="btnShowMsg" value="Supprimer !" onClick='showMessage<?php echo $dn['ID_cm'];?>()'/>
         </td>
+
+        <td>
+        <input type="button" id="btnShowMsg" value="Suspendre !" onClick='susp<?php echo $dn['ID_cm'];?>()'/>
+        </td>
     </tr>
  <?php
   }

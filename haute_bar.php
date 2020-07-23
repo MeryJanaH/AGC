@@ -15,19 +15,19 @@
                 <!-- Navbar Brand -->
                   <?php if($_SESSION['current_page']=="projets"){?>
                     <a class="navbar-brand flex ">
-                    <span>Table des projets</span>
+                    <span>Gestion des projets</span>
                   <?php }if($_SESSION['current_page']=="index"){?>
                     <a class="navbar-brand flex ">
                     <span>Calendrier</span>
                   <?php }if($_SESSION['current_page']=="commerciaux"){ ?>
                     <a  class="navbar-brand flex ">
-                    <span>Table des commerciaux</span>
+                    <span>Gestion des commerciaux</span>
                   <?php }if($_SESSION['current_page']=="edit"){ ?>
                     <a  class="navbar-brand flex ">
                     <span>Modifier vos informations</span>
                   <?php }if($_SESSION['current_page']=="clients"){ ?>
                      <a class="navbar-brand flex ">
-                     <span>Table de clients</span>
+                     <span>Gestion de clients</span>
                  <?php }if($_SESSION['current_page']=="Graphe"){ ?>
                     <a class="navbar-brand flex ">
                     <span>Statistiques</span>
