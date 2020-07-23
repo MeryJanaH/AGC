@@ -422,9 +422,12 @@ include 'footer.php'; ?>
           droppable: true,
           slotDuration: "00:30:00",
           slotMinTime: "08:00:00",
-          slotMaxTime: "19:00:00",
+          slotMaxTime: "18:00:00",
           initialView:"dayGridMonth",
+          resizable:false,
           navLinks:true,
+          contentHeight: 600,
+          allDaySlot:false,
           handleWindowResize: true,
           aspectRatio: 1,
           height: $(window).height() - 10,
@@ -447,11 +450,11 @@ include 'footer.php'; ?>
             { ?>  {
                id: <?php print_r($dn['id']) ?>,
                title: "<?php
-                      $rq=$bdd->query("SELECT Name,phnumber FROM Clients WHERE ID_client=". $dn['ID_client']."");
+                      $rq=$bdd->query("SELECT Name,phnumber,Projets.ProjetName FROM Clients,Projets,Calendrier WHERE Clients.ID_client=". $dn['ID_client']." AND Calendrier.id=". $dn['id']." AND Projets.Code_pj=Calendrier.Code_pj");
                       $res = $rq->fetch();
-               print_r($res['Name']." , ".$res['phnumber']); ?>",
-               start: new Date("<?php print_r($dn['date_tdebut']) ?>"),
-               end: new Date("<?php print_r($dn['date_tfin']) ?>"),
+               print_r($res['Name']." , ".$res['phnumber']." , ". $res['ProjetName']); ?>",
+               start: new Date("<?php print_r($dn['date_tdebut']) ?>"),/*
+               end: new Date("<?php print_r($dn['date_tfin']) ?>"),*/
                classNames: "<?php print_r($dn['Category']) ?>"
             }, <?php } ?>
           ],
@@ -481,9 +484,8 @@ include 'footer.php'; ?>
                           echo 1;
                         }
                          ?>,
-                     title: $("#select02").children("option:selected").text(),
+                     title: $("#select02").children("option:selected").text()+ " , "+$("#select03").children("option:selected").text(),
                      start: startTime,
-                     end: endTime,
                      classNames: category,
                      allDay:false
                  });
@@ -604,7 +606,7 @@ include 'footer.php'; ?>
               // change the border color just for fun
               info.el.style.borderColor = 'red';
             },
-          eventResize: function(info) {
+          /*eventResize: function(info) {
             //alert(info.event.title + " end is now " + info.event.end.toString());
             //alert(info.event.title + " start is now " + info.event.start.toString());
 
@@ -621,7 +623,7 @@ include 'footer.php'; ?>
                   //alert(data);
              });
             }
-          },
+          },*/
           eventDrop: function(info) {
             //alert(info.event.title + " was dropped on " + info.event.start.toString());
 
