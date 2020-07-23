@@ -46,7 +46,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                             <div class="row no-gutters">
                                 <div class="col-lg-2 card-body">
                                     <p><strong class="headings-color">Information :</strong></p>
-                                    <p class="text-muted">Table de gestion des Commerciaux de <strong> GUESSPROMO </strong></p>
+                                    <p class="text-muted">Gestion des Commerciaux de <strong> GUESSPROMO </strong></p>
                                 </div>
                                 <div class="col-lg-10 card-form__body">
 
