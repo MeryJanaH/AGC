@@ -17,6 +17,7 @@ CREATE TABLE `Commerciaux` (
   `CName` varchar(50) DEFAULT NULL,
   `Email` varchar(50) DEFAULT NULL,
   `Password` varchar(80) DEFAULT NULL,
+  `Suspendre` BIT DEFAULT NULL,
   `firstlog` timestamp NULL DEFAULT current_timestamp(),
   `lastLog` timestamp NULL DEFAULT current_timestamp(),
 
@@ -73,7 +74,7 @@ CREATE TABLE `Calendrier` (
 
 
 INSERT INTO Admin (AdminName,Email,Password) VALUES("Annouar","meryem.annouar@ieee.org","202cb962ac59075b964b07152d234b70");
-INSERT INTO Commerciaux (CName,Email,Password) VALUES("Yassine","Yassine.Oukassou@ieee.org","202cb962ac59075b964b07152d234b70");
+INSERT INTO Commerciaux (CName,Email,Password,Suspendre) VALUES("Yassine","Yassine.Oukassou@ieee.org","202cb962ac59075b964b07152d234b70",0);
 
 
 

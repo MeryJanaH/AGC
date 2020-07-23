@@ -1,5 +1,4 @@
 <!-- Header -->
-
 <div id="header" class="mdk-header js-mdk-header m-0" data-fixed data-effects="waterfall" data-retarget-mouse-scroll="false">
     <div class="mdk-header__content">
 
@@ -173,63 +172,42 @@
 
 
                 <!-- Notif -->
+
                      <div class="dropdown">
                      <a href="#" data-toggle="dropdown" data-caret="false" class="dropdown-toggle navbar-toggler navbar-toggler-company border-left d-flex align-items-center ml-navbar">
                          <span class="rounded-circle">
                              <span class="material-icons">business</span>
-                             <span class="badge badge-warning text-primary-dark rounded-circle badge-notifications">5</span>
+                             <span class="badge badge-warning text-primary-dark rounded-circle badge-notifications"><?php if(isset($_SESSION['n'])){echo $_SESSION['n'];} else {$_SESSION['n']=0; echo $_SESSION['n'];} ?></span>
                          </span>
                      </a>
 
 
                      <div id="notifications_menu" class="dropdown-menu dropdown-menu-right navbar-notifications-menu">
-                         <div class="dropdown-item d-flex align-items-center py-2">
-                             <span class="flex navbar-notifications-menu__title m-0">Notifications</span>
-                             <a href="javascript:void(0)" class="text-muted"><small>Supprimer Tout</small></a>
-                         </div>
                          <div class="navbar-notifications-menu__content" data-simplebar>
                              <div class="py-2">
 
-                               <?php
-                               require 'LBD.php';
-                               function name_client($id){
-                                 require 'LBD.php';
-                                 $rq = $bdd->prepare(" SELECT Name FROM Clients WHERE ID_client=$id ");
-                                 $rq->execute();
-                                 $req = $rq->fetch();
-                                 return $req['Name'];
-                               }
+                               <!-- jQuery
+                               <script src="assets/vendor/jquery.min.js"></script>
 
-                               $rq = $bdd->prepare(" SELECT * FROM Calendrier WHERE Category='bg-primary' ORDER BY date_tdebut ASC ");
-                               $rq->execute();
-                               WHILE($dn=$rq->fetch()){
-                                   $currentDateTime = date('Y-m-d H:i:s');
-                                   $last = date('Y-m-d H:i:s', strtotime($dn['date_tdebut']));
+                               <script>
+                               function fetchdata(){
+                                 $.ajax({
+                                  url: 'refresh.php',
+                                  type: 'post',
+                                  success: function(response){
+                                   // Perform operation on the return value
+                                  // alert(response);
+                                  }
+                                 });
+                                }
 
+                                $(document).ready(function(){
+                                 setInterval(fetchdata,5000);
+                                });
 
-                               $date1 = $currentDateTime;
-                               $date2 = $last;
-
-                               $hours = round(abs(strtotime($date2) - strtotime($date1))/3600,2);
-
-
-                               if($hours <= "16"){
-                                 ?>
-                                   <div class="dropdown-item d-flex">
-                                       <div class="flex">
-                                           <b>NOTE :</b> Il reste around <?php echo floor($hours) ?> heurs pour le rendez-vous de <?php  echo name_client($dn['ID_client']); ?><br/> Pour plus de détails : <a href="">Cliquez ici</a><br>
-                                           <small class="text-muted"><?php echo date("h:i:sa") ?></small>
-                                       </div>
-                                   </div>
-                                 <?php
-                                   }
-                               }
-                               ?>
-
-
+                              </script>-->
                              </div>
                          </div>
-                         <a href="javascript:void(0);" class="dropdown-item text-center navbar-notifications-menu__footer">Voir Tout</a>
                      </div>
                  </div>
 

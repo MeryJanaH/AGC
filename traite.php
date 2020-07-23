@@ -1,9 +1,10 @@
 <?php
 require 'functions.php';
 
+
     $res=login($_POST['email_2'],md5($_POST['password_2']));
 
-      if ($res=="Utilisateur Non Enregistré" or $res =="ERROR_Syntaxe") {
+      if ($res=="Utilisateur Non Enregistré" or $res =="ERROR_Syntaxe" or $res == "Utilisateur est suspendu") {
           $_SESSION['login']="false";
           header('Location: login');
       }else{

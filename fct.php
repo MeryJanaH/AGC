@@ -22,4 +22,14 @@ if(isset($_POST['id'])){
     $res = $req->fetch();
     echo json_encode($res);
   }
+
+  if ($_POST['op']=="susp") {
+  $req = $bdd->prepare("UPDATE `Commerciaux` SET Suspendre=1 WHERE ID_cm ='".$_POST['id2']."' ");
+  $res=$req->execute();
+  }
+
+  if ($_POST['op']=="no_susp") {
+  $req = $bdd->prepare("UPDATE `Commerciaux` SET Suspendre=0 WHERE ID_cm ='".$_POST['id3']."' ");
+  $res=$req->execute();
+  }
 ?>

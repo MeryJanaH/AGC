@@ -27,6 +27,11 @@ function login($email,$mdp){
             $res = $req->fetch();
             if($res != NULL)
             {
+              if($res['Suspendre']=="1")
+              {
+                $_SESSION['susp']="1";
+                return "Utilisateur est suspendu";
+              }
               //update time of login
               $sql= $bdd->prepare("UPDATE Commerciaux SET lastLog = NOW() WHERE Email = :email AND Password= :mdp");
               $sql->bindParam(':email', $email);
@@ -37,6 +42,7 @@ function login($email,$mdp){
               $_SESSION['name']=$res['CName'];
               $_SESSION['email']=$res['Email'];
               $_SESSION['user']="commercial";
+              $_SESSION['susp']="0";
               return $res;
             }
             else {
@@ -182,6 +188,13 @@ function delet_projet($pj)
   $req->execute();
 }
 
+function check_susp($id){
+  require 'LBD.php';
+  $req=$bdd->query("SELECT Suspendre FROM Commerciaux WHERE ID_cm = $id");
+  $dn = $req->fetch();
+  return $dn['Suspendre'];
+}
+
 function update_table_emp()
 {
   require 'LBD.php';
@@ -216,6 +229,50 @@ function update_table_emp()
                       });
                     }
                 }
+
+                function susp<?php echo $dn['ID_cm'];?>()
+                {
+                    var txt;
+                    if (confirm("êtes-vous sûr de Suspendre <?php print_r($dn['CName']) ?> ? après cette action il ne va pas le droit d'accéder à cette application \"AGC\" ! ")) {
+                        txt = "You pressed OK!";
+                    } else {
+                        txt = "You pressed Cancel!";
+                    }
+                    if(txt == "You pressed OK!")
+                    {
+
+                      $.post("fct",
+                        {
+                          op: "susp",
+                          id2: <?php echo $dn['ID_cm'] ?>
+                        }, function(data, status){
+                       location.reload();
+                     });
+
+                    }
+                }
+
+                function delete_susp<?php echo $dn['ID_cm'];?>()
+                {
+                    var txt;
+                    if (confirm("êtes-vous sûr d'éliminer le Suspendre de <?php print_r($dn['CName']) ?> ?! ")) {
+                        txt = "You pressed OK!";
+                    } else {
+                        txt = "You pressed Cancel!";
+                    }
+                    if(txt == "You pressed OK!")
+                    {
+
+                      $.post("fct",
+                        {
+                          op: "no_susp",
+                          id3: <?php echo $dn['ID_cm'] ?>
+                        }, function(data, status){
+                       location.reload();
+                     });
+
+                    }
+                }
               </script>
 
         <td>
@@ -223,7 +280,8 @@ function update_table_emp()
         </td>
 
         <td>
-        <input type="button" id="btnShowMsg" value="Suspendre !" onClick='susp<?php echo $dn['ID_cm'];?>()'/>
+        <input type="button" id="susp" <?php if(check_susp($dn['ID_cm'])=="1"){ ?>value="Éliminer <Susp>!"<?php } else {?> value="Suspendre !"<?php } ?> onClick=<?php if(check_susp($dn['ID_cm'])=="1"){ ?>'delete_susp<?php echo $dn['ID_cm'];?>()'<?php }
+                                                                                                                                                              else { ?>'susp<?php echo $dn['ID_cm'];?>()'/> <?php } ?>
         </td>
     </tr>
  <?php
@@ -259,6 +317,9 @@ function update_table_projets()
             <td style="width: 150px";><span class="text-muted"><?php print_r($dn['Etages']) ?></span></td>
             <td style="width: 150px";><span class="text-muted"><?php print_r($dn['Surface']) ?></span></td>
             <td style="width: 100px";><span class="text-muted"><?php print_r($dn['Prix']) ?></span></td>
+            <td>
+            <input type="button" id="vend" value="Vendu !" onClick=''/>
+            </td>
         </tr>
      <?php
       }

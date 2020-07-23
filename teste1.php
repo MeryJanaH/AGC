@@ -1,5 +1,5 @@
 <?php
-
+require 'functions.php';
 require 'LBD.php';
 /*
 $s1= $bdd->prepare("SELECT IFNULL(Janv,0) AS Janv
@@ -228,7 +228,7 @@ $currentDateTime = date('Y-m-d H:i:s');
 echo $currentDateTime;;
 
 
-*/
+
 $rq = $bdd->prepare(" SELECT * FROM Calendrier WHERE Category='bg-primary' ");
 $rq->execute();
 WHILE($dn=$rq->fetch()){
@@ -243,3 +243,33 @@ $diff = round(abs(strtotime($date2) - strtotime($date1))/3600,2);
 
 echo $diff;
 }
+
+
+function name_client($id){
+  require 'LBD.php';
+  $rq = $bdd->prepare(" SELECT Name FROM Clients WHERE ID_client=$id ");
+  $rq->execute();
+  $req = $rq->fetch();
+  return $req['Name'];
+}
+
+$rq = $bdd->prepare(" SELECT * FROM Calendrier WHERE Category='bg-primary' ORDER BY date_tdebut ASC ");
+$rq->execute();
+WHILE($dn=$rq->fetch()){
+    $currentDateTime = date('Y-m-d H:i:s');
+    $last = date('Y-m-d H:i:s', strtotime($dn['date_tdebut']));
+
+
+$date1 = $currentDateTime;
+$date2 = $last;
+
+$hours = round(abs(strtotime($date2) - strtotime($date1))/3600,2);
+
+echo $hours;
+}
+*/
+
+
+echo check_susp(1);
+
+?>

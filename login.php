@@ -82,12 +82,33 @@ else {
                 {
                     if($_SESSION['login']=="false")
                     {
-                      ?>
-                      <div class="alert alert-danger" role="alert">
-                          <strong>Erreur - </strong> Adresse email ou le mot de passe est incorrect
-                      </div>
-                      <?php
-                      unset($_SESSION);
+                      if(isset($_SESSION['susp']))
+                      {
+                        if($_SESSION['susp']=="1")
+                        {
+                          ?>
+                          <div class="alert alert-danger" role="alert">
+                              <strong>Erreur - </strong> Vous êtes suspendu
+                          </div>
+                          <?php
+                          unset($_SESSION);
+                        }
+                        else {
+                          ?>
+                          <div class="alert alert-danger" role="alert">
+                              <strong>Erreur - </strong> Adresse email ou le mot de passe est incorrect
+                          </div>
+                          <?php
+                          unset($_SESSION);
+                        }
+                      }else {
+                        ?>
+                        <div class="alert alert-danger" role="alert">
+                            <strong>Erreur - </strong> Adresse email ou le mot de passe est incorrect
+                        </div>
+                        <?php
+                        unset($_SESSION);
+                      }
                     }
                 }
                 ?>
