@@ -398,7 +398,7 @@ function update_table_clients()
     {
        require 'LBD.php';
        $output = '';
-       $req=$bdd->query('SELECT *  FROM Projets');
+       $req=$bdd->query('SELECT *  FROM Projets WHERE Vend =0');
        while($dn = $req->fetch())
        {$output .=  '<option value='.$dn['Code_pj'].'>'.$dn['ProjetName'].'</option>';}
 
