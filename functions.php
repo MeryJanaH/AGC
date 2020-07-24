@@ -519,42 +519,136 @@ function clients_par_source($id,$year)
 
 
    while($dn = $req->fetch())
-    { ?>
-      <tr>
-      <td class="id" style="display:none;"><?php $n+1; ?></td>
-      <td class="Projets"><?php print_r($dn['ProjetName']) ?></td>
-<?php if($dn['Source'] == "Facebook/Instagram"){ ?>
-      <td class="Facebook"><?php print_r($dn['count']) ?></td>
+    { if($year < date("Y"))
+      {
+        $k = $bdd->prepare("SELECT Code_pj FROM Projets WHERE ProjetName ='".$dn['ProjetName']."'");
+        $k->execute();
+        $k = $k->fetch();
+        $s = $bdd->prepare("SELECT * FROM Calendrier WHERE YEAR(date_tdebut) =$year AND Code_pj ='".$k['Code_pj']."'");
+        $s->execute();
+        if($s->fetch()){
+                            ?>
+                            <tr>
+                            <td class="id" style="display:none;"><?php $n+1; ?></td>
+                            <td class="Projets"><?php print_r($dn['ProjetName']) ?></td>
+                      <?php if($dn['Source'] == "Facebook/Instagram"){ ?>
+                            <td class="Facebook"><?php print_r($dn['count']) ?></td>
 
-<?php }else {?>
-      <td class="Facebook">0</td>
-<?php } if($dn['Source'] == "Avito/Mubawab"){?>
-      <td class="Avito"><?php print_r($dn['count']) ?></td>
-      <?php } else {?>
-        <td class="Avito">0</td>
-<?php }if($dn['Source'] == "Ancien_client"){?>
-      <td class="Ancien"><?php print_r($dn['count']) ?></td>
-      <?php } else {?>
-        <td class="Ancien">0</td>
-<?php }if($dn['Source'] == "Prospection"){?>
-      <td class="Prospection"><?php print_r($dn['count']) ?></td>
-      <?php } else {?>
-        <td class="Prospection">0</td>
-<?php }if($dn['Source'] == "Connaissance"){?>
-      <td class="Connaissance"><?php print_r($dn['count']) ?></td>
-      <?php } else {?>
-        <td class="Connaissance">0</td>
-<?php }if($dn['Source'] == "Annonce"){?>
-      <td class="Annonce"><?php print_r($dn['count']) ?></td>
-      <?php } else {?>
-        <td class="Annonce">0</td>
-<?php }if($dn['Source'] == "De_passage"){?>
-       <td class="Passage"><?php print_r($dn['count']) ?></td>
-      <?php  }else {?>
-        <td class="Passage">0</td>
-<?php  } ?>
-      </tr>
-    <?php
+                      <?php }else {?>
+                            <td class="Facebook">0</td>
+                      <?php } if($dn['Source'] == "Avito/Mubawab"){?>
+                            <td class="Avito"><?php print_r($dn['count']) ?></td>
+                            <?php } else {?>
+                              <td class="Avito">0</td>
+                      <?php }if($dn['Source'] == "Ancien_client"){?>
+                            <td class="Ancien"><?php print_r($dn['count']) ?></td>
+                            <?php } else {?>
+                              <td class="Ancien">0</td>
+                      <?php }if($dn['Source'] == "Prospection"){?>
+                            <td class="Prospection"><?php print_r($dn['count']) ?></td>
+                            <?php } else {?>
+                              <td class="Prospection">0</td>
+                      <?php }if($dn['Source'] == "Connaissance"){?>
+                            <td class="Connaissance"><?php print_r($dn['count']) ?></td>
+                            <?php } else {?>
+                              <td class="Connaissance">0</td>
+                      <?php }if($dn['Source'] == "Annonce"){?>
+                            <td class="Annonce"><?php print_r($dn['count']) ?></td>
+                            <?php } else {?>
+                              <td class="Annonce">0</td>
+                      <?php }if($dn['Source'] == "De_passage"){?>
+                             <td class="Passage"><?php print_r($dn['count']) ?></td>
+                            <?php  }else {?>
+                              <td class="Passage">0</td>
+                      <?php  } ?>
+                            </tr>
+                          <?php
+          }
+      }else {
+        $k = $bdd->prepare("SELECT * FROM Projets WHERE ProjetName ='".$dn['ProjetName']."'");
+        $k->execute();
+        $k = $k->fetch();
+        $s = $bdd->prepare("SELECT * FROM Calendrier WHERE YEAR(date_tdebut) =$year AND Code_pj ='".$k['Code_pj']."'");
+        $s->execute();
+        if($s->fetch()){
+                            ?>
+                            <tr>
+                            <td class="id" style="display:none;"><?php $n+1; ?></td>
+                            <td class="Projets"><?php print_r($dn['ProjetName']) ?></td>
+                      <?php if($dn['Source'] == "Facebook/Instagram"){ ?>
+                            <td class="Facebook"><?php print_r($dn['count']) ?></td>
+
+                      <?php }else {?>
+                            <td class="Facebook">0</td>
+                      <?php } if($dn['Source'] == "Avito/Mubawab"){?>
+                            <td class="Avito"><?php print_r($dn['count']) ?></td>
+                            <?php } else {?>
+                              <td class="Avito">0</td>
+                      <?php }if($dn['Source'] == "Ancien_client"){?>
+                            <td class="Ancien"><?php print_r($dn['count']) ?></td>
+                            <?php } else {?>
+                              <td class="Ancien">0</td>
+                      <?php }if($dn['Source'] == "Prospection"){?>
+                            <td class="Prospection"><?php print_r($dn['count']) ?></td>
+                            <?php } else {?>
+                              <td class="Prospection">0</td>
+                      <?php }if($dn['Source'] == "Connaissance"){?>
+                            <td class="Connaissance"><?php print_r($dn['count']) ?></td>
+                            <?php } else {?>
+                              <td class="Connaissance">0</td>
+                      <?php }if($dn['Source'] == "Annonce"){?>
+                            <td class="Annonce"><?php print_r($dn['count']) ?></td>
+                            <?php } else {?>
+                              <td class="Annonce">0</td>
+                      <?php }if($dn['Source'] == "De_passage"){?>
+                             <td class="Passage"><?php print_r($dn['count']) ?></td>
+                            <?php  }else {?>
+                              <td class="Passage">0</td>
+                      <?php  } ?>
+                            </tr>
+                          <?php
+          }else {
+            if($k['Vend']!="1")
+            {
+                  ?>
+                  <tr>
+                  <td class="id" style="display:none;"><?php $n+1; ?></td>
+                  <td class="Projets"><?php print_r($dn['ProjetName']) ?></td>
+            <?php if($dn['Source'] == "Facebook/Instagram"){ ?>
+                  <td class="Facebook"><?php print_r($dn['count']) ?></td>
+
+            <?php }else {?>
+                  <td class="Facebook">0</td>
+            <?php } if($dn['Source'] == "Avito/Mubawab"){?>
+                  <td class="Avito"><?php print_r($dn['count']) ?></td>
+                  <?php } else {?>
+                    <td class="Avito">0</td>
+            <?php }if($dn['Source'] == "Ancien_client"){?>
+                  <td class="Ancien"><?php print_r($dn['count']) ?></td>
+                  <?php } else {?>
+                    <td class="Ancien">0</td>
+            <?php }if($dn['Source'] == "Prospection"){?>
+                  <td class="Prospection"><?php print_r($dn['count']) ?></td>
+                  <?php } else {?>
+                    <td class="Prospection">0</td>
+            <?php }if($dn['Source'] == "Connaissance"){?>
+                  <td class="Connaissance"><?php print_r($dn['count']) ?></td>
+                  <?php } else {?>
+                    <td class="Connaissance">0</td>
+            <?php }if($dn['Source'] == "Annonce"){?>
+                  <td class="Annonce"><?php print_r($dn['count']) ?></td>
+                  <?php } else {?>
+                    <td class="Annonce">0</td>
+            <?php }if($dn['Source'] == "De_passage"){?>
+                   <td class="Passage"><?php print_r($dn['count']) ?></td>
+                  <?php  }else {?>
+                    <td class="Passage">0</td>
+            <?php  } ?>
+                  </tr>
+                <?php
+            }
+          }
+      }
      }
 
      $req2=$bdd->query("SELECT IFNULL(facebook,0) AS facebook,IFNULL(avito,0) AS avito,IFNULL(ancien,0) AS ancien,IFNULL(prospection,0) AS prospection,IFNULL(connaissance,0) AS connaissance,IFNULL(annonce,0) AS annonce,IFNULL(passage,0) AS passage FROM
@@ -689,23 +783,78 @@ function Total_client_projets($id,$year)
 
 
    while($dn = $req->fetch())
-    { ?>
-      <tr>
-      <td class="id" style="display:none;"><?php $n+1; ?></td>
-      <td class="Pj"><?php print_r($dn['ProjetName']) ?></td>
-    <?php if(isset($dn['c_bureau'])) {?>
-      <td class="bureau"><?php print_r($dn['c_bureau']) ?></td>
-    <?php }  else { ?>
-      <td class="bureau">0</td>
-     <?php } if(isset($dn['c_projets'])){ ?>
-      <td class="c_projet"><?php print_r($dn['c_projets']) ?></td>
-    <?php }  else { ?>
-      <td class="c_projet">0</td>
-     <?php }if(isset($dn['c_vente'])){ ?>
-      <td class="vente"><?php print_r($dn['c_vente']) ?></td>
-    <?php } else { ?>
-      <td class="vente">0</td>
-    <?php } ?>
+    { if($year < date("Y"))
+      {
+        $k = $bdd->prepare("SELECT Code_pj FROM Projets WHERE ProjetName ='".$dn['ProjetName']."'");
+        $k->execute();
+        $k = $k->fetch();
+        $s = $bdd->prepare("SELECT * FROM Calendrier WHERE YEAR(date_tdebut) =$year AND Code_pj ='".$k['Code_pj']."'");
+        $s->execute();
+        if($s->fetch()){
+                ?>
+                <tr>
+                <td class="id" style="display:none;"><?php $n+1; ?></td>
+                <td class="Pj"><?php print_r($dn['ProjetName']) ?></td>
+              <?php if(isset($dn['c_bureau'])) {?>
+                <td class="bureau"><?php print_r($dn['c_bureau']) ?></td>
+              <?php }  else { ?>
+                <td class="bureau">0</td>
+               <?php } if(isset($dn['c_projets'])){ ?>
+                <td class="c_projet"><?php print_r($dn['c_projets']) ?></td>
+              <?php }  else { ?>
+                <td class="c_projet">0</td>
+               <?php }if(isset($dn['c_vente'])){ ?>
+                <td class="vente"><?php print_r($dn['c_vente']) ?></td>
+              <?php } else { ?>
+                <td class="vente">0</td>
+              <?php }
+            }
+      }else {
+              $k = $bdd->prepare("SELECT * FROM Projets WHERE ProjetName ='".$dn['ProjetName']."'");
+              $k->execute();
+              $k = $k->fetch();
+              $s = $bdd->prepare("SELECT * FROM Calendrier WHERE YEAR(date_tdebut) =$year AND Code_pj ='".$k['Code_pj']."'");
+              $s->execute();
+              if($s->fetch()){?>
+                <tr>
+                <td class="id" style="display:none;"><?php $n+1; ?></td>
+                <td class="Pj"><?php print_r($dn['ProjetName']) ?></td>
+              <?php if(isset($dn['c_bureau'])) {?>
+                <td class="bureau"><?php print_r($dn['c_bureau']) ?></td>
+              <?php }  else { ?>
+                <td class="bureau">0</td>
+               <?php } if(isset($dn['c_projets'])){ ?>
+                <td class="c_projet"><?php print_r($dn['c_projets']) ?></td>
+              <?php }  else { ?>
+                <td class="c_projet">0</td>
+               <?php }if(isset($dn['c_vente'])){ ?>
+                <td class="vente"><?php print_r($dn['c_vente']) ?></td>
+              <?php } else { ?>
+                <td class="vente">0</td>
+              <?php }
+              }else {
+                if($k['Vend']!="1")
+                {?>
+                  <tr>
+                  <td class="id" style="display:none;"><?php $n+1; ?></td>
+                  <td class="Pj"><?php print_r($dn['ProjetName']) ?></td>
+                <?php if(isset($dn['c_bureau'])) {?>
+                  <td class="bureau"><?php print_r($dn['c_bureau']) ?></td>
+                <?php }  else { ?>
+                  <td class="bureau">0</td>
+                 <?php } if(isset($dn['c_projets'])){ ?>
+                  <td class="c_projet"><?php print_r($dn['c_projets']) ?></td>
+                <?php }  else { ?>
+                  <td class="c_projet">0</td>
+                 <?php }if(isset($dn['c_vente'])){ ?>
+                  <td class="vente"><?php print_r($dn['c_vente']) ?></td>
+                <?php } else { ?>
+                  <td class="vente">0</td>
+                <?php }
+                }
+              }
+      }
+    ?>
     </tr>
 <?php
 }

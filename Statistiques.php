@@ -445,8 +445,8 @@ $d2 = $req2->fetch();
       $(document).ready(function() {
         $(".yearpicker").yearpicker({
           year: <?php if(isset($_GET['year']) && $_GET['year']>="2012" && $_GET['year']<="3000"){echo $_GET['year'];}else{echo date("Y");} ?>,
-          startYear: 2012,
-          endYear: 3000
+          startYear: 2000,
+          endYear: <?php echo date("Y") ?>
         });
 /*$('.yearpicker-items').on('click', function(e){
           console.log(document.querySelector('.selected').innerText);
