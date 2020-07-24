@@ -284,8 +284,10 @@ $d2 = $req2->fetch();
                                    </div>
                                    <div class="card-body tab-content">
                                      <?php if(isset($_GET['year'])){
+                                              $year=$_GET['year'];
                                                  years($_GET['year']);
                                            } else {
+                                              $year=date("Y");
                                                  years(date("Y"));
                                             } ?>
                                      </div>
@@ -312,15 +314,21 @@ $d2 = $req2->fetch();
                                $mois=annee(date("Y"));
                           }
 
-                          $year=date("Y");
+                          //$year=date("Y");
                           $n=0;
-                          $colors = array("#00008B", "#D2691E", "#b2e59b", "#FF7F50", "#b2e509", "#a2e5d9","#b2e599","#483D8B","#FF1493","#8B0000","#008000","#66CDAA");
-                          $req3 = $bdd->prepare("SELECT ProjetName FROM `Projets`");
+                          $colors = array("#00008B", "#D2691E", "#b2e59b", "#FF7F50", "#b2e509", "#a2e5d9","#b2e599","#FF1493","#8B0000","#008000","#66CDAA");
+                          $req3 = $bdd->prepare("SELECT * FROM `Projets`");
                           $req3 -> execute();
                           //$dn5 = $req->execute();
                           //$dn = $req->fetch();
-                          for ($x = 0; $x < $d2['count_pj']; $x++) {
-                            $d3=$req3->fetch();
+
+              for ($x = 0; $x < $d2['count_pj']; $x++) {
+                $d3=$req3->fetch();
+                if($year < date("Y"))
+                 {
+                   $s = $bdd->prepare("SELECT * FROM Calendrier WHERE YEAR(date_tdebut) =$year AND Code_pj ='".$d3['Code_pj']."'");
+                   $s->execute();
+                   if($s->fetch()){
                             if($x != ($d2['count_pj']-1)){?>
                             {type: 'bar', label:'<?php echo $d3['ProjetName']; ?>', data:[<?php echo $mois[0][$x]. "," .$mois[1][$x]. "," .$mois[2][$x]. ","
                                               .$mois[3][$x]. "," .$mois[4][$x]. ",".$mois[5][$x]. "," .$mois[6][$x]. "," .$mois[7][$x]. ","
@@ -334,8 +342,46 @@ $d2 = $req2->fetch();
                                                                                          ?>], backgroundColor:'<?php echo $colors[$n++]; ?>',borderColor: 'white',
                       				borderWidth: 1} <?php
                             }
-                          } ?>
+                          }
+                  } else {
+                    $s = $bdd->prepare("SELECT * FROM Calendrier WHERE YEAR(date_tdebut) =$year AND Code_pj ='".$d3['Code_pj']."'");
+                    $s->execute();
+                    if($s->fetch()){
+                             if($x != ($d2['count_pj']-1)){?>
+                             {type: 'bar', label:'<?php echo $d3['ProjetName']; ?>', data:[<?php echo $mois[0][$x]. "," .$mois[1][$x]. "," .$mois[2][$x]. ","
+                                               .$mois[3][$x]. "," .$mois[4][$x]. ",".$mois[5][$x]. "," .$mois[6][$x]. "," .$mois[7][$x]. ","
+                                               .$mois[8][$x]. "," .$mois[9][$x]. "," .$mois[10][$x]. "," .$mois[11][$x];
+                                                                                        ?>], backgroundColor:'<?php echo $colors[$n++]; ?>',borderColor: 'white',
+                            borderWidth: 1}, <?php
+                             }else { ?>
+                               {type: 'bar', label:'<?php echo $d3['ProjetName']; ?>', data:[<?php echo $mois[0][$x]. "," .$mois[1][$x]. "," .$mois[2][$x]. ","
+                                                 .$mois[3][$x]. "," .$mois[4][$x]. ",".$mois[5][$x]. "," .$mois[6][$x]. "," .$mois[7][$x]. ","
+                                                 .$mois[8][$x]. "," .$mois[9][$x]. "," .$mois[10][$x]. "," .$mois[11][$x];
+                                                                                          ?>], backgroundColor:'<?php echo $colors[$n++]; ?>',borderColor: 'white',
+                              borderWidth: 1} <?php
+                             }
+
+                          }else {
+                            if($d3['Vend']!="1")
+                            {
+                               if($x != ($d2['count_pj']-1)){?>
+                               {type: 'bar', label:'<?php echo $d3['ProjetName']; ?>', data:[<?php echo $mois[0][$x]. "," .$mois[1][$x]. "," .$mois[2][$x]. ","
+                                                 .$mois[3][$x]. "," .$mois[4][$x]. ",".$mois[5][$x]. "," .$mois[6][$x]. "," .$mois[7][$x]. ","
+                                                 .$mois[8][$x]. "," .$mois[9][$x]. "," .$mois[10][$x]. "," .$mois[11][$x];
+                                                                                          ?>], backgroundColor:'<?php echo $colors[$n++]; ?>',borderColor: 'white',
+                       				borderWidth: 1}, <?php
+                               }else { ?>
+                                 {type: 'bar', label:'<?php echo $d3['ProjetName']; ?>', data:[<?php echo $mois[0][$x]. "," .$mois[1][$x]. "," .$mois[2][$x]. ","
+                                                   .$mois[3][$x]. "," .$mois[4][$x]. ",".$mois[5][$x]. "," .$mois[6][$x]. "," .$mois[7][$x]. ","
+                                                   .$mois[8][$x]. "," .$mois[9][$x]. "," .$mois[10][$x]. "," .$mois[11][$x];
+                                                                                            ?>], backgroundColor:'<?php echo $colors[$n++]; ?>',borderColor: 'white',
+                         				borderWidth: 1} <?php
+
+                                 }
+                          }
+                  }}}?>
                           ]
+
                     		};
                     		window.onload = function() {
                     			var ctx = document.getElementById('canvas').getContext('2d');
