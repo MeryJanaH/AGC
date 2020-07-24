@@ -177,40 +177,45 @@
                      <a href="#" data-toggle="dropdown" data-caret="false" class="dropdown-toggle navbar-toggler navbar-toggler-company border-left d-flex align-items-center ml-navbar">
                          <span class="rounded-circle">
                              <span class="material-icons">business</span>
-                             <span class="badge badge-warning text-primary-dark rounded-circle badge-notifications"><?php if(isset($_SESSION['n'])){echo $_SESSION['n'];} else {$_SESSION['n']=0; echo $_SESSION['n'];} ?></span>
+                             <span id="nb_notif" class="badge badge-warning text-primary-dark rounded-circle badge-notifications"></span>
                          </span>
                      </a>
 
 
                      <div id="notifications_menu" class="dropdown-menu dropdown-menu-right navbar-notifications-menu">
                          <div class="navbar-notifications-menu__content" data-simplebar>
-                             <div class="py-2">
+                             <div id="notif_ajax" class="py-2">
 
-                               <!-- jQuery
-                               <script src="assets/vendor/jquery.min.js"></script>
-
-                               <script>
-                               function fetchdata(){
-                                 $.ajax({
-                                  url: 'refresh.php',
-                                  type: 'post',
-                                  success: function(response){
-                                   // Perform operation on the return value
-                                  // alert(response);
-                                  }
-                                 });
-                                }
-
-                                $(document).ready(function(){
-                                 setInterval(fetchdata,5000);
-                                });
-
-                              </script>-->
                              </div>
                          </div>
                      </div>
                  </div>
+                 <!-- jQuery-->
+                 <script src="assets/vendor/jquery.min.js"></script>
 
+                 <script>
+                 var notifs;
+                 function fetchdata(){
+                   $.ajax({
+                    url: 'refresh.php',
+                    type: 'post',
+                    success: function(response){
+                     if (notifs!=response) {
+                       $('#notif_ajax').text("");
+                       $('#notif_ajax').html(response);
+                       notifs=response;
+                       nb=$('#div_nb').val();
+                       $('#nb_notif').text(nb);
+                     }
+                    }
+                   });
+                  }
+
+                  $(document).ready(function(){
+                   setInterval(fetchdata,5000);
+                  });
+
+                </script>
             </div>
         </div>
 

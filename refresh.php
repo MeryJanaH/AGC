@@ -11,7 +11,7 @@ function name_client($id){
 
 $rq = $bdd->prepare(" SELECT * FROM Calendrier WHERE Category='bg-primary' ORDER BY date_tdebut ASC ");
 $rq->execute();
-
+$n=0;
 WHILE($dn=$rq->fetch()){
     $currentDateTime = date('Y-m-d H:i:s');
     $last = date('Y-m-d H:i:s', strtotime($dn['date_tdebut']));
@@ -26,11 +26,12 @@ if($hours <= "20"){
     <div class="dropdown-item d-flex">
         <div class="flex">
             <b>NOTE :</b> Il reste around <?php echo floor($hours) ?> heurs pour le rendez-vous de <?php  echo name_client($dn['ID_client']); ?><br/> Pour plus de détails : <a href="">Cliquez ici</a><br>
-            <small class="text-muted"><?php echo date("h:i:sa") ?></small>
+            <small class="text-muted"><?php echo $dn['date_tdebut']; ?></small>
         </div>
     </div>
   <?php
-   $_SESSION['n']++;
+   $n++;
 }
 }
 ?>
+<input type="hidden" id="div_nb" value="<?php echo $n; ?>"> </input>
