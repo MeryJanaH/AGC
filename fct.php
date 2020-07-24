@@ -32,4 +32,9 @@ if(isset($_POST['id'])){
   $req = $bdd->prepare("UPDATE `Commerciaux` SET Suspendre=0 WHERE ID_cm ='".$_POST['id3']."' ");
   $res=$req->execute();
   }
+
+  if ($_POST['op']=="vendu") {
+  $req = $bdd->prepare("UPDATE `Projets` SET Vend=1 WHERE Code_pj ='".$_POST['id4']."' ");
+  $res=$req->execute();
+  }
 ?>

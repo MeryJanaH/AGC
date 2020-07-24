@@ -196,6 +196,15 @@ function check_susp($id){
   return $dn['Suspendre'];
 }
 
+function check_vend($id){
+  require 'LBD.php';
+  $req=$bdd->prepare("SELECT Vend FROM Projets WHERE Code_pj = $id ");
+  $res=$req->execute();
+  $dn = $req->fetch();
+  return $dn['Vend'];
+}
+
+
 function update_table_emp()
 {
   require 'LBD.php';
@@ -312,6 +321,33 @@ function update_table_projets()
 
       while($dn = $req->fetch())
       { ?>
+        <script>
+        function pj_vendu<?php echo $dn['Code_pj'];?>()
+        {
+            var txt;
+            if (confirm("Le projet  \"<?php print_r($dn['ProjetName']) ?>\"  est vendu ? En confirment, ce projet va pas apparaître dans les nouveaux statistiques ")) {
+                txt = "You pressed OK!";
+            } else {
+                txt = "You pressed Cancel!";
+            }
+            if(txt == "You pressed OK!")
+            {
+
+              $.post("fct",
+                {
+                  op: "vendu",
+                  id4: <?php echo $dn['Code_pj'] ?>
+                }, function(data, status){
+               location.reload();
+             });
+
+            }
+        }
+
+        function alert_vend(){
+          alert("le projet est déjà vendu entièrement");
+        }
+      </script>
         <tr>
             <td style="width: 120px";><span class="js-lists-values-employee-name"><?php print_r($dn['ProjetName']); ?></span></td>
             <td style="width: 180px";><span class="text-muted"><?php print_r($dn['type_p']) ?></span></td>
@@ -319,7 +355,8 @@ function update_table_projets()
             <td style="width: 150px";><span class="text-muted"><?php print_r($dn['Surface']) ?></span></td>
             <td style="width: 100px";><span class="text-muted"><?php print_r($dn['Prix']) ?></span></td>
             <td>
-            <input type="button" id="vend" value="Vendu !" onClick=''/>
+            <input type="button" id="vend" value= <?php if(check_vend($dn['Code_pj'])=="1"){ ?> " le projet est vendu !" onClick='alert_vend()'<?php }
+                                                  else {?> "Vendu ?!" onClick='pj_vendu<?php echo $dn['Code_pj'];?>()' <?php } ?> />
             </td>
         </tr>
      <?php

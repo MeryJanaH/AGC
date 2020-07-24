@@ -31,6 +31,7 @@ CREATE TABLE `Projets` (
   `type_p` varchar(30) DEFAULT NULL,
   `Etages` varchar(30) DEFAULT NULL,
   `Surface` varchar(80) DEFAULT NULL,
+  `Vend` BIT DEFAULT NULL,
   `Prix` int(80) DEFAULT NULL,
 
   primary key (Code_pj)
@@ -78,13 +79,13 @@ INSERT INTO Commerciaux (CName,Email,Password,Suspendre) VALUES("Yassine","Yassi
 
 
 
-INSERT INTO `Projets`(`ProjetName`, `type_p`, `Etages`, `Surface`, `Prix`) VALUES ("Hanae 1","Moyen standing","R+2","145 / 186",145542);
-INSERT INTO `Projets`(`ProjetName`, `type_p`, `Etages`, `Surface`, `Prix`) VALUES ("Hanae 2","Moyen standing","R+2","158",1456522);
-INSERT INTO `Projets`(`ProjetName`, `type_p`, `Etages`, `Surface`, `Prix`) VALUES ("Hanae 3","Moyen standing","R+2","148",145652);
-INSERT INTO `Projets`(`ProjetName`, `type_p`, `Etages`, `Surface`, `Prix`) VALUES ("Walili 1","Haut standing plus","R+3","148",1478452);
-INSERT INTO `Projets`(`ProjetName`, `type_p`, `Etages`, `Surface`, `Prix`) VALUES ("Walili 2","Haut standing plus","R+3","158",145452);
-INSERT INTO `Projets`(`ProjetName`, `type_p`, `Etages`, `Surface`, `Prix`) VALUES ("Wafae 1","Moyen standing plus","R+4","148",1455422);
-INSERT INTO `Projets`(`ProjetName`, `type_p`, `Etages`, `Surface`, `Prix`) VALUES ("Wafae 2","Moyen standing plus","R+4","148",1366452);
+INSERT INTO `Projets`(`ProjetName`, `type_p`, `Etages`, `Surface`,`Vend`, `Prix`) VALUES ("Hanae 1","Moyen standing","R+2","145 / 186",0,145542);
+INSERT INTO `Projets`(`ProjetName`, `type_p`, `Etages`, `Surface`,`Vend`, `Prix`) VALUES ("Hanae 2","Moyen standing","R+2","158",0,1456522);
+INSERT INTO `Projets`(`ProjetName`, `type_p`, `Etages`, `Surface`,`Vend`, `Prix`) VALUES ("Hanae 3","Moyen standing","R+2","148",0,145652);
+INSERT INTO `Projets`(`ProjetName`, `type_p`, `Etages`, `Surface`,`Vend`, `Prix`) VALUES ("Walili 1","Haut standing plus","R+3","148",0,1478452);
+INSERT INTO `Projets`(`ProjetName`, `type_p`, `Etages`, `Surface`,`Vend`, `Prix`) VALUES ("Walili 2","Haut standing plus","R+3","158",1,45452);
+INSERT INTO `Projets`(`ProjetName`, `type_p`, `Etages`, `Surface`,`Vend`, `Prix`) VALUES ("Wafae 1","Moyen standing plus","R+4","148",0,1455422);
+INSERT INTO `Projets`(`ProjetName`, `type_p`, `Etages`, `Surface`,`Vend`, `Prix`) VALUES ("Wafae 2","Moyen standing plus","R+4","148",0,1366452);
 
 
 

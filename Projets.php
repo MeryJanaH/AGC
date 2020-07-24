@@ -56,8 +56,8 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                               var html = "<tr>";
                                   html += "<td><input required='' id ='n' name='proj_name[]'></td>";
                                   html += "<td><input required='' id ='t' name='proj_type[]'></td>";
-                                  html += "<td><input required='' id ='e' name='proj_etage[]'></td>";
-                                  html += "<td><input required='' id ='s' name='proj_surface[]'></td>";
+                                  html += "<td><input             id ='e' name='proj_etage[]'></td>";
+                                  html += "<td><input             id ='s' name='proj_surface[]'></td>";
                                   html += "<td><input required='' id ='p' type='number' name='proj_prix[]'></td>";
                                   html += "</tr>";
 
