@@ -1,3 +1,5 @@
+<link href="assets/vendor/toastr.min.css" rel="stylesheet" type="text/css" />
+
 <!-- Header -->
 <div id="header" class="mdk-header js-mdk-header m-0" data-fixed data-effects="waterfall" data-retarget-mouse-scroll="false">
     <div class="mdk-header__content">
@@ -225,7 +227,7 @@
                        notifs=response;
                        nb=$('#div_nb').val();
                        $('#nb_notif').text(nb);
-                       toastr["info"](nb+" notifications are waiting fo you !", "NOTE");
+                       toastr["info"](nb+" rendez-vous est/sont proche(s) ! Veuillez consulter les notifications", "NOTE");
                      }
                     }
                    });
