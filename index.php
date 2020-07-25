@@ -451,8 +451,7 @@ include 'footer.php'; ?>
                       $rq=$bdd->query("SELECT Name,phnumber,Projets.ProjetName FROM Clients,Projets,Calendrier WHERE Clients.ID_client=". $dn['ID_client']." AND Calendrier.id=". $dn['id']." AND Projets.Code_pj=Calendrier.Code_pj");
                       $res = $rq->fetch();
                print_r($res['Name']." , ".$res['phnumber']." , ". $res['ProjetName']); ?>",
-               start: new Date("<?php print_r($dn['date_tdebut']) ?>"),/*
-               end: new Date("<?php print_r($dn['date_tfin']) ?>"),*/
+               start: new Date("<?php print_r($dn['date_tdebut']) ?>"),
                classNames: "<?php print_r($dn['Category']) ?>"
             }, <?php } ?>
           ],
