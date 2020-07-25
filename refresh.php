@@ -36,10 +36,6 @@ if($hours <= "16" && $hours >= "0" && $mins > "0"){
 
   <?php
    $n++;
-}elseif ($hours == "0" && $mins == "0") {
-  $n--;
-}else {
-
 }
 }
 ?>
