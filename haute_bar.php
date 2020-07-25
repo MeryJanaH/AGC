@@ -174,7 +174,7 @@
 
 
                 <!-- Notif -->
-
+                <li class="nav-item dropdown">
                      <div class="dropdown">
                      <a href="#" data-toggle="dropdown" data-caret="false" class="dropdown-toggle navbar-toggler navbar-toggler-company border-left d-flex align-items-center ml-navbar">
                          <span class="rounded-circle">
@@ -182,6 +182,7 @@
                              <span id="nb_notif" class="badge badge-warning text-primary-dark rounded-circle badge-notifications"></span>
                          </span>
                      </a>
+
 
 
                      <div id="notifications_menu" class="dropdown-menu dropdown-menu-right navbar-notifications-menu">
@@ -192,6 +193,8 @@
                          </div>
                      </div>
                  </div>
+                </li>
+
                  <!-- jQuery-->
                  <script src="assets/vendor/jquery.min.js"></script>
                  <script src="assets/vendor/toastr.min.js"></script>

@@ -23,16 +23,21 @@ $date2 = $last;
 $hours = round((strtotime($date2) - strtotime($date1))/3600,2);
 if($hours <= "16" && $hours >= "0"){
   ?>
-    <div class="dropdown-item d-flex">
-        <div class="flex">
-            <b>NOTE :</b> Il reste around <?php echo floor($hours) ?> heurs pour le rendez-vous de <?php  echo name_client($dn['ID_client']); ?><br/><br>
-            <small class="text-muted"><?php echo $last; ?></small>
-        </div>
-    </div>
+            <div class="navbar-notifications-menu__content" data-simplebar>
+                  <div class="dropdown-item d-flex">
+                    <div class="flex">
+                        <b>NOTE :</b> Il reste presque <?php echo floor($hours) ?> heurs pour le rendez-vous de <?php  echo name_client($dn['ID_client']); ?> <br/>
+                        <small class="text-muted"><?php echo $last; ?></small>
+                    </div>
+                  </div>
+            </div>
+
   <?php
    $n++;
 }elseif ($hours == "0") {
   $n--;
+}else {
+
 }
 }
 ?>
