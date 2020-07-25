@@ -178,7 +178,7 @@
                      <div class="dropdown">
                      <a href="#" data-toggle="dropdown" data-caret="false" class="dropdown-toggle navbar-toggler navbar-toggler-company border-left d-flex align-items-center ml-navbar">
                          <span class="rounded-circle">
-                             <span class="material-icons">business</span>
+                             <span class="material-icons">notifications</span>
                              <span id="nb_notif" class="badge badge-warning text-primary-dark rounded-circle badge-notifications"></span>
                          </span>
                      </a>
@@ -186,9 +186,9 @@
 
 
                      <div id="notifications_menu" class="dropdown-menu dropdown-menu-right navbar-notifications-menu">
-                         <div class="navbar-notifications-menu__content" data-simplebar>
+                         <div class="navbar-notifications-menu__content" style="overflow-y:auto;">
                              <div  id="notif_ajax" class="py-2">
-
+                               Rien à afficher !
                              </div>
                          </div>
                      </div>
@@ -226,11 +226,15 @@
                     type: 'post',
                     success: function(response){
                      if (notifs!=response) {
-                       $('#notif_ajax').text("");
                        $('#notif_ajax').html(response);
                        notifs=response;
                        nb=$('#div_nb').val();
-                       $('#nb_notif').text(nb);
+                       if (nb==0) {
+                          $('#notif_ajax').html("Rien à afficher !");
+                         $('#nb_notif').text("");
+                       }else {
+                         $('#nb_notif').text(nb);
+                       }
                      }
                      h_toast=$('#h_toast').val();
                      if (hourtoast!=h_toast && h_toast!=0) {
@@ -241,7 +245,7 @@
                    });
                   }
                   $(document).ready(function(){
-                   setInterval(fetchdata,60000);
+                   setInterval(fetchdata,6000);
                   });
 
                 </script>
