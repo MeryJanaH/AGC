@@ -21,7 +21,7 @@ $date1 = $currentDateTime;
 $date2 = $last;
 
 $hours = round(abs(strtotime($date2) - strtotime($date1))/3600,2);
-if($hours <= "20"){
+if($hours <= "16"){
   ?>
     <div class="dropdown-item d-flex">
         <div class="flex">
