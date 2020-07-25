@@ -270,6 +270,19 @@ echo $hours;
 */
 
 
-echo check_susp(1);
+$rq = $bdd->prepare(" SELECT * FROM Calendrier WHERE Category='bg-primary' ORDER BY date_tdebut ASC ");
+$rq->execute();
+$dn = $rq->fetch();
 
+    $currentDateTime = date('Y-m-d H:i:s');
+    $last = date('Y-m-d H:i:s', strtotime($dn['date_tdebut']));
+
+
+$date1 = $currentDateTime;
+$date2 = $last;
+
+$hours = round((strtotime($date2) - strtotime($date1))/3600,2);
+$mins = abs(((strtotime($date2) - strtotime($date1))/3600)-$hours);
+
+echo $mins;
 ?>

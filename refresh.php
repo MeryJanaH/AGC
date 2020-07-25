@@ -21,7 +21,9 @@ $date1 = $currentDateTime;
 $date2 = $last;
 
 $hours = round((strtotime($date2) - strtotime($date1))/3600,2);
-if($hours <= "16" && $hours >= "0"){
+$mins = abs(((strtotime($date2) - strtotime($date1))/3600)-$hours);
+
+if($hours <= "16" && $hours >= "0" && $mins > "0"){
   ?>
             <div class="navbar-notifications-menu__content" data-simplebar>
                   <div class="dropdown-item d-flex">
@@ -34,7 +36,7 @@ if($hours <= "16" && $hours >= "0"){
 
   <?php
    $n++;
-}elseif ($hours == "0") {
+}elseif ($hours == "0" && $mins == "0") {
   $n--;
 }else {
 
