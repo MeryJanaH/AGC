@@ -232,17 +232,16 @@
                        nb=$('#div_nb').val();
                        $('#nb_notif').text(nb);
                      }
-                     h_toast=$('#h_toast').val()
-                     if (hourtoast!=h_toast) {
-                       toastr["info"](h_toast+" rendez-vous est/sont proche(s) ! Veuillez consulter les notifications", "NOTE");
-                       hourtoast=h_toast;
+                     h_toast=$('#h_toast').val();
+                     if (hourtoast!=h_toast && h_toast!=0) {
+                         toastr["info"](h_toast+" rendez-vous est/sont proche(s) ! Veuillez consulter les notifications", "NOTE");
+                         hourtoast=h_toast;
                      }
                     }
                    });
                   }
-
                   $(document).ready(function(){
-                   setInterval(fetchdata,5000);
+                   setInterval(fetchdata,60000);
                   });
 
                 </script>
