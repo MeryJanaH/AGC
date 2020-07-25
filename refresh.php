@@ -12,6 +12,7 @@ function name_client($id){
 $rq = $bdd->prepare(" SELECT * FROM Calendrier WHERE Category='bg-primary' ORDER BY date_tdebut ASC ");
 $rq->execute();
 $n=0;
+$newtoast=0;
 WHILE($dn=$rq->fetch()){
     $currentDateTime = date('Y-m-d H:i:s');
     $last = date('Y-m-d H:i:s', strtotime($dn['date_tdebut']));
@@ -37,6 +38,10 @@ if($hours <= "16" && $hours >= "0" && $mins > "0"){
   <?php
    $n++;
 }
+if ($hours < "1" && $hours >= "0" && $mins > "0") {
+  $newtoast++;
+}
 }
 ?>
+<input type="hidden" id="h_toast" value="<?php echo $newtoast; ?>"> </input>
 <input type="hidden" id="div_nb" value="<?php echo $n; ?>"> </input>

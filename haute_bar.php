@@ -201,6 +201,7 @@
 
                  <script>
                  var notifs;
+                 var hourtoast;
                  toastr.options = {
                     "closeButton": true,
                     "debug": false,
@@ -230,7 +231,11 @@
                        notifs=response;
                        nb=$('#div_nb').val();
                        $('#nb_notif').text(nb);
-                       toastr["info"](nb+" rendez-vous est/sont proche(s) ! Veuillez consulter les notifications", "NOTE");
+                     }
+                     h_toast=$('#h_toast').val()
+                     if (hourtoast!=h_toast) {
+                       toastr["info"](h_toast+" rendez-vous est/sont proche(s) ! Veuillez consulter les notifications", "NOTE");
+                       hourtoast=h_toast;
                      }
                     }
                    });

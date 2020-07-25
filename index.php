@@ -632,7 +632,7 @@ include 'footer.php'; ?>
                 {
                   op: "time",
                   id: info.event.id,
-                  start:info.event.start.toString(),
+                  start:info.event.startStr
           //        end: info.event.end.toString()
                 }, function(data, status){
                   //alert(data);
