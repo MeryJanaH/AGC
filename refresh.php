@@ -33,7 +33,6 @@ if($hours <= "16" && $hours >= "0" && $mins > "0"){
                     </div>
                   </div>
             </div>
-
   <?php
    $n++;
 }
