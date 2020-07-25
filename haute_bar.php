@@ -187,7 +187,7 @@
 
                      <div id="notifications_menu" class="dropdown-menu dropdown-menu-right navbar-notifications-menu">
                          <div class="navbar-notifications-menu__content" data-simplebar>
-                             <div id="notif_ajax" class="py-2">
+                             <div  id="notif_ajax" class="py-2">
 
                              </div>
                          </div>
@@ -207,8 +207,8 @@
                     "newestOnTop": true,
                     "progressBar": true,
                     "rtl": false,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": false,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": true,
                     "onclick": null,
                     "showDuration": 300,
                     "hideDuration": 1000,
