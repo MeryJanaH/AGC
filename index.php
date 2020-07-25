@@ -48,6 +48,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
     <link type="text/css" href="assets/css/vendor-select2.rtl.css" rel="stylesheet">
     <link type="text/css" href="assets/vendor/select2/select2.min.css" rel="stylesheet">
 
+<link href="assets/vendor/toastr.min.css" rel="stylesheet" type="text/css" />
 
 </head>
 
