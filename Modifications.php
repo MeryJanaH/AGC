@@ -23,7 +23,7 @@
 <?php
 
 require 'functions.php';
-require 'LBD.php';
+require 'BDD/LBD.php';
 
 if(isset($_SESSION['name']))
 {
@@ -40,7 +40,7 @@ $_SESSION['current_page']="edit";
             <!-- Header Layout -->
             <div class="mdk-header-layout js-mdk-header-layout" data-has-scrolling-region>
 
-            <?php include('haute_bar.php'); ?>
+            <?php include('include/haute_bar.php'); ?>
 
                 <!-- Header Layout Content -->
           <form action="#modif" method="POST">
@@ -167,7 +167,7 @@ $_SESSION['current_page']="edit";
       header('Location: login');
     }
     ?>
-<?php include 'footer.php';?>
+<?php include 'include/left_side.php';?>
 
 
     <!-- jQuery -->

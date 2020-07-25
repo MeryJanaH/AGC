@@ -1,5 +1,5 @@
 <?php
-require 'LBD.php';
+require 'BDD/LBD.php';
 
 if(isset($_POST['id'])){
   require 'functions.php';

@@ -2,7 +2,7 @@
 session_start();
 
 function login($email,$mdp){
-    require 'LBD.php';
+    require 'BDD/LBD.php';
     $req = $bdd->prepare("SELECT * FROM Admin WHERE Email=:email AND Password=:mdp ");
     $req->bindParam(':email', $email);
     $req->bindParam(':mdp', $mdp);
@@ -55,7 +55,7 @@ function login($email,$mdp){
 }
 
 function email_exist($email){
-  require 'LBD.php';
+  require 'BDD/LBD.php';
   $req = $bdd->prepare("SELECT * FROM Commerciaux WHERE Email=:email");
   $req->bindParam(':email', $email);
 
@@ -83,7 +83,7 @@ function email_exist($email){
 
 function changer_parametres($name, $email, $mdp)
 {
-  require 'LBD.php';
+  require 'BDD/LBD.php';
   if($_SESSION['user']=="admin")
       $req = $bdd->prepare("UPDATE Admin SET AdminName=:name, Email=:email1, Password=:new_mdp  WHERE Email=:email2");
   else
@@ -141,7 +141,7 @@ function first_mail($from, $to, $subj, $body)
 
 function premier_login($email)
 {
-      require 'LBD.php';
+      require 'BDD/LBD.php';
 
       $req = $bdd->prepare("SELECT * FROM Commerciaux WHERE Email=:email");
       $req->bindParam(':email', $email);
@@ -160,7 +160,7 @@ function premier_login($email)
 
 function register_bdd($name, $new_mdp)
 {
-  require 'LBD.php';
+  require 'BDD/LBD.php';
 
   $req = $bdd->prepare("UPDATE Commerciaux SET CName=:name,firstlog = now(), Password=:new_mdp  WHERE Email=:email");
   $req->bindParam(':name', $name);
@@ -174,7 +174,7 @@ function register_bdd($name, $new_mdp)
 
 function delet_com($v_id)
 {
-  require 'LBD.php';
+  require 'BDD/LBD.php';
   $req = $bdd->prepare("DELETE FROM Commerciaux WHERE Commerciaux.ID_cm =:id_table");
   $req->bindParam(':id_table',$v_id);
   $req->execute();
@@ -182,14 +182,14 @@ function delet_com($v_id)
 
 function delet_projet($pj)
 {
-  require 'LBD.php';
+  require 'BDD/LBD.php';
   $req = $bdd->prepare("DELETE FROM Projets WHERE Projets.Code_pj =:id_projet");
   $req->bindParam(':id_projet',$pj);
   $req->execute();
 }
 
 function check_susp($id){
-  require 'LBD.php';
+  require 'BDD/LBD.php';
   $req=$bdd->prepare("SELECT Suspendre FROM Commerciaux WHERE ID_cm = $id ");
   $res=$req->execute();
   $dn = $req->fetch();
@@ -197,7 +197,7 @@ function check_susp($id){
 }
 
 function check_vend($id){
-  require 'LBD.php';
+  require 'BDD/LBD.php';
   $req=$bdd->prepare("SELECT Vend FROM Projets WHERE Code_pj = $id ");
   $res=$req->execute();
   $dn = $req->fetch();
@@ -207,7 +207,7 @@ function check_vend($id){
 
 function update_table_emp()
 {
-  require 'LBD.php';
+  require 'BDD/LBD.php';
   $req=$bdd->query("SELECT ID_cm, CName, firstlog, lastLog FROM Commerciaux");
   while($dn = $req->fetch())
   { ?>
@@ -300,7 +300,7 @@ function update_table_emp()
 
 function user()
 {
-  require 'LBD.php';
+  require 'BDD/LBD.php';
 
   if($_SESSION['user']=="admin")
       $req = $bdd->prepare("SELECT Password FROM Admin WHERE Email=:email");
@@ -316,7 +316,7 @@ function user()
 
 function update_table_projets()
     {
-      require 'LBD.php';
+      require 'BDD/LBD.php';
       $req=$bdd->query("SELECT * FROM Projets");
 
       while($dn = $req->fetch())
@@ -365,7 +365,7 @@ function update_table_projets()
 
 function update_table_clients()
     {
-      require 'LBD.php';
+      require 'BDD/LBD.php';
       $req=$bdd->query("SELECT * FROM Clients");
       while($dn = $req->fetch())
       {
@@ -396,7 +396,7 @@ function update_table_clients()
 
     function fill_unit_select_box_projet()
     {
-       require 'LBD.php';
+       require 'BDD/LBD.php';
        $output = '';
        $req=$bdd->query('SELECT *  FROM Projets WHERE Vend =0');
        while($dn = $req->fetch())
@@ -420,7 +420,7 @@ function update_table_clients()
 
 function  add_projet($p_n,$p_t,$p_e,$p_s,$p_p)
 {
-  require 'LBD.php';
+  require 'BDD/LBD.php';
   for ($a = 0; $a < count($p_n); $a++)
   {
       $req = $bdd->prepare("INSERT INTO Projets (ProjetName, type_p,Etages,Surface,Prix) VALUES ('" . $p_n[$a] . "','" . $p_t[$a]."','" . $p_e[$a]."','" . $p_s[$a]."','" . $p_p[$a]."')");
@@ -430,7 +430,7 @@ function  add_projet($p_n,$p_t,$p_e,$p_s,$p_p)
 
 function  add_client($c_n,$nm_t,$c_nt,$c_s,$c_p,$c_v)
 {
-  require 'LBD.php';
+  require 'BDD/LBD.php';
   for ($a = 0; $a < count($c_n); $a++)
   {
 
@@ -442,7 +442,7 @@ function  add_client($c_n,$nm_t,$c_nt,$c_s,$c_p,$c_v)
 
 function clients_par_source($id,$year)
 {
-  require 'LBD.php';
+  require 'BDD/LBD.php';
    $n=0;
    if($id == "Janvier"){ $m = '01';
    $req=$bdd->query("SELECT ProjetName, count, Source FROM
@@ -682,7 +682,7 @@ function clients_par_source($id,$year)
 
 function Total_client_projets($id,$year)
 {
-  require 'LBD.php';
+  require 'BDD/LBD.php';
    $n=0;
    if($id == "Janvier"){ $m = '01';
    $req=$bdd->query("SELECT ProjetName,c_bureau,c_vente,c_projets  FROM (SELECT Code_pj, ProjetName FROM Projets) t1

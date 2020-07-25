@@ -39,7 +39,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
             <!-- Header Layout -->
             <div class="mdk-header-layout js-mdk-header-layout" data-has-scrolling-region>
 
-          <?php include 'haute_bar.php';
+          <?php include 'include/haute_bar.php';
                           if(isset($_POST["name_client"]))
                           {
                               if (isset($_POST["add"]))
@@ -136,7 +136,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
             </div>
             <!-- // END drawer-layout__content -->
 
-    <?php include 'footer.php';?>
+    <?php include 'include/left_side.php';?>
 
 
     <!-- jQuery -->

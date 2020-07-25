@@ -4,7 +4,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
 {
       header('Location: login');
 }
-require 'LBD.php';
+require 'BDD/LBD.php';
 
 $req=$bdd->query("SELECT * FROM Projets");
 ?>

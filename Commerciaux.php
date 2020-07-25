@@ -37,7 +37,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
             <!-- Header Layout -->
             <div class="mdk-header-layout js-mdk-header-layout" data-has-scrolling-region>
 
-            <?php include 'haute_bar.php';?>
+            <?php include 'include/haute_bar.php';?>
 
                 <!-- Header Layout Content -->
                 <div class="mdk-header-layout__content mdk-header-layout__content--fullbleed mdk-header-layout__content--scrollable page">
@@ -84,7 +84,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
         </div>
         <!-- // END drawer-layout__content -->
 
-<?php include 'footer.php';?>
+<?php include 'include/left_side.php';?>
 
     <!-- jQuery -->
     <script src="assets/vendor/jquery.min.js"></script>

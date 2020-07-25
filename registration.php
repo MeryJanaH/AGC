@@ -1,5 +1,5 @@
 <?php
-require 'LBD.php';
+require 'BDD/LBD.php';
 require 'functions.php';
 if(isset($_SESSION['login']) and $_SESSION['login']=="false")
 {

@@ -1,5 +1,5 @@
 <?php
-require 'LBD.php';
+require 'BDD/LBD.php';
 require 'functions.php';
 $_SESSION['current_page']="Graphe";
 
@@ -56,7 +56,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
             <!-- Header Layout -->
             <div class="mdk-header-layout js-mdk-header-layout" data-has-scrolling-region>
 
-              <?php include('haute_bar.php');
+              <?php include('include/haute_bar.php');
               function tables($id,$year){ ?>
                <div class="card card-form">
                    <div class="row no-gutters">
@@ -116,7 +116,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
 
              function annee($year)
              {
-               require 'LBD.php';
+               require 'BDD/LBD.php';
                $a= $bdd->prepare("SELECT ProjetName, IFNULL(count,0)AS count,date_tdebut FROM
                       (SELECT Code_pj, ProjetName FROM Projets) t1
                       LEFT JOIN
@@ -457,7 +457,7 @@ $d2 = $req2->fetch();
       }
         </script>
 
-    <?php include 'footer.php';?>
+    <?php include 'include/left_side.php';?>
 
     <!-- jQuery -->
     <script src="assets/vendor/jquery.min.js"></script>

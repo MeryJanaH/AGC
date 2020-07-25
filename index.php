@@ -60,7 +60,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
             <!-- Header Layout -->
             <div class="mdk-header-layout js-mdk-header-layout" data-has-scrolling-region>
 
-              <?php include 'haute_bar.php'; ?>
+              <?php include 'include/haute_bar.php'; ?>
 
                 <!-- Header Layout Content -->
                 <div class="mdk-header-layout__content mdk-header-layout__content--fullbleed mdk-header-layout__content--scrollable page">
@@ -123,7 +123,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
         <!-- // END drawer-layout__content -->
 
 <?php
-include 'footer.php'; ?>
+include 'include/left_side.php'; ?>
 
 
 
@@ -178,7 +178,7 @@ include 'footer.php'; ?>
                        <label class="control-label" for="select01">Commercial :</label>
                             <select id="select01" data-toggle="select" class="form-control" name="commercial">
                               <?php
-                              require 'LBD.php';
+                              require 'BDD/LBD.php';
                               $req=$bdd->query("SELECT ID_cm, CName, Email FROM Commerciaux WHERE CName !=''");
                               while($dn = $req->fetch())
                               { ?> <option value="<?php print_r($dn['ID_cm']); ?>" ><?php echo $dn['CName']." , ".$dn['Email']; ?></option><?php } ?>
@@ -187,7 +187,7 @@ include 'footer.php'; ?>
                        <label class="control-label" for="select02">Client :</label>
                          <select id="select02" data-toggle="select" class="form-control" name="client">
                            <?php
-                            require 'LBD.php';
+                            require 'BDD/LBD.php';
                             $req=$bdd->query("SELECT * FROM Clients");
                             while($dn = $req->fetch())
                             { ?> <option value="<?php print_r($dn['ID_client']); ?>" ><?php echo $dn['Name']." , ".$dn['phnumber']; ?></option><?php } ?>
@@ -196,7 +196,7 @@ include 'footer.php'; ?>
                         <label class="control-label" for="select03">Projet :</label>
                           <select id="select03" data-toggle="select" class="form-control" name="projet">
                             <?php
-                              require 'LBD.php';
+                              require 'BDD/LBD.php';
                               $req=$bdd->query("SELECT *  FROM Projets WHERE Vend = 0");
                               while($dn = $req->fetch())
                               { ?> <option value="<?php print_r($dn['Code_pj']); ?>" ><?php echo $dn['ProjetName']." , ".$dn['type_p']." , ".$dn['Etages']; ?></option><?php } ?>
@@ -264,7 +264,7 @@ include 'footer.php'; ?>
                        <label class="control-label" for="commercial">Commercial :</label>
                             <select id="commercial" data-toggle="select" class="form-control" name="commercial">
                               <?php
-                              require 'LBD.php';
+                              require 'BDD/LBD.php';
                               $req=$bdd->query("SELECT ID_cm, CName, Email FROM Commerciaux WHERE CName !=''");
                               while($dn = $req->fetch())
                               { ?> <option value="<?php print_r($dn['ID_cm']); ?>" ><?php echo $dn['CName']." , ".$dn['Email']; ?></option><?php } ?>
@@ -273,7 +273,7 @@ include 'footer.php'; ?>
                        <label class="control-label" for="select02">Client :</label>
                          <select id="client" data-toggle="select" class="form-control" name="client">
                            <?php
-                            require 'LBD.php';
+                            require 'BDD/LBD.php';
                             $req=$bdd->query("SELECT * FROM Clients");
                             while($dn = $req->fetch())
                             { ?> <option value="<?php print_r($dn['ID_client']); ?>"  ><?php echo $dn['Name']." , ".$dn['phnumber']; ?></option><?php } ?>
@@ -282,7 +282,7 @@ include 'footer.php'; ?>
                         <label class="control-label" for="select03">Projet :</label>
                           <select id="projet" data-toggle="select" class="form-control" name="projet">
                             <?php
-                              require 'LBD.php';
+                              require 'BDD/LBD.php';
                               $req=$bdd->query("SELECT *  FROM Projets WHERE Vend = 0");
                               while($dn = $req->fetch())
                               { ?> <option value="<?php print_r($dn['Code_pj']); ?>" ><?php echo $dn['ProjetName']." , ".$dn['type_p']." , ".$dn['Etages']; ?></option><?php } ?>
@@ -442,7 +442,7 @@ include 'footer.php'; ?>
           expandRows:true,
           events: [
             <?php
-            require 'LBD.php';
+            require 'BDD/LBD.php';
             $req=$bdd->query("SELECT * FROM Calendrier ");
             while($dn = $req->fetch())
             { ?>  {

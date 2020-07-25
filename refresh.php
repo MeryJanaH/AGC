@@ -1,7 +1,7 @@
 <?php
-require 'LBD.php';
+require 'BDD/LBD.php';
 function name_client($id){
-  require 'LBD.php';
+  require 'BDD/LBD.php';
   $rq = $bdd->prepare(" SELECT Name FROM Clients WHERE ID_client=$id ");
   $rq->execute();
   $req = $rq->fetch();

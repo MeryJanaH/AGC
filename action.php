@@ -5,7 +5,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
       header('Location: login');
 }
 //action.php
-require 'LBD.php';
+require 'BDD/LBD.php';
 
 $input = filter_input_array(INPUT_POST);
 
