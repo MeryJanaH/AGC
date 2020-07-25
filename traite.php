@@ -8,7 +8,8 @@ require 'functions.php';
           $_SESSION['login']="false";
           header('Location: login');
       }else{
-          if(isset($_POST['remember']))
+
+          if(isset($_POST['remember']) && premier_login($_POST['email_2'])!="true")
           {
             //remember for 7 days
             setcookie('Adresse_email', $_POST['email_2'],time()+60*60*24*7);

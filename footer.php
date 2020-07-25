@@ -100,7 +100,10 @@
                             </a>
                       </li>
 
-                        <?php if($_SESSION['current_page']=="Graphe"){?>
+                        <?php
+                        if($_SESSION['user']=="admin")
+                        {
+                         if($_SESSION['current_page']=="Graphe"){?>
                           <li class="sidebar-menu-item active">
                         <?php }else{ ?>
                           <li class="sidebar-menu-item ">
@@ -109,6 +112,7 @@
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">donut_small</i>
                                 <span class="sidebar-menu-text">Statistiques</span>
                             </a>
+                        <?php } ?>
                     </ul>
                 </div>
 
