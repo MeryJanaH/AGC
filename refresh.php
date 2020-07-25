@@ -1,5 +1,4 @@
 <?php
-session_start();
 require 'LBD.php';
 function name_client($id){
   require 'LBD.php';
