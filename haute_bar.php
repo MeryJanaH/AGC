@@ -237,7 +237,7 @@
                        }
                      }
                      h_toast=$('#h_toast').val();
-                     if (hourtoast!=h_toast && h_toast!=0) {
+                     if (hourtoast!=h_toast && String(h_toast)!='0' && String(h_toast)!='undefined' ) {
                          toastr["info"](h_toast+" rendez-vous est/sont proche(s) ! Veuillez consulter les notifications", "NOTE");
                          hourtoast=h_toast;
                      }
