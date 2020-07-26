@@ -70,7 +70,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
             {
               $default_password = default_password();
               $lien = "https://guesspromo.ga/login";
-              $txt = "Voici votre mot de passe pour se connecter à AGC : ".'<br/>'."MDP : ".$default_password.'<br/>'."Adresse email : ".$_POST['email_2'].'<br/>'." Vous pouvez utiliser le lien suivent : ".$lien;
+              $txt = "Voici votre mot de passe pour se connecter à AGC : ".'<br/>'."MDP : ".$default_password.'<br/>'."Adresse email : ".$_POST['email_2'].'<br/>'." Vous pouvez utiliser le lien suivant : ".$lien;
 
                 $req = $bdd->prepare('INSERT INTO Commerciaux (Email, Password) VALUES(?, ?)');
                 $req->execute(array($_POST['email_2'], md5($default_password)));
