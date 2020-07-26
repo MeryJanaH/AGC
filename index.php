@@ -197,7 +197,7 @@ include 'include/left_side.php'; ?>
                           <select id="select03" data-toggle="select" class="form-control" name="projet">
                             <?php
                               require 'BDD/LBD.php';
-                              $req=$bdd->query("SELECT *  FROM Projets WHERE Vend = 0");
+                              $req=$bdd->query("SELECT *  FROM Projets");
                               while($dn = $req->fetch())
                               { ?> <option value="<?php print_r($dn['Code_pj']); ?>" ><?php echo $dn['ProjetName']." , ".$dn['type_p']." , ".$dn['Etages']; ?></option><?php } ?>
                          </select>
