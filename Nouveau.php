@@ -85,7 +85,11 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
               $req = $bdd->prepare('INSERT INTO Commerciaux (Email, Password) VALUES(?, ?)');
               $req->execute(array($_POST['email_2'], md5($default_password)));
 
-              mail($to,$subject,$message,$headers);
+              if(mail($to,$subject,$message,$headers))
+                $_SESSION['send']="true";
+              else
+                $_SESSION['send']="false";
+              
 
               //first_mail($_SESSION['email'], $_POST['email_2'], 'AGC',$txt);
               header('Location: Nouveau');
