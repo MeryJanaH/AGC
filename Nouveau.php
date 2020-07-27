@@ -68,14 +68,26 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
             }
             else
             {
+
+              $to = $_POST['email_2'];
+              $subject = 'AGC';
+
               $default_password = default_password();
               $lien = "https://guesspromo.ga/login";
-              $txt = "Voici votre mot de passe pour se connecter à AGC : ".'<br/>'."MDP : ".$default_password.'<br/>'."Adresse email : ".$_POST['email_2'].'<br/>'." Vous pouvez utiliser le lien suivant : ".$lien;
+              $message = "Voici votre mot de passe pour se connecter à AGC : ".'<br/>'."MDP : ".$default_password.'<br/>'."Adresse email : ".$_POST['email_2'].'<br/>'." Vous pouvez utiliser le lien suivant : ".$lien;
 
-                $req = $bdd->prepare('INSERT INTO Commerciaux (Email, Password) VALUES(?, ?)');
-                $req->execute(array($_POST['email_2'], md5($default_password)));
+              $headers = 'From: GUESSPROMO '.$_SESSION['email'] . "\r\n" ;
+              $headers .='Reply-To: '. $to . "\r\n" ;
+              $headers .='X-Mailer: PHP/' . phpversion();
+              $headers .= "MIME-Version: 1.0\r\n";
+              $headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
 
-              first_mail($_SESSION['email'], $_POST['email_2'], 'AGC',$txt);
+              $req = $bdd->prepare('INSERT INTO Commerciaux (Email, Password) VALUES(?, ?)');
+              $req->execute(array($_POST['email_2'], md5($default_password)));
+
+              mail($to,$subject,$message,$headers);
+
+              //first_mail($_SESSION['email'], $_POST['email_2'], 'AGC',$txt);
               header('Location: Nouveau');
             }
         }
@@ -85,6 +97,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
           if($_SESSION['enrg'] == "true")
           {
             ?>
+
             <div class="alert alert-danger" role="alert">
                 <strong>Erreur - </strong> Email déjà enregistré
             </div>

@@ -110,7 +110,7 @@ function default_password()
     return implode($pass); //turn the array into a string
 }
 
-function first_mail($from, $to, $subj, $body)
+/*function first_mail($from, $to, $subj, $body)
 {
     require 'mail/phpmailer/PHPMailerAutoload.php';
 
@@ -122,7 +122,7 @@ function first_mail($from, $to, $subj, $body)
     $mail->Host       = "smtp.gmail.com";      // SMTP server
     $mail->Port       = 587;                   // SMTP port
     $mail->Username   = 'meryem.annouar@usmba.ac.ma';  // username
-    $mail->Password   = 'meryjana1999';            // password
+    $mail->Password   = '';            // password
 
     $mail->SetFrom($from,'GUESSPROMO');
 
@@ -137,7 +137,7 @@ function first_mail($from, $to, $subj, $body)
       $_SESSION['send']="true";
     else
       $_SESSION['send']="false";
-}
+}*/
 
 function premier_login($email)
 {
