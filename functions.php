@@ -217,7 +217,6 @@ function update_table_emp()
         </td>
         <td><small class="text-muted"><?php print_r($dn['firstlog']) ?></small></td>
         <td><small class="text-muted"><?php print_r($dn['lastLog']) ?></small></td>
-        <td><a class="text-muted"><i></i></a><?php print_r($dn['ID_cm']) ?></td>
               <script type="text/javascript">
                 function showMessage<?php echo $dn['ID_cm'];?>()
                 {
@@ -352,11 +351,10 @@ function update_table_projets()
             <td style="width: 120px";><span class="js-lists-values-employee-name"><?php print_r($dn['ProjetName']); ?></span></td>
             <td style="width: 180px";><span class="text-muted"><?php print_r($dn['type_p']) ?></span></td>
             <td style="width: 150px";><span class="text-muted"><?php print_r($dn['Etages']) ?></span></td>
-            <td style="width: 150px";><span class="text-muted"><?php print_r($dn['Surface']) ?></span></td>
             <td style="width: 100px";><span class="text-muted"><?php print_r($dn['Prix']) ?></span></td>
             <td>
-            <input type="button" id="vend" value= <?php if(check_vend($dn['Code_pj'])=="1"){ ?> " le projet est vendu !" onClick='alert_vend()'<?php }
-                                                  else {?> "Vendu ?!" onClick='pj_vendu<?php echo $dn['Code_pj'];?>()' <?php } ?> />
+            <input type="button" id="vend"  <?php if(check_vend($dn['Code_pj'])=="1"){ ?> style="color: green;" value=" le projet est vendu !" onClick='alert_vend()'<?php }
+                                                  else {?> style="color: pink;" value="Vendu ?!" onClick='pj_vendu<?php echo $dn['Code_pj'];?>()' <?php } ?> />
             </td>
         </tr>
      <?php
@@ -418,12 +416,12 @@ function update_table_clients()
        return $output;
     }
 
-function  add_projet($p_n,$p_t,$p_e,$p_s,$p_p)
+function  add_projet($p_n,$p_t,$p_e,$p_p)
 {
   require 'BDD/LBD.php';
   for ($a = 0; $a < count($p_n); $a++)
   {
-      $req = $bdd->prepare("INSERT INTO Projets (ProjetName, type_p,Etages,Surface,Prix) VALUES ('" . $p_n[$a] . "','" . $p_t[$a]."','" . $p_e[$a]."','" . $p_s[$a]."','" . $p_p[$a]."')");
+      $req = $bdd->prepare("INSERT INTO Projets (ProjetName, type_p,Etages,Surface,Prix) VALUES ('" . $p_n[$a] . "','" . $p_t[$a]."','" . $p_e[$a]."',"0",'" . $p_p[$a]."')");
       $req->execute();
   }
 }

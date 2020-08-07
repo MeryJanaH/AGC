@@ -42,7 +42,7 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                           {
                               if (isset($_POST["add"]))
                               {
-                                  add_projet($_POST["proj_name"],$_POST["proj_type"],$_POST["proj_etage"],$_POST["proj_surface"],$_POST["proj_prix"]);
+                                  add_projet($_POST["proj_name"],$_POST["proj_type"],$_POST["proj_etage"],$_POST["proj_prix"]);
                               }
                           }
                           else {
@@ -57,7 +57,6 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                   html += "<td><input required='' id ='n' name='proj_name[]'></td>";
                                   html += "<td><input required='' id ='t' name='proj_type[]'></td>";
                                   html += "<td><input             id ='e' name='proj_etage[]'></td>";
-                                  html += "<td><input             id ='s' name='proj_surface[]'></td>";
                                   html += "<td><input required='' id ='p' type='number' name='proj_prix[]'></td>";
                                   html += "</tr>";
 
@@ -87,7 +86,6 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                                     <th style="width: 120px;" name="name_pj">Projets</th>
                                                     <th style="width: 120px;" name="type">Type</th>
                                                     <th style="width: 120px;" name="Etage">Etage</th>
-                                                    <th style="width: 120px;" name="Surface">Surface</th>
                                                     <th style="width: 120px;" name="prix">Prix</th>
                                                 </tr>
                                             </thead>

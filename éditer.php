@@ -31,7 +31,6 @@ $req=$bdd->query("SELECT * FROM Projets");
                <th>Projet</th>
                <th>Type</th>
                <th>Etage</th>
-               <th>Surface</th>
                <th>Prix</th>
               </tr>
              </thead>
@@ -45,7 +44,6 @@ $req=$bdd->query("SELECT * FROM Projets");
                <td>'.$row["ProjetName"].'</td>
                <td>'.$row["type_p"].'</td>
                <td>'.$row["Etages"].'</td>
-               <td>'.$row["Surface"].'</td>
                <td>'.$row["Prix"].'</td>
               </tr>
               ';
@@ -63,7 +61,7 @@ $(document).ready(function(){
       url:'action',
       columns:{
       identifier:[0, "Code_pj"],
-      editable:[[1, 'ProjetName'], [2, 'type_p'], [3, 'Etages'], [4, 'Surface'], [5, 'Prix']]
+      editable:[[1, 'ProjetName'], [2, 'type_p'], [3, 'Etages'], [4, 'Prix']]
       },
       restoreButton:false,
       onSuccess:function(data, textStatus, jqXHR)

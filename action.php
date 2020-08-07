@@ -33,13 +33,12 @@ else {
   $Projet = $input["ProjetName"];
   $Type = $input["type_p"];
   $Etage = $input["Etages"];
-  $Surface = $input["Surface"];
   $Prix = $input["Prix"];
   $id= $input["Code_pj"];
 
   if($input["action"] === 'edit')
   {
-   $sql= $bdd->prepare("UPDATE Projets SET ProjetName= '" . $Projet . "' ,type_p= '" . $Type . "',Etages= '" . $Etage . "',Surface= '" . $Surface . "',Prix= '" . $Prix . "' WHERE Code_pj= '" . $id . "'");
+   $sql= $bdd->prepare("UPDATE Projets SET ProjetName= '" . $Projet . "' ,type_p= '" . $Type . "',Etages= '" . $Etage . "',Prix= '" . $Prix . "' WHERE Code_pj= '" . $id . "'");
    $sql->execute();
 
   }

@@ -62,7 +62,6 @@ if(isset($_SESSION['login']) and $_SESSION['login']=="false" or !isset($_SESSION
                                                 <th>Employés</th>
                                                 <th style="width: 120px;">Première Connexion</th>
                                                 <th style="width: 120px;">Dernière connexion</th>
-                                                <th style="width: 120px;">"id"</th>
                                             </tr>
                                         </thead>
                                         <tbody class="list" id="staff02">
