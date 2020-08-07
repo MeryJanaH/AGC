@@ -354,7 +354,7 @@ function update_table_projets()
             <td style="width: 100px";><span class="text-muted"><?php print_r($dn['Prix']) ?></span></td>
             <td>
             <input type="button" id="vend"  <?php if(check_vend($dn['Code_pj'])=="1"){ ?> style="color: green;" value=" le projet est vendu !" onClick='alert_vend()'<?php }
-                                                  else {?> style="color: pink;" value="Projet encours de vente !" onClick='pj_vendu<?php echo $dn['Code_pj'];?>()' <?php } ?> />
+                                                  else {?> style="color: blue;" value="Projet encours de vente !" onClick='pj_vendu<?php echo $dn['Code_pj'];?>()' <?php } ?> />
             </td>
         </tr>
      <?php
