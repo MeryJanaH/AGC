@@ -59,7 +59,7 @@ require 'functions.php';
                   <p>
                   <b style="color:red"> Un mail contenant votre code de vérification est envoyé à votre adress émail </b>
                   <form>
-                      <div class="form-row">
+                      <div>
                     		<input type="number"  id="mobileOtp" class="form-input" placeholder="Entez le code de vérification">
                     	</div>
 
