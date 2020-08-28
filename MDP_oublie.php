@@ -104,7 +104,7 @@ require 'functions.php';
               }
 
 
-        if(($_POST['email_3'] && !email_exist($_POST['email_3'])) && !isset($_POST['code']) && !isset($_POST['newpassword']))
+        if((isset($_POST['email_3']) && !email_exist($_POST['email_3'])) && !isset($_POST['code']) && !isset($_POST['newpassword']))
         {
             ?>
         <div class="card card-body">
