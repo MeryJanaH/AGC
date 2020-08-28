@@ -32,7 +32,7 @@ require 'functions.php';
         </div>
         <?php
 
-        if(isset($_POST['submit']))
+        if(isset($_POST['submit']) && isset($_POST['email_3']))
         {
             $inter=email_exist($_POST['email_3']);
             if($inter == "true")
