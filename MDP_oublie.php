@@ -76,7 +76,8 @@ require 'functions.php';
             <?php
           }
       }
-              if(isset($_POST['code']) && $_POST['code']==$_SESSION['rand'] && !isset($_POST['newpassword']))
+              if((isset($_POST['code']) && $_POST['code']==$_SESSION['rand'] && !isset($_POST['newpassword'])) ||
+                                        (isset($_POST['code']) && $_POST['code']==$_SESSION['rand'] && isset($_POST['newpassword']) && $_POST['newpassword']!=$_POST['passwordconf']))
               { ?>
                 <div>
                 <form action="#" method="post">
@@ -103,7 +104,7 @@ require 'functions.php';
               }
 
 
-        if(!isset($_POST['email_3']))
+        if($inter != "true" && !isset($_POST['code']) && !isset($_POST['newpassword']))
         {
             ?>
         <div class="card card-body">
