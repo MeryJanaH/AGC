@@ -38,6 +38,7 @@ require 'functions.php';
             if($inter == "true")
             {
               $to = $_POST['email_3'];
+              $_SESSION['email']=$_POST['email_3'];
               $subject = 'AGC';
 
               $otp = otp();
@@ -93,7 +94,7 @@ require 'functions.php';
               }
               if (isset($_POST['newpassword'])) {
                   if ($_POST['newpassword']==$_POST['passwordconf']) {
-                      if (Update_pwd($_POST['newpassword'],$_POST['email_3'])) {
+                      if (Update_pwd($_POST['newpassword'],$_SESSION['email'])) {
                       ?>
                       <b style="color:green"> Vous avez changé votre mot de passe avec succès </b>
                       <br/>
