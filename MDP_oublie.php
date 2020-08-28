@@ -31,26 +31,7 @@ require 'functions.php';
             </a>
         </div>
         <?php
-        if(isset($_SESSION['send']))
-        {
-            if($_SESSION['send']=="false")
-            {
-              ?>
-              <div class="alert alert-danger" role="alert">
-                  <strong>Erreur - </strong> Veuillez réessayer une autre fois
-              </div>
-              <?php
-            }
-            elseif ($_SESSION['send']!="NULL")
-            {
-              ?>
-                  <div class="alert alert-success" role="alert">
-                      <strong>Succès - </strong> vous avez créer un compte commercial avec succès!
-                  </div>
-            <?php
-            $_SESSION['send']="NULL";
-            }
-        }
+        
         if(isset($_POST['submit']))
         {
             $inter=email_exist($_POST['email_3']);
@@ -60,7 +41,7 @@ require 'functions.php';
               $subject = 'AGC';
 
               $otp = otp();
-              $message = "Voici votre Code de vérification : ".'<br/>'."Code : ".$otp.'<br/>'."Adresse email : ".$_POST['email_3'];
+              $message = "Voici votre Code de vérification : ".'<br/>'."Code : ".$otp;
 
               $headers = 'From: GUESSPROMO '. "\r\n" ;
               $headers .='Reply-To: '. $to . "\r\n" ;
@@ -76,7 +57,7 @@ require 'functions.php';
               ?>
               <div>
                   <p>
-                  Un mail contenant votre mot de passe est envoyé à votre adress émail
+                  <b> Un mail contenant votre mot de passe est envoyé à votre adress émail </b>
                   <form action="#" method="post">
                   <input type="text" name="code" placeholder="Entrez votre OTP code">
                   <button type="submit" class="default-btn floatright">confirmer</button>
