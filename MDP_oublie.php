@@ -104,7 +104,7 @@ require 'functions.php';
             }
 
 
-        if(!isset($_POST['submit']))
+        if(!isset($_POST['email_3']))
         {
             ?>
         <div class="card card-body">
