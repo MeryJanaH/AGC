@@ -76,7 +76,7 @@ require 'functions.php';
         }
 
 
-        if(isset($_POST['submit']))
+        if(!isset($_POST['submit']))
         {
             ?>
         <div class="card card-body">
