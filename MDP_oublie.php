@@ -55,7 +55,7 @@ require 'functions.php';
               else
                 $_SESSION['send']="false";
 
-              if(!isset($_POST['code']==$_SESSION['rand'])){
+              if(!isset($_POST['code'])) {
               ?>
               <div>
                   <p>
