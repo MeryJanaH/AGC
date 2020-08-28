@@ -136,6 +136,7 @@ else {
                            <label class="custom-control-label"  for="remember">souvenez de moi pendant 7 jours</label>
                        </div>
                    </div>
+                     <input type="button" style="width: 276px; color: red;" value="Mot de passe oublié" onClick="window.location.href='MDP_oublie';"/>
                  <?php
                     }
                   ?>
