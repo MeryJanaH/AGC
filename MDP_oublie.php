@@ -41,6 +41,7 @@ require 'functions.php';
               $subject = 'AGC';
 
               $otp = otp();
+              $_SESSION['rand']=$otp;
               $message = "Voici votre Code de vérification : ".'<br/>'."Code : ".$otp;
 
               $headers = 'From: GUESSPROMO '. "\r\n" ;
@@ -54,22 +55,44 @@ require 'functions.php';
               else
                 $_SESSION['send']="false";
 
+              if(!isset($_POST['code']==$_SESSION['rand'])){
               ?>
               <div>
                   <p>
                   <b style="color:red"> Un mail contenant votre code de vérification est envoyé à votre adress émail </b>
-                  <form>
-                      <div>
-                    		<input type="number"  id="mobileOtp" class="form-input" placeholder="Entez le code de vérification">
-                    	</div>
-
-                    	<div class="default-btn floatright">
-                    		<input id="verify" type="button" class="btnVerify" value="Verify" onClick="verifyOTP();">
-                    	</div>
-                 <form>
+                  <form action="#" method="post">
+                    <input type="text" name="code" placeholder="Entrer votre code de vérification">
+                    <button type="submit" class="default-btn floatright">Confirmer</button>
+                  </form>
                   </p>
               </div>
             <?php
+          }
+              if(isset($_POST['code'] && $_POST['code']==$_SESSION['rand']))
+              { ?>
+                <div>
+                <form action="#" method="post">
+                    <input type="password" name="newpassword" placeholder="Entrer votre nv MDP">
+                    <input type="password" name="passwordconf" placeholder="confirmer votre MDP">
+                    <button type="submit" class="default-btn floatright">Enregistrer</button>
+                </form>
+                </div> <?php
+              }elseif (isset($_POST['code'] && $_POST['code']!=$_SESSION['rand'])) {
+                ?>
+                <b style="color:red"> Code de vérification est incorrec </b>
+                <?php
+              }
+              if (isset($_POST['newpassword'])) {
+                  if ($_POST['newpassword']==$_POST['passwordconf']) {
+                      if (Update_pwd($_POST['newpassword'],$_SESSION['email'])) {
+                      ?>
+                      <b style="color:green"> Vous avez changé votre mot de passe avec succès </b>
+                      <br/>
+                      <a href="/">Login</a>
+                       <?php
+                     }else ?> <b style="color:red">error</b> <?php
+                  }else ?> <b style="color:red"> Réessayez, Mot de passe non identique</b> <?php
+              }
             }
             else
             {?>

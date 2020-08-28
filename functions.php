@@ -187,7 +187,7 @@ function otp()
 
       $result = "";
 
-      for ($i = 1; $i <= 6; $i++) { 
+      for ($i = 1; $i <= 6; $i++) {
           $result .= substr($generator, (rand()%(strlen($generator))), 1);
       }
 
@@ -335,6 +335,19 @@ function user()
 
       return $dn;
 }
+function Update_pwd($mdp,$email)
+  {
+    require 'BDD/LBD.php';
+    if($_SESSION['user']=="admin")
+        $req = $bdd->prepare("UPDATE Admin SET Password=:new_mdp  WHERE Email=:email");
+    else
+        $req = $bdd->prepare("UPDATE Commerciaux SET Password=:new_mdp  WHERE Email=:email");
+
+          $req->bindParam(':new_mdp',$mdp);
+          $req->bindParam(':email1',$email);
+
+      $req->execute();
+  }
 
 function update_table_projets()
     {
