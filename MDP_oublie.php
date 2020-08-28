@@ -68,7 +68,7 @@ require 'functions.php';
               </div>
             <?php
           }
-              if(isset($_POST['code'] && $_POST['code']==$_SESSION['rand']))
+              if(isset($_POST['code']) && $_POST['code']==$_SESSION['rand'])
               { ?>
                 <div>
                 <form action="#" method="post">
