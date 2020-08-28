@@ -77,7 +77,7 @@ require 'functions.php';
                     <button type="submit" class="default-btn floatright">Enregistrer</button>
                 </form>
                 </div> <?php
-              }elseif (isset($_POST['code'] && $_POST['code']!=$_SESSION['rand'])) {
+              }elseif (isset($_POST['code']) && $_POST['code']!=$_SESSION['rand']) {
                 ?>
                 <b style="color:red"> Code de vérification est incorrec </b>
                 <?php
