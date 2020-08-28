@@ -344,8 +344,8 @@ function Update_pwd($mdp,$email)
         $req->bindParam(':new_mdp',$mdp);
         $req->bindParam(':email1',$email);
         $req->execute();
-        
-        if($res == ""){
+
+        if($req == ""){
         $req = $bdd->prepare("UPDATE Commerciaux SET Password=:new_mdp  WHERE Email=:email");
 
           $req->bindParam(':new_mdp',$mdp);
