@@ -31,7 +31,7 @@ require 'functions.php';
             </a>
         </div>
         <?php
-        
+
         if(isset($_POST['submit']))
         {
             $inter=email_exist($_POST['email_3']);
@@ -57,7 +57,7 @@ require 'functions.php';
               ?>
               <div>
                   <p>
-                  <b> Un mail contenant votre mot de passe est envoyé à votre adress émail </b>
+                  <b style="color:red"> Un mail contenant votre mot de passe est envoyé à votre adress émail </b>
                   <form action="#" method="post">
                   <input type="text" name="code" placeholder="Entrez votre OTP code">
                   <button type="submit" class="default-btn floatright">confirmer</button>
@@ -76,8 +76,11 @@ require 'functions.php';
         }
 
 
-                ?>
+        if(isset($_POST['submit']))
+        {
+            ?>
         <div class="card card-body">
+
             <form action="#verification" method="POST">
                 <div class="form-group">
                     <label class="text-label" for="email_3">Adresse email:</label>
@@ -96,6 +99,7 @@ require 'functions.php';
             </form>
             <a href="/"><button type="button" class="btn btn-block btn-primary">Retourner à l'accueil</button></a>
         </div>
+      <?php } ?>
     </div>
 
 
