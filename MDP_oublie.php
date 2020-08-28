@@ -88,12 +88,12 @@ require 'functions.php';
                 </div> <?php
               }elseif (isset($_POST['code']) && $_POST['code']!=$_SESSION['rand']) {
                 ?>
-                <b style="color:red"> Code de vérification est incorrec </b>
+                <b style="color:red"> Code de vérification est incorrect </b>
                 <?php
               }
               if (isset($_POST['newpassword'])) {
                   if ($_POST['newpassword']==$_POST['passwordconf']) {
-                      if (Update_pwd($_POST['newpassword'],$_SESSION['email'])) {
+                      if (Update_pwd($_POST['newpassword'],$_POST['email_3'])) {
                       ?>
                       <b style="color:green"> Vous avez changé votre mot de passe avec succès </b>
                       <br/>

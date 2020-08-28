@@ -338,9 +338,9 @@ function user()
 function Update_pwd($mdp,$email)
   {
     require 'BDD/LBD.php';
-    if($_SESSION['user']=="admin")
+
         $req = $bdd->prepare("UPDATE Admin SET Password=:new_mdp  WHERE Email=:email");
-    else
+
         $req = $bdd->prepare("UPDATE Commerciaux SET Password=:new_mdp  WHERE Email=:email");
 
           $req->bindParam(':new_mdp',$mdp);
