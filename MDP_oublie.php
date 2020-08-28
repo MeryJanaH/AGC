@@ -95,13 +95,13 @@ require 'functions.php';
                      }else ?> <b style="color:red">error</b> <?php
                   }else ?> <b style="color:red"> Réessayez, Mot de passe non identique</b> <?php
               }
-            }
             else
             {?>
               <div class="alert alert-danger" role="alert">
                   <strong>Erreur - </strong> Email non reconnu
               </div>
               <?php
+            }
 
 
         if(!isset($_POST['submit']))
