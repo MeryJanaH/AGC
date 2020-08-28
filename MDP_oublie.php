@@ -32,7 +32,7 @@ require 'functions.php';
         </div>
         <?php
 
-        if(isset($_POST['submit']) && isset($_POST['email_3']))
+        if(isset($_POST['submit']) && isset($_POST['email_3']) && !isset($_POST['code']) && !isset($_POST['newpassword']))
         {
             $inter=email_exist($_POST['email_3']);
             if($inter == "true")
@@ -68,7 +68,9 @@ require 'functions.php';
               </div>
             <?php
           }
-              if(isset($_POST['code']) && $_POST['code']==$_SESSION['rand'])
+        }
+      }
+              if(isset($_POST['code']) && $_POST['code']==$_SESSION['rand'] && !isset($_POST['newpassword']))
               { ?>
                 <div>
                 <form action="#" method="post">
@@ -100,8 +102,6 @@ require 'functions.php';
                   <strong>Erreur - </strong> Email non reconnu
               </div>
               <?php
-            }
-        }
 
 
         if(!isset($_POST['submit']))
