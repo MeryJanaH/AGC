@@ -58,13 +58,15 @@ require 'functions.php';
               <div>
                   <p>
                   <b style="color:red"> Un mail contenant votre code de vérification est envoyé à votre adress émail </b>
+                  <form>
                       <div class="form-row">
                     		<input type="number"  id="mobileOtp" class="form-input" placeholder="Entez le code de vérification">
                     	</div>
 
-                    	<div class="row">
+                    	<div class="default-btn floatright">
                     		<input id="verify" type="button" class="btnVerify" value="Verify" onClick="verifyOTP();">
                     	</div>
+                 <form>
                   </p>
               </div>
             <?php
