@@ -60,10 +60,9 @@ require 'functions.php';
                 $_SESSION['send']="false";
 
               if(!isset($_POST['code']) || (isset($_POST['code']) && $_POST['code']!=$_SESSION['rand'])) {
-              ?>
+                  echo '<script type="text/javascript">toastr.success("Un mail contenant votre code de vérification est envoyé à votre adress émail")</script>'; ?>
               <div>
                   <p>
-                  <b style="color:red"> Un mail contenant votre code de vérification est envoyé à votre adress émail </b>
                   <form action="#" method="post">
                     <input type="text" name="code" placeholder="Entrer votre code de vérification">
                     <button type="submit" class="default-btn floatright">Confirmer</button>
@@ -131,7 +130,7 @@ require 'functions.php';
                     echo '<script type="text/javascript">toastr.error("Mot de passe est déjà utilisé")</script>'; ?>
                     <form action="#" method="post">
                         <input type="password" name="newpassword" placeholder="Entrer votre nv MDP">
-
+                        <br/>
                         <input type="password" name="passwordconf" placeholder="confirmer MDP">
                         <button type="submit" class="default-btn floatright">Enregistrer</button>
                     </form> <?php
@@ -146,8 +145,6 @@ require 'functions.php';
                                  <button type="submit" class="default-btn floatright">Enregistrer</button>
                              </form>
                            <?php }
-              }else {
-                echo "non";
               }
 
 
