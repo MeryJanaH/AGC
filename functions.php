@@ -336,6 +336,29 @@ function user()
       return $dn;
 }
 
+function check_not_old($mdp,$email){
+  $mdp = md5($mdp);
+  $req = $bdd->prepare("Select * from Admin WHERE Password=:new_mdp  AND Email=:email");
+
+  $req->bindParam(':new_mdp',$mdp);
+  $req->bindParam(':email',$email);
+  $req->execute();
+
+  if($req == ""){
+  $req = $bdd->prepare("Select * from Admin WHERE Password=:new_mdp  AND Email=:email");
+
+    $req->bindParam(':new_mdp',$mdp);
+    $req->bindParam(':email',$email);
+    $req->execute();
+  }
+  if($req == ""){
+    return "true";
+  }else {
+    return "false";
+  }
+
+}
+
 function Update_pwd($mdp,$email)
   {
     require 'BDD/LBD.php';

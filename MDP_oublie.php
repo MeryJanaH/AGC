@@ -108,7 +108,7 @@ require 'functions.php';
                 <b style="color:red"> Code de vérification est incorrect </b>
                 <?php
               }elseif(isset($_POST['newpassword'])) {
-                  if ($_POST['newpassword']==$_POST['passwordconf']) {
+                  if ($_POST['newpassword']==$_POST['passwordconf'] && check_not_old($_POST['newpassword'],$_SESSION['email'])=="true"){
                       Update_pwd($_POST['newpassword'],$_SESSION['email']);
                       ?>
                       <div class="alert alert-success" role="alert">
@@ -117,13 +117,24 @@ require 'functions.php';
                       <br/>
                       <a href="/">Login</a>
                        <?php
-                  }else { ?> <div class="alert alert-danger" role="alert">
+                  }elseif (check_not_old($_POST['newpassword'],$_SESSION['email'])!="true"){ ?>
+                    <div class="alert alert-danger" role="alert">
+                          <strong>Réessayez un nouveau MDPRéessayez un nouveau MDP - </strong> Mot de passe est déjà utilisé
+                    <div>
+                    <form action="#" method="post">
+                        <input type="password" name="newpassword" placeholder="Entrer votre nv MDP">
+
+                        <input type="password" name="passwordconf" placeholder="confirmer MDP">
+                        <button type="submit" class="default-btn floatright">Enregistrer</button>
+                    </form> <?php
+                  }else{
+                      ?> <div class="alert alert-danger" role="alert">
                               <strong>Erreur - </strong> Réessayez, Mot de passe non identique
                              </div>
                              <form action="#" method="post">
-                                 <div><input type="password" name="newpassword" placeholder="Entrer votre nv MDP"></div>
+                                 <input type="password" name="newpassword" placeholder="Entrer votre nv MDP">
 
-                                 <div><input type="password" name="passwordconf" placeholder="confirmer MDP"</div>
+                                 <input type="password" name="passwordconf" placeholder="confirmer MDP">
                                  <button type="submit" class="default-btn floatright">Enregistrer</button>
                              </form>
                            <?php }
