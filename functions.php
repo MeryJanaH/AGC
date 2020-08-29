@@ -337,6 +337,7 @@ function user()
 }
 
 function check_not_old($mdp,$email){
+  require 'BDD/LBD.php';
   $mdp = md5($mdp);
   $req = $bdd->prepare("Select * from Admin WHERE Password=:new_mdp  AND Email=:email");
 
