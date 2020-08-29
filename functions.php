@@ -339,20 +339,15 @@ function user()
 function check_not_old($mdp,$email){
   require 'BDD/LBD.php';
   $mdp = md5($mdp);
-  $req = $bdd->prepare("Select * from Admin WHERE Password=:new_mdp  AND Email=:email");
-
-  $req->bindParam(':new_mdp',$mdp);
-  $req->bindParam(':email',$email);
+  $req = $bdd->prepare("Select * from Admin WHERE Password='". $mdp."'  AND Email='".$email."'");
   $req->execute();
-
-  if($req == ""){
-  $req = $bdd->prepare("Select * from Admin WHERE Password=:new_mdp  AND Email=:email");
-
-    $req->bindParam(':new_mdp',$mdp);
-    $req->bindParam(':email',$email);
+  $dn = $req->fetch();
+ if($dn == ""){
+  $req = $bdd->prepare("Select * from Commerciaux WHERE Password='". $mdp."'  AND Email='".$email."'");
     $req->execute();
+    $dn = $req->fetch();
   }
-  if($req == ""){
+  if($dn == ""){
     return "true";
   }else {
     return "false";
