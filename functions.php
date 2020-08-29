@@ -339,16 +339,17 @@ function user()
 function Update_pwd($mdp,$email)
   {
     require 'BDD/LBD.php';
-
+        $mdp = md5($mdp)
         $req = $bdd->prepare("UPDATE Admin SET Password=:new_mdp  WHERE Email=:email");
-        $req->bindParam(':new_mdp',md5($mdp));
+
+        $req->bindParam(':new_mdp',$mdp);
         $req->bindParam(':email',$email);
         $req->execute();
 
         if($req == ""){
         $req = $bdd->prepare("UPDATE Commerciaux SET Password=:new_mdp  WHERE Email=:email");
 
-          $req->bindParam(':new_mdp',md5($mdp));
+          $req->bindParam(':new_mdp',$mdp);
           $req->bindParam(':email',$email);
           $req->execute();
         }
