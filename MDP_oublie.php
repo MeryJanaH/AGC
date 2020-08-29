@@ -91,10 +91,9 @@ require 'functions.php';
                 ?>
                 <b style="color:red"> Code de vérification est incorrect </b>
                 <?php
-              }
-              if (isset($_POST['newpassword'])) {
+              }elseif(isset($_POST['newpassword'])) {
                   if ($_POST['newpassword']==$_POST['passwordconf']) {
-                      if (Update_pwd($_POST['newpassword'],$_SESSION['email'])) {
+                      if (Update_pwd($_POST['newpassword'],$_SESSION['email'])){
                       ?>
                       <b style="color:green"> Vous avez changé votre mot de passe avec succès </b>
                       <br/>
