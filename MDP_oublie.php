@@ -113,8 +113,7 @@ require 'functions.php';
                     <button type="submit" class="default-btn floatright">Confirmer</button>
                   </form>
                 <?php
-              }
-              if(isset($_POST['newpassword'])) {
+              }elseif(isset($_POST['newpassword'])) {
                   if ($_POST['newpassword']==$_POST['passwordconf'] && check_not_old($_POST['newpassword'],$_SESSION['email'])=="true"){
                       Update_pwd($_POST['newpassword'],$_SESSION['email']);
                       ?>
@@ -139,6 +138,8 @@ require 'functions.php';
                                  <button type="submit" class="default-btn floatright">Enregistrer</button>
                              </form>
                            <?php }
+              }else {
+                echo "non";
               }
 
 
