@@ -93,7 +93,7 @@ require 'functions.php';
             <?php
           }
       }
-              if((isset($_POST['code']) && $_POST['code']==$_SESSION['rand'] && !isset($_POST['newpassword'])) || check_not_old($_POST['newpassword'],$_SESSION['email'])!="true")
+              if((isset($_POST['code']) && $_POST['code']==$_SESSION['rand'] && !isset($_POST['newpassword'])) || (isset($_POST['newpassword']) && check_not_old($_POST['newpassword'],$_SESSION['email'])!="true"))
               { ?>
                 <div>
                 <form action="#" method="post">
