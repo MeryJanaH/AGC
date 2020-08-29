@@ -18,9 +18,10 @@ require 'functions.php';
     <!-- App CSS -->
     <link type="text/css" href="assets/css/app.css" rel="stylesheet">
 
-    <link href="assets/vendor/toastr.min.css" rel="stylesheet" type="text/css" />
-
-
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+    
 </head>
 
 <body class="layout-login-centered-boxed">
@@ -174,8 +175,6 @@ require 'functions.php';
 
     <!-- jQuery -->
     <script src="assets/vendor/jquery.min.js"></script>
-
-    <script src="assets/vendor/toastr.min.js"></script>
 
 
 </body>
