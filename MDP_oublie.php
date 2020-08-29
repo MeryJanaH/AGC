@@ -99,8 +99,8 @@ require 'functions.php';
                       <br/>
                       <a href="/">Login</a>
                        <?php
-                     }else ?> <b style="color:red">error</b> <?php
-                  }else ?> <b style="color:red"> Réessayez, Mot de passe non identique</b> <?php
+                     }else { ?> <b style="color:red">Error</b> <?php }
+                  }else { ?> <b style="color:red"> Réessayez, Mot de passe non identique</b> <?php }
               }
 
 
