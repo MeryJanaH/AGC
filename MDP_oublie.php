@@ -93,7 +93,7 @@ require 'functions.php';
             <?php
           }
       }
-              if(isset($_POST['code']) && $_POST['code']==$_SESSION['rand'] && !isset($_POST['newpassword']))
+              if((isset($_POST['code']) && $_POST['code']==$_SESSION['rand'] && !isset($_POST['newpassword'])) || check_not_old($_POST['newpassword'],$_SESSION['email'])!="true")
               { ?>
                 <div>
                 <form action="#" method="post">
@@ -119,14 +119,9 @@ require 'functions.php';
                        <?php
                   }elseif (check_not_old($_POST['newpassword'],$_SESSION['email'])!="true"){ ?>
                     <div class="alert alert-danger" role="alert">
-                          <strong>Réessayez un nouveau MDPRéessayez un nouveau MDP - </strong> Mot de passe est déjà utilisé
+                          <strong>Réessayez un nouveau MDP - </strong> Mot de passe est déjà utilisé
                     <div>
-                    <form action="#" method="post">
-                        <input type="password" name="newpassword" placeholder="Entrer votre nv MDP">
-
-                        <input type="password" name="passwordconf" placeholder="confirmer MDP">
-                        <button type="submit" class="default-btn floatright">Enregistrer</button>
-                    </form> <?php
+                    <?php
                   }else{
                       ?> <div class="alert alert-danger" role="alert">
                               <strong>Erreur - </strong> Réessayez, Mot de passe non identique
