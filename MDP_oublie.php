@@ -124,9 +124,9 @@ require 'functions.php';
                       <br/>
                       <a href="/">Login</a>
                        <?php
-                  }elseif (check_not_old($_POST['newpassword'],$_SESSION['email'])!="true"){ ?>
-                  <?php
-                    echo '<script type="text/javascript">toastr.success('Mot de passe est déjà utilisé')</script>';
+                  }elseif (check_not_old($_POST['newpassword'],$_SESSION['email'])!="true"){
+
+                    echo '<script type="text/javascript">toastr.success("Mot de passe est déjà utilisé")</script>';
 
                   }else{
                       ?> <div class="alert alert-danger" role="alert">
