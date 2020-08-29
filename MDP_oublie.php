@@ -74,11 +74,26 @@ require 'functions.php';
             <div class="alert alert-danger" role="alert">
                 <strong>Erreur - </strong> Email non reconnu
             </div>
+            <form action="#verification" method="POST">
+                <div class="form-group">
+                    <label class="text-label" for="email_3">Adresse email:</label>
+                    <div class="input-group input-group-merge">
+                        <input id="email_3" name="email_3" type="email" required="" class="form-control form-control-prepended" placeholder="user@exemple.com">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <span class="far fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group text-center">
+                  <button style="width: 276px; color: green;" name="submit" type="submit">Envoyez moi le code de vérification</button><br>
+                </div>
+            </form>
             <?php
           }
       }
-              if((isset($_POST['code']) && $_POST['code']==$_SESSION['rand'] && !isset($_POST['newpassword'])) ||
-                                        (isset($_POST['code']) && $_POST['code']==$_SESSION['rand'] && isset($_POST['newpassword']) && $_POST['newpassword']!=$_POST['passwordconf']))
+              if(isset($_POST['code']) && $_POST['code']==$_SESSION['rand'] && !isset($_POST['newpassword']))
               { ?>
                 <div>
                 <form action="#" method="post">
@@ -104,11 +119,18 @@ require 'functions.php';
                        <?php
                   }else { ?> <div class="alert alert-danger" role="alert">
                               <strong>Erreur - </strong> Réessayez, Mot de passe non identique
-                             </div> <?php }
+                             </div>
+                             <form action="#" method="post">
+                                 <div><input type="password" name="newpassword" placeholder="Entrer votre nv MDP"></div>
+
+                                 <div><input type="password" name="passwordconf" placeholder="confirmer MDP"</div>
+                                 <button type="submit" class="default-btn floatright">Enregistrer</button>
+                             </form>
+                           <?php }
               }
 
 
-        if((isset($_POST['email_3']) && !email_exist($_POST['email_3'])) || (!isset($_POST['submit']) && !isset($_POST['code']) && !isset($_POST['newpassword'])))
+        if(!isset($_POST['submit']) && !isset($_POST['code']) && !isset($_POST['newpassword']))
         {
             ?>
         <div class="card card-body">
