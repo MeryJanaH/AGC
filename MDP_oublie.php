@@ -128,8 +128,13 @@ require 'functions.php';
                        <?php
                   }elseif ($_POST['newpassword']==$_POST['passwordconf'] && check_not_old($_POST['newpassword'],$_SESSION['email'])!="true"){
 
-                    echo '<script type="text/javascript">toastr.danger("Mot de passe est déjà utilisé")</script>';
+                    echo '<script type="text/javascript">toastr.error("Mot de passe est déjà utilisé")</script>'; ?>
+                    <form action="#" method="post">
+                        <input type="password" name="newpassword" placeholder="Entrer votre nv MDP">
 
+                        <input type="password" name="passwordconf" placeholder="confirmer MDP">
+                        <button type="submit" class="default-btn floatright">Enregistrer</button>
+                    </form> <?php
                   }else{
                       ?> <div class="alert alert-danger" role="alert">
                               <strong>Erreur - </strong> Réessayez, Mot de passe non identique
