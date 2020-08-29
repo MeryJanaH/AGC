@@ -56,7 +56,7 @@ require 'functions.php';
               else
                 $_SESSION['send']="false";
 
-              if(!isset($_POST['code'])) {
+              if(!isset($_POST['code']) || (isset($_POST['code']) && $_POST['code']!=$_SESSION['rand'])) {
               ?>
               <div>
                   <p>
@@ -93,14 +93,17 @@ require 'functions.php';
                 <?php
               }elseif(isset($_POST['newpassword'])) {
                   if ($_POST['newpassword']==$_POST['passwordconf']) {
-                      if (Update_pwd($_POST['newpassword'],$_SESSION['email'])){
+                      Update_pwd($_POST['newpassword'],$_SESSION['email']);
                       ?>
-                      <b style="color:green"> Vous avez changé votre mot de passe avec succès </b>
+                      <div class="alert alert-success" role="alert">
+                          <strong>Erreur - </strong> Vous avez changé votre mot de passe avec succès
+                      </div>
                       <br/>
                       <a href="/">Login</a>
                        <?php
-                     }else { ?> <b style="color:red">Error</b> <?php }
-                  }else { ?> <b style="color:red"> Réessayez, Mot de passe non identique</b> <?php }
+                  }else { ?> <div class="alert alert-danger" role="alert">
+                              <strong>Erreur - </strong> Réessayez, Mot de passe non identique
+                             </div> <?php }
               }
 
 
