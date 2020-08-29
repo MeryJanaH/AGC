@@ -18,6 +18,8 @@ require 'functions.php';
     <!-- App CSS -->
     <link type="text/css" href="assets/css/app.css" rel="stylesheet">
 
+    <link href="assets/vendor/toastr.min.css" rel="stylesheet" type="text/css" />
+
 
 </head>
 
@@ -172,6 +174,8 @@ require 'functions.php';
 
     <!-- jQuery -->
     <script src="assets/vendor/jquery.min.js"></script>
+
+    <script src="assets/vendor/toastr.min.js"></script>
 
 
 </body>
