@@ -83,6 +83,7 @@ require 'functions.php';
                 <div>
                 <form action="#" method="post">
                     <input type="password" name="newpassword" placeholder="Entrer votre nv MDP">
+                    <br/>
                     <input type="password" name="passwordconf" placeholder="confirmer votre MDP">
                     <button type="submit" class="default-btn floatright">Enregistrer</button>
                 </form>
@@ -96,7 +97,7 @@ require 'functions.php';
                       Update_pwd($_POST['newpassword'],$_SESSION['email']);
                       ?>
                       <div class="alert alert-success" role="alert">
-                          <strong>Erreur - </strong> Vous avez changé votre mot de passe avec succès
+                          <strong>Succès - </strong> Vous avez changé votre mot de passe avec succès
                       </div>
                       <br/>
                       <a href="/">Login</a>
