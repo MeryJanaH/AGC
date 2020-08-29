@@ -125,10 +125,9 @@ require 'functions.php';
                       <a href="/">Login</a>
                        <?php
                   }elseif (check_not_old($_POST['newpassword'],$_SESSION['email'])!="true"){ ?>
-                    <div class="alert alert-danger" role="alert">
-                          <strong>Réessayez un nouveau MDP - </strong> Mot de passe est déjà utilisé
-                    <div>
-                    <?php
+                  <?php
+                    echo '<script type="text/javascript">toastr.success('Mot de passe est déjà utilisé')</script>';
+
                   }else{
                       ?> <div class="alert alert-danger" role="alert">
                               <strong>Erreur - </strong> Réessayez, Mot de passe non identique
