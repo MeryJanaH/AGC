@@ -108,21 +108,9 @@ require 'functions.php';
                 <div class="alert alert-danger" role="alert">
                       <strong>Réessayez - </strong> Code de vérification est incorrect
                 <div>
-                  <form action="#verification" method="POST">
-                      <div class="form-group">
-                          <label class="text-label" for="email_3">Adresse email:</label>
-                          <div class="input-group input-group-merge">
-                              <input id="email_3" name="email_3" type="email" required="" class="form-control form-control-prepended" placeholder="user@exemple.com">
-                              <div class="input-group-prepend">
-                                  <div class="input-group-text">
-                                      <span class="far fa-envelope"></span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="form-group text-center">
-                        <button style="width: 276px; color: green;" name="submit" type="submit">Envoyez moi le code de vérification</button><br>
-                      </div>
+                  <form action="#" method="post">
+                    <input type="text" name="code" placeholder="Entrer votre code de vérification">
+                    <button type="submit" class="default-btn floatright">Confirmer</button>
                   </form>
                 <?php
               }elseif(isset($_POST['newpassword'])) {
