@@ -171,7 +171,7 @@ include 'include/left_side.php'; ?>
                 <div class="modal-body pt-3 pr-4 pl-4">
 
                   <input type="hidden" id="startTime"/>
-                  <input type="hidden" id="endTime"/>
+            <!--  <input type="hidden" id="endTime"/> -->
 
                   <form id="form1">    <div class="row">       <div class="col-12">
                       <div class="form-group">
@@ -257,7 +257,7 @@ include 'include/left_side.php'; ?>
                 <div class="modal-body pt-3 pr-4 pl-4">
 
                   <input type="hidden" id="startTime2"/>
-                  <input type="hidden" id="endTime2"/>
+        <!--      <input type="hidden" id="endTime2"/>  -->
 
                   <form id="form2">    <div class="row">     <div class="col-12">
                       <div class="form-group">
@@ -458,14 +458,14 @@ include 'include/left_side.php'; ?>
           select: function(info) {
 
             $('#event-modal #startTime').val(info.startStr);
-            $('#event-modal #endTime').val(info.endStr);
+          //$('#event-modal #endTime').val(info.endStr);
             $('#event-modal').modal('toggle');
             $('#submitButton').unbind('click').on('click', function(e){
                  // We don't want this to act as a link so cancel the link action
                  e.preventDefault();
                  $("#event-modal").modal('hide');
                  var startTime = $('#startTime').val();
-                 var endTime = $('#endTime').val();
+                 //var endTime = $('#endTime').val();
                  var commercial = $("#select01").children("option:selected").val();
                  var client = $("#select02").children("option:selected").val();
                  var projet = $("#select03").children("option:selected").val();
@@ -495,7 +495,7 @@ include 'include/left_side.php'; ?>
                      projet: projet,
                      description: description,
                      start:startTime,
-                     end: endTime,
+                     //end: endTime,
                      visite:visite,
                      category: category
                    }, function(data, status){
@@ -505,8 +505,8 @@ include 'include/left_side.php'; ?>
           },
           eventClick: function(info) {
             //  alert('Titre: ' + info.event.title +'\nCommercial: ' + info.event.comm +'\nClient: ' + info.event.client +'\nProjet: ' + info.event.projet+'\nDescription: ' + info.event.description+'\nTemps: \n   -De : '+info.event.start+'\n   -Ä : '+info.event.end);
-            $('#event-edit #startTime').val(info.event.startStr);
-            $('#event-edit #endTime').val(info.event.endStr);
+            $('#event-edit #startTime2').val(info.event.startStr);
+            //$('#event-edit #endTime').val(info.event.endStr);
 
             var values;
             $.post("fct_calend",
@@ -519,7 +519,7 @@ include 'include/left_side.php'; ?>
            });
 
             setTimeout(function(){
-              console.log(values['Visite']);
+              //console.log(values['Visite']);
 
               /*$("#commercial").children("option:selected").val()=
               $("#client").children("option:selected").val()=
@@ -555,7 +555,7 @@ include 'include/left_side.php'; ?>
                  e.preventDefault();
                  $("#event-edit").modal('hide');
                  var startTime = $('#startTime2').val();
-                 var endTime = $('#endTime2').val();
+                // var endTime = $('#endTime2').val();
                  var commercial = $("#commercial").children("option:selected").val();
                  var client = $("#client").children("option:selected").val();
                  var projet = $("#projet").children("option:selected").val();
@@ -563,10 +563,10 @@ include 'include/left_side.php'; ?>
                  var visite = $("#visite").children("option:selected").val();
                  var description = $("#description").val();
                  var id_calendar=info.event.id;
-
+                 
                  //console.log(id_calendar);
                  //var event = calendar.getEventById( id_calendar );
-                 info.event.setProp('title',$("#client").children("option:selected").text());
+                 info.event.setProp('title',$("#client").children("option:selected").text() + " , " + $("#projet").children("option:selected").text());
                  info.event.setProp('classNames', category);
                  //event.className= category;
                  //console.log($("#client").children("option:selected").text());
@@ -580,7 +580,7 @@ include 'include/left_side.php'; ?>
                      projet: projet,
                      description: description,
                      start:startTime,
-                     end: endTime,
+                     //end: endTime,
                      visite:visite,
                      category: category
                    }, function(data, status){
