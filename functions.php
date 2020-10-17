@@ -494,7 +494,7 @@ function  add_client($c_n,$nm_t,$c_nt,$c_s,$c_p,$c_v)
   for ($a = 0; $a < count($c_n); $a++)
   {
 
-      $req = $bdd->prepare("INSERT INTO Clients (Name, phnumber,Notes,Source,Code_pj,Premier_visite,nb_visite) VALUES ('" . $c_n[$a] . "','" . $nm_t[$a]."','" . $c_nt[$a]."','" . $c_s[$a]."','" . $c_p[$a]."',now()),'" . $c_v[$a]."'");
+      $req = $bdd->prepare("INSERT INTO Clients (Name, phnumber,Notes,Source,Code_pj,Premier_visite,nb_visite) VALUES ('" . $c_n[$a] . "','" . $nm_t[$a]."','" . $c_nt[$a]."','" . $c_s[$a]."','" . $c_p[$a]."',now(),'" . $c_v[$a]."')");
       $req->execute();
   }
 }
