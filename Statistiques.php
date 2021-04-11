@@ -274,6 +274,8 @@ $d2 = $req2->fetch();
                                        <a href="#Janvier" class="active" data-toggle="tab" role="tab" aria-controls="activity_all" aria-selected="true">Janvier</a>
                                        <a href="#Fevrier" data-toggle="tab" role="tab"  aria-selected="false">Février</a>
                                        <a href="#Mars" data-toggle="tab" role="tab" aria-selected="false">Mars</a>
+                                       <a href="#Avril" data-toggle="tab" role="tab" aria-selected="false">Avril</a>
+                                       <a href="#Mai" data-toggle="tab" role="tab" aria-selected="false">Mai</a>
                                        <a href="#Juin" data-toggle="tab" role="tab" aria-selected="false">Juin</a>
                                        <a href="#Juillet" data-toggle="tab" role="tab"  aria-selected="false">Juillet</a>
                                        <a href="#Aout" data-toggle="tab" role="tab" aria-selected="false">Août</a>
